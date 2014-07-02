@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<strings>
+    <string id="32001">Erro a pesquisar legendas</string>
+    <string id="32002">Utilizador</string>
+    <string id="32003">Password</string>
+    <string id="32004">Detalhes de Login</string>
+    <string id="32005">Opções Avançadas</string>
+    <string id="32006">Permitir pesquisa ordenada</string>
+    <string id="32007">Idioma a aparecer em primeiro lugar</string>
+</strings>

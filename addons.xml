@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="repository.mafarricos.xbmc" name="Mafarricos repositorio" version="1.0.4" provider-name="Mafarricos">
+	<extension point="xbmc.addon.repository" name="Mafarricos Add-on Repository">
+		<info compressed="false">http://raw.github.com/Mafarricos/Mafarricos-xbmc-addons/master/addons.xml</info>
+		<checksum>http://raw.github.com/Mafarricos/Mafarricos-xbmc-addons/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/Mafarricos/Mafarricos-xbmc-addons/master/repo</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Repositorio Mafarricos</summary>
+		<description>Addons de Mafarricos, contacto: MafaStudios@gmail.com</description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.mafarricosModded.xbmc" name="Mafarricos Modded repositorio" version="1.0.0" provider-name="Mafarricos">
+	<extension point="xbmc.addon.repository" name="Mafarricos Modded Add-on Repository">
+		<info compressed="false">http://raw.github.com/Mafarricos/Mafarricos-modded-xbmc-addons/master/addons.xml</info>
+		<checksum>http://raw.github.com/Mafarricos/Mafarricos-modded-xbmc-addons/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/Mafarricos/Mafarricos-modded-xbmc-addons/master/repo</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Repositorio de Addons Modificados por Mafarricos</summary>
+		<description>Addons Modificados por Mafarricos, contacto: MafaStudios@gmail.com</description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="service.autosubsBeta"
+    name="AutoSubs (Unofficial)" version="1.0.4" provider-name="schumi2004,Mafarricos">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.service" library="default.py" start="login" />
+  <extension point="xbmc.python.script" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Auto Search for Subtitles on Play</summary>
+    <description lang="en">Auto Search for Subtitles on Playback start if no subs are found.[CR][CR]Icon credits goes to zNET Computer Solutions http://www.znetcs.pl</description>
+    <summary lang="pt">Pesquisa Automática por legendas no Play</summary>
+    <description lang="pt">Pesquisa Automática por legendas na reprodução se não existirem legendas.[CR][CR]Créditos dos icons vão para zNET Computer Solutions http://www.znetcs.pl</description>
+    <platform>all</platform>
+    <language>en</language>
+  </extension>
+</addon>
+
+<addon id="service.subtitles.opensubtitlesBeta"
+       name="OpenSubtitles.org (Unofficial)"
+       version="5.0.10"
+       provider-name="amet,Mafarricos">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.subtitle.module"
+             library="service.py" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">OpenSubtitles (Unofficial)</summary>
+    <description lang="en">Search and download subtitles from opensubtitles.org. This unofficial version permits to choose preference language in results</description>
+    <disclaimer lang="en"></disclaimer>
+    <summary lang="pt">OpenSubtitles (Não Oficial)</summary>
+    <description lang="pt">Pesquisa e download de legendas de opensubtitles.org. Esta versão não oficial permite nas definições escolher o idioma para apresentar legendas primeiro</description>
+    <disclaimer lang="pt"></disclaimer>
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <source>https://github.com/Mafarricos/service.subtitles.opensubtitles</source>
+  </extension>
+</addon>
+</addons>

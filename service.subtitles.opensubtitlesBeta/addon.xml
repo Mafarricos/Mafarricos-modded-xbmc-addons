@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="service.subtitles.opensubtitlesBeta"
+       name="OpenSubtitles.org (Unofficial)"
+       version="5.0.10"
+       provider-name="amet,Mafarricos">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.subtitle.module"
+             library="service.py" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">OpenSubtitles (Unofficial)</summary>
+    <description lang="en">Search and download subtitles from opensubtitles.org. This unofficial version permits to choose preference language in results</description>
+    <disclaimer lang="en"></disclaimer>
+    <summary lang="pt">OpenSubtitles (Não Oficial)</summary>
+    <description lang="pt">Pesquisa e download de legendas de opensubtitles.org. Esta versão não oficial permite nas definições escolher o idioma para apresentar legendas primeiro</description>
+    <disclaimer lang="pt"></disclaimer>	
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <source>https://github.com/Mafarricos/service.subtitles.opensubtitles</source>    
+  </extension>
+</addon>

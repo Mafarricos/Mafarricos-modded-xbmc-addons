@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.mafarricosModded.xbmc" name="Mafarricos Modded repositorio" version="1.0.0" provider-name="Mafarricos">
+	<extension point="xbmc.addon.repository" name="Mafarricos Modded Add-on Repository">
+		<info compressed="false">http://raw.github.com/Mafarricos/Mafarricos-modded-xbmc-addons/master/addons.xml</info>
+		<checksum>http://raw.github.com/Mafarricos/Mafarricos-modded-xbmc-addons/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/Mafarricos/Mafarricos-modded-xbmc-addons/master/repo</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Repositorio de Addons Modificados por Mafarricos</summary>
+		<description>Addons Modificados por Mafarricos, contacto: MafaStudios@gmail.com</description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
