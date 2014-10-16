@@ -1,0 +1,33 @@
+v1.3.1
+- Fix for auto switching DVD-ISO and IMG files
+- Improved source frame rate detection
+- Reduced stand down period
+
+v1.3.0
+- Added Info mapped key
+
+v1.2.0
+- Added 50hz option for playback stop
+- Improved Clean Up
+
+v1.1.0
+- Settings shared between profiles
+- Added support for switching on end of playback
+- Prevented switching when playing audio files
+- Removed notification sound
+- Improved Automatic mapped key
+
+v1.0.0
+- Service optimization
+- Service startup changed from Login to XBMC Startup
+- Added Clean Up (for use before Uninstall and Disable)
+
+v0.0.3
+- Added support for key navigation (beta 3)
+
+v0.0.2
+- First published version (beta 2)
+
+v0.0.1
+- Unpublished dev version
+
