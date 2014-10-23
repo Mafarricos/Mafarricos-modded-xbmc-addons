@@ -1,0 +1,15 @@
+<addon id="plugin.video.streamBeta" name="StreamBeta" version="1.4.7" provider-name="brysonreece/Mafarricos">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <website>http://stream.brysonreece.com/</website>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <summary lang="en">Seamlessly watch content from across the internet.</summary>
+        <description lang="en">Enjoy a variety of content, from your favorite TV shows to the latest movies!</description>
+    </extension>
+</addon>
