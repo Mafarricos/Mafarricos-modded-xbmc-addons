@@ -16,11 +16,11 @@
     </category>
     <category label="Advanced">
         <setting label="XBMC Library Integration" type="lsep"/>
-        <setting type="action" label="Install" action="RunPlugin(plugin://plugin.video.xbmctorrent/library/install)" />
-        <setting type="action" label="Uninstall" action="RunPlugin(plugin://plugin.video.xbmctorrent/library/uninstall)" />
+        <setting type="action" label="Install" action="RunPlugin(plugin://plugin.video.xbmctorrentBeta/library/install)" />
+        <setting type="action" label="Uninstall" action="RunPlugin(plugin://plugin.video.xbmctorrentBeta/library/uninstall)" />
 
         <setting label="Maintenance" type="lsep"/>
-        <setting type="action" label="Clear cache" action="RunPlugin(plugin://plugin.video.xbmctorrent/cmd/clear_cache)" />
+        <setting type="action" label="Clear cache" action="RunPlugin(plugin://plugin.video.xbmctorrentBeta/cmd/clear_cache)" />
 
         <setting label="Custom domains" type="lsep"/>
         <setting id="base_eztv" type="text" label="EZTV" default="http://eztv.it" />

@@ -19,11 +19,11 @@
         <setting id="pref_language" type="labelenum" label="Preferred Metadata Language" values="system|aa|ab|af|am|ar|as|ay|az|ba|be|bg|bh|bi|bn|bo|br|ca|co|cs|cy|da|de|dz|el|en|eo|es|et|eu|fa|fi|fj|fo|fr|fy|ga|gd|gl|gn|gu|ha|hi|hr|hu|hy|ia|ie|ik|in|is|it|iw|ja|ji|jw|ka|kk|kl|km|kn|ko|ks|ku|ky|la|ln|lo|lt|lv|mg|mi|mk|ml|mn|mo|mr|ms|mt|my|na|ne|nl|no|oc|om|or|pa|pl|ps|pt|qu|rm|rn|ro|ru|rw|sa|sd|sg|sh|si|sk|sl|sm|sn|so|sq|sr|ss|st|su|sv|sw|ta|te|tg|th|ti|tk|tl|tn|to|tr|ts|tt|tw|uk|ur|uz|vi|vo|wo|xh|yo|zh|zu" default="system" />
 
         <setting label="XBMC Library Integration" type="lsep"/>
-        <setting type="action" label="Install" action="RunPlugin(plugin://plugin.video.stream/library/install)" />
-        <setting type="action" label="Uninstall" action="RunPlugin(plugin://plugin.video.stream/library/uninstall)" />
+        <setting type="action" label="Install" action="RunPlugin(plugin://plugin.video.streamBeta/library/install)" />
+        <setting type="action" label="Uninstall" action="RunPlugin(plugin://plugin.video.streamBeta/library/uninstall)" />
 
         <setting label="Maintenance" type="lsep"/>
-        <setting type="action" label="Clear cache" action="RunPlugin(plugin://plugin.video.stream/cmd/clear_cache)" />
+        <setting type="action" label="Clear cache" action="RunPlugin(plugin://plugin.video.streamBeta/cmd/clear_cache)" />
 
         <setting label="SOCKS5 Proxy" type="lsep"/>
         <setting id="use_socks" label="Use SOCKS5 proxy?" type="bool" default="false" />
