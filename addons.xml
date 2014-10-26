@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="plugin.video.streamBeta" name="StreamBeta" version="1.4.8" provider-name="brysonreece/Mafarricos">
+<addon id="plugin.video.streamBeta" name="StreamBeta" version="1.4.8a" provider-name="brysonreece/Mafarricos">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
     </requires>
@@ -16,7 +16,7 @@
     </extension>
 </addon>
 
-<addon id="plugin.video.xbmctorrentBeta" name="XBMCtorrentBeta" version="0.6.7" provider-name="steeve/Mafarricos">
+<addon id="plugin.video.xbmctorrentBeta" name="XBMCtorrentBeta" version="0.6.7a" provider-name="steeve/Mafarricos">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
     </requires>
