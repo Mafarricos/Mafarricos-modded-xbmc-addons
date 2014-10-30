@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="General">
+        <setting label="General" type="lsep" />
+        <setting id="dlpath" type="folder" label="Download Path" source="auto" option="writeable" />
+        <setting id="keep_files" type="bool" label="Keep files after playback/download stops" default="false" />
+
+        <setting label="Content" type="lsep"/>
+        <setting id="immunicity" type="bool" label="Auto-unblocking via Immunicity" default="false" />
+        <setting id="porn" type="bool" label="Adult Content" default="true" />
+
+        <setting label="BitTorrent" type="lsep"/>
+        <setting id="magnet_boost" label="Magnet Booster" type="bool" default="true" />
+        <setting id="max_download_rate" label="Max Download Rate (kB/s)" type="number" default="" />
+        <setting id="encryption" label="Encryption" type="enum" values="Forced|Enabled|Disabled" default="1" />
+    </category>
+    <category label="Advanced">
+        <setting label="XBMC Library Integration" type="lsep"/>
+        <setting type="action" label="Install" action="RunPlugin(plugin://plugin.video.streamajoker/library/install)" />
+        <setting type="action" label="Uninstall" action="RunPlugin(plugin://plugin.video.streamajoker/library/uninstall)" />
+
+        <setting label="Maintenance" type="lsep"/>
+        <setting type="action" label="Clear cache" action="RunPlugin(plugin://plugin.video.streamajoker/cmd/clear_cache)" />
+
+        <setting label="Custom domains" type="lsep"/>
+        <setting id="base_eztv" type="text" label="EZTV" default="http://eztv.it" />
+        <setting id="base_yify" type="text" label="YIFY Torrents" default="http://yts.re" />
+        <setting id="base_kickass" type="text" label="Kickass Torrents" default="http://kickass.to" />
+        <setting id="base_tpb" type="text" label="The Pirate Bay" default="http://thepiratebay.org" />
+        <setting id="base_nyaa" type="text" label="NyaaTorrents" default="http://www.nyaa.se" />
+        <setting id="base_bitsnoop" type="text" label="BitSnoop" default="http://bitsnoop.com" />
+        <setting id="base_extratorrent" type="text" label="ExtraTorrent" default="http://extratorrent.cc" />
+        <setting id="base_btdigg" type="text" label="BTDigg" default="http://btdigg.org" />
+
+        <setting label="Google Analytics" type="lsep"/>
+        <setting id="ga_disable" type="bool" label="Disable (except for index)" default="false" />
+
+        <setting label="XBMC Android" type="lsep"/>
+        <setting id="android_app_id" type="text" label="Custom Android Application ID" default="org.xbmc.xbmc" />
+    </category>
+</settings>
