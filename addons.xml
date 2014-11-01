@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
+<addon id="plugin.video.streamajoker" name="Stream a Joker" version="0.6.4" provider-name="Mafarricos">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.module.requests"/>
+        <import addon="script.joker"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+    </extension>
+</addon>
+
 <addon id="plugin.video.streamBeta" name="StreamBeta" version="1.4.8b" provider-name="brysonreece/Mafarricos">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
@@ -16,7 +30,7 @@
     </extension>
 </addon>
 
-<addon id="plugin.video.xbmctorrentBeta" name="XBMCtorrentBeta" version="0.6.7b" provider-name="steeve/Mafarricos">
+<addon id="plugin.video.xbmctorrentBeta" name="XBMCtorrentV2" version="0.6.7b" provider-name="steeve/Mafarricos">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
     </requires>
