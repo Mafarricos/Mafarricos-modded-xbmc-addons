@@ -30,7 +30,7 @@
     </extension>
 </addon>
 
-<addon id="plugin.video.xbmctorrentBeta" name="XBMCtorrentV2" version="0.6.8" provider-name="steeve/Mafarricos">
+<addon id="plugin.video.xbmctorrentV2" name="XBMCtorrentV2" version="1.0.0" provider-name="steeve/Mafarricos">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
     </requires>
@@ -39,18 +39,6 @@
     </extension>
     <extension point="xbmc.addon.metadata">
         <platform>all</platform>
-        <website><![CDATA[http://j.mp/xbmctorrent]]></website>
-        <forum><![CDATA[http://j.mp/xbmctorrent]]></forum>
-        <source><![CDATA[https://github.com/steeve/xbmctorrent]]></source>
-        <language></language>
-        <license><![CDATA[GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007]]></license>
-        <summary><![CDATA[XBMCtorrent: Torrent streaming for XBMC.]]></summary>
-        <description><![CDATA[Watch torrents directly from XBMC, without waiting.
-
-To get the latest updates:
-Twitter: twitter.com/xbmctorrent
-Facebook: facebook.com/xbmctorrent
-XBMC HUB: j.mp/xbmctorrent]]></description>
     </extension>
 </addon>
 
