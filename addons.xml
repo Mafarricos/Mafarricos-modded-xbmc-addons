@@ -30,7 +30,7 @@
     </extension>
 </addon>
 
-<addon id="plugin.video.xbmctorrentBeta" name="XBMCtorrentV2" version="0.6.7b" provider-name="steeve/Mafarricos">
+<addon id="plugin.video.xbmctorrentBeta" name="XBMCtorrentV2" version="0.6.8" provider-name="steeve/Mafarricos">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
     </requires>
