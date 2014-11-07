@@ -141,7 +141,7 @@ Special thanks to all who contributed to this plugin! Check the commit history a
 	</extension>
 </addon>
 
-<addon id="script.frequency.switcher" name="Frequency Switcher" version="1.3.1" provider-name="jk-nz">
+<addon id="script.video.fswitch" name="Frequency Switcher" version="1.3.1" provider-name="jk-nz">
   <requires>
     <import addon="xbmc.python" version="2.14.0"/>
 	<import addon="script.module.pyxbmct" version="1.1.2"/>
