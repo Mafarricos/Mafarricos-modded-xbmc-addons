@@ -21,7 +21,7 @@ def getSourceFPS():
     videoFPSValue = None
     
     # get location of log file
-    if fsconfig.osPlatform == 'MINIX NEO-X8':
+    if fsconfig.osPlatform == 'SAMSUNG rk3188':
         logFileName = xbmc.translatePath('special://temp/XBMC.log')
     
     elif fsconfig.osPlatform == 'Windows 7':
@@ -136,10 +136,10 @@ def getDisplayMode():
     outputMode = None
     amlogicMode = None
     
-    modeFileAndroid = "/sys/class/display/mode"
+    modeFileAndroid = "/sys/devices/virtual/display/display0.HDMI/mode"
     modeFileWindows = "d:\\x8mode.txt"
  
-    if fsconfig.osPlatform == 'MINIX NEO-X8':
+    if fsconfig.osPlatform == 'SAMSUNG rk3188':
         modeFile = modeFileAndroid
     elif fsconfig.osPlatform == 'Windows 7':
         modeFile = modeFileWindows 
@@ -155,16 +155,18 @@ def getDisplayMode():
                 amlogicMode = modeFileHandle.readline().strip()
                 
                 # convert AMLOGIC output mode to more descriptive mode
-                if amlogicMode == '1080p':
+                if amlogicMode == '1920x1080p-60':
                     outputMode = '1080p-60hz'
-                elif amlogicMode == '1080p50hz':
+                elif amlogicMode == '1920x1080p-50':
                     outputMode = '1080p-50hz'
-                elif amlogicMode == '1080p24hz':
+                elif amlogicMode == '1920x1080p-24':
                     outputMode = '1080p-24hz'
-                elif amlogicMode == '720p':
-                    outputMode = '720p-60hz'
-                elif amlogicMode == '720p50hz':
+                elif amlogicMode == '1280x720p-60':
+                    outputMode = '720p-60hz'					
+                elif amlogicMode == '1280x720p-50':
                     outputMode = '720p-50hz'
+                elif amlogicMode == '1280x720p-24':
+                    outputMode = '720p-24hz'
                 else:
                     outputMode = "unsupported"
                 
@@ -186,10 +188,10 @@ def getDisplayModeFileStatus():
     modeFile = None
     fileStatus = None
     
-    modeFileAndroid = "/sys/class/display/mode"
+    modeFileAndroid = "/sys/devices/virtual/display/display0.HDMI/mode"
     modeFileWindows = "d:\\x8mode.txt"
  
-    if fsconfig.osPlatform == 'MINIX NEO-X8':
+    if fsconfig.osPlatform == 'SAMSUNG rk3188':
         modeFile = modeFileAndroid
     elif fsconfig.osPlatform == 'Windows 7':
         modeFile = modeFileWindows 
@@ -225,15 +227,17 @@ def setDisplayMode(newOutputMode):
         
         # convert output mode to a valid AMLOGIC mode
         if newOutputMode == '1080p-60hz':
-            newAmlogicMode = '1080p'
+            newAmlogicMode = '1920x1080p-60'
         elif newOutputMode == '1080p-50hz':
-            newAmlogicMode = '1080p50hz'
+            newAmlogicMode = '1920x1080p-50'
         elif newOutputMode == '1080p-24hz':
-            newAmlogicMode = '1080p24hz'
+            newAmlogicMode = '1920x1080p-24'
         elif newOutputMode == '720p-60hz':
-            newAmlogicMode = '720p'
+            newAmlogicMode = '1280x720p-60'
         elif newOutputMode == '720p-50hz':
-            newAmlogicMode = '720p50hz'
+            newAmlogicMode = '1280x720p-50'
+        elif newOutputMode == '720p-24hz':
+            newAmlogicMode = '1280x720p-24'			
         else:
             setModeStatus = 'Unsupported mode requested.'
             statusType = 'warn'
@@ -438,7 +442,7 @@ def mapKey(keyScope, keyMappings):
     # build key map
     mapStart = '<keymap><' + keyScope + '><keyboard>'
     keyStart = '<key id="'
-    keyMiddle = '">runaddon(script.video.fswitch,'
+    keyMiddle = '">runaddon(script.video.fswitchRK,'
     keyEnd = ')</key>'
     mapEnd = '</keyboard></global></keymap>'  
     

@@ -10,7 +10,7 @@ def settingsFolder():
     # global settings folder
     globalSettingsFolder = xbmc.translatePath('special://userdata')
     globalSettingsFolder = os.path.join(globalSettingsFolder, 'addon_data')
-    globalSettingsFolder = os.path.join(globalSettingsFolder, 'script.video.fswitch')
+    globalSettingsFolder = os.path.join(globalSettingsFolder, 'script.video.fswitchRK')
     return globalSettingsFolder
 
 
