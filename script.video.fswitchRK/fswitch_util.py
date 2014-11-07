@@ -136,7 +136,7 @@ def getDisplayMode():
     outputMode = None
     amlogicMode = None
     
-    modeFileAndroid = "/sys/devices/virtual/display/display0.HDMI/mode"
+    modeFileAndroid = "/sys/class/display/display0.HDMI/mode"
     modeFileWindows = "d:\\x8mode.txt"
  
     if fsconfig.osPlatform == 'SAMSUNG rk3188':
@@ -165,8 +165,6 @@ def getDisplayMode():
                     outputMode = '720p-60hz'					
                 elif amlogicMode == '1280x720p-50':
                     outputMode = '720p-50hz'
-                elif amlogicMode == '1280x720p-24':
-                    outputMode = '720p-24hz'
                 else:
                     outputMode = "unsupported"
                 
@@ -188,7 +186,7 @@ def getDisplayModeFileStatus():
     modeFile = None
     fileStatus = None
     
-    modeFileAndroid = "/sys/devices/virtual/display/display0.HDMI/mode"
+    modeFileAndroid = "/sys/class/display/display0.HDMI/mode"
     modeFileWindows = "d:\\x8mode.txt"
  
     if fsconfig.osPlatform == 'SAMSUNG rk3188':
@@ -236,8 +234,6 @@ def setDisplayMode(newOutputMode):
             newAmlogicMode = '1280x720p-60'
         elif newOutputMode == '720p-50hz':
             newAmlogicMode = '1280x720p-50'
-        elif newOutputMode == '720p-24hz':
-            newAmlogicMode = '1280x720p-24'			
         else:
             setModeStatus = 'Unsupported mode requested.'
             statusType = 'warn'
@@ -288,7 +284,7 @@ def setDisplayMode(newOutputMode):
                 # more than 4 seconds has elapsed since the last frequency change 
                 else:
                     # set new display mode
-                    with open(modeFile, 'w') as modeFileHandle: 
+                    with open(modeFile, 'w') as modeFileHandle:
                         modeFileHandle.write(newAmlogicMode)
                     
                     # save time display mode was changed
