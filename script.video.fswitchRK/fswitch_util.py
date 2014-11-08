@@ -21,7 +21,7 @@ def getSourceFPS():
     videoFPSValue = None
     
     # get location of log file
-    if fsconfig.osPlatform == 'SAMSUNG rk3188':
+    if 'SAMSUNG rk3188' in fsconfig.osPlatform:
         logFileName = xbmc.translatePath('special://temp/XBMC.log')
     
     elif fsconfig.osPlatform == 'Windows 7':
@@ -122,7 +122,10 @@ def getPlatformType():
     elif osPlatform == 'linux3':
         productBrand = subprocess.Popen(['getprop', 'ro.product.brand'], stdout=subprocess.PIPE).communicate()[0].strip()
         productDevice = subprocess.Popen(['getprop', 'ro.product.device'], stdout=subprocess.PIPE).communicate()[0].strip()
-        osVariant = productBrand + ' ' + productDevice
+        productName = subprocess.Popen(['getprop', 'ro.product.name'], stdout=subprocess.PIPE).communicate()[0].strip()
+        if '720p' in productName: osVariant = productBrand + ' ' + productDevice+' 720p'
+        elif '1080p' in productName: osVariant = productBrand + ' ' + productDevice+' 1080p'
+        else: osVariant = productBrand + ' ' + productDevice
         
     else:
         osVariant = 'unsupported'
@@ -139,7 +142,7 @@ def getDisplayMode():
     modeFileAndroid = "/sys/class/display/display0.HDMI/mode"
     modeFileWindows = "d:\\x8mode.txt"
  
-    if fsconfig.osPlatform == 'SAMSUNG rk3188':
+    if 'SAMSUNG rk3188' in fsconfig.osPlatform:
         modeFile = modeFileAndroid
     elif fsconfig.osPlatform == 'Windows 7':
         modeFile = modeFileWindows 
@@ -160,7 +163,9 @@ def getDisplayMode():
                 elif amlogicMode == '1920x1080p-50':
                     outputMode = '1080p-50hz'
                 elif amlogicMode == '1920x1080p-24':
-                    outputMode = '1080p-24hz'
+                    if '1080p' in fsconfig.osPlatform: outputMode = '1080p-24hz'
+                    elif '720p' in fsconfig.osPlatform: outputMode = '720p-24hz'
+                    else: outputMode = '1080p-24hz'
                 elif amlogicMode == '1280x720p-60':
                     outputMode = '720p-60hz'					
                 elif amlogicMode == '1280x720p-50':
@@ -189,7 +194,7 @@ def getDisplayModeFileStatus():
     modeFileAndroid = "/sys/class/display/display0.HDMI/mode"
     modeFileWindows = "d:\\x8mode.txt"
  
-    if fsconfig.osPlatform == 'SAMSUNG rk3188':
+    if 'SAMSUNG rk3188' in fsconfig.osPlatform:
         modeFile = modeFileAndroid
     elif fsconfig.osPlatform == 'Windows 7':
         modeFile = modeFileWindows 
@@ -234,6 +239,8 @@ def setDisplayMode(newOutputMode):
             newAmlogicMode = '1280x720p-60'
         elif newOutputMode == '720p-50hz':
             newAmlogicMode = '1280x720p-50'
+        elif newOutputMode == '720p-24hz':
+            newAmlogicMode = '1920x1080p-24'			
         else:
             setModeStatus = 'Unsupported mode requested.'
             statusType = 'warn'
@@ -284,9 +291,18 @@ def setDisplayMode(newOutputMode):
                 # more than 4 seconds has elapsed since the last frequency change 
                 else:
                     # set new display mode
-                    with open(modeFile, 'w') as modeFileHandle:
-                        modeFileHandle.write(newAmlogicMode)
-                    
+                    try:
+						with open(modeFile, 'w') as modeFileHandle: modeFileHandle.write(newAmlogicMode)					
+                    except:
+						try: os.system("chmod 777 "+modeFile)
+						except: pass
+						try: os.system("echo "+newAmlogicMode+" > "+modeFile)
+						except:
+							os.system("su -c 'chmod 777 "+modeFile+"'")
+							os.system("su -c 'echo "+newAmlogicMode+" > "+modeFile+"'")
+							pass
+						pass
+						
                     # save time display mode was changed
                     fsconfig.lastFreqChange = int(time.time())
                     fsconfigutil.saveLastFreqChangeSetting()
@@ -420,15 +436,16 @@ def setDisplayModeAuto():
 
                 # FPS found in auto sync list       
                 else:
-                    
+                    # set the output mode
+                    setModeStatus, statusType = setDisplayMode(syncFreq)                    
                     # check for unsupported mode '720p-24hz'
-                    if syncFreq == '720p-24hz':
-                        setModeStatus = syncFreq + ' is not supported'
-                        statusType = 'warn'                      
+                    #if syncFreq == '720p-24hz':
+                    #    setModeStatus = syncFreq + ' is not supported'
+                    #    statusType = 'warn'                      
 
-                    else:
+                    #else:
                         # set the output mode
-                        setModeStatus, statusType = setDisplayMode(syncFreq)
+                    #    setModeStatus, statusType = setDisplayMode(syncFreq)
                             
     return setModeStatus, statusType
 
