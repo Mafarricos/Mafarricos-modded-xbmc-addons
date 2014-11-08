@@ -153,6 +153,10 @@ def getDisplayMode():
     # check file exists
     if os.path.isfile(modeFile):
         # check file is writable
+        try: os.system("chmod 777 "+modeFile)
+        except:
+			os.system("su -c 'chmod 777 "+modeFile+"'")
+			pass
         if os.access(modeFile, os.R_OK):
             with open(modeFile, 'r') as modeFileHandle:      
                 amlogicMode = modeFileHandle.readline().strip()
@@ -204,6 +208,10 @@ def getDisplayModeFileStatus():
       
     # check file exists
     if os.path.isfile(modeFile):
+        try: os.system("chmod 777 "+modeFile)
+        except:
+			os.system("su -c 'chmod 777 "+modeFile+"'")
+			pass
         # check file is writable
         if os.access(modeFile, os.W_OK):
             fileStatus = 'OK: Frequency switching is supported'
