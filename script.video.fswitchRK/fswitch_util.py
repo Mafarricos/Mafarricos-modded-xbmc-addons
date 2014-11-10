@@ -152,11 +152,7 @@ def getDisplayMode():
       
     # check file exists
     if os.path.isfile(modeFile):
-        # check file is writable
-        try: os.system("chmod 777 "+modeFile)
-        except:
-			os.system("su -c 'chmod 777 "+modeFile+"'")
-			pass
+        # check file is readable
         if os.access(modeFile, os.R_OK):
             with open(modeFile, 'r') as modeFileHandle:      
                 amlogicMode = modeFileHandle.readline().strip()
@@ -208,15 +204,14 @@ def getDisplayModeFileStatus():
       
     # check file exists
     if os.path.isfile(modeFile):
-        try: os.system("chmod 777 "+modeFile)
-        except:
-			os.system("su -c 'chmod 777 "+modeFile+"'")
-			pass
         # check file is writable
         if os.access(modeFile, os.W_OK):
             fileStatus = 'OK: Frequency switching is supported'
         else:
-            fileStatus = 'HDMI mode file is read only'                
+            if os.path.exists(os.path.join('/data/','data','eu.chainfire.supersu')):
+                fileStatus = 'OK: Frequency switching is supported'
+            else:
+                fileStatus = 'HDMI mode file is read only'                
     else:
         fileStatus = 'HDMI mode file not found'
 
@@ -302,14 +297,11 @@ def setDisplayMode(newOutputMode):
                     try:
 						with open(modeFile, 'w') as modeFileHandle: modeFileHandle.write(newAmlogicMode)					
                     except:
-						try: os.system("chmod 777 "+modeFile)
-						except: pass
-						try: os.system("echo "+newAmlogicMode+" > "+modeFile)
+						try:
+							os.system('su -c "chmod 777 '+modeFile+'"')
+							os.system('su -c "echo '+newAmlogicMode+' > '+modeFile+'"')
 						except:
-							os.system("su -c 'chmod 777 "+modeFile+"'")
-							os.system("su -c 'echo "+newAmlogicMode+" > "+modeFile+"'")
 							pass
-						pass
 						
                     # save time display mode was changed
                     fsconfig.lastFreqChange = int(time.time())
