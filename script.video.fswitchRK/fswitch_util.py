@@ -208,15 +208,12 @@ def getDisplayModeFileStatus():
         if os.access(modeFile, os.W_OK):
             fileStatus = 'OK: Frequency switching is supported'
         else:
-            if os.path.exists(os.path.join('/data/','data','eu.chainfire.supersu')):
+            try:
+                os.system('"chmod 777 '+modeFile+'"')
                 fileStatus = 'OK: Frequency switching is supported'
-            else:
-                try:
-                	os.system('"chmod 777 '+modeFile+'"')
-                	fileStatus = 'OK: Frequency switching is supported'
-                except:
-                	fileStatus = 'HDMI mode file is read only'
-                	pass
+            except:
+                fileStatus = 'HDMI mode file is read only'
+                pass
     else:
         fileStatus = 'HDMI mode file not found'
 
@@ -302,13 +299,10 @@ def setDisplayMode(newOutputMode):
                     try:
 						with open(modeFile, 'w') as modeFileHandle: modeFileHandle.write(newAmlogicMode)					
                     except:
-						try: os.system('"echo '+newAmlogicMode+' > '+modeFile+'"')
-						except:
-							try:
-								os.system('su -c "chmod 777 '+modeFile+'"')
-								os.system('su -c "echo '+newAmlogicMode+' > '+modeFile+'"')
-							except: pass
-							pass
+						try:
+							os.system('su -c "chmod 777 '+modeFile+'"')
+							os.system('su -c "echo '+newAmlogicMode+' > '+modeFile+'"')
+						except: pass
 
                     # save time display mode was changed
                     fsconfig.lastFreqChange = int(time.time())
