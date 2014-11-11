@@ -164,7 +164,7 @@ Special thanks to all who contributed to this plugin! Check the commit history a
   </extension>
 </addon>
 
-<addon id="script.video.fswitchRK" name="Frequency Switcher RK" version="1.3.4" provider-name="jk-nz/Mafarricos">
+<addon id="script.video.fswitchRK" name="Frequency Switcher RK" version="1.3.5" provider-name="Mafarricos/jk-nz">
   <requires>
     <import addon="xbmc.python" version="2.14.0"/>
 	<import addon="script.module.pyxbmct" version="1.1.2"/>
@@ -175,7 +175,7 @@ Special thanks to all who contributed to this plugin! Check the commit history a
   <extension point="xbmc.service" library="fswitch_service.py" start="startup"/>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">Frequency Switcher for Rockchip boxes</summary>
-    <description lang="en">[CR]Supports 1080p and 720p resolutions.[CR]CR]Please run Clean Up before you Uninstall or Disable.[CR][CR]Thanks jk-nz, MINIX-Ken, HardwareGuru, KenV99, Roman_V_M, takoi and Abbe</description>
+    <description lang="en">[CR]Only Works on rooted android.[CR][CR]Supports 1080p and 720p resolutions.[CR][CR]Please run Clean Up before you Uninstall or Disable.[CR][CR]Thanks jk-nz, MINIX-Ken, HardwareGuru, KenV99, Roman_V_M, takoi and Abbe</description>
     <disclaimer lang="en"></disclaimer>
     <language></language>
     <platform></platform>
