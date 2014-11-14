@@ -1,0 +1,518 @@
+[B]Version 1.4.0[/B]
+
+- Added Super Search function to search all sources across MashUp
+- Optimized MashUp for speed and performance on (slow/mobile) devices, even faster on fast systems
+- Improved the speed of collecting hosts (much faster)
+- Added Sidereel TV tracker
+- Improved search history
+- Made loading metas cancelable across MashUp
+- Removed Switch Up
+- Removed ads module and now MashUp is ad-free again
+- Made more sources downloadable, marked with [DC] tag in MashUp
+- Brought back the ability to mark items as XBMC favorites
+- Improved auto update, now works when mashup is started through XBMC favorites
+- Added changelog for auto updates, can be accessed in settings
+- Added VECTOR TH skin thanks T.Hyland
+- Beautified and improved speed of Rlsmix, MyVideoLinks and various other sources
+- Added personalized My Rlsmix list, can be enabled in (Log-ins) settings
+- Added quality selection to Rlsmix, can be adjusted in (Log-ins) settings
+- Added Imports Doctor to fixes in settings (fixes dependencies if broken)
+- Added Maintenance options to Fix-It section
+- Modified custom channels to allow sublinks
+- Added TV Guide Dixie
+- Added complete Noobroom
+- Added new source IceFilms
+- Added new source MBOX
+- Added new source SceneSource
+- Added new source Scenelog
+- Added new source Dl4free (real 1080p, RD Only)
+- Added new source FilesTube (real 1080p, RD Only)
+- Added new source Dramania
+- Added new source Mooviesmaniac International (UK)
+- Added SkyAccess to Live section
+- Added live NHL stream section (Gotham Only)
+- Replaced Cinvip with Peliculaspepito
+- Replaced Extramina with Watching Now
+- Added categories to International section 
+- Added french source dpstreaming
+- Added johnlocker source to documentary
+- Added sokrostreams and docementaire (french)
+- Added source aflam to arabic
+- Added Anime sources Animania & Animetoon
+- Added Arabic source 3arabtv
+- Added Russian source Mailru & Cinemaxx
+- Added File not found message in resolvers
+- Added a lot more resolvers to MashUp (less chance that links won't work)
+- Added progress dialog to Sceper and Series Gate when collecting host
+- Improved the way live streams are played
+- Improved error handling in resolvers
+- Fixed various script errors
+- Fixed play trailer command in context menus
+- Fixed pagination problems
+- Fixed WatchSeries
+- Fixed TVrelease
+- Fixed Golfchannel
+- Fixed ESPN
+- Fixed iLive
+- Fixed Billionuploads
+- Fixed HugeFiles
+- Fixed Lemuploads
+- Fixed various other bugs and sources
+
+[B]Version 1.3.9[/B]
+
+-Fixed download issue where video are 0 bytes
+-Removed BTV guide source
+-Added Developers Fund ad Service
+-Movie25 sections are now customizable on Homecscreen individually
+-Removed unused code and imports to improve speed
+-Fixed a glitch in VIPlaylist for tv meta
+-Added Progress Dialog for sceper and seriesgate
+-Added Movie25 to More tv & Movies section
+-Added 256 colors (8 bit) Artwork for PI & ATV(MashUp Settings)
+-Modified custom xml section to allow sublinks and better scraping
+-Hackermil and Fixit enabled on homescreen by default
+-Fixed VIPlaylist download issues
+-Added option to allow livestreams to be favorited for dixie tvguide
+-Removed Switchup
+
+[B]Version 1.3.8[/B]
+
+-Added Option to Customize home screen in addon settings
+-Added Auto update function that syncs with repo(coder kuba)
+-Improved MetaData function for both Movies & TV(coder kuba)
+-Improved start up speed by threading functions(coder kuba)
+-Improved noobroom sorting(coder kuba)
+-Added some noobroom credential check error handling
+-Added option to run last auto-update in settings(coder kuba)
+-Added option to hide Download instructions in settings
+-Fixed xbmc subtitles issue
+-Added Mashup settings to context menu
+-Added option to Disable Google Analytics in settings
+-Put GA into threads to speed up plugin(coder kuba)
+-Cleaned up some unnecessary code(coder kuba)
+-Added builtin resolvers (epicshare, lemuploads) from eldorado
+-Removed captcha check of billions resolver
+-Converted all movie&tv section to use resolver script (coder kuba)
+-Re-coded Disney JR for new website changes
+-Fixed oneclickwatch (coder kuba)
+-Fixed VeedHD resolver (coder JasonPc)
+-iLive Token added(coder the-one)
+-Fixed rlsmix for new site
+-Improved meta refresh for movies(coder kuba)
+-Added Universal Favorites(coder the-one)
+-Fixed Homescreen and video addons view glitch
+-Added grouped favorites for Universal favorites(coder kuba)
+-Changed how the user get module import errors(more descriptive)
+-Fixed Movie25 regex and code due to site domain change
+-Fixed Livestation
+-Improved VIPlaylist metadata display and error handling(coder kuba)
+-Added buitlin mightyupload resolver
+-Changed to MyNewVideoLinks view by pages for speed(coder kuba)
+-Moved MyNewVideoLinks HD Host links on top followed by SD(coder kuba)
+-Fixed Movie1k regex.
+-Fixed Vice and Discovery sections
+-Changed and re-coded the whole custom xml section
+-Split Metadata on/off option in settings to TV & Movies
+-Fixed iWatchOnline latest tv section(coder kuba)
+-Added missing arabic streams channels
+-Added HacekrMil Vip++ section
+-Fixed iLive Again
+-Added addon settings on home screen
+-Added resolver, metahandler & universal settings within addon settings(coder kuba)
+-Added VIPlaylisters content to section thru out mashup
+-Fixed Castalba regex
+-Improved MashUp settings(coder kuba)
+-Added batch retrieve for websites to improve speed (coder kuba)
+-Github lists get cached to improve speed(coder kuba)
+-Added Emergency fix for launch errors in settings
+-Split builtin plugins to anime and more tv & movies
+-Added search function in movie25 context menu
+-Changed Support to MASHUPXBMC.COM 
+-Changed a few home screen icons
+-Added more live sections to sports section
+
+[B]Version 1.3.7[/B]
+
+-Reduced memory footprint, speeds page navigation(coder JasonPc) 
+-Fixed jDownloader for all sections.
+-Added Download option for VIPlaylist.
+-Added Sort by name,date,rate,genre..etc for Movies ONLY.
+-Added code to handle errors better
+-Added code to inform user if they are missing a module(coder JasonPc).
+-Added SwithUp feature (backup for movie25).
+-Added Option to add custom XML files with livestreams.
+-Added a fixit section for fixing broken sections in MashUp.
+-Added autoupdate to fix important sections in MashUp.
+-Added TvRelease under Builtin Plugins(coder JasonPc, artwork Jokester).
+-Added TubePlus under Builtin Plugins(coder JasonPc, artwork Jokester).
+-Added K1m05 onDemand for ppv media.
+-Added shortcut to sports streams in Sports section.
+-Added ability to post multi links for VIPlaylist.
+-Fixed SeriesGate.
+-Fixed Movie1k.
+-Moved all MashUp artwork online to minimize plugin size.
+-Added builtin billionsupload, 180upload, veehd and vidto resolvers.
+-Added Download section to access Downloaded Content via MashUp.
+-Added TNPB 3D shortcut to 3D section.
+-Added login prompt for Noobroom.
+-Changed Movie25 DVD to HD releases.
+-Rewrote some code to improve MashUp
+
+[B]Version 1.3.6[/B]
+
+-v1.3.5 bug fixes
+
+[B]Version 1.3.5[/B]
+
+-Added MetaData on all Movies and Episodes.
+-Added HackerMil ans Max Power under VIPlaylist.
+-Added Rino indo/pak streams under Live.
+-Added Watchseries, BTV guide and Seriesgate latest aired to TV Latest.
+-Added Refresh MetaData option.
+-Added Option to Mark movies and episodes as watched.
+-Added the-ones Playbackengine.
+-Movies/Episodes get automatically marked as watched after watching content.
+-Fixed Arabic streams(includes all MBC channels now).
+-Added Tv episodes Fav's to All Fav's.
+-Modified Trailers feature for movies(JasonPC).
+-Fixed Trailer play crashing ATV's.
+-Fixed Doc heaven.
+-Fixed LiveStation News.
+-Fixed Discovery channel causing hangups.
+-Fixed BTV guide script error.
+-Modified Live streams code.
+-Fixed Sominalfilms.
+-Fixed Disney Jr full episodes.
+
+[B]Version 1.3.4[/B]
+
+-Added 125 arabic streams.
+-Removed random streams under live
+-Added Live tv and UKtv for live section.
+-Categorized Crusader arabic streams
+-Changed notifer and live stream xml url's.
+-Added shortcut in contextmenu for history and fav's.
+-Disabled sominal tv until website reconstruction is complete
+-Minor fixes and improvements 
+-Made minor change in iLive code
+-Fixed Global BC script error.
+
+[B]Version 1.3.3[/B]
+
+-Added Download Function to iWatchonline.
+-Added Mashup How to Videos.
+-Added Watch History.(thanks the-one & Mediapi)
+-Added Playback Resume.
+-Added a Section for All FAV's
+-Added The Golf Channel Sports.
+-Added Anime Freak tv to Plugin section.
+-Added Documentary Wire
+-Added a 2nd 3D source(MkvMovies).
+-Changed xcTechs bollywood playlist.
+-iLive section now plays Premium Channels.(thanks k1m05)
+-Fixed Global BC.
+-Fixed Cinevip.
+-Fixed Oneclickwatch.
+-Cleaned up and improved code hella alot.
+-Fixed & improved SominalTv plugin
+-Improved crusaders arabic stream code.
+-Top Documentary can now play youtube playlist.
+-Removed Etowns source.
+-Fixed Movie25 search and year issue.
+-Improved Movie25 pagintion code.
+
+
+[B]Version 1.3.2[/B]
+
+-Added Download Function to Newmyvideolinks(3D/HD/TV), Rlsmx, Starplay, OneclickMoviez & Watchseries.it.
+-Added Workout section under Sports.
+-Added Quick page navigation for movie25
+-Added views/votes/rating info for movie25
+-Added xcTechs bollywood playlist.
+-Live Youtube streams now playable.
+-Fixed Btv guide plugin.
+-Fixed Seriesgate plugin.
+-Fixed iwatchonline regex.
+-Fixed Extramina regex.
+-Added Pencurimovie HD Source(MediaPi)
+-Added SominalTv plugin
+-Fixed dubzonline plugin
+-Fixed iLive Streams.
+-Fixed Cinevip in international.
+-Fixed Documantary log and heaven.
+-Added more 5 pages to rlsmx.
+-Added function for Changelog to open in 1st run of each version.
+
+[B]Version 1.3.1[/B]
+
+-Added crus & Slr arabic streams
+-Fixed bug where it forces video addons view to thumbnail.
+-Fixed dubzonline.
+
+
+[B]Version 1.3.0[/B]
+
+-Added Direct Download and Jdownloader Functions
+(thanks eldorado, mikey1234 and spoyser)
+-Fixed Btv guide empty list.
+-Fixed Seriesgate empty list.
+-Fixed iwatchonline empty list.
+-Added Arabic streams
+-Added iWatchonline plugin
+-Added dubzonline plugin
+-Fixed Watchseries first episode error.
+-Fixed oneclickwatch.
+-Changed icons to point out movie25 content.
+-Added TubTub to live section
+-Fixed Movie1k.
+-Added DVD releases for movie25
+-Fixed Movie1k.
+-Added 181fm radio streams
+-Fixed vice, sceper and livestation.
+-Added announcement notifier thru xml file.
+
+
+[B]Version 1.2.9[/B]
+
+-Fixed iLive script error.
+-Fixed Movie25 Trailers.
+-Fixed Dailyfix listing.
+-Fixed Cinevip.
+-Fixed 3D script error.
+-Fixed Movie25 enter year function.
+
+[B]Version 1.2.8[/B]
+
+-Changed Mash2k3 info to a icon with twitter info.
+-Fixed disney jr video loop.
+-Changed keyboard to numeric pad for enter year.
+-Added arabic live channels to random streams
+-Fixed Extramina genre listings
+-Added SkySports.com to sports section
+-Added Global BC to Plugin section
+-Made Changes to Musicstream section
+-Added Euronews english to livestation
+-Changed minor things in desi streams.
+-Made Hub Maintenance a Choice to Install.
+-Added Watch Documentary to documentary section.
+
+[B]Version 1.2.7[/B]
+
+-Fixed watchseries search
+-Fixed pagination movie25
+
+[B]Version 1.2.6[/B]
+
+-Re-Structured code more organized.
+-Added 10 more hosts to Movie25 content
+-Added More live streams to Misc Music
+-Added Random streams to Live section
+-Added Added streams from different countries to Live section(thanks Kjartansson)
+-Added Watchseries.it to built in plugin section
+-Added Babytv to youtube kids
+-Fixed Extramina
+-Fixed Vibe
+-Added CNN and euronews to Livestation
+-Added Free Movies Addict to built in plugin section
+-Fixed Empty directory showing after movie finishes.
+-Added Movie year to Starplay content.
+-Added search function for Rlmix
+
+
+[B]Version 1.2.5[/B]
+
+-Changed Icon to png was not showing up as jpg
+
+[B]Version 1.2.4[/B]
+
+-Changed Name to Mash Up
+-Added Live section
+-Added iLive, Livestation, Desistreams to Live section
+-Added Music streams to Live section
+-Added Btv Guide to built in plugin section
+-Added Fox soccer to sports section
+-Fixed Extramina recent directory
+-Fixed Etowns search and scraping
+-Added Clear search history
+-Added Castalba streams to Live section
+-Fixed movie25 section not showing video links.
+-Added Nowvideo and Sockshare hosts to movie25 section.
+-Added search function for Movie1k
+
+[B]Version 1.2.3[/B]
+
+-Added TSN to sports
+-Added WildTV to sports(woodypecker)
+-Added Strikeforce, MMA Fighting, and Bellator to MMA section in sports
+-Added Disney Jr. to kidszone
+-Added Indian and Indian dubbed movies to internatinal(Movie1k)
+-Added Sceper to built-in plugins
+-Added Extramina to built-in plugins(Voinage)
+-Added a clone backup of newmyvideolinks
+-Added channelcut and tv4stream as backup tv sources
+-Added updated GA
+-Added bitrate controls to addon settings
+
+[B]Version 1.2.2[/B]
+
+-Added military channel (woodypecker)
+-Added youtube channnels(kid shows)
+-Added animal planet
+-Added velocity
+-Added science discovery
+-Added a documentary section
+-Added Doc heaven, Doc log and Top Doc Films in documentary section
+-Added more pages to newmyvideolinks
+-Added function to ask user desired year in movie25 section
+-Added search history for Movie and TV sections
+-Added vice in documentary section (woodypecker)
+-Added Built in plugin section
+-Added Series gate to Built in plugin section (poegloom)
+-Added Watch-FreeSeries to Built in plugin section (duquesa)
+-Integrated dependencies to plugin
+-Added XBMCHUB popup
+-Added force play code to discovery section(voinage,spoyser)
+-Fixed Favorites to save to userdata folder. 
+
+[B]Version 1.2.1[/B]
+
+-Quick fix, National geo anil and kids not showing all video
+
+[B]Version 1.2.0[/B]
+
+-Cleaned up discovery listitems for player
+-Changed device selection to bitrate selction for discovery
+-Added Spanish dubbed & subbed movie source (duquesa)
+-Added Russian dubbed movie source (Saab7778)
+-Added Kids section
+-Added National geograghic animal for adventure section.
+-Added National geograghic kids for kidss section.
+-Added WB kids for kidss section.
+-Updated GA
+-Fixed Videodorm icon for xbmcbuntu
+-Added fanart by (bobpeace)
+
+[B]Version 1.1.9[/B]
+
+-Fixed script error at start
+
+[B]Version 1.1.8[/B]
+
+-Fixed A-Z script error
+-Added additional HD movies source (Oneclickmovies)
+-Added additional HD tv source (Rlsmix) duquesa 
+-Added additional HD movies source (Starplay) tajade
+-Fixed "non link" links showing up when real debrid is enabled 
+-Added search function for (http://newmyvideolinks.com/)
+-Added content for UFC section from movie25
+-Added content for UFC section from (http://newmyvideolinks.com/)
+-Added Adventure section
+-Added Discovery channel for adventure section.
+-Updated GA
+-Added a thank you page 
+
+[B]Version 1.1.7[/B]
+
+-Modified 3D HD TVHD section to work in different platforms(wasn't working on xbmcbuntu)
+-Added additional HD movies source (dailyfix)
+-Added Sports section
+-For now ESPN, UFC, and Outdoor Channnel
+-Added resolver settings
+-Added a Message for the Users
+
+
+[B]Version 1.1.6[/B]
+
+-Fixed 3D HD HDTV section (http://newmyvideolinks.com/) changed pattern
+-Fixed movie25 where it errored on movies with no year on its title
+
+[B]Version 1.1.5[/B]
+
+-Fixed movie1k in tv section was not showing video links
+-update GA
+
+[B]Version 1.1.4[/B]
+
+-Added Tv(True HD) source (http://newmyvideolinks.com/) under tv section
+-Hopefully fixed script error accessing movies from http://newmyvideolinks.com/ only on xbmcbuntu
+
+[B]Version 1.1.3[/B]
+
+-Fixed problem with Google Analytics
+
+[B]Version 1.1.2[/B]
+
+-Added Google Analytics code for tracking usage(Mikey1234)
+
+[B]Version 1.1.1[/B]
+
+-Added International Movie section: source Dramacrazy and Einthusan
+	-Contains subtitled Indian, Japenese, Chinese and Korean movies
+	-(Used AJ's Dramacrazy code to resolve dramacrazy video)
+-Cleaned up some code
+-Changed some notifications
+
+[B]Version 1.1.0[/B]
+
+-Fixed script error due to http://newmyvideolinks.com/ in 3D section
+
+[B]Version 1.0.9[/B]
+
+-Fixed script error due to non-ASCII characters embedded in movie titles
+
+[B]Version 1.0.8[/B]
+
+-Added 3D Movie section source http://newmyvideolinks.com/ (thanks to tcz009)
+-Added additional HD source(True HD) http://newmyvideolinks.com/ 
+-Cleaned up some code
+-Added more notifications
+-Fixed error where movie replays after pressing stop
+
+[B]Version 1.0.7[/B]
+
+-Fixed Script error when metadata is disabled.
+
+[B]Version 1.0.6[/B]
+
+-Added TV section from sources iwatchonline, oneclickwatch and movie1k
+-Added HD latest movie section from source oneclickwatch
+
+[B]Version 1.0.5[/B]
+
+-Changed metadata code to metahandler(quicker)
+-Metadata is now stored in cache(pages open instantly)
+-Added Trailers for movies in context menu
+-Fixed script error in search and year directory
+-Added auto view for main menu in settings.xml
+
+[B]Version 1.0.4[/B]
+
+-Removed extranous code
+-Passed movie info to player
+-Added favorites directory (code from voinage)
+-Added artwork 
+-Added detailed notifications
+
+[B]Version 1.0.3[/B]
+
+-Added movie quality 
+-Added A-Z and year directory
+-Added 6 more hosts
+
+[B]Version 1.0.2[/B]
+
+-Fixed metadata error
+-Added poster grabber on/off in setting.xml
+
+[B]Version 1.0.1[/B]
+
+-Added metadata, despcription, mpaa, genre and year for movies.
+-Added autoview for Confluence and Xperience 1080 skins
+-Added settings.xml file to control metadata and autoview
+-Added flashx host
+
+[B]Version 1.0.0[/B]
+
+-Intial release
+-Working hosts (putlocker,180upload,filenuke,vidbux)

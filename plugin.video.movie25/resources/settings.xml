@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+
+   <category label="General">
+		<setting id="meta-view" type="bool" label="[B]Metadata (Movies)[/B]" default="true"/>
+		<setting id="meta-view-tv" type="bool" label="[B]Metadata (TV Shows)[/B]" default="false"/>
+		<setting id="whistory" type="bool" label="[B]Watch History[/B]" default="true"/>
+		<setting id="gastatus" type="bool" label="[B]Google Analytics[/B]" default="true"/>
+		<setting id="skin" type="enum" label="[B]Skin[/B]" values="VECTOR TH|GREEN MONSTER" default="0"/>
+		<setting id="stracker" type="enum" label="[B]Choose Show Tracker Source[/B]" values="Sidereel|Trakt.tv|All" default="0"/>
+		<setting id="groupfavs" type="bool" label="[B]Group Favorites[/B]" default="false"/>
+		<setting label="[B]Re-install last auto update[/B]" type="action" action="RunPlugin(plugin://plugin.video.movie25/?mode=1998&url=0)"/>
+		<setting label="External Settings" type="lsep" />
+		<setting label="Resolver Settings" type="action" action="Addon.OpenSettings(script.module.urlresolver)" enable="System.HasAddon(script.module.urlresolver)"/>
+		<setting label="MetaHandler Settings" type="action" action="Addon.OpenSettings(script.module.metahandler)" enable ="eq(-9,true) || eq(-8,true)" />
+		<setting label="Changelogs" type="lsep" />
+		<setting id="autochan" type="bool" label="Auto Update Changelog Pop Up" default="true"/>
+		<setting id="autosource" type="bool" label="Change Auto Update Source" default="false"/>
+		<setting label="Auto update changelog" type="action" action="XBMC.RunScript(special://home/addons/plugin.video.movie25/resources/libs/changelog.py,Dev)"/>
+   </category>
+   
+   <category label="Auto View">
+		<setting id="auto-view" type="bool" label="[B]Auto View[/B]" default="true"/>
+		<setting id="home-view"	type="enum" label="Main Menu View" values="List|Thumbnail" default="1" enable="!eq(-1,false)"/>
+		<setting id="sub-view"	type="enum" label="Sub Menu View" values="List|Thumbnail" default="0" enable="!eq(-1,false)"/>
+		<setting id="seasons-view" type="number" label="Season View" default="504" enable="!eq(-2,false)"/>	
+		<setting id="episodes-view" type="number" label="Episode View" default="504" enable="!eq(-3,false)"/>
+		<setting id="choose-skin" type="bool"  label="[B]Xperience 1080 OFF  | Confluence ON[/B]" default="true"enable="!eq(-4,false)"/>
+      	<setting id="con-view"	type="enum" label="Confluence View" values="List|Big List|Thumbnail|Posters Wrap|Fanart|Media Info 1|Media Info 2|Media Info 3" default="3" enable="!eq(-1,false)+!eq(-5,false)"/>
+		<setting id="xpr-view"	type="enum" label="Xperience 1080 View" values="List|Info List|Thumbnail|Posters|Landscape|Banner|Panel" default="3" enable="!eq(-2,true)+!eq(-6,false)"/>
+		<setting id="ga_time" type="text" label="GA Called" default="2000-01-01 00:00:00" visible="false"/>
+		<setting id="visitor_ga" type="text" label="GA visitor" default="" visible="false"/>
+		<setting id="tube-proxy" type="bool" label="[B]proxy[/B]" default="false" visible="false"/>
+		<setting id="mindexer" type="text" label="[B]index[/B]" default="Movie25" visible="false"/>
+		<setting id="tindexer" type="text" label="[B]index[/B]" default="WatchSeries" visible="false"/>
+		<setting id="tzname" type="text" label="[B]TimeZone[/B]" default="(GMT) Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London" visible="false"/>
+		<setting id="tztime" type="text" label="[B]TimeZone(gmt)[/B]" default="0" visible="false"/>	
+   </category>
+   
+   <category label="Home Layout">
+		<setting label="Customize your Home screen" type="lsep" />
+		<setting id="homeitems_36_enabled" type="bool" label="[B]Super Search[/B]" default="true"/>
+			<setting id="homeitems_36" type="number" label="     Order" default="5" visible="!eq(-1,false)"/>	
+		<setting id="homeitems_1_enabled" type="bool" label="[B]Search (Movie25)[/B]" default="false"/>
+			<setting id="homeitems_1" type="number" label="     Order" default="10" visible="!eq(-1,false)"/>
+		<setting id="homeitems_2_enabled" type="bool" label="[B]Favorites[/B]" default="true"/>
+			<setting id="homeitems_2" type="number" label="     Order" default="20" visible="!eq(-1,false)"/>
+		<setting id="homeitems_39_enabled" type="bool" label="[B]Super Movies[/B]" default="true"/>
+			<setting id="homeitems_39" type="number" label="     Order" default="25" visible="!eq(-1,false)"/>
+		<setting id="homeitems_40_enabled" type="bool" label="[B]Super TV Shows[/B]" default="true"/>
+			<setting id="homeitems_40" type="number" label="     Order" default="26" visible="!eq(-1,false)"/>
+		<setting id="homeitems_3_enabled" type="bool" label="[B]A-Z (Movie25)[/B]" default="false"/>
+			<setting id="homeitems_3" type="number" label="     Order" default="30" visible="!eq(-1,false)"/>
+		<setting id="homeitems_4_enabled" type="bool" label="[B]New Releases (Movie25)[/B]" default="false"/>
+			<setting id="homeitems_4" type="number" label="     Order" default="40" visible="!eq(-1,false)"/>
+		<setting id="homeitems_5_enabled" type="bool" label="[B]Lastest Added (Movie25)[/B]" default="false"/>
+			<setting id="homeitems_5" type="number" label="     Order" default="50" visible="!eq(-1,false)"/>
+		<setting id="homeitems_6_enabled" type="bool" label="[B]Featured Movies (Movie25)[/B]" default="false"/>
+			<setting id="homeitems_6" type="number" label="     Order" default="60" visible="!eq(-1,false)"/>
+		<setting id="homeitems_7_enabled" type="bool" label="[B]Most Viewed (Movie25)[/B]" default="false"/>
+			<setting id="homeitems_7" type="number" label="     Order" default="70" visible="!eq(-1,false)"/>
+		<setting id="homeitems_8_enabled" type="bool" label="[B]Most Voted (Movie25)[/B]" default="false"/>
+			<setting id="homeitems_8" type="number" label="     Order" default="80" visible="!eq(-1,false)"/>
+		<setting id="homeitems_9_enabled" type="bool" label="[B]HD Releases (Movie25)[/B]" default="false"/>
+			<setting id="homeitems_9" type="number" label="     Order" default="90" visible="!eq(-1,false)"/>
+		<setting id="homeitems_10_enabled" type="bool" label="[B]Genre (Movie25)[/B]" default="false"/>
+			<setting id="homeitems_10" type="number" label="     Order" default="100" visible="!eq(-1,false)"/>
+		<setting id="homeitems_11_enabled" type="bool" label="[B]By Year (Movie25)[/B]" default="false"/>
+			<setting id="homeitems_11" type="number" label="     Order" default="110" visible="!eq(-1,false)"/>
+		<setting id="homeitems_12_enabled" type="bool" label="[B]Watch History[/B]" default="true"/>
+			<setting id="homeitems_12" type="number" label="     Order" default="120" visible="!eq(-1,false)"/>
+		<setting id="homeitems_13_enabled" type="bool" label="[B]HD Movies[/B]" default="true"/>
+			<setting id="homeitems_13" type="number" label="     Order" default="130" visible="!eq(-1,false)"/>
+		<setting id="homeitems_14_enabled" type="bool" label="[B]3D Movies[/B]" default="true"/>
+			<setting id="homeitems_14" type="number" label="     Order" default="140" visible="!eq(-1,false)"/>
+		<setting id="homeitems_15_enabled" type="bool" label="[B]International[/B]" default="true"/>
+			<setting id="homeitems_15" type="number" label="     Order" default="150" visible="!eq(-1,false)"/>
+		<setting id="homeitems_16_enabled" type="bool" label="[B]TV Latest[/B]" default="true"/>
+			<setting id="homeitems_16" type="number" label="     Order" default="160" visible="!eq(-1,false)"/>
+		<setting id="homeitems_37_enabled" type="bool" label="[B]Show Tracker Source[/B]" default="true"/>
+			<setting id="homeitems_37" type="number" label="     Order" default="165" visible="!eq(-1,false)"/>
+		<setting id="homeitems_17_enabled" type="bool" label="[B]Live Section[/B]" default="true"/>
+			<setting id="homeitems_17" type="number" label="     Order" default="170" visible="!eq(-1,false)"/>
+		<setting id="homeitems_18_enabled" type="bool" label="[B]More Tv Shows & Movies[/B]" default="true"/>
+			<setting id="homeitems_18" type="number" label="     Order" default="180" visible="!eq(-1,false)"/>
+		<setting id="homeitems_19_enabled" type="bool" label="[B]Anime[/B]" default="true"/>
+			<setting id="homeitems_19" type="number" label="     Order" default="190" visible="!eq(-1,false)"/>	
+		<setting id="homeitems_20_enabled" type="bool" label="[B]VIPlaylist[/B]" default="true"/>
+			<setting id="homeitems_20" type="number" label="     Order" default="200" visible="!eq(-1,false)"/>
+		<setting id="homeitems_21_enabled" type="bool" label="[B]Sports Section[/B]" default="true"/>
+			<setting id="homeitems_21" type="number" label="     Order" default="210" visible="!eq(-1,false)"/>
+		<setting id="homeitems_22_enabled" type="bool" label="[B]Adventure[/B]" default="true"/>
+			<setting id="homeitems_22" type="number" label="     Order" default="220" visible="!eq(-1,false)"/>
+		<setting id="homeitems_23_enabled" type="bool" label="[B]Kids Zone[/B]" default="true"/>
+			<setting id="homeitems_23" type="number" label="     Order" default="230" visible="!eq(-1,false)"/>
+		<setting id="homeitems_24_enabled" type="bool" label="[B]Documentaries[/B]" default="true"/>
+			<setting id="homeitems_24" type="number" label="     Order" default="240" visible="!eq(-1,false)"/>
+		<setting id="homeitems_25_enabled" type="bool" label="[B]How to Videos[/B]" default="true"/>
+			<setting id="homeitems_25" type="number" label="     Order" default="250" visible="!eq(-1,false)"/>
+		<setting id="homeitems_26_enabled" type="bool" label="[B]FixIt Section[/B]" default="true"/>
+			<setting id="homeitems_26" type="number" label="     Order" default="260" visible="!eq(-1,false)"/>
+		<setting id="homeitems_27_enabled" type="bool" label="[B]HackerMils Stash[/B]" default="true"/>
+			<setting id="homeitems_27" type="number" label="     Order" default="270" visible="!eq(-1,false)"/>
+		<setting id="homeitems_28_enabled" type="bool" label="[B]The New Pirate Bay[/B]" default="false"/>
+			<setting id="homeitems_28" type="number" label="     Order" default="280" visible="!eq(-1,false)"/>
+		<setting id="homeitems_29_enabled" type="bool" label="[B]More Power[/B]" default="false"/>
+			<setting id="homeitems_29" type="number" label="     Order" default="290" visible="!eq(-1,false)"/>
+		<setting id="homeitems_30_enabled" type="bool" label="[B]Staael 1982[/B]" default="false"/>
+			<setting id="homeitems_30" type="number" label="     Order" default="300" visible="!eq(-1,false)"/>
+		<setting id="homeitems_35_enabled" type="bool" label="[B]Demon88 Movies[/B]" default="false"/>
+			<setting id="homeitems_35" type="number" label="     Order" default="301" visible="!eq(-1,false)"/>
+		<setting id="homeitems_38_enabled" type="bool" label="[B]ONE242415[/B]" default="false"/>
+			<setting id="homeitems_38" type="number" label="     Order" default="302" visible="!eq(-1,false)"/>
+		<setting id="homeitems_31_enabled" type="bool" label="[B]Custom XML Channels[/B]" default="false"/>
+			<setting id="homeitems_31" type="number" label="     Order" default="310" visible="!eq(-1,false)"/>
+		<setting id="homeitems_32_enabled" type="bool" label="[B]K1M05[/B]" default="false"/>
+			<setting id="homeitems_32" type="number" label="     Order" default="320" visible="!eq(-1,false)"/>
+		<setting id="homeitems_33_enabled" type="bool" label="[B]Mash Sports[/B]" default="false"/>
+			<setting id="homeitems_33" type="number" label="     Order" default="330" visible="!eq(-1,false)"/>
+		<setting id="homeitems_34_enabled" type="bool" label="[B]iLive[/B]" default="false"/>
+			<setting id="homeitems_34" type="number" label="     Order" default="340" visible="!eq(-1,false)"/>
+   </category>
+   <category label="Super Search">
+		<setting label="Customize what sources to use in Super Search" type="lsep" />
+		<setting id="ss-sel"	type="select" label="[B][COLOR orange]Click Here to Select Type[/COLOR][/B]" values="Movies|TV" default="Movies"/>
+		<setting id="ssm_iwatch" type="bool" label="iWatchOnline" default="true" visible="!eq(-1,TV)"/>
+		<setting id="ssm_movie25" type="bool" label="Movie25" default="true" visible="!eq(-2,TV)"/>
+		<setting id="ssm_icefilms" type="bool" label="IceFilms" default="true" visible="!eq(-3,TV)"/>
+		<setting id="ssm_watchingnow" type="bool" label="Watching Now" default="true" visible="!eq(-4,TV)"/>
+		<setting id="ssm_mbox" type="bool" label="MBox" default="true" visible="!eq(-5,TV)"/>
+		<setting id="ssm_noobroom" type="bool" label="NoobRoom" default="true" visible="!eq(-6,TV)"/>
+		<setting id="ssm_tubeplus" type="bool" label="TubePlus" default="true" visible="!eq(-7,TV)"/>
+		<setting id="ssm_tvrelease" type="bool" label="TVRelease" default="true" visible="!eq(-8,TV)"/>
+		<setting id="ssm_mynewvideolinks" type="bool" label="MyNewVideoLinks" default="true" visible="!eq(-9,TV)"/>
+		<setting id="ssm_sceper" type="bool" label="Sceper" default="true" visible="!eq(-10,TV)"/>
+		<setting id="ssm_fma" type="bool" label="FMA" default="true" visible="!eq(-11,TV)"/>
+		<setting id="ssm_scenesource" type="bool" label="SceneSource" default="true" visible="!eq(-12,TV)"/>
+		<setting id="ssm_yify" type="bool" label="Yify" default="true" visible="!eq(-13,TV)"/>
+		<setting id="ssm_filestube" type="bool" label="FilesTube" default="true" visible="!eq(-14,TV)"/>
+		<setting id="ssm_vip" type="bool" label="VIP" default="true" visible="!eq(-15,TV)"/>
+
+		<setting id="sstv_mbox" type="bool" label="MBox" default="true" visible="!eq(-15,Movies)"/>
+		<setting id="sstv_watchseries" type="bool" label="WatchSeries" default="true" visible="!eq(-16,Movies)"/>
+		<setting id="sstv_iwatch" type="bool" label="iWatchOnline" default="true" visible="!eq(-17,Movies)"/>
+		<setting id="sstv_pftv" type="bool" label="PFTV" default="true" visible="!eq(-18,Movies)"/>
+		<setting id="sstv_icefilms" type="bool" label="IceFilms" default="true" visible="!eq(-19,Movies)"/>
+		<setting id="sstv_tubeplus" type="bool" label="TubePlus" default="true" visible="!eq(-20,Movies)"/>
+		<setting id="sstv_tvrelease" type="bool" label="TVRelease" default="true" visible="!eq(-21,Movies)"/>
+		<setting id="sstv_mynewvideolinks" type="bool" label="MyNewVideoLinks" default="true" visible="!eq(-22,Movies)"/>
+		<setting id="sstv_rlsmix" type="bool" label="RlsMix" default="true" visible="!eq(-23,Movies)"/>
+		<setting id="sstv_scenelog" type="bool" label="SceneLog" default="true" visible="!eq(-24,Movies)"/>
+		<setting id="sstv_sceper" type="bool" label="Sceper" default="true" visible="!eq(-25,Movies)"/>
+		<setting id="sstv_scenesource" type="bool" label="SceneSource" default="true" visible="!eq(-26,Movies)"/>
+   </category>
+   
+   <category label="Log-ins">
+		<setting label="Noobroom Account" type="lsep" />
+		<setting id="username" type="text" label="Noobroom Email" default="" visible="true"/>
+		<setting id="password" type="text"label="Noobroom Password" default="" visible="true" option="hidden" />
+		<setting label="SideReel Account" type="lsep" />
+		<setting id="srusername" type="text" label="SideReel Username" default="" visible="true"/>
+		<setting id="srpassword" type="text"label="SideReel Password" default="" visible="true" option="hidden" />
+		<setting label="Trakt.tv Account" type="lsep" />
+		<setting id="trusername" type="text" label="Trakt Username" default="" visible="true"/>
+		<setting id="trpassword" type="text"label="Trakt Password" default="" visible="true" option="hidden" />
+		<setting label="SportsAccess Account" type="lsep" />
+		<setting id="skyusername" type="text" label="SportsAccess Username" default="" visible="true"/>
+		<setting id="skypassword" type="text"label="SportsAccess Password" default="" visible="true" option="hidden" />
+		<setting label="HQZone Account" type="lsep" />
+		<setting id="hqusername" type="text" label="HQZone Username" default="" visible="true"/>
+		<setting id="hqpassword" type="text"label="HQZone Password" default="" visible="true" option="hidden" />
+		<setting label="RLSMIX Account" type="lsep" />
+		<setting id="rlsusername" type="text" label="RlsMix Username" default="" visible="true"/>
+		<setting id="rlspassword" type="text"label="RlsMix Password" default="" visible="true" option="hidden" />
+		<setting id="ddtv_my" type="bool" label="Show My Shows in TV Latest" default="false" visible="!eq(-1,) + !eq(-2,)"/>
+		<setting id="ddtv_hdtv720p" type="bool" label="HDTV 720p" default="true" visible="!eq(-2,) + !eq(-3,)"/>
+		<setting id="ddtv_webdl720p" type="bool" label="Web-DL 720p" default="true" visible="!eq(-3,) + !eq(-4,)"/>
+		<setting id="ddtv_webdl1080p" type="bool" label="Web-DL 1080p" default="true" visible="!eq(-4,) + !eq(-5,)"/>
+		<setting id="ddtv_hdtv480p" type="bool" label="HDTV 480p" default="true" visible="!eq(-5,) + !eq(-6,)"/>
+		<setting id="ddtv_pdtv" type="bool" label="PDTV" default="false" visible="!eq(-6,) + !eq(-7,)"/>
+		<setting id="ddtv_dsr" type="bool" label="DSR" default="false" visible="!eq(-7,) + !eq(-8,)"/>
+		<setting id="ddtv_dvdrip" type="bool" label="DVDRip" default="false" visible="!eq(-8,) + !eq(-9,)"/>
+		<setting label="GitHub Account" type="lsep" />
+		<setting id="ghusername" type="text" label="GitHub Username" default="" visible="true"/>
+		<setting id="ghpassword" type="text"label="GitHub Password" default="" visible="true" option="hidden" />
+   </category>
+   <category label="Custom Channels">
+		<setting id="customchannel" type="bool" label="Custom Channels" default="true"/>
+		<setting id="hideinstruction" type="bool" label="Hide Instructions" default="false"/>
+		<setting id="addmethod" type="bool" label="Move Add Playlist & Add Folder to Context Menu" default="false"/>
+		<setting id="artbrowser"	type="enum" label="Artwork Browsing Type" values="Set Source|File Manager" default="0"/>
+		<setting id="playlistthumb" type="bool" label="Playlist Thumbnail" default="true"/>
+		<setting id="playlistfanart" type="bool" label="Playlist Fanart" default="true"/>
+		<setting id="folderthumb" type="bool" label="Folder Thumbnail" default="true"/>
+		<setting id="folderfanart" type="bool" label="Folder Fanart" default="true"/>
+   </category>
+   <category label="Video Quality">
+		<setting id="bit-disc"	type="enum" label="[B]Discovery Bitrate[/B]" values="3500k|1500k|600k" default="0"/>
+		<setting id="vice-qua"	type="enum" label="[B]Vice & MMA-F Bitrate[/B]" values="High|Medium|Low" default="0"/>
+		<setting id="tsn-qua"	type="enum" label="[B]TSN & FOX Bitrate[/B]" values="High|Medium|Low" default="0"/>
+		<setting id="wild-qua"	type="enum" label="[B]Wild Tv Bitrate[/B]" values="High|Low" default="0"/>
+		<setting id="disj-qua"	type="enum" label="[B]DisneyJr. & MLB Bitrate[/B]" values="High|Medium|Low" default="0"/>
+		<setting id="espn-qua" type="select" label="[B]ESPN Bitrate[/B]" values="272p30_448k|324p30_948k|360p30_1464k|432p30_2096k|720p30_2896k" default="720p30_2896k"/>
+		<setting id="ss-qua" type="select" label="[B]Sky Sports Bitrate[/B]" values="608000|800000|1183840|1783840|1943000" default="1943000"/>
+   </category>
+   
+   <category label="Downloads">
+		<setting id="download-folder" type="folder" label="[B]Download Folder[/B]" default=""/>
+		<setting id="delete-incomplete-downloads" type="bool" label="[B]Delete Incomplete Downloads[/B]" default="true"/>
+		<setting id="download-in-background" type="bool" label="[B]Download in Background[/B]" default="true" />
+		<setting id="notify-percent" enable="eq(-1,true)" label="[B]Notify Per[/B]" type="enum" values="2[B] %[/B]|5[B] %[/B]|10[B] %[/B]|20[B] %[/B]|25[B] %[/B]|50[B] %[/B]|100[B] %[/B]" default="2" />
+		<setting id="hide-download-instructions" type="bool" label="[B]Hide Download Instructions[/B]" default="false"/>
+		<setting id="jdcb" type="bool" label="[B]Jdownloader ON/Copy2Clipboard OFF[/B]" default="false"/>		
+   </category>
+   
+   <category label="Maintenance">
+		<setting label="Fix Database Malformed Error" type="action" action="XBMC.RunScript(special://home/addons/plugin.video.movie25/resources/fixes/malformedFix.py)"/>
+		<setting label="Imports Doctor" type="action" action="XBMC.RunScript(special://home/addons/plugin.video.movie25/resources/fixes/importsDoctor.py)"/>
+		<setting type="lsep" label="Uploads your Log to xbmclogs.com"/>
+		<setting label="[B]Upload Log[/B]" type="action" action="XBMC.RunScript(special://home/addons/plugin.video.movie25/resources/fixes/addon.py)"/>
+		<setting id="email" type="text" label="Email address"/>
+		<setting type="lsep" label="If you want to receive an email containing direct links"/>
+		<setting type="lsep" label="to your uploaded logs you have to set your email address"/>
+		
+		
+   </category>
+
+   <category label="Library Integration">
+	   <setting id="library-int" type="bool" label="Library Integration" default="false"/>
+        <setting id="movie-folder" type="folder" label="Movie Library" default="special://userdata/addon_data/plugin.video.movie25/Movies" enable="!eq(-1,false)"/>
+		<setting label="[B]Build Movie Database[/B]" type="action" action="RunPlugin(plugin://plugin.video.movie25/?mode=1503&url=0)" enable="!eq(-2,false)"/>
+		<setting label="[B]Update Movie Database[/B]" type="action" action="RunPlugin(plugin://plugin.video.movie25/?mode=1504&url=0)" enable="!eq(-3,false)"/>
+		<setting label="[B]Re-Build Movie Database[/B]" type="action" action="RunPlugin(plugin://plugin.video.movie25/?mode=1506&url=0)" enable="!eq(-4,false)"/>
+		<setting id="sort-library" type="enum" values="Default|Source|Host|Quality" label="Sort By" default="0" enable="!eq(-5,false)"/>
+        <setting id="auto-update-lib" type="bool" label="Auto Update Library" default="false" enable="!eq(-6,false)"/>
+        <setting id="update-interval" type="enum" values="2h|5h|10h|15h|24h" label="Auto Update Intervals" default="3" enable="!eq(-1,false)"/>
+        <setting id="library-update" type="bool" label="XBMC Library Update" default="true" enable="eq(-2,true)"/>
+    </category>
+</settings>
