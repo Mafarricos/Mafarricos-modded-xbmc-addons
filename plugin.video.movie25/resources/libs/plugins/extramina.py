@@ -21,7 +21,7 @@ def MAINEXTRA():
         main.addDir('MMA','http://www.watching-now.com/search/label/MMA',532,art+'/mma.png')
         main.addDir('Stand-Up Comedy','http://www.watching-now.com/search/label/Stand-Up%20Comedy',532,art+'/com.png')
         main.addDir('Genre','http://www.extraminamovies.in/',533,art+'/genre.png')
-        main.GA("Plugin","Watching Now")
+        #main.GA("Plugin","Watching Now")
         main.VIEWSB()
         
 def LISTEXrecent(murl):     
@@ -48,7 +48,7 @@ def LISTEXrecent(murl):
         if len(paginate)>0 and len(match) == 20:
                 main.addDir('Next',paginate[0],532,art+'/next2.png')
                 
-        main.GA("Watching Now","Recent")
+        #main.GA("Watching Now","Recent")
 
 def LISTEXgenre(murl):     
         link=main.OPENURL(murl)
@@ -75,7 +75,7 @@ def LISTEXgenre(murl):
         paginate = re.compile("<a href='([^<]+)' class='nextpostslink'>�</a>").findall(link)
         if len(paginate)>0:
                 main.addDir('Next',paginate[0],531,art+'/next2.png')
-        main.GA("Watching Now","Recent")
+        #main.GA("Watching Now","Recent")
 
 def GENREEXTRA(murl):
         main.addDir('Action','http://www.watching-now.com/search/label/Action',532,art+'/act.png')
@@ -99,7 +99,7 @@ def GENREEXTRA(murl):
         main.addDir('Thriller','http://www.watching-now.com/search/label/Thriller',532,art+'/thr.png')
         main.addDir('War','http://www.watching-now.com/search/label/War',532,art+'/war.png')
         main.addDir('Western','http://www.watching-now.com/search/label/Western',532,art+'/west.png')
-        main.GA("Watching Now","Genre")
+        #main.GA("Watching Now","Genre")
         main.VIEWSB()
 
 def AtoZEXTRA():
@@ -131,7 +131,7 @@ def AtoZEXTRA():
         main.addDir('X','http://www.extraminamovies.in/list-of-movies/?pgno=289#char_58',531,art+'/X.png')
         main.addDir('Y','http://www.extraminamovies.in/list-of-movies/?pgno=289#char_59',531,art+'/Y.png')
         main.addDir('Z','http://www.extraminamovies.in/list-of-movies/?pgno=291#char_5a',531,art+'/Z.png')
-        main.GA("Watching Now","AZ")
+        #main.GA("Watching Now","AZ")
         main.VIEWSB()
         
 
@@ -216,7 +216,7 @@ def SEARCHEXTRA(murl):
                     return False   
         dialogWait.close()
         del dialogWait
-        main.GA("Watching Now","Search")
+        #main.GA("Watching Now","Search")
 
 
 def getlink(murl,url):
@@ -232,7 +232,7 @@ def getlink(murl,url):
     return link
 
 def VIDEOLINKSEXTRA(mname,murl,thumb,desc):
-        main.GA("Watching Now","Watched")
+        #main.GA("Watching Now","Watched")
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Collecting hosts,5000)")
         sources = []
         link=main.OPENURL(murl)

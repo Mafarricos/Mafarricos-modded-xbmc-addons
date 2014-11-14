@@ -25,7 +25,7 @@ def MAINAFLAM():
     main.addDir('Movies (أفلام)','http://www.aflam1.com/%d8%a3%d9%81%d9%84%d8%a7%d9%85/%d8%a3%d9%81%d9%84%d8%a7%d9%85-%d8%a3%d8%ac%d9%86%d8%a8%d9%8a%d8%a9/',341,art+'/aflam1.png')
     main.addDir('Egyptian New Movies (أفلام مصرية جديدة)','http://www.aflam1.com/%d8%a3%d9%81%d9%84%d8%a7%d9%85/%d8%a3%d9%81%d9%84%d8%a7%d9%85-%d9%85%d8%b5%d8%b1%d9%8a%d8%a9-%d8%ac%d8%af%d9%8a%d8%af%d8%a9/',341,art+'/aflam1.png')
     main.addDir('Films Ancient Egyptian (أفلام مصرية قديمة)','http://www.aflam1.com/%d8%a3%d9%81%d9%84%d8%a7%d9%85/%d8%a3%d9%81%d9%84%d8%a7%d9%85-%d9%85%d8%b5%d8%b1%d9%8a%d8%a9-%d9%82%d8%af%d9%8a%d9%85%d8%a9/',341,art+'/aflam1.png')
-    main.GA("Plugin","Aflam1")
+    #main.GA("Plugin","Aflam1")
 
 def SEARCHAFLAM():
         keyb = xbmc.Keyboard('', 'Search Movies & Shows')
@@ -89,7 +89,7 @@ def LISTMov(murl):
     if len(paginate)>0:
         main.addDir('Next',paginate[0],341,art+'/next2.png')
                 
-    main.GA("Aflam1","List")
+    #main.GA("Aflam1","List")
 
 def LISTProg(murl):
     link=aflamOPENURL(murl)
@@ -102,7 +102,7 @@ def LISTProg(murl):
     if len(paginate)>0:
         main.addDir('Next',MAINURL+paginate[0],336,art+'/next2.png')
                 
-    main.GA("Aflam1","List")
+    #main.GA("Aflam1","List")
 
 
 def LISTEPI(mname,murl,thumb):
@@ -133,7 +133,7 @@ def get_mailru(url):
     
 
 def LINKSAFLAM(mname,murl,thumb):
-    main.GA("Aflam1","Watched")
+    #main.GA("Aflam1","Watched")
     if 'car-auto' not in murl:
         link=aflamOPENURL(murl)
         match=re.compile('<a class="btn default large text-right" href="(.+?)"',re.DOTALL).findall(link)

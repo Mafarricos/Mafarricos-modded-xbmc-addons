@@ -61,7 +61,7 @@ def LIST2(murl):
         main.addPlayMs(name,url,449,thumb,'','','','','')
     
 def LINK(mname,murl,thumb):
-    main.GA("MLB","Watched")
+    #main.GA("MLB","Watched")
     strmL=[]
     link=main.OPENURL(murl)
     ok=True

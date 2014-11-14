@@ -189,7 +189,7 @@ def MAINSIDE(cacheOnly = False):
         xbmcgui.Window(10000).clearProperty('Refresh_Sidreel')
     else: match = eval(cached)
     if cacheOnly: return False
-    main.GA("None","SideReel")
+    #main.GA("None","SideReel")
     main.addDir('Search for Shows','TV',398,art+'/search.png')
     main.addDir('All Tracked Shows','TV',402,art+'/sidereel.png')
     
@@ -252,7 +252,7 @@ def SEARCHSR():
     SEARCHED(surl)
 
 def SEARCHED(surl):
-    main.GA("SideReel","Search")
+    #main.GA("SideReel","Search")
     from t0mm0.common.net import Net as net
     setCookie(MAINURL)
     response = net().http_GET(surl)
@@ -270,7 +270,7 @@ def SEARCHED(surl):
 
 
 def TRACKEDSHOWS():
-    main.GA("SideReel","Tracked Shows")
+    #main.GA("SideReel","Tracked Shows")
     from t0mm0.common.net import Net as net
     setCookie(MAINURL)
     cookie = main.getFile(cookie_file)

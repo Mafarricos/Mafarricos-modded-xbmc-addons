@@ -42,7 +42,7 @@ def Mplaylists(murl):
         popup=re.compile('<popup><name>([^<]+)</name.+?popImage>([^<]+)</popImage.+?thumbnail>([^<]+)</thumbnail></popup>').findall(link)
         for name,image,thumb in popup:
                 main.addPlayc(name,image,244,thumb,'','','','','')
-        main.GA("Ondemand",vip+"-Directory")
+        #main.GA("Ondemand",vip+"-Directory")
 
 
 def MList(mname,murl):
@@ -87,10 +87,10 @@ def MList(mname,murl):
                         return False
         dialogWait.close()
         del dialogWait
-        main.GA(vip+"-Directory",vip+"-Playlist")
+        #main.GA(vip+"-Directory",vip+"-Playlist")
 
 def MLink(mname,suburl,thumb):
-        main.GA(mname,"Watched")
+        #main.GA(mname,"Watched")
         i=1
         namelist=[]
         urllist=[]

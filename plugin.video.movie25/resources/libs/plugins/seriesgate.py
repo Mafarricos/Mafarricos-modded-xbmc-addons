@@ -15,7 +15,7 @@ def MAINSG():
         main.addDir('A-Z','http://seriesgate.tv/',610,art+'/az.png')
         main.addDir('Latest Episodes','http://seriesgate.me/latestepisodes/',602,art+'/latest.png')
         HOMESG()
-        main.GA("Plugin","SeriesGate")
+        #main.GA("Plugin","SeriesGate")
 def HOMESG():
         url='http://seriesgate.tv/home1/'
         link=main.OPENURL(url)
@@ -35,7 +35,7 @@ def AtoZSG():
         main.addDir('0-9','numb',611,art+'/09.png')
         for i in string.ascii_uppercase:
                 main.addDir(i,i,611,art+'/'+i.lower()+'.png')
-        main.GA("SeriesGate","A-Z")
+        #main.GA("SeriesGate","A-Z")
         main.VIEWSB()
         
 def AllShows(murl):
@@ -46,7 +46,7 @@ def AllShows(murl):
                 main.addDirT(name,'http://seriesgate.me'+url,604,thumb,'','','','','')
                     
 
-        main.GA("SeriesGate","AllShows")
+        #main.GA("SeriesGate","AllShows")
 def LISTEpiSG(murl):
     link=main.OPENURL(murl)
     match=re.compile('<a href="([^"]+?)"><div  class=".+?"><img class="lazy"   data-original="(.+?)" width=".+?" height=".+?"  alt=".+?" title = ".+?" /><div class=".+?"><a href=".+?">(.+?)</a> - (.+?)</span><div class=".+?"></div><span style=".+?">(.+?)</span>').findall(link)
@@ -67,7 +67,7 @@ def LISTEpiSG(murl):
                 return False   
     dialogWait.close()
     del dialogWait
-    main.GA("SeriesGate","Latest-list")
+    #main.GA("SeriesGate","Latest-list")
 def LISTSeasonSG(mname,murl,thumb):
     link=main.OPENURL(murl).replace('April,','')
     match=re.compile('(?i)<li><a href="([^"]+?)">([^<]+?)</a>').findall(link)
@@ -88,7 +88,7 @@ def LISTSeasonSG(mname,murl,thumb):
                 return False   
     dialogWait.close()
     del dialogWait
-    main.GA("SeriesGate","Sea-list")
+    #main.GA("SeriesGate","Sea-list")
 def LISTEpilistSG(mname,murl):
     link=main.OPENURL(murl)
     match=re.compile('<div class=".+?" style=".+?" >(.+?)- <span><a href = ".+?">.+?</a></span></div><div class=".+?" >(.+?)</div><div class = ".+?"></div><div style=".+?"><a href="(.+?)"><img src="(.+?)" width=".+?" height=".+?"  alt=".+?" title = "(.+?)" ></a>').findall(link)
@@ -110,7 +110,7 @@ def LISTEpilistSG(mname,murl):
                 return False   
     dialogWait.close()
     del dialogWait
-    main.GA("SeriesGate","Epi-list")
+    #main.GA("SeriesGate","Epi-list")
     if selfAddon.getSetting('auto-view') == 'true':
                 xbmc.executebuiltin("Container.SetViewMode(%s)" % selfAddon.getSetting('episodes-view'))
 
@@ -172,7 +172,7 @@ def SEARCHSG(murl):
     for thumb,url,name in match:
             main.addDirT(name,'http://seriesgate.tv'+url,604,thumb,'','','','','')
 
-    main.GA("SeriesGate","Search")
+    #main.GA("SeriesGate","Search")
 
 
 def GETLINKSG(murl):
@@ -184,7 +184,7 @@ def GETLINKSG(murl):
             return url
 
 def VIDEOLINKSSG(mname,murl,thumb):
-    main.GA("SG","Watched")
+    #main.GA("SG","Watched")
     msg = xbmcgui.DialogProgress()
     msg.create('Please Wait!','')
     msg.update(0,'Collecting hosts')

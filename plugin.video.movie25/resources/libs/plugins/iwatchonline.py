@@ -13,21 +13,21 @@ def AtoZiWATCHtv(index=False):
     main.addDir('0-9','http://www.iwatchonline.to/tv-show?startwith=09&p=0',589,art+'/09.png',index=index)
     for i in string.ascii_uppercase:
             main.addDir(i,'http://www.iwatchonline.to/tv-show?startwith='+i.lower()+'&p=0',589,art+'/'+i.lower()+'.png',index=index)
-    main.GA("Tvshows","A-ZTV")
+    #main.GA("Tvshows","A-ZTV")
     main.VIEWSB()
 
 def AtoZiWATCHm(index=False):
     main.addDir('0-9','http://www.iwatchonline.to/movies?startwith=09&p=0',587,art+'/09.png',index=index)
     for i in string.ascii_uppercase:
             main.addDir(i,'http://www.iwatchonline.to/movies?startwith='+i.lower()+'&p=0',587,art+'/'+i.lower()+'.png',index=index)
-    main.GA("Movies","A-ZM")
+    #main.GA("Movies","A-ZM")
     main.VIEWSB()
 
 def iWatchMAIN():
     main.addDir('Movies','http://www.iwatchonline.org/',586,art+'/iwatchm.png')
     main.addDir('Tv Shows','http://www.iwatchonline.org/',585,art+'/iwatcht.png')
     main.addDir('Todays Episodes','http://www.iwatchonline.to/tv-schedule',592,art+'/iwatcht.png')
-    main.GA("Plugin","iWatchonline")
+    #main.GA("Plugin","iWatchonline")
     main.VIEWSB2()
         
 def iWatchMOVIES(index=False):
@@ -39,7 +39,7 @@ def iWatchMOVIES(index=False):
     main.addDir('Latest HD Movies','http://www.iwatchonline.to/movies?quality=hd&sort=latest&p=0',587,art+'/new2.png',index=index)
     main.addDir('Genre','http://www.iwatchonline.to',596,art+'/genre2.png',index=index)
     main.addDir('By Year','http://www.iwatchonline.so/',652,art+'/year2.png',index=index)
-    main.GA("iWatchonline","Movies")
+    #main.GA("iWatchonline","Movies")
     main.VIEWSB2()
 
 def iWatchTV(index=False):
@@ -50,7 +50,7 @@ def iWatchTV(index=False):
     main.addDir('Popular Shows','http://www.iwatchonline.to/tv-show?sort=popular&p=0',589,art+'/iwatcht.png',index=index)
     main.addDir('Latest Additions','http://www.iwatchonline.to/tv-show?sort=latest&p=0',589,art+'/iwatcht.png',index=index)
     main.addDir('Genre','http://www.iwatchonline.to',594,art+'/genre.png',index=index)
-    main.GA("iWatchonline","Tvshows")
+    #main.GA("iWatchonline","Tvshows")
     main.VIEWSB2()
 
 def SearchhistoryTV(index=False):
@@ -109,7 +109,7 @@ def SEARCHTV(murl = '',index=False):
     match=re.compile('<img[^>]+?src="([^"]+?)\".+?<a[^>]+?href="([^"]+?)">([^<]+?)</a>').findall(r)
     for thumb,url,name in match:
         main.addDirT(name,url,590,thumb,'','','','','',index=index)
-    main.GA("iWatchonline","Search")
+    #main.GA("iWatchonline","Search")
 
 def SearchhistoryM(index=False):
     seapath=os.path.join(main.datapath,'Search')
@@ -154,7 +154,7 @@ def SEARCHM(murl,index=False):
         if dialogWait.iscanceled(): return False   
     dialogWait.close()
     del dialogWait
-    main.GA("iWatchonline","Search")
+    #main.GA("iWatchonline","Search")
 
 def ENTYEAR(index=False):
     dialog = xbmcgui.Dialog()
@@ -192,7 +192,7 @@ def iWatchGenreTV(index=False):
         genre=genre.replace('  ','')
         if not 'Adult' in genre:
             main.addDir(genre,'http://www.iwatchonline.to/tv-show?sort=popular&gener='+url+'&p=0',589,art+'/folder.png',index=index)
-    main.GA("Tvshows","GenreT")
+    #main.GA("Tvshows","GenreT")
     
 def iWatchGenreM(index=False):
     link=main.OPENURL('http://www.iwatchonline.to/movies')
@@ -202,7 +202,7 @@ def iWatchGenreM(index=False):
         genre=genre.replace('  ','')
         if not 'Adult' in genre:
             main.addDir(genre,'http://www.iwatchonline.to/movies?sort=popular&gener='+url+'&p=0',587,art+'/folder.png',index=index)
-    main.GA("Movies","GenreM")     
+    #main.GA("Movies","GenreM")     
                
 def iWatchYearM(index=False):
     main.addDir('2013','http://www.iwatchonline.to/movies?year=2013&p=0',587,art+'/year.png',index=index)
@@ -219,7 +219,7 @@ def iWatchYearM(index=False):
     main.addDir('Enter Year','iwatchonline',653,art+'/enteryear.png',index=index)
 
 def iWatchLISTMOVIES(murl,index=False):
-    main.GA("Movies","List")   
+    #main.GA("Movies","List")   
     link=main.OPENURL(murl)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
     videos = re.search('<ul class="thumbnails">(.+?)</ul>', link)
@@ -259,7 +259,7 @@ def iWatchLISTMOVIES(murl,index=False):
         main.VIEWS()
 
 def iWatchToday(murl,index=False):
-    main.GA("Tvshows","TodaysList")
+    #main.GA("Tvshows","TodaysList")
     link=main.OPENURL(murl)
     daysback = 2
     for x in range(0, daysback):
@@ -301,7 +301,7 @@ def iWatchToday(murl,index=False):
     del dialogWait
 
 def iWatchLISTSHOWS(murl,index=False):
-    main.GA("Tvshows","List")
+    #main.GA("Tvshows","List")
     link=main.OPENURL(murl)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
     videos = re.search('<ul class="thumbnails">(.+?)</ul>', link)
@@ -433,7 +433,7 @@ def iWatchLINK(mname,url):
                 main.addDown2(mname+' [COLOR red]('+qua+')[/COLOR]'+' [COLOR blue]'+name.upper()+'[/COLOR]',url,649,art+'/hosts/'+name.lower()+'.png',art+'/hosts/'+name.lower()+'.png')
 
 def iWatchLINKB(mname,url):
-    main.GA("iWatchonline","Watched")
+    #main.GA("iWatchonline","Watched")
     ok=True
     hname=mname
     xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Link,3000)")

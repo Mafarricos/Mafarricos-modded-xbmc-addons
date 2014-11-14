@@ -31,10 +31,10 @@ def LISTMOO():
                         return False   
         dialogWait.close()
         del dialogWait
-        main.GA("INT","Mooviemaniac")
+        #main.GA("INT","Mooviemaniac")
 
 def LINKMOO(mname,murl,thumb):
-        main.GA("Mooviemaniac","Watched")
+        #main.GA("Mooviemaniac","Watched")
         ok=True
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Link,5000)")
         infoLabels =main.GETMETAT(mname,'','','')

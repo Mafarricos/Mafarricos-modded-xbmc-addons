@@ -14,7 +14,7 @@ from resources.universal import watchhistory
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def TubTubMAIN(murl):
-        main.GA("TubTub","List")
+        #main.GA("TubTub","List")
         main.addLink('[COLOR red]Classics, Very Old Content[/COLOR]','','')
         thumb=art+'/tubtub.png'
         link=main.OPENURL(murl)
@@ -27,7 +27,7 @@ def TubTubMAIN(murl):
         
         
 def TubTubLink(mname,murl):
-        main.GA("TubTub-"+mname,"Watched")
+        #main.GA("TubTub-"+mname,"Watched")
         ok=True
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')

@@ -20,7 +20,7 @@ def MAIN():
     main.addDir('Genre','genre',426,art+'/genre.png')
     main.addDir('Year','year',426,art+'/year.png')
     main.addDir('Language','lang',426,art+'/intl.png')
-    main.GA("Plugin","Yify")
+    #main.GA("Plugin","Yify")
 
 def LIST(murl,subp = False):
     global subpages
@@ -70,7 +70,7 @@ def LIST(murl,subp = False):
             else: last = page + subpages
         main.addDir('[COLOR red]Enter Page #[/COLOR]',paginate[0]+'%%%'+str(subpages),427,art+'/gotopage.png')
         main.addDir('Page ' + str(page/subpages+1) + ' [COLOR blue]Next Page >>>[/COLOR]',re.sub('page\/\d+?\/', 'page/'+str(page+subpages)+'/',paginate[0])+'%%%'+str(last)+'$$$'+str(subpages),422,art+'/next2.png')     
-    main.GA("Yify","List")
+    #main.GA("Yify","List")
     main.VIEWS()
 
 def GotoPage(url):
@@ -211,7 +211,7 @@ def superSearch(encode,type):
     except: return []
     
 def SEARCH(encode):
-    main.GA("Yify","Search")
+    #main.GA("Yify","Search")
     encode = main.updateSearchFile(encode,'Movies','sec','Search For Movies')
     if not encode: return False
     surl='http://yify.tv/?s='+encode
@@ -219,7 +219,7 @@ def SEARCH(encode):
 
 def LINK(name,murl,thumb):
     xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,5000)")
-    main.GA("Yify","Watched")
+    #main.GA("Yify","Watched")
     stream_url = False
     ok=True
     infoLabels =main.GETMETAT(name,'','',thumb)

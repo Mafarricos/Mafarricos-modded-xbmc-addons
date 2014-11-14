@@ -56,7 +56,7 @@ def Mplaylists(murl):
         popup=re.compile('<popup><name>([^<]+)</name.+?popImage>([^<]+)</popImage.+?thumbnail>([^<]+)</thumbnail></popup>').findall(link)
         for name,image,thumb in popup:
                 main.addPlayc(name,image,244,thumb,'',fan,'','','')
-        main.GA("MoviePL",vip+"-Directory")
+        #main.GA("MoviePL",vip+"-Directory")
 
 def MList(mname,murl):
         mname  = mname.split('[C')[0]
@@ -126,7 +126,7 @@ def MList(mname,murl):
                         return False   
         dialogWait.close()
         del dialogWait
-        main.GA(vip+"-Directory",vip+"-Playlist")
+        #main.GA(vip+"-Directory",vip+"-Playlist")
 
 def subLink(mname,suburl):
         match=re.compile('<sublink>(.+?)</sublink>').findall(suburl)
@@ -139,7 +139,7 @@ def subLink(mname,suburl):
                         main.addDown2(mname+' [COLOR blue]'+host.upper()+'[/COLOR]',url,237,art+'/hosts/'+host.lower()+'.png',art+'/hosts/'+host.lower()+'.png')
 
 def MLink(mname,murl,thumb):
-        main.GA(mname,"Watched")
+        #main.GA(mname,"Watched")
         ok=True
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Link,5000)")
         if re.findall('(.+?)\ss(\d+)e(\d+)\s',mname,re.I) or re.findall('Season(.+?)Episode([^<]+)',mname,re.I):
@@ -265,7 +265,7 @@ def resolve_mightyupload(url,referer):
         return
 
 def MLink2(mname,murl,thumb,muvideo=False):
-        main.GA(mname,"Watched")
+        #main.GA(mname,"Watched")
         ok=True
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Link,3000)")
         if not muvideo:

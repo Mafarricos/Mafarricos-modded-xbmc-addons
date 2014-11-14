@@ -14,7 +14,6 @@ art = main.art
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def WILDTV(murl):
-        main.GA("Sports","Wildtv")
         link=main.OPENURL(murl)
         match=re.compile('<option value="(.+?)">(.+?)</option>').findall(link)
         for idnum, name in match:
@@ -22,7 +21,6 @@ def WILDTV(murl):
             main.addDir(name,url,93,art+'/wildtv.png')
 
 def LISTWT(murl):
-        main.GA("Wildtv","Wildtv-list")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('\xc2\xa0','')
         match=re.compile('<a title="(.+?)" alt=".+?" href="(.+?)"><img class=".+?src="(.+?)" />',re.DOTALL).findall(link)
@@ -33,7 +31,6 @@ def LISTWT(murl):
             main.addPlayMs(name,url,94,thumb,'','','','','')
 
 def LINKWT(mname,murl):
-        main.GA("Wildtv-list","Watched")
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Playing Link,3000)")
         link=main.OPENURL(murl)
         ok=True

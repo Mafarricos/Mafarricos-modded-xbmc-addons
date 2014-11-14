@@ -30,7 +30,7 @@ def LISTSP4(murl):
                 return False    
     dialogWait.close()
     del dialogWait
-    main.GA("HD","Oneclickmoviez")
+    #main.GA("HD","Oneclickmoviez")
 
 def getlink(content):
     match=re.compile("Lbjs.TargetUrl = '([^']+?)'").findall(content)
@@ -68,7 +68,7 @@ def LINKSP4(mname,murl):
                             main.addDown2(mname+' [COLOR blue]'+host+'[/COLOR]',murl,211,art+'/hosts/'+thumb+".png",art+'/hosts/'+thumb+".png")
         
 def LINKSP4B(mname,murl):
-    main.GA("Oneclickmovies","Watched")
+    #main.GA("Oneclickmovies","Watched")
     ok=True
     infoLabels =main.GETMETAT(mname,'','','')
     video_type='movie'

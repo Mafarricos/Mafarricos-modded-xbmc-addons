@@ -14,7 +14,7 @@ art = main.art
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def MAINBB():
-    main.GA("Sports","BodyBuilding")   
+    #main.GA("Sports","BodyBuilding")   
     main.addDir('Abdominals','http://www.bodybuilding.com/exercises/list/muscle/selected/abdominals',196,art+'/bodybuilding.png')
     main.addDir('Abductors','http://www.bodybuilding.com/exercises/list/muscle/selected/abductors',196,art+'/bodybuilding.png')
     main.addDir('Adductors','http://www.bodybuilding.com/exercises/list/muscle/selected/adductors',196,art+'/bodybuilding.png')
@@ -34,7 +34,7 @@ def MAINBB():
     main.addDir('Triceps','http://www.bodybuilding.com/exercises/list/muscle/selected/triceps',196,art+'/bodybuilding.png')
 
 def LISTBB(murl):
-    main.GA("BodyBuilding","List")   
+    #main.GA("BodyBuilding","List")   
     link=main.OPENURL(murl)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('img src="http://assets.bodybuilding.com','')
     match=re.compile('''img src="(.+?)".+? title="(.+?)" /></a>.+?<h3>.+?<a href=\'(.+?)'> .+? </a>.+?Muscle Targeted:.+?> (.+?) </a>''').findall(link)
@@ -43,7 +43,7 @@ def LISTBB(murl):
 
 
 def LINKBB(mname,murl,thumb):
-    main.GA("BodyBuilding","Watched")
+    #main.GA("BodyBuilding","Watched")
     ok=True
     namelist=[]
     urllist=[]

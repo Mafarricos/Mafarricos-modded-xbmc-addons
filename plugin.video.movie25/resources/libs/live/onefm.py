@@ -7,7 +7,7 @@ ADDON=xbmcaddon.Addon(id='plugin.video.movie25')
 art = main.art
 
 def MAIN():
-    main.GA("Live","1fm")
+    #main.GA("Live","1fm")
     link=main.OPENURL('http://www.1.fm/jsonfm/allstUpcomingSng')
     field=json.loads(link)
     for data in field:        

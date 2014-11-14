@@ -14,7 +14,7 @@ wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def LISTDOC(murl):
     if murl=='doc1':
-        main.GA("Documantary","DhHome")
+        #main.GA("Documantary","DhHome")
         #main.addDir('[COLOR red]Search[/COLOR]','search',89,'')
         main.addDir('[COLOR red]Popular[/COLOR]','http://documentaryheaven.com/popular/',89,'')
         main.addDir('[COLOR red]Recent[/COLOR]','http://documentaryheaven.com/all/',87,'')
@@ -24,7 +24,7 @@ def LISTDOC(murl):
         for url, name in match:
             main.addDir(name,'http://documentaryheaven.com'+url,87,'')
     elif murl=='doc2':
-        main.GA("Documantary","TDFHome")
+        #main.GA("Documantary","TDFHome")
         main.addDir('[COLOR red]Recent[/COLOR]','http://topdocumentaryfilms.com/all/',87,'')
         main.addDir('[COLOR red]Recommended[/COLOR]','rec',89,'')
         url='http://topdocumentaryfilms.com/'
@@ -33,7 +33,7 @@ def LISTDOC(murl):
         for url, name in match:
             main.addDir(name,url,87,'')
     elif murl=='doc3':
-        main.GA("Documantary","DLHome")
+        #main.GA("Documantary","DLHome")
         main.addDir('[COLOR red]Latest[/COLOR]','http://www.documentary-log.com/',87,'')
         main.addDir("[COLOR red]Editor's Picks[/COLOR]",'http://www.documentary-log.com/category/editors-picks/',87,'')
         url='http://www.documentary-log.com/'
@@ -46,7 +46,7 @@ def LISTDOC2(murl):
     
     match=re.compile('documentaryheaven').findall(murl)
     if (len(match)>0):
-        main.GA("DhHome","Dh-List")
+        #main.GA("DhHome","Dh-List")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         match= re.compile('href="([^<]+)" rel="bookmark" title=".+?" rel=".+?"><img class=".+?" src="(.+?)" alt="([^<]+)"/></a></div><div class=".+?">(.+?)</div>').findall(link)
@@ -62,7 +62,7 @@ def LISTDOC2(murl):
     match2=re.compile('topdocumentaryfilms').findall(murl)
     if (len(match2)>0):
         i=0
-        main.GA("TDFHome","TDF-List")
+        #main.GA("TDFHome","TDF-List")
         link=main.OPENURL(murl)
         link=link.replace('\n','')
         url=re.compile('href="([^<]+)">Watch now').findall(link)
@@ -78,7 +78,7 @@ def LISTDOC2(murl):
 
     match3=re.compile('documentary-log').findall(murl)
     if (len(match3)>0):
-        main.GA("DLHome","DL-List")
+        #main.GA("DLHome","DL-List")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         match=re.compile('<div class="clear">.+?<a href="(.+?)" title=".+?">          <img src="(.+?)" alt="(.+?)" class=".+?" />          </a>          <p>(.+?)<a').findall(link)
@@ -126,7 +126,7 @@ def LINKDOC(mname,murl,thumb):
     ok=True
     match=re.compile('documentaryheaven').findall(murl)
     if (len(match)>0):
-        main.GA("DocumentaryHeaven","Watched")
+        #main.GA("DocumentaryHeaven","Watched")
         ok=True
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()
@@ -190,7 +190,7 @@ def LINKDOC(mname,murl,thumb):
     match2=re.compile('topdocumentaryfilms').findall(murl)
     if (len(match2)>0):
         sources=[]
-        main.GA("TopDocumentaryFilms","Watched")
+        #main.GA("TopDocumentaryFilms","Watched")
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()
         link=main.OPENURL(murl)
@@ -263,7 +263,7 @@ def LINKDOC(mname,murl,thumb):
     match3=re.compile('documentary-log.com').findall(murl)
     if (len(match3)>0):        
 
-        main.GA("Documentary-Log","Watched")
+        #main.GA("Documentary-Log","Watched")
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()
         link=main.OPENURL(murl)

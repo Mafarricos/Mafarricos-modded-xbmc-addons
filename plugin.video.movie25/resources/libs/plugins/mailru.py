@@ -34,7 +34,7 @@ def MAINMAILRU(murl):
         name=name.encode('windows-1251')
         url=url.replace('/video','')
         main.addPlayc(name,MAINURL+url,358,thumb,'','','','','')
-    main.GA("Plugin","MailRu")
+    #main.GA("Plugin","MailRu")
 
 
 
@@ -71,7 +71,7 @@ def resolve_mailru(url):
 
 
 def LINKSMAILRU(mname,murl,thumb):   
-    main.GA("MailRu","Watched")
+    #main.GA("MailRu","Watched")
     xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,5000)")
     link=main.OPENURL(murl)
     ok=True

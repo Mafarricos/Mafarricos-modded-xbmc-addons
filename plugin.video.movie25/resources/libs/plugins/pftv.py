@@ -29,7 +29,7 @@ def MAINPFTV(index=False):
                 main.addPlayc('Proxy [COLOR green]ON[/COLOR]',BASE_URL,1004,art+'/pftv.png','','','','','')
         else:
                 main.addPlayc('Proxy [COLOR red]OFF[/COLOR]',BASE_URL,1004,art+'/pftv.png','','','','','')
-        main.GA("Plugin",prettyName)
+        #main.GA("Plugin",prettyName)
         main.VIEWSB()
 
 
@@ -89,12 +89,12 @@ def SEARCHPFTV(murl = '',index=False):
         match=re.compile(' class="mnlcategorylist"><a href="([^"]+)"><b>([^<]+)</b>',re.DOTALL).findall(link)
         for url,name in match:
                 main.addDirT(name,BASE_URL2+url,465,'','','','','','',index=index)
-        main.GA(prettyName,"Search")
+        #main.GA(prettyName,"Search")
 def AtoZPFTV(index=False):
     main.addDir('0-9','#',464,art+'/09.png',index=index)
     for i in string.ascii_uppercase:
             main.addDir(i,(chr(ord(i)+1)),464,art+'/'+i.lower()+'.png',index=index)
-    main.GA(prettyName,"A-Z")
+    #main.GA(prettyName,"A-Z")
     main.VIEWSB()
 
 def LISTSHOW(mname,murl,index=False):
@@ -158,7 +158,7 @@ def LISTEPISODE(mname,murl,index=False):
                 main.addDirTE(name,murl,461,'','','','','','')
     
 def LISTPFTV(murl,index=False):
-        main.GA(prettyName,"List")
+        #main.GA(prettyName,"List")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','')
         match=re.compile('''class="mnlcategorylist"><a href="([^"]+?)"><b>([^<]+?)<span style='.+?'>\((.+?)\)''').findall(link)
@@ -231,7 +231,7 @@ def LISTHOST(mname,murl,thumb):
 def PLAYPFTV(mname,murl):
     host=murl.split('x1x8x')[0]
     media_id=murl.split('x1x8x')[1]
-    main.GA(prettyName,"Watched")
+    #main.GA(prettyName,"Watched")
     ok=True
     xbmc.executebuiltin("XBMC.Notification(Please Wait!,Checking Link,3000)")
     #furl=geturl(murl)

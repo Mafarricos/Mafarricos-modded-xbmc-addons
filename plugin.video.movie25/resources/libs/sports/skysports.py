@@ -235,7 +235,7 @@ def SKYSPORTSTEAMS(murl):
 
 
 def SKYSPORTSTV(murl):
-        main.GA("SkySportsTV","List")
+        #main.GA("SkySportsTV","List")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         match = re.compile('<img src=".+?" data-src="([^"]+)" class=".+?<a href="([^"]+)" class=".+?<h4 class=".+?">([^<]+)</h4>').findall(link)
@@ -246,7 +246,6 @@ def SKYSPORTSTV(murl):
         main.VIEWSB()
 
 def SKYSPORTSList(murl):
-        main.GA("SkySports","List")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         match=re.compile('<a href="([^"]+)" class=".+?data-src="([^"]+)" class=".+?<h4 class=".+?">([^<]+)</h4>.+?">([^<]+)</p>.+?">([^<]+)</button>').findall(link)
@@ -259,7 +258,6 @@ def SKYSPORTSList(murl):
                                 main.addPlayMs('[COLOR red]'+name+'[/COLOR]'+'   '+date,url,177,thumb,'','','','','')
 
 def SKYSPORTSList2(murl):
-        main.GA("SkySports","List")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         page=re.compile('data-current-page=".+?" data-pattern="(.+?)">').findall(link)
@@ -283,7 +281,6 @@ def SKYSPORTSList2(murl):
         
 
 def SKYSPORTSLink(mname,murl):
-        main.GA("SkySports","Watched")
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Playing Video,1500)")
         ok= True
         link=main.OPENURL(murl)

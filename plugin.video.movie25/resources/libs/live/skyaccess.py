@@ -87,7 +87,7 @@ def MAINSA():
     if '<title>Axxess Streams </title>' in link:
         main.addDir('Elite Streams',link,410,art+'/skyaccess.png')
     main.addPlayc('[COLOR blue]Click here for Subscription Info[/COLOR]','https://dl.dropboxusercontent.com/u/35068738/picture%20for%20post/sky.png',244,art+'/skyaccess.png','','','','','')
-    main.GA("Live","SportsAccess")
+    #main.GA("Live","SportsAccess")
 
         
 def Calendar(murl):
@@ -182,7 +182,7 @@ def get_link(murl):
     
 def PLAYLINK(mname,murl,thumb):
         ok=True
-        main.GA("Live","SportsAccess")
+        #main.GA("Live","SportsAccess")
         stream_url = get_link(murl)     
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()

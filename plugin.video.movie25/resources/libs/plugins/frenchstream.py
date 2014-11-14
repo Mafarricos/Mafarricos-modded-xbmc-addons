@@ -22,7 +22,7 @@ def MAINFS():
     main.addDir('Les plus commentés','http://frenchstream.org/les-plus-commentees',368,art+'/popu.png')
     main.addDir('Les mieux notés','http://frenchstream.org/',368,art+'/vote.png')
     main.addDir('Films Par Genre','http://frenchstream.org/films-par-genre',371,art+'/genre.png')
-    main.GA("Plugin","SokroStream")
+    #main.GA("Plugin","SokroStream")
 
 def GENREFS(murl):
     link=main.OPENURL(murl)
@@ -56,7 +56,7 @@ def LISTFS(murl):
         paginate = re.compile('''<a class="page larger" href="(.+?)">''').findall(link)
         if len(paginate)>0:
                 main.addDir('Next',paginate[0],368,art+'/next2.png')     
-        main.GA("SokroStream","List")
+        #main.GA("SokroStream","List")
 
 
 def SearchhistoryFS():
@@ -130,7 +130,7 @@ def SEARCHFS(murl):
                     return False   
         dialogWait.close()
         del dialogWait
-        main.GA("SokroStream","Search")
+        #main.GA("SokroStream","Search")
 
 def LINKLISTFS(mname,url):
     link=main.OPENURL(url)
@@ -160,7 +160,7 @@ def GetLink(url):
 
 def LINKFS(name,murl):
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,5000)")
-        main.GA("SokroStream","Watched")
+        #main.GA("SokroStream","Watched")
         stream_url = False
         ok=True
         infoLabels =main.GETMETAT(name,'','','')

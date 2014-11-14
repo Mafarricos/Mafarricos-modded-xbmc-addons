@@ -16,7 +16,7 @@ def NG():
     #main.addDir('National Geographic Channel','ngc','',art+'/ngccm.png')
     #main.addDir('Nat Geo Wild','ngw','',art+'/ngwcm.png')
     main.addDir('Nat Geo Animals','nga',71,art+'/nga2.png')
-    main.GA("Adventure","NationalGeo")
+    #main.GA("Adventure","NationalGeo")
     main.VIEWSB()
 
 def NGDir(murl):
@@ -25,13 +25,13 @@ def NGDir(murl):
         main.addDir('Shows','http://video.nationalgeographic.com/video/national-geographic-channel/shows/',72,art+'/ngc.png')
         main.addDir('Specials','http://video.nationalgeographic.com/video/national-geographic-channel/specials-1/',72,art+'/ngc.png')
         main.addDir('Extras','http://video.nationalgeographic.com/video/national-geographic-channel/extras/',72,art+'/ngc.png')
-        main.GA("NationalGeo","NGC")
+        #main.GA("NationalGeo","NGC")
     elif murl  =='ngw':
         main.addDir('Full Episodes','http://video.nationalgeographic.com/video/nat-geo-wild/full-episodes-1/',72,art+'/ngw.png')
         main.addDir('Shows','http://video.nationalgeographic.com/video/nat-geo-wild/shows-1/',72,art+'/ngw.png')
         main.addDir('Specials','http://video.nationalgeographic.com/video/nat-geo-wild/specials-2/',72,art+'/ngw.png')
         main.addDir('Extras','http://video.nationalgeographic.com/video/nat-geo-wild/extras-1/',72,art+'/ngw.png')
-        main.GA("NationalGeo","NGW")
+        #main.GA("NationalGeo","NGW")
     elif murl  =='nga':
         main.addDir('Amphibians','http://video.nationalgeographic.com/video/animals/amphibians-animals/',72,art+'/nga2.png')
         main.addDir('Birds','http://video.nationalgeographic.com/video/animals/birds-animals/',72,art+'/nga2.png')
@@ -41,7 +41,7 @@ def NGDir(murl):
         main.addDir('Invertebrates','http://video.nationalgeographic.com/video/animals/invertebrates-animals/',72,art+'/nga2.png')
         main.addDir('Mammals','http://video.nationalgeographic.com/video/animals/mammals-animals/',72,art+'/nga2.png')
         main.addDir('Reptiles','http://video.nationalgeographic.com/video/animals/reptiles-animals/',72,art+'/nga2.png')
-        main.GA("NationalGeo","NGA")
+        #main.GA("NationalGeo","NGA")
     elif murl  =='ngk':
         main.addDir('Animals & Pets','http://video.nationalgeographic.com/video/kids/animals-pets-kids/',72,art+'/ngk.png')
         main.addDir('Cartoons & Shows','http://video.nationalgeographic.com/video/kids/cartoons-tv-movies-kids/',72,art+'/ngk.png')
@@ -54,7 +54,7 @@ def NGDir(murl):
         main.addDir('People & Places','http://video.nationalgeographic.com/video/kids/people-places-kids/',73,art+'/ngk.png')
         main.addDir('Science & Space','http://video.nationalgeographic.com/video/kids/science-space-kids/',73,art+'/ngk.png')
         main.addDir('Weird & Wacky','http://video.nationalgeographic.com/video/kids/weird-wacky-kids/',72,art+'/ngk.png')
-        main.GA("KidZone","NGK")
+        #main.GA("KidZone","NGK")
 
 def LISTNG(murl):
     MainUrl='http://video.nationalgeographic.com'
@@ -62,7 +62,7 @@ def LISTNG(murl):
     match=re.compile('<a href="(.+?)">More \xc2\xbb</a></p><h3>(.+?)\n        \n    </h3><ul class=".+?"><li><a class=".+?" href=".+?" title=".+?"><img src="(.+?)">').findall(link)
     for url, name, thumb in match:
             main.addDir(name,MainUrl+url,73,MainUrl+thumb)
-    main.GA("NationalGeo","NG-Show")
+    #main.GA("NationalGeo","NG-Show")
         
 def LISTNG2(murl):
     MainUrl='http://video.nationalgeographic.com'
@@ -83,10 +83,10 @@ def LISTNG2(murl):
             pgtot=pgtot.replace(')','')
             if pgtot!=pg:
                 main.addDir('Page '+str(int(pg)+1),MainUrl+purl+pg+'/',73,art+'/next2.png')
-    main.GA("NG-Show","List")
+    #main.GA("NG-Show","List")
 
 def LINKNG(mname,murl):
-        main.GA("NatGeo-"+mname,"Watched")
+        #main.GA("NatGeo-"+mname,"Watched")
         link=main.OPENURL(murl)
         ok=True
         match=re.compile('property=".+?" content="(.+?)" />\n    <meta property=".+?" content=".+?" />\n    <meta property=".+?" content=".+?" />\n    <meta property=".+?" content=".+?" />\n\n\n    \n    <meta property=".+?" content=".+?" />\n\n    \n    <meta property=".+?" content="(.+?)" />\n\n    \n\n    <meta property=".+?" content="(.+?)" ').findall(link)
@@ -143,7 +143,7 @@ def LINKNG(mname,murl):
         return ok
         
 def LINKNG2(mname,murl):
-        main.GA("NatGeo-"+mname,"Watched")
+        #main.GA("NatGeo-"+mname,"Watched")
         MainUrl='http://video.nationalgeographic.com'
         link=main.OPENURL(murl)
         ok=True

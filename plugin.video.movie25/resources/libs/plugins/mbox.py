@@ -31,7 +31,7 @@ def MAIN():
     main.addDir('Movies','movies',278,art+'/mbox.png')
     main.addDir('TV','tv',278,art+'/mbox.png')
     main.addDir('Music','music',278,art+'/mbox.png')
-    main.GA("Plugin","MBox")
+    #main.GA("Plugin","MBox")
 
 def DownloadAndList(type):
     try: 
@@ -88,7 +88,7 @@ def LIST(type):
         remaining_display = 'Content Cached :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
         dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
         if dialogWait.iscanceled(): break
-    main.GA("Mbox","List")
+    #main.GA("Mbox","List")
     main.VIEWS()
 
 def MUSICLIST(mname,murl):
@@ -109,7 +109,7 @@ def MUSICLIST(mname,murl):
         remaining_display = 'Songs Cached :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
         dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
         if dialogWait.iscanceled(): break
-    main.GA("Mbox","Music")
+    #main.GA("Mbox","Music")
 
 def SEASONS(mname,murl):
     id = murl.split('xoxe')[0]
@@ -195,7 +195,7 @@ def resolveMBLink(url):
     return stream_url
 
 def PLAY(mname,murl,thumb):
-    main.GA("MBox","Watched") 
+    #main.GA("MBox","Watched") 
     stream_url = resolveMBLink(murl)
     r = re.findall('(.+?)\sSeason\s(\d+)\sEpisode\s(\d+)',mname,re.I)
     if r:

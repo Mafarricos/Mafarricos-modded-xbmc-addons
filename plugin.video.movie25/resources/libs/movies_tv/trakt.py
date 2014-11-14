@@ -105,7 +105,7 @@ def showList(cacheOnly = False):
         xbmcgui.Window(10000).clearProperty('Refresh_Trakt')
     else: fields = eval(cached)
     if cacheOnly: return False
-    main.GA("None","Trakt")
+    #main.GA("None","Trakt")
     main.addDir('Search for Shows','TV',430,art+'/search.png')
     main.addDir('All Tracked Shows','TV',431,art+'/sidereel.png')
     showsdisplayed = 0
@@ -146,7 +146,7 @@ def searchShow():
     SEARCHED(surl)
 
 def SEARCHED(surl):
-    main.GA("SideReel","Search")
+    #main.GA("SideReel","Search")
     setCookie()
     import hashlib
     data = {'username':user,'password':hashlib.sha1(passw).hexdigest()}
@@ -158,7 +158,7 @@ def SEARCHED(surl):
 
 
 def trackedShows():
-    main.GA("SideReel","Tracked Shows")
+    #main.GA("SideReel","Tracked Shows")
     setCookie()
     import hashlib
     data = {'username':user,'password':hashlib.sha1(passw).hexdigest()}

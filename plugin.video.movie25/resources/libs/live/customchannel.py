@@ -617,7 +617,7 @@ def listLS(name,url,fanart):
     
     
 def LINK(mname,murl,thumb):
-        main.GA(mname,"Watched")
+        #main.GA(mname,"Watched")
         ok=True
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()

@@ -11,7 +11,7 @@ art = main.art
 prettyName = 'FMA'
     
 def MAINFMA():
-    main.GA("Plugin","FMA")
+    #main.GA("Plugin","FMA")
     main.addDir('Search','http://www.fma.com',646,art+'/search.png')
     main.addDir('All Movies','movies',570,art+'/az.png')
     main.addDir('Latest','http://www.freemoviesaddict.com/',568,art+'/latest.png')
@@ -104,13 +104,13 @@ def SEARCHM(murl):
                     return False   
         dialogWait.close()
         del dialogWait
-        main.GA("FMA","Search")
+        #main.GA("FMA","Search")
 
 def AtoZFMA():
         main.addDir('0-9','http://www.freemoviesaddict.com/movies/letter/123',568,art+'/09.png')
         for i in string.ascii_uppercase:
                 main.addDir(i,'http://www.freemoviesaddict.com/movies/letter/'+i,568,art+'/'+i.lower()+'.png')
-        main.GA("FMA","A-Z")
+        #main.GA("FMA","A-Z")
         main.VIEWSB()
 
 def GENREFMA(murl):
@@ -153,14 +153,14 @@ def LISTFMA(murl):
     paginate = re.compile('<span class="pagination_next"><a class="pagination_link" href="(.+?)">').findall(link)
     if len(paginate)>0:
         main.addDir('Next','http://www.freemoviesaddict.com/'+paginate[0],568,art+'/next2.png')
-    main.GA("FMA","list")
+    #main.GA("FMA","list")
     xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
     main.VIEWS()
 
 
 
 def LINKFMA(mname,murl,thumb,desc):
-        main.GA("FMA","Watched")
+        #main.GA("FMA","Watched")
         sources = []
         ok=True
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)

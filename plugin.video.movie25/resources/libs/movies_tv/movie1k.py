@@ -50,7 +50,7 @@ def LISTTV2(murl):
                             return False   
         dialogWait.close()
         del dialogWait
-        main.GA("TV-INT","Movie1k")
+        #main.GA("TV-INT","Movie1k")
 
 
 def SearchhistoryMovie1k():
@@ -111,11 +111,11 @@ def SEARCHMovie1k(murl):
         match=re.compile('<a class="entry-thumbnails-link" href="(.+?)"><img width=".+?" height=".+?" src="(.+?)" class=".+?" alt="Watch (.+?) Online:.+?',re.DOTALL).findall(link)
         for url,thumb,name in match:
                     main.addPlayc(name,url,31,thumb,'','','','','')
-        main.GA("Movie1k","Search")
+        #main.GA("Movie1k","Search")
 
 def VIDEOLINKST2(mname,murl,thumb):
         sources = []
-        main.GA("Movie1k","Watched")
+        #main.GA("Movie1k","Watched")
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Collecting Hosts,10000)")
         f = re.findall('(.+?) Season (.+?) Episode ([^<]+)',mname,re.I)
         if f:

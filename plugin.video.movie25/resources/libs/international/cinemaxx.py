@@ -84,7 +84,7 @@ def LISTCINEM(murl):
         main.addDir('Next',paginate[0],363,art+'/next2.png')
 
 def LINKSCINEM(mname,murl,thumb,desc):   
-    main.GA("MailRu","Watched")
+    #main.GA("MailRu","Watched")
     xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,5000)")
     link=main.OPENURL(murl)
     ok=True

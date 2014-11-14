@@ -13,7 +13,7 @@ art = main.art
 
 
 def MAINFM():
-        main.GA("Live","181fm")
+        #main.GA("Live","181fm")
         if xbmc.Player().isPlayingAudio():
                 main.addPlayc('[COLOR red]Download Current Track Playing[/COLOR]','dummy', 213 ,art+"hubmusic.png",'','','','','')
                 main.addPlayc('[COLOR red]Search Current Artist Playing[/COLOR]','dummy', 214,art+"hubmusic2.png",'','','','','')
@@ -28,7 +28,7 @@ def MAINFM():
     
 
 def LISTFM(mname,murl):
-        main.GA("181fm","List")
+        #main.GA("181fm","List")
         if xbmc.Player().isPlayingAudio():
                 main.addPlayc('[COLOR red]Download Current Track Playing[/COLOR]','dummy', 213 ,art+"hubmusic.png",'','','','','')
                 main.addPlayc('[COLOR red]Search Current Artist Playing[/COLOR]','dummy', 214,art+"hubmusic2.png",'','','','','')
@@ -40,7 +40,7 @@ def LISTFM(mname,murl):
 
 
 def LINKFM(name,url):
-        main.GA("181fm-"+name,"Watched")
+        #main.GA("181fm-"+name,"Watched")
         link=main.OPENURL(url)
         source = re.compile('<REF HREF="(.+?)"/>').findall(link)
         for stream_url in source:

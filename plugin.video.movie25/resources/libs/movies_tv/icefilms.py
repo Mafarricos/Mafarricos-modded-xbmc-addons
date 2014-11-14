@@ -29,7 +29,7 @@ def ICEMOVIEMAIN(index=False):
     main.addDir('Latest Released','/movies/release/1',282,art+'/icefilms.png',index=index)
     main.addDir('Latest Added','/movies/added/1',282,art+'/icefilms.png',index=index)
     main.addDir('Genre','movies',293,art+'/genre.png',index=index)
-    main.GA("IceFilms","Movie")
+    #main.GA("IceFilms","Movie")
     main.VIEWSB2()
 
 def ICETVMAIN(index=False):
@@ -41,7 +41,7 @@ def ICETVMAIN(index=False):
     main.addDir('Latest Released','/tv/release/1',282,art+'/icefilms.png',index=index)
     main.addDir('Latest Added','/tv/added/1',282,art+'/icefilms.png',index=index)
     main.addDir('Genre','tv',293,art+'/genre.png',index=index)
-    main.GA("IceFilms","TV")
+    #main.GA("IceFilms","TV")
     main.VIEWSB2()
 
 def ICEGENRE(type,index=False):
@@ -101,11 +101,11 @@ def LISTICE(murl,index=False):
     link = cleanHex(link)
     if '/tv/'in murl:
         match=re.compile('<a name=i id=(\d+)></a><img class=star><a href=(/tv[^<]+?)>([^<]+?)</a>(.)*?<br>',re.DOTALL).findall(link)
-        main.GA("TV","IceFilms")
+        #main.GA("TV","IceFilms")
     else:    
         main.addDir('Search for Movies','Movies',286,art+'/search.png')
         match=re.compile('<a name=i id=(\d+)></a><img class=star><a href=(/ip[^>]+?)>([^<]+?)</a>(.)*?<br>',re.DOTALL).findall(link)
-        main.GA("HD","IceFilms")
+        #main.GA("HD","IceFilms")
     dialogWait = xbmcgui.DialogProgress()
     ret = dialogWait.create('Please wait until Movie/Show list is cached.')
     totalLinks = len(match)
@@ -172,7 +172,7 @@ def ICEEPISODES(name,url,index=False):
             return False    
     dialogWait.close()
     del dialogWait
-    main.GA("Episodes","IceFilms")
+    #main.GA("Episodes","IceFilms")
 
 def resolveIceLink(params):
     from t0mm0.common.net import Net as net
@@ -319,13 +319,13 @@ def SearchIceFilms(searchQuery = '',type='Movies',index=False):
         xbmcplugin.endOfDirectory(int(sys.argv[1]), False, False)
         xbmc.executebuiltin("XBMC.Notification(Sorry,No results found,3000)")
         return False 
-    main.GA("IceFilms","Search")
+    #main.GA("IceFilms","Search")
                
 
    
 def PLAYLINK(mname,murl):
     name=main.removeColoredText(mname)
-    main.GA("IceFilms","Watched")
+    #main.GA("IceFilms","Watched")
     ok=True
     infoLabels =main.GETMETAT(mname,'','','')
     video_type='movie'

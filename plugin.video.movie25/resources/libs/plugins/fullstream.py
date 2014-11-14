@@ -22,7 +22,7 @@ def MAINFULLS():
         main.addDir('Séries Tv','http://full-stream.net/seriestv/',787,art+'/dpstreaming.png')
         main.addDir('Séries Tv VF','http://full-stream.net/seriestv/vf/',787,art+'/dpstreaming.png')
         main.addDir('Séries Tv VOSTFR','http://full-stream.net/seriestv/vostfr/',787,art+'/dpstreaming.png')
-        main.GA("INT","fullstream")
+        #main.GA("INT","fullstream")
 
 def SEARCHFULLS():
         keyb = xbmc.Keyboard('', 'Search Movies & Shows')
@@ -79,7 +79,7 @@ def LISTFULLS(murl):
         if len(paginate)>0:
                 main.addDir('Next',paginate[0],787,art+'/next2.png')
                 
-        main.GA("Fullstream","List")
+        #main.GA("Fullstream","List")
 
 def LISTEPISODE(mname,url):
     link=main.OPENURL(url)
@@ -130,7 +130,7 @@ def LINKLIST2(mname,url):
 
 def LINKFULLS(name,murl):
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,3000)")
-        main.GA("fullstream","Watched")
+        #main.GA("fullstream","Watched")
         stream_url = False
         ok=True
         r = re.findall('Season(.+?)Episode([^<]+)',name)

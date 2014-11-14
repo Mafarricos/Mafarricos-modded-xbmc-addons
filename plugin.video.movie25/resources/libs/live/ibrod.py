@@ -14,7 +14,7 @@ from resources.universal import watchhistory
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def USALIST(murl):
-        main.GA("Live","USA Live")
+        #main.GA("Live","USA Live")
         main.addPlayL('AETV','aetv',458,'https://raw.githubusercontent.com/mash2k3/MashupArtwork/master/misc/aetv.png','','','','','',secName='USA Live',secIcon=art+'/usalive.png')
         main.addPlayL('ABC','abc',458,'https://raw.githubusercontent.com/mash2k3/MashupArtwork/master/misc/abc.png','','','','','',secName='USA Live',secIcon=art+'/usalive.png')
         main.addPlayL('HBO','hbo',458,'https://raw.githubusercontent.com/mash2k3/MashupArtwork/master/misc/hbo.png','','','','','',secName='USA Live',secIcon=art+'/usalive.png')
@@ -40,7 +40,7 @@ def USALIST(murl):
                        
             
 def USALINK(mname,murl,thumb):
-        main.GA("USA Live","Watched")
+        #main.GA("USA Live","Watched")
         ok=True
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()

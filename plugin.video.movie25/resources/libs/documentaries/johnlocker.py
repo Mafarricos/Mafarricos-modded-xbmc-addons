@@ -21,7 +21,7 @@ def MAINJL():
         main.addDir('HIGHEST RATED','http://johnlocker.com/home/main',319,art+'/johnlocker.png')
         main.addDir('FEATURED','http://johnlocker.com/home/main',319,art+'/johnlocker.png')
         main.addDir('CATEGORIES','johnlocker',322,art+'/johnlocker.png')
-        main.GA("Documentary","John Locker")
+        #main.GA("Documentary","John Locker")
 
 def CATJL():
     main.addDir('Conspiracy','http://johnlocker.com/component/seyret/category/videos/1',321,art+'/johnlocker.png')
@@ -65,7 +65,7 @@ def LISTJL(mname,murl):
         paginate = re.compile('href="([^<]+)">Next</a>').findall(match)
         if len(paginate)>0:
                 main.addDir('Next',MAINURL+paginate[0],319,art+'/next2.png')               
-        main.GA("John Locker","List")
+        #main.GA("John Locker","List")
         
 def LISTJL2(mname,murl):
         link=main.OPENURL(murl)
@@ -81,12 +81,12 @@ def LISTJL2(mname,murl):
         paginate = re.compile('href="([^<]+)">Next</a>').findall(link)
         if len(paginate)>0:
                 main.addDir('Next',MAINURL+paginate[0],321,art+'/next2.png')
-        main.GA("John Locker","List")
+        #main.GA("John Locker","List")
 
 
 def LINKJL(name,murl,thumb,desc):
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,3000)")
-        main.GA("John Locker","Watched")
+        #main.GA("John Locker","Watched")
         stream_url = False
         ok=True
         link=main.OPENURL(murl)

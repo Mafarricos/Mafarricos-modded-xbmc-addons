@@ -32,7 +32,7 @@ def LISTSP(murl):
         dialogWait.close()
         del dialogWait
         main.CloseAllDialogs()        
-        main.GA("HD","Oneclickwatch")
+        #main.GA("HD","Oneclickwatch")
 
 
 
@@ -61,14 +61,14 @@ def LISTTV3(murl):
                             return False   
         dialogWait.close()
         del dialogWait
-        main.GA("TV","Oneclickwatch")
+        #main.GA("TV","Oneclickwatch")
 
 
 
 
 def PLAYOCW(mname,murl):
         sources=[]
-        main.GA("OneclickwatchT","Watched")
+        #main.GA("OneclickwatchT","Watched")
         ok=True
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()
@@ -136,7 +136,7 @@ def PLAYOCW(mname,murl):
 
 def VIDEOLINKST3(mname,murl):
         sources=[]
-        main.GA("OneclickwatchM","Watched")
+        #main.GA("OneclickwatchM","Watched")
         ok=True
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()

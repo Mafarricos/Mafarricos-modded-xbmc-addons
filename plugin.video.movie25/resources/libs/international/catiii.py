@@ -21,7 +21,7 @@ def MAIN():
     main.addDir('Taiwanese','http://www.catiii.tv/category/other-countries/watch-taiwanese-movies-dramas-online/page/1/',435,art+'/catiii.png')
     main.addDir('Filipino','http://www.catiii.tv/category/other-countries/watch-filipino-movies-dramas-online/page/1/',435,art+'/catiii.png')
     
-    main.GA("INT",prettyName)
+    #main.GA("INT",prettyName)
 
 
 def LIST(murl):
@@ -52,12 +52,12 @@ def LIST(murl):
         nextpage=int(page)+1
         finalpage=re.sub('page/\d+?/', 'page/'+str(nextpage) + '/',murl)
         main.addDir('Page ' + str(page) + ' [COLOR blue]Next Page >>>[/COLOR]',finalpage,435,art+'/next2.png')     
-    main.GA(prettyName,"List")
+    #main.GA(prettyName,"List")
     main.VIEWS()
 
 
 def SEARCH(encode):
-    main.GA(prettyName,"Search")
+    #main.GA(prettyName,"Search")
     encode = main.updateSearchFile('','Movies',searchMsg='Search For Movies')
     if not encode: return False
     surl='http://www.catiii.tv/?s='+encode
@@ -101,7 +101,7 @@ def getlink(murl):
 
 def LINK(name,murl,thumb):
     xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,5000)")
-    main.GA(prettyName,"Watched")
+    #main.GA(prettyName,"Watched")
     stream_url = False
     ok=True
     infoLabels =main.GETMETAT(name,'','',thumb)

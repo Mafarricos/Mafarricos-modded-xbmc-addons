@@ -69,7 +69,7 @@ def LISTSP3(murl):
         main.addDir('Page ' + str(page/subpages) + ' [COLOR blue]Next Page >>>[/COLOR]',str(page+1)+','+str(max),405,art+'/next2.png')
     dialogWait.close()
     del dialogWait
-    main.GA("HD-TV","FilesTube")
+    #main.GA("HD-TV","FilesTube")
     main.VIEWS()
     
 def StartSearch():
@@ -117,10 +117,10 @@ def Search(mname,murl):
         for url,thumb,name in match:
             if not re.findall('HDTV',name):
                 main.addPlayM(name,url,406,thumb,'','','','','')
-    main.GA("FilesTube","Search")
+    #main.GA("FilesTube","Search")
                     
 def LINKSP3(mname,murl):
-    main.GA("FilesTube","Watched")
+    #main.GA("FilesTube","Watched")
     msg = xbmcgui.DialogProgress()
     msg.create('Please Wait!','')
     msg.update(0,'Collecting hosts')

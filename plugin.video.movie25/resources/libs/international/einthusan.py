@@ -22,7 +22,7 @@ def MAINFULLS():
         main.addDir('Hindi','http://www.einthusan.com/index.php?lang=hindi',39,art+'/intl.png')
         main.addDir('Telugu','http://www.einthusan.com/index.php?lang=telugu',39,art+'/intl.png')
         main.addDir('Malayalam','http://www.einthusan.com/index.php?lang=malayalam',39,art+'/intl.png')
-        main.GA("INT","einthusan")
+        #main.GA("INT","einthusan")
         
 def DIRINT(url):
         langID=re.findall('lang=([^<]+)',url)[0]
@@ -33,14 +33,14 @@ def DIRINT(url):
         main.addDir('A-Z bluray','http://www.einthusan.com/bluray/index.php?lang='+langID+'&organize=Alphabetical&filtered=C&org_type=Alphabetical',41,art+'/az2.png')
         main.addDir('Bluray Recently Posted','http://www.einthusan.com/bluray/index.php?lang='+langID+'&organize=Activity&filtered=RecentlyPosted&org_type=Activity',42,art+'/latest2.png')
         main.addDir('Bluray Recently Viewed','http://www.einthusan.com/bluray/index.php?lang='+langID+'&organize=Activity&filtered=RecentlyViewed&org_type=Activity',42,art+'/view2.png')
-        main.GA("DIRINT","einthusan")
+        #main.GA("DIRINT","einthusan")
         
 def AZMOVIES(url):
         langID=re.findall('lang=(.+?)&',url)[0]
         main.addDir('0-9','http://www.einthusan.com/movies/index.php?lang='+langID+'&organize=Alphabetical&filtered=Numerical&org_type=Alphabetical',42,art+'/09.png')
         for i in string.ascii_uppercase:
                 main.addDir(i,'http://www.einthusan.com/movies/index.php?lang='+langID+'&organize=Alphabetical&filtered='+i+'&org_type=Alphabetical',42,art+'/'+i.lower()+'.png')
-        main.GA("einthusan","A-Z Movies")
+        #main.GA("einthusan","A-Z Movies")
         main.VIEWSB()
         
 def AZBLURAY(url):
@@ -48,7 +48,7 @@ def AZBLURAY(url):
         main.addDir('0-9','http://www.einthusan.com/bluray/index.php?lang='+langID+'&organize=Alphabetical&filtered=Numerical&org_type=Alphabetical',42,art+'/09.png')
         for i in string.ascii_uppercase:
                 main.addDir(i,'http://www.einthusan.com/bluray/index.php?lang='+langID+'&organize=Alphabetical&filtered='+i+'&org_type=Alphabetical',42,art+'/'+i.lower()+'.png')
-        main.GA("einthusan","A-Z Bluray")
+        #main.GA("einthusan","A-Z Bluray")
         main.VIEWSB()
         
 def LISTINT(murl):
@@ -80,7 +80,7 @@ def LISTINT(murl):
                     main.addDir('[COLOR blue]Next Page >>>[/COLOR]',MainUrl+'/movies/index.php'+paginate[0],42,art+'/next2.png')
                 else:
                     main.addDir('[COLOR blue]Next Page >>>[/COLOR]',MainUrl+'/bluray/index.php'+paginate[0],42,art+'/next2.png')
-        main.GA("einthusian","List")
+        #main.GA("einthusian","List")
 
 def SEARCHEIN(url):
         keyb = xbmc.Keyboard('', 'Search Movies')
@@ -99,7 +99,7 @@ def SEARCHEIN(url):
                 main.addPlayM(name,MainMovie+url,38,MainMovie+thumb,'','','','','')
 
 def LINKINT(mname,url):
-        main.GA("Einthusan","Watched")
+        #main.GA("Einthusan","Watched")
         ok=True
         MainUrl = "http://www.einthusan.com/movies/"
         link=main.OPENURL(url)

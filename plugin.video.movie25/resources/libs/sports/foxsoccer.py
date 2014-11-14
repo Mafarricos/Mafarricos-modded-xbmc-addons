@@ -20,7 +20,7 @@ def FOXSOC():
         main.addDir('Euro 2012','http://edge4.catalog.video.msn.com/videoByTag.aspx?ff=8a&ind=1&mk=us&ns=Fox%20Sports_Gallery&ps=100&rct=1,3&sf=ActiveStartDate&tag=euro%202012&vs=1&responseEncoding=xml&template=foxsports',125,art+'/foxsoc.png')
 
 def FOXSOCList(murl):
-        main.GA("FoxSoccer","List")
+        #main.GA("FoxSoccer","List")
         link=main.OPENURL(murl)
         match=re.compile('<video xmlns=".+?">(.+?)</video>').findall(link)
         for entry in match:
@@ -30,7 +30,7 @@ def FOXSOCList(murl):
             main.addPlayMs(name[0],entry,126,thumb[0],desc[0],'','','','')
 
 def FOXSOCLink(mname,entry):
-        main.GA("FoxSoccer","Watched")
+        #main.GA("FoxSoccer","Watched")
         ok= True
         low=re.compile('<videoFile formatCode="102".+?<uri>([^<]+)</uri></videoFile>').findall(entry)
         med=re.compile('<videoFile formatCode="103".+?<uri>([^<]+)</uri></videoFile>').findall(entry)

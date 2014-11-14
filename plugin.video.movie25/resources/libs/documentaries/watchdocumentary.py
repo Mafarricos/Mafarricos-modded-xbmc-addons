@@ -14,7 +14,7 @@ art = main.art
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def WATCHDOC():
-        main.GA("Documantary","WatchDocumentary")
+        #main.GA("Documantary","WatchDocumentary")
         main.addDir('Search','watchdoc',164,art+'/search.png')
         main.addDir('Categories','watchdoc',162,art+'/watchdoc.png')
         main.addDir('New Documentaries','new',160,art+'/watchdoc.png')
@@ -22,7 +22,7 @@ def WATCHDOC():
         main.addDir('Top Documentaries of All times','top2',160,art+'/watchdoc.png')
         
 def CATEGORIES():
-        main.GA("WatchDocumentary","Categories")
+        #main.GA("WatchDocumentary","Categories")
         main.addDir('9/11 & London Bombing','http://watchdocumentary.org/browse-911-and-london-bombing-documentaries-1-date.html',163,art+'/folder.png')
         main.addDir('Adventure','http://watchdocumentary.org/browse-adventure-documentaries-1-date.html',163,art+'/folder.png')
         main.addDir('Arts & Artists','http://watchdocumentary.org/browse-arts-documentaries-1-date.html',163,art+'/folder.png')
@@ -74,7 +74,7 @@ def WATCHDOCSearch():
                 main.addDir('[COLOR blue]Next[/COLOR]','http://watchdocumentary.org/'+purl,163,art+'/next2.png')
 
 def WATCHDOCList(murl):
-        main.GA("WatchDocumentary","List")
+        #main.GA("WatchDocumentary","List")
         if murl =='top':
             link=main.OPENURL('http://watchdocumentary.org/top_documentaries/')
             link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
@@ -95,7 +95,7 @@ def WATCHDOCList(murl):
                 main.addPlayMs(name+'   [COLOR red]Views: '+views+'[/COLOR]',url,161,thumb,'','','','','')
                 
 def WATCHDOCList2(murl):
-        main.GA("WatchDocumentary","List")
+        #main.GA("WatchDocumentary","List")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         match=re.compile('<a href="([^<]+)" title="([^<]+)"><img src="([^<]+)"  alt=').findall(link)
@@ -107,7 +107,7 @@ def WATCHDOCList2(murl):
                 main.addDir('[COLOR blue]Next[/COLOR]','http://watchdocumentary.org/'+purl,163,art+'/next2.png')
 
 def WATCHDOCLink(mname,murl,thumb):
-        main.GA("WatchDocumentary","Watched")
+        #main.GA("WatchDocumentary","Watched")
         ok=True
         infoL={'Title': mname, 'Genre': 'Watch Documentary'}
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Link,3000)")

@@ -15,7 +15,7 @@ art = main.art
 
 
 def Vice(murl):
-    main.GA("Documentary","Vice")
+    #main.GA("Documentary","Vice")
     link=main.OPENURL(murl)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
     match=re.compile('<a class=".+?" href="(.+?)"><img width=".+?" height=".+?" src="(.+?)" /></a>    <h2><a href=".+?">(.+?)</a></h2>    <p>(.+?)</p>').findall(link)
@@ -24,7 +24,7 @@ def Vice(murl):
         main.addDirc(name,url,105,thumb,desc,'','','','')
 
 def ViceList(murl):
-    main.GA("Vice","Vice-list")
+    #main.GA("Vice","Vice-list")
     link=main.OPENURL(murl)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('  ','')
     match=re.compile('''<a data-id=".+?" href="([^"]+)" onClick=".+?"><div class="media"><img src="(.+?)" alt="">.+?</p><h3>(.+?)</h3>''').findall(link)
@@ -33,7 +33,7 @@ def ViceList(murl):
         main.addPlayMs(name,url,106,thumb,'','','','','')
 
 def ViceLink(mname,murl,thumb2):
-    main.GA("Vice","Watched")
+    #main.GA("Vice","Watched")
     xbmc.executebuiltin("XBMC.Notification(Please Wait!,Playing Link,5000)")
     link=main.OPENURL(murl)
     ok=True

@@ -82,7 +82,7 @@ def LISTSP2(murl):
                 main.addDir('Page ' + str(page/subpages+1) + ' [COLOR blue]Next Page >>>[/COLOR]',murl + "-" + str(page/subpages+1) + "," + str(max),34,art+'/next2.png')
             dialogWait.close()
             del dialogWait
-    main.GA("HD-3D-HDTV","Newmyvideolinks")
+    #main.GA("HD-3D-HDTV","Newmyvideolinks")
     main.VIEWS()
 
 def SearchhistoryNEW(murl):
@@ -183,7 +183,7 @@ def SEARCHNEW(mname,murl):
                     name=main.CleanTitle(name)
                     if not re.findall('HDTV',name):
                         main.addDirM(name,url,35,thumb,'','','','','')
-    main.GA("Newmyvideolinks","Search")
+    #main.GA("Newmyvideolinks","Search")
     
 def LINKSP2(mname,url):
     link=main.OPENURL(url)
@@ -213,7 +213,7 @@ def LINKSP2(mname,url):
                 main.addDown2(main.CleanTitle(mname)+' [COLOR blue]'+name+'[/COLOR]',murl,209,art+'/hosts/'+thumb+".png",art+'/hosts/'+thumb+".png")
 
 def LINKSP2B(mname,murl):
-    main.GA("Newmyvideolinks","Watched") 
+    #main.GA("Newmyvideolinks","Watched") 
     ok=True
     r = re.findall('(.+?)\ss(\d+)e(\d+)\s',mname,re.I)
     if r:
@@ -269,4 +269,4 @@ def UFCNEW():
                 match=re.compile('UFC').findall(name)
                 if len(match)>0:
                     main.addDir(name,url,35,thumb)
-    main.GA("Newmyvideolinks","UFC")
+    #main.GA("Newmyvideolinks","UFC")

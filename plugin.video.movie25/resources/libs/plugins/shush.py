@@ -72,7 +72,7 @@ def getLINK(code):
     return x.decrypt(code,base64.urlsafe_b64decode('djRBdVhhalplRm83akFNZ1VOWkI='),'ECB').split('\0')[0];
     
 def LINK(mname,murl,thumb):
-        main.GA(mname,"Watched")
+        #main.GA(mname,"Watched")
         ok=True
         code=re.search('proxy.link=shush*(.+?)&logo',main.OPENURL(murl))
         murl=getLINK(code.group(1).replace('*',''))

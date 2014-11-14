@@ -14,7 +14,7 @@ art = main.art
 wh = watchhistory.WatchHistory('plugin.video.movie25')
     
 def GLOBALBC():
-        main.GA("Plugin","GlobalBC")
+        #main.GA("Plugin","GlobalBC")
         #main.addDir('Search Global BC','gbc',170,art+'/search.png')
         main.addDir('Latest Local Video','http://globalnews.ca/bc/videos/',166,art+'/globalbc.png')
         main.addDir('Latest National Video','http://globalnews.ca/national/videos/',166,art+'/globalbc.png')
@@ -67,7 +67,7 @@ def GLOBALBCList2(murl):
                         
         
 def GLOBALBCList(murl):
-        main.GA("GlobalBC","List")
+        #main.GA("GlobalBC","List")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         match=re.compile('<a class=".+?" href="([^<]+)" title="([^<]+)" data-vid_id=".+?"><img src="http://en.wordpress.com/imgpress.?url=([^<]+)w=300" alt=".+?"><div><h4>([^<]+)</h4>').findall(link)
@@ -77,7 +77,7 @@ def GLOBALBCList(murl):
 
 
 def GLOBALBCLink(mname,murl):
-        main.GA("GlobalBC","Watched")
+        #main.GA("GlobalBC","Watched")
         match=re.compile('http://media.globalnews.ca/videothumbnails/(.+?)_2.+?_.+?.jpg').findall(murl)
         if len(match)==0:
                 match=re.compile('http://media.globalnews.ca/videothumbnails/(.+?)_6.+?_.+?.jpg').findall(murl)

@@ -14,7 +14,7 @@ art = main.art
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def MAINFB():
-    main.GA("Sports","FitnessBlender")   
+    #main.GA("Sports","FitnessBlender")   
     main.addDir('Body Focus','bf',199,art+'/fitnessblender.png')
     main.addDir('Difficulty','bf',200,art+'/fitnessblender.png')
     main.addDir('Training Type','bf',201,art+'/fitnessblender.png')
@@ -47,7 +47,7 @@ def TRAINFB():
     main.addDir('Yoga/Stretching/Flexibility','http://www.fitnessblender.com/v/full-length-workouts/?all=1p=1&str=&time_min=&time_max=&cal_min=&cal_max=&difficulty[]=&type[]=3b&equipment[]=&body_focus[]=',202,art+'/fitnessblender.png')
 
 def LISTBF(murl):
-    main.GA("FitnessBlender","List")   
+    #main.GA("FitnessBlender","List")   
     link=main.OPENURL(murl)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('–','-')
     main.addLink("[COLOR red]Body Focus   [/COLOR]"+"[COLOR yellow]Calorie Burn   [/COLOR]"+"[COLOR blue]Difficulty   [/COLOR]"+"[COLOR green]Duration[/COLOR]",'','')
@@ -57,7 +57,7 @@ def LISTBF(murl):
 
 def LINKBB(mname,murl,thumb):
     ok=True
-    main.GA("FitnessBlender","Watched")
+    #main.GA("FitnessBlender","Watched")
     link=main.OPENURL(murl)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('–','-')
     match=re.compile('src="http://www.youtube.com/embed/(.+?).?rel').findall(link)

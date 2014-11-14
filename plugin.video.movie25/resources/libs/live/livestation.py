@@ -14,7 +14,7 @@ from resources.universal import watchhistory
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def LivestationList(murl):
-        main.GA("Live","Livestation")
+        #main.GA("Live","Livestation")
         link=main.OPENURL('http://www.livestation.com/en/channels')
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         match=re.compile('''<a href="([^"]+?)" class=".+?" data-action=".+?<img alt=".+?" itemprop=".+?" src="([^"]+?)" title="([^"]+?)" /></a>(.+?)<div id='channel_description'><p>([^<]+?)</p></div>''').findall(link)
@@ -36,7 +36,7 @@ def LivestationLink(mname,murl,thumb):
                 LivestationLink2(mname,match[0],thumb)
             
 def LivestationLink2(mname,murl,thumb):
-        main.GA("Livestation-"+mname,"Watched")
+        #main.GA("Livestation-"+mname,"Watched")
         ok=True
         namelist=[]
         urllist=[]

@@ -65,7 +65,7 @@ def VIP(murl):
                         popup=re.compile('<popup><name>([^<]+)</name.+?popImage>([^<]+)</popImage.+?thumbnail>([^<]+)</thumbnail></popup>').findall(link)
                         for name,image,thumb in popup:
                                 main.addPlayc(name,image,244,thumb,'',fan,'','','')
-                        main.GA("Vip++",vip+"-Directory")
+                        #main.GA("Vip++",vip+"-Directory")
                      else:
                         xbmc.executebuiltin("XBMC.Notification(VIP++,Login failed.,3000,"+smalllogo+")")
                         print 'VIP++ Account: login failed'
@@ -121,7 +121,7 @@ def VIPList(murl):
                         return False   
         dialogWait.close()
         del dialogWait
-        main.GA(vip+"-Directory",vip+"-Playlist")
+        #main.GA(vip+"-Directory",vip+"-Playlist")
         
 def subLink(mname,suburl):
         match=re.compile('<sublink>(.+?)</sublink>').findall(suburl)
@@ -158,7 +158,7 @@ def valid_host(host):
             return False
 
 def MLink(mname,murl,thumb):
-        main.GA(mname,"Watched")
+        #main.GA(mname,"Watched")
         ok=True
         stream_url = False
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Link,5000)")

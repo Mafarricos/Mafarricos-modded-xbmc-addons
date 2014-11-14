@@ -13,7 +13,7 @@ art = main.art
 
 
 def COUNTRIES():
-        main.GA("Live","Countries")
+        #main.GA("Live","Countries")
         link=main.OPENURL('https://raw.github.com/crusader88/MashUpStreams/master/countries.xml')
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('type=playlistname=Sorted by user-assigned order','').replace('name=Sorted [COLOR=FF00FF00]by user-assigned order[/COLOR]','').replace('name=Live Tv Channels Twothumb','')
         match=re.compile('<name>(.+?)</name><link>(.+?)</link><thumbnail>(.+?)</thumbnail>').findall(link)
@@ -21,7 +21,7 @@ def COUNTRIES():
             main.addDir(name,url,144,thumb)
         main.VIEWSB()
 def COUNTRIESList(mname,murl):
-        main.GA("Countries-"+mname,"Watched")
+        #main.GA("Countries-"+mname,"Watched")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('type=playlistname=Sorted by user-assigned order','').replace('name=Sorted [COLOR=FF00FF00]by user-assigned order[/COLOR]','').replace('name=Live Tv Channels Twothumb','')
         match=re.compile('<title>([^<]+)</title.+?link>(.+?)</link.+?thumbnail>([^<]+)</thumbnail>',re.DOTALL).findall(link)

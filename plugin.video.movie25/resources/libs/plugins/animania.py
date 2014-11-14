@@ -12,7 +12,7 @@ smalllogo=art+'/smallicon.png'
 
 
 def MAIN():
-    main.GA("Plugin","Animania")
+    #main.GA("Plugin","Animania")
     main.addDir('Search','http://www.dubzonline.net/anime-list/',349,art+'/search.png')
     main.addDir('Movies','dramania',344,art+'/animania.png')
     main.addDir('Series','dramania',348,art+'/animania.png')
@@ -55,7 +55,7 @@ def SEARCH():
                         main.addDirM(str(data["name"].encode('utf-8'))+' [COLOR red]'+str(data["rating"])+'/10[/COLOR] [COLOR blue]'+str(data["released"])+'[/COLOR]','http://api.animeplus.tv/GetDetails/'+str(data["id"]),346,'http://www.animeplus.tv/images/series/big/'+str(data["id"])+'.jpg',str(data["description"].encode('utf-8')),'','',genre,'')
     else:
         return
-    main.GA("Animania","Search")
+    #main.GA("Animania","Search")
                         
 def LIST(murl):
     link=main.OPENURL(murl)
@@ -79,7 +79,7 @@ def LIST(murl):
         dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
         if (dialogWait.iscanceled()):
             return False
-    main.GA("Animania","List")
+    #main.GA("Animania","List")
 
 def LISTEPISODES(name,murl,thumb):
     link=main.OPENURL(murl)
@@ -228,7 +228,7 @@ def getLink(links):
 
 def PLAY(mname,murl,thumb):
 
-        main.GA("Animania","Watched") 
+        #main.GA("Animania","Watched") 
         ok=True
         
         r = re.findall('(.+?)\ss(\d+)e(\d+)\s',mname,re.I)

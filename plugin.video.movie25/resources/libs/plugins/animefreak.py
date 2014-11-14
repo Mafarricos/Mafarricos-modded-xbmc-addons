@@ -19,11 +19,11 @@ def AtoZ():
         main.addDir('#','http://www.animefreak.tv/book',629,art+'/09.png')
         for i in string.ascii_uppercase:
             main.addDir(i,'http://www.animefreak.tv/book',629,art+'/'+i.lower()+'.png')
-        main.GA("Tvshows","A-ZTV")
+        #main.GA("Tvshows","A-ZTV")
         main.VIEWSB()
 
 def MAIN():
-        main.GA("Plugin","AnimeFreak")
+        #main.GA("Plugin","AnimeFreak")
         main.addDir('Search','http://www.animefreak.tv',638,art+'/search.png')
         main.addDir('A-Z','http://www.animefreak.tv',628,art+'/AZ.png')
         main.addDir('Genre','http://www.animefreak.tv/browse',634,art+'/genre.png')
@@ -135,7 +135,7 @@ def LIST(mname,murl):
 
 
 def LIST2(mname,murl,thumb,desc):
-        main.GA("AnimeFreak","List")
+        #main.GA("AnimeFreak","List")
         link=main.OPENURL(murl)
         link=main.unescapes(link)
         match = re.compile("""onClick="javascript:loadParts.?\'(.+?)', \'\'.?" class="multi">(.+?)</a>""").findall(link)
@@ -328,7 +328,7 @@ def LINK(mname,murl,thumb,desc):
         # play with bookmark
         player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=mname,season='', episode='', year='',img=thumb,infolabels=infoL, watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
         #WatchHistory
-        main.GA("AnimeFreak","Watched")
+        #main.GA("AnimeFreak","Watched")
         if selfAddon.getSetting("whistory") == "true":
             wh.add_item(mname+' '+'[COLOR green]AFTv[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
         player.KeepAlive()

@@ -39,7 +39,6 @@ def YOUKIDS():
     main.addDir('Timon and Pumbaa','timonandpumbaa1',47,art+'/youkids.png')
     main.addDir('Dragon Tales','DejectedDragon',47,art+'/youkids.png')
     main.addDir('Aladdin','aladdinvids',47,art+'/youkids.png')
-    main.GA("KidZone","YoutubeKids")
     main.VIEWSB()
 
 def YOUList(mname,durl):
@@ -58,11 +57,9 @@ def YOUList(mname,durl):
                 i=int(page)+50
                 purl='http://gdata.youtube.com/feeds/api/users/'+id+'/uploads?start-index='+str(i)+'&max-results=50'
                 main.addDir('[COLOR blue]Next[/COLOR]',purl,47,art+'/next2.png')
-        main.GA(mname,"Youtube-List")
 
 def YOULink(mname,url,thumb):
         ok=True
-        main.GA("Youtube-List","Watched")
         url = "plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid="+url+"&hd=1"
         stream_url = url
         # play with bookmark

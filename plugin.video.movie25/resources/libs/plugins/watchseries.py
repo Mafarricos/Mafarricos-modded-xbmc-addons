@@ -19,11 +19,11 @@ def MAINWATCHS(index=False):
         main.addDir('This Weeks Popular Episodes','http://watchseries.ag/new',573,art+'/thisweek.png',index=index)
         main.addDir('Newest Episodes Added','http://watchseries.ag/latest',573,art+'/newadd.png',index=index)
         main.addDir('By Genre','genre',583,art+'/genre.png',index=index)
-        main.GA("Plugin","Watchseries")
+        #main.GA("Plugin","Watchseries")
         main.VIEWSB()
 
 def POPULARWATCHS(murl,index=False):
-        main.GA("Watchseries","PopularShows")
+        #main.GA("Watchseries","PopularShows")
         link=main.OPENURL2(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         
@@ -65,18 +65,18 @@ def GENREWATCHS(index=False):
         main.addDir('Talk Show','http://watchseries.ag/genres/talk-show',576,art+'/tals.png',index=index)
         main.addDir('Thriller','http://watchseries.ag/genres/thriller',576,art+'/thr.png',index=index)
         main.addDir('War','http://watchseries.ag/genres/war',576,art+'/war.png',index=index)
-        main.GA("Watchseries","Genre")
+        #main.GA("Watchseries","Genre")
         main.VIEWSB()
 
 def AtoZWATCHS(index=False):
     main.addDir('0-9','http://watchseries.ag/letters/09',576,art+'/09.png',index=index)
     for i in string.ascii_uppercase:
             main.addDir(i,'http://watchseries.ag/letters/'+i.lower()+'/list-type/a_z',576,art+'/'+i.lower()+'.png',index=index)
-    main.GA("Watchseries","A-Z")
+    #main.GA("Watchseries","A-Z")
     main.VIEWSB()
 
 def LISTWATCHS(murl,index=False):
-        main.GA("Watchseries","List")
+        #main.GA("Watchseries","List")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','')
         match=re.compile('<a class=".+?" title=".+?" href="(.+?)">.+?</span>(.+?)</a>').findall(link)
@@ -112,7 +112,7 @@ def LISTWATCHS(murl,index=False):
         del dialogWait
 
 def LISTSHOWWATCHS(murl,index=False):
-        main.GA("Watchseries","List")
+        #main.GA("Watchseries","List")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','')
         match=re.compile('<a title="(.+?)" href="(.+?)">.+?<span class="epnum">(.+?)</span></a>').findall(link)
@@ -235,7 +235,7 @@ def SEARCHWS(murl = '',index=False):
         match=re.compile('<a title=".+?" href="([^<]+)"><b>(.+?)</b></a>                <br>                <b>Description:</b>(.+?)</td></tr>            <tr></tr>            <tr><td valign="top">                <a title=".+?<img src="(.+?)">               </a>',re.DOTALL).findall(link)
         for url,name,desc,thumb in match:
                 main.addDirT(name,'http://watchseries.ag'+url,578,thumb,desc,'','','','',index=index)
-        main.GA("Watchseries","Search")
+        #main.GA("Watchseries","Search")
 
 def LISTHOST(name,murl):
         link=main.OPENURL(murl)
@@ -352,7 +352,7 @@ def geturl(murl):
                 return match[0]
 
 def LINKWATCHS(mname,murl):
-        main.GA("Watchseries","Watched")
+        #main.GA("Watchseries","Watched")
         ok=True
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()

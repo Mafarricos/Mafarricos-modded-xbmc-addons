@@ -15,7 +15,7 @@ art = main.art
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 MainUrl='http://www.viki.com'
 def VIKIMAIN():
-    main.GA("Plugin","Dramania")
+    #main.GA("Plugin","Dramania")
     main.addDir('Search','viki',485,art+'/search.png')
     main.addDir('Movies','Movies',479,art+'/intl.png')
     main.addDir('Shows','dramania',479,art+'/intl.png')
@@ -31,7 +31,7 @@ def VIKICAT(murl):
         main.addDir('New Shows','http://www.viki.com/tv/browse?sort=latest',480,art+'/intl.png')
         main.addDir('By Genre','genreT',484,art+'/intl.png')
         main.addDir('By Country','countryT',484,art+'/intl.png')
-    main.GA("DIRINT","Viki")
+    #main.GA("DIRINT","Viki")
 
 def SEARCHVIKI():
         dialog = xbmcgui.Dialog()
@@ -119,7 +119,7 @@ def LISTVIKIT(murl):
         paginate = re.compile("(?sim)<a class='page-link' rel='next' href='([^']+)'>Next &rarr;</a>").findall(link)
         if len(paginate)>0:
                 main.addDir('[COLOR blue]Next Page >>>[/COLOR]',MainUrl+paginate[0],480,art+'/next2.png')
-        main.GA("Viki","List")
+        #main.GA("Viki","List")
 
 def LISTVIKIM(murl):
         html = main.OPENURL(murl)
@@ -149,7 +149,7 @@ def LISTVIKIM(murl):
         paginate = re.compile("(?sim)<a class='page-link' rel='next' href='([^']+)'>Next &rarr;</a>").findall(link)
         if len(paginate)>0:
                 main.addDir('[COLOR blue]Next Page >>>[/COLOR]',MainUrl+paginate[0],483,art+'/next2.png')
-        main.GA("Viki","List")
+        #main.GA("Viki","List")
 
 def LISTVIKIEPI(murl):
         html = main.OPENURL(murl)
@@ -173,7 +173,7 @@ def LISTVIKIEPI(murl):
         del dialogWait
 
 def LINKINT(mname,url,thumb):
-        main.GA("Viki","Watched")
+        #main.GA("Viki","Watched")
         ok=True
         id = re.findall("(?sim)/videos/(\d+v)",url)[0]
         link=main.OPENURL('http://www.viki.com/player5_fragment/'+id)

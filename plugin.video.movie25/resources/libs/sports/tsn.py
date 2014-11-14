@@ -21,11 +21,8 @@ def TSNDIR():
         #main.addDir('NBA','nba',97,art+'/tsn.png')
         main.addDir('CFL','http://m.tsn.ca/cfl?p_p_id=feed_WAR_xlmagic_INSTANCE_8WBz&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_resource_id=getPage&p_p_cacheability=cacheLevelPage&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=3&_feed_WAR_xlmagic_INSTANCE_8WBz_page=0&_feed_WAR_xlmagic_INSTANCE_8WBz_portrait=false',97,art+'/tsn.png')
         main.addDir('MLB','http://m.tsn.ca/mlb?p_p_id=feed_WAR_xlmagic_INSTANCE_5wRo&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_resource_id=getPage&p_p_cacheability=cacheLevelPage&p_p_col_id=column-1&p_p_col_pos=2&p_p_col_count=3&_feed_WAR_xlmagic_INSTANCE_5wRo_page=0&_feed_WAR_xlmagic_INSTANCE_5wRo_portrait=false',97,art+'/tsn.png')
-        main.GA("Sports","TSN")
-        
 
 def TSNLIST(murl):
-        main.GA("TSN","TSN-list")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('  ','')
         match=re.compile('''href="([^"]+)"><span class="tileText"><span class="overlay"><img src="([^"]+)" style=.+?/><img class="videoOverlay" src=".+?" /></span><span class=".+?" style=".+?">([^<]+)</span></span>''').findall(link)
@@ -40,7 +37,6 @@ def TSNLIST(murl):
 
 def TSNLINK(mname,murl,thumb):
         #got help from TSN plugin by TEEFER
-        main.GA("TSN-list","Watched")
         ok=True
         link=main.OPENURL(murl)
         m3u8 = re.compile('"(http[^"]+m3u8)"').findall(link)[0]

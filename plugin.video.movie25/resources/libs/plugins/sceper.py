@@ -10,14 +10,14 @@ art = main.art
 prettyName = 'Sceper'
 
 def MAINSCEPER():
-        main.GA("Plugin","Sceper")
+        #main.GA("Plugin","Sceper")
         main.addDir('Search Movies & TV Shows','s',543,art+'/search.png')
         main.addDir('Movies','movies',540,art+'/sceperm.png')
         main.addDir('Tv Shows','tvshows',540,art+'/scepert.png')
         main.VIEWSB2()
 def MORTSCEPER(murl):
         if murl=='movies':
-            main.GA("Sceper","Movies")
+            #main.GA("Sceper","Movies")
             main.addDir('All Movies','http://sceper.ws/home/category/movies',541,art+'/sceperm.png')
             main.addDir('Cartoons','http://sceper.ws/home/category/movies/cartoons',541,art+'/sceperm.png')
             main.addDir('Foreign Movies','http://sceper.ws/home/category/movies/movies-foreign',541,art+'/sceperm.png')
@@ -28,7 +28,7 @@ def MORTSCEPER(murl):
             main.addDir('DVD Screener Movies','http://sceper.ws/home/category/movies/movies-screener/movies-screener-dvd',531,art+'/sceperm.png')
             main.addDir('R5 Movies','http://sceper.ws/home/category/movies/movies-r5',541,art+'/sceperm.png')
         elif murl=='tvshows':
-            main.GA("Sceper","Tv")
+            #main.GA("Sceper","Tv")
             main.addDir('All TV Shows','http://sceper.ws/home/category/tv-shows',545,art+'/scepert.png')
             main.addDir('Anime/Cartoon TV Shows','http://sceper.ws/home/category/tv-shows/animes',545,art+'/scepert.png')
             main.addDir('HDTV 720p TV Shows','http://sceper.ws/home/category/tv-shows/tv-shows-x264',545,art+'/scepert.png')
@@ -63,7 +63,7 @@ def processTitle(title,quality):
     return quality.strip()
             
 def LISTSCEPER(name,murl):
-    main.GA("Sceper","List")
+    #main.GA("Sceper","List")
     link=main.OPENURL(murl, timeout = 10,cookie="sceper")
     if "setCookie(" in link:
         import time
@@ -190,7 +190,7 @@ def superSearch(encode,type):
     except: return []            
         
 def SEARCHSCEPER(murl = ''):
-        main.GA("Sceper","Search")
+        #main.GA("Sceper","Search")
         encode = main.updateSearchFile(murl,'Movies',searchMsg='Search For Movies or TV Shows')
         if not encode: return False   
         surl='http://sceper.ws/search/'+encode+'/'
@@ -208,7 +208,7 @@ def SEARCHSCEPER(murl = ''):
         
 
 def VIDEOLINKSSCEPER(mname,murl,thumb):
-        main.GA("Sceper","Watched")
+        #main.GA("Sceper","Watched")
         msg = xbmcgui.DialogProgress()
         msg.create('Please Wait!','')
         msg.update(0,'Collecting hosts')

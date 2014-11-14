@@ -704,7 +704,7 @@ def _parse_channels_from_html_dom(html):
     return items
 
 def MAIN():
-    main.GA("Live","ArabicStreams")
+    #main.GA("Live","ArabicStreams")
     items = _parse_channels_from_html_dom('http://www.teledunet.com/')
     for channels in sorted(items):
         main.addPlayL(channels['title'],channels['path'],232,channels['thumbnail'],'','','','','',secName='Arabic Streams',secIcon=art+'/arabicstream.png')
@@ -731,7 +731,7 @@ def _get_channel_time_player(channel_name):
 
         
 def LINK(mname,url,thumb):
-        main.GA("ArabicStreams","Watched")
+        #main.GA("ArabicStreams","Watched")
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Stream,3000)")
         stream_url = _get_channel_time_player(url)
         ok=True

@@ -67,7 +67,7 @@ def LISTSTREAMS(mname,murl):
     for live,thumb in match3:
         main.addPlayc(mname+' [COLOR blue]Home LIVE[/COLOR]',live+'x0xe'+str(murl),396,thumb,'','','','','')
 def LINK(mname,murl,thumb):
-        main.GA(mname,"Watched")
+        #main.GA(mname,"Watched")
         ok=True
         namelist=[]
         urllist=[]

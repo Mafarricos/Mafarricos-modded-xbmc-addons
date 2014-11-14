@@ -49,7 +49,7 @@ def NBMAIN():
     main.addDir('Release Date','/year.php',57,art+'/noobroom.png')
     main.addDir('IMDB Rating','/rating.php',57,art+'/noobroom.png')
     main.addDir('Genre','genre',297,art+'/genre.png')
-    main.GA("Plugins","Noobroom")
+    #main.GA("Plugins","Noobroom")
 
 def AtoZNB():
     nrDomain = GetNewUrl()
@@ -93,7 +93,7 @@ def AZLISTNB(murl):
             return False    
     dialogWait.close()
     del dialogWait
-    main.GA("Noobroom","List")
+    #main.GA("Noobroom","List")
     main.VIEWS()
 
 def NBGENRE():
@@ -118,7 +118,7 @@ def NBGENRE():
     main.addDir('Thriller','/genre.php?b=00000000000000000000000100',57,art+'/thr.png')
     main.addDir('War','/genre.php?b=00000000000000000000000010',57,art+'/war.png')
     main.addDir('Western','/genre.php?b=00000000000000000000000001',57,art+'/west.png')
-    main.GA("Noobroom","Genre")
+    #main.GA("Noobroom","Genre")
     main.VIEWSB()
 
 def NBSearchhistory():
@@ -210,7 +210,7 @@ def LISTSP5(xurl, retries = 1):
         if dialogWait.iscanceled(): break
     dialogWait.close()
     del dialogWait
-    main.GA("Noobroom","List")
+    #main.GA("Noobroom","List")
     main.VIEWS()
         
 def fix_title(name):
@@ -252,7 +252,7 @@ def find_noobroom_video_url(page_url):
     return myhr.video_url
             
 def LINKSP5(mname,url):
-    main.GA("Noobroom","Watched")
+    #main.GA("Noobroom","Watched")
     ok=True
     try:
         mname  = mname.replace('[COLOR red]','').replace('[/COLOR]','')

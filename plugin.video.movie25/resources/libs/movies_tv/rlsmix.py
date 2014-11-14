@@ -63,7 +63,7 @@ def ListDirectDownloadTVItems(startpage):
     strpage = str((int(startpage))/(20*subpages)+1)
     if count == subpages * 20:
         main.addDir('Page ' + strpage + ' [COLOR blue]Next Page >>>[/COLOR]',str(page)+mytag,61,art+'/next2.png')
-    main.GA("TV","DirectDownloadTV")
+    #main.GA("TV","DirectDownloadTV")
          
 def setCookie():
     from t0mm0.common.net import Net as net
@@ -265,10 +265,10 @@ def SearchDirectDownloadTV(searchQuery = ''):
     else:
         xbmcplugin.endOfDirectory(int(sys.argv[1]), False, False)
         xbmc.executebuiltin("XBMC.Notification(Sorry,Could not connect to DirectDownloadTV,3000)") 
-    main.GA("DirectDownloadTV","Search")
+    #main.GA("DirectDownloadTV","Search")
 
 def PlayDirectDownloadTVLink(mname,murl):
-    main.GA("DirectDownloadTV","Watched")
+    #main.GA("DirectDownloadTV","Watched")
     ok=True
     infoLabels =main.GETMETAEpiT(mname,'','')
     video_type='episode'

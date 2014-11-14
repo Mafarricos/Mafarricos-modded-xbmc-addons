@@ -27,7 +27,7 @@ def LIST(url):
         main.addPlayL(name,url,445,'','','','','','',secName='SportsPack',secIcon=art+'/spo.png')
 
 def LINK(mname,murl,thumb):
-        main.GA("SportsPack","Watched")
+        #main.GA("SportsPack","Watched")
         stream_url=False
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Stream,3000)")
         ok=True

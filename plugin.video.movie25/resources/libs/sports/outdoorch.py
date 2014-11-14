@@ -52,24 +52,24 @@ def OC():
         main.addDir('Off Road','http://feed.theplatform.com/f/MTQ3NTE2MjMwOA/swTdEQGW9CKd?byCategories=Outdoor%20Channel/Off-Road',51,art+'/OC.png')
         main.addDir('Adventure','http://feed.theplatform.com/f/MTQ3NTE2MjMwOA/swTdEQGW9CKd?byCategories=Outdoor%20Channel/Adventure',51,art+'/OC.png')
         main.addDir('Conservation','http://feed.theplatform.com/f/MTQ3NTE2MjMwOA/swTdEQGW9CKd?byCategories=Outdoor%20Channel/Conservation',51,art+'/OC.png')
-        main.GA("Sports","OutChannel")
+        #main.GA("Sports","OutChannel")
 
 def OCList(murl):
         link=main.OPENURL(murl)
         match=re.compile('<item>.+?<title>([^<]+)</title><description>(.+?)</description>.+?<plrelease:url>(.+?)</plrelease:url>.+?<plmedia:defaultThumbnailUrl>(.+?)</plmedia:defaultThumbnailUrl>',re.DOTALL).findall(link)
         for name,desc,url,thumb in match:
                 main.addPlayMs(name,url,52,thumb,desc,'','','','')
-        main.GA("Sports","OC-List")
+        #main.GA("Sports","OC-List")
 
 def OTVList(murl):
         link=main.OPENURL(murl)
         match=re.compile('<item>.+?<title>([^<]+)</title><description>(.+?)</description>.+?url="(.+?)".+?<plmedia:defaultThumbnailUrl>(.+?)</plmedia:defaultThumbnailUrl>',re.DOTALL).findall(link)
         for name,desc,url,thumb in match:
                 main.addPlayMs(name,url,52,thumb,desc,'','','','')
-        main.GA("Sports","OC-List")
+        #main.GA("Sports","OC-List")
 
 def OCLink(mname,url,thumb,desc):
-        main.GA("OC-List","Watched")
+        #main.GA("OC-List","Watched")
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Link,5000)")
         link=main.OPENURL(url)
         ok=True

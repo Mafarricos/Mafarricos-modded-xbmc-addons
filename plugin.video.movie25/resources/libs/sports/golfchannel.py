@@ -15,12 +15,12 @@ wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 
 def MAIN():
-        main.GA("Sports","GolfChannel")
+        #main.GA("Sports","GolfChannel")
         main.addDir('Full Episodes','http://www.golfchannel.com/tv/?WOtab=#watchOnlineTab',218,art+'/golfchannel.png')
         main.addDir('Featured Videos','http://www.golfchannel.com/search/?&q=&submitSearch=+&mediatype=Video',221,art+'/golfchannel.png')
 
 def LIST(murl):
-        main.GA("GolfChannel","List")
+        #main.GA("GolfChannel","List")
         link=main.OPENURL(murl)
         link=main.unescapes(link)
         match = re.compile('<div class="field-content"><a href=".+?"><img typeof="foaf:Image" src="([^<]+)" width=".+?" height=".+?" /></a></div>  </div>    <div class=".+?<a href=".+?">(.+?)</a></span>  </div>    <div class=".+?<div class="field-content">(.+?)</div>  </div>    <div class=".+?<li class="views-row views-row-1 views-row-odd views-row-first">(.+?)<div class="clearfix"></div>',re.DOTALL).findall(link)
@@ -44,7 +44,7 @@ def LIST3(murl):
 
 
 def LIST2(mname,murl,thumb,desc):
-        main.GA("GolfChannel","List")
+        #main.GA("GolfChannel","List")
         match = re.compile('<a href="([^<]+)">([^<]+)</a>').findall(murl)
         for url,name in match:
             main.addPlayMs(mname+" [COLOR red]"+name+"[/COLOR]",'http://www.golfchannel.com'+url,220,thumb,'','','','','')
@@ -83,7 +83,7 @@ def LINK(mname,murl,thumb):
                     # play with bookmark
                     player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=mname,season='', episode='', year='',img=thumb,infolabels=infoL, watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
                     #WatchHistory
-                    main.GA("GolfChannel","Watched")
+                    #main.GA("GolfChannel","Watched")
                     if selfAddon.getSetting("whistory") == "true":
                         wh.add_item(mname+' '+'[COLOR green]GolfChannel[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
                     player.KeepAlive()

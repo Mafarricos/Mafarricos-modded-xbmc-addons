@@ -15,7 +15,7 @@ from resources.universal import watchhistory
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def MUSICSTREAMS():
-        main.GA("MUSIC-Streams","List")
+        #main.GA("MUSIC-Streams","List")
         link=main.OPENURL('https://raw.github.com/crusader88/MashUpStreams/master/playlists/musicstreams2.xml')
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         match=re.compile('<item><titl[^>]+>([^<]+)</title><link>(.+?)</link><thumbnail>(.+?)</thumbnail></item>').findall(link)
@@ -25,7 +25,7 @@ def MUSICSTREAMS():
         
         
 def MUSICSTREAMSLink(mname,murl,thumb):
-        main.GA("MUSIC-Streams-"+mname,"Watched")
+        #main.GA("MUSIC-Streams-"+mname,"Watched")
         ok=True
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()

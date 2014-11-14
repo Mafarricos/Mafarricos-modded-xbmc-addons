@@ -14,7 +14,7 @@ art = main.art
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def MAIN():
-        main.GA("Documantary","DocumentaryWire")
+        #main.GA("Documantary","DocumentaryWire")
         main.addDir('Search','s12dnm',229,art+'/search.png')
         main.addDir('Categories','http://www.documentarywire.com',230,art+'/docwire.png')
         main.addDir('Recently Added','http://www.documentarywire.com/browse?orderby=date',227,art+'/docwire.png')
@@ -53,7 +53,7 @@ def CATLIST(murl):
 
 
 def LIST(murl):
-        main.GA("DocumentaryWire","List")
+        #main.GA("DocumentaryWire","List")
         link=main.OPENURL(murl)
         link=main.unescapes(link)
         r = re.findall("""<div class="loop-content switchable-view grid-small" data-view="grid-small">(.+?)<div class=\'wp-pagenavi\'>""",link)
@@ -101,5 +101,5 @@ def LINK(mname,murl,thumb,desc):
             else:
                     xbmc.executebuiltin("XBMC.Notification(Sorry!,Link deleted Or unplayable,5000)")
             return ok
-        main.GA("DocumentaryWire","Watched")
+        #main.GA("DocumentaryWire","Watched")
 

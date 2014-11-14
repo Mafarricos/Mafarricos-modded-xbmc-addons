@@ -13,7 +13,7 @@ art = main.art
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def MMAFList(murl):
-        main.GA("MMA","MMA-Fighting")
+        #main.GA("MMA","MMA-Fighting")
         if murl=='http://www.mmafighting.com/videos':
             link=main.OPENURL(murl)
             #link=main.unescapes(link)
@@ -34,7 +34,7 @@ def MMAFList(murl):
         main.VIEWSB()
 
 def MMAFLink(mname,murl,thumb2):
-    main.GA("MMA-Fighting","Watched")
+    #main.GA("MMA-Fighting","Watched")
     link=main.OPENURL(murl)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
     ok=True

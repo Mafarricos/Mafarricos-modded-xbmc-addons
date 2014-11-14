@@ -22,7 +22,7 @@ wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 
 def MAIN():
-        main.GA("Plugin","SominalTv")
+        #main.GA("Plugin","SominalTv")
         main.addDir('Search','xoxe',624,art+'/search.png')
         main.addDir('Hindi','http://www.playindiafilms.com/hindi-movies',620,art+'/hindi.png')
         main.addDir('Telugu','http://www.playindiafilms.com/telugu',620,art+'/telugu.png')
@@ -38,7 +38,7 @@ def AtoZ(url):
     main.addDir('0-9','http://www.playindiafilms.com/search/label/%23'+url+'?&max-results=15',620,art+'/09.png')
     for i in string.ascii_uppercase:
             main.addDir(i,'http://www.playindiafilms.com/search/label/'+i+url+'?&max-results=15',620,art+'/'+i.lower()+'.png')
-    main.GA("Watchseries","A-Z")
+    #main.GA("Watchseries","A-Z")
     main.VIEWSB()
     
 def SEARCH():
@@ -59,7 +59,7 @@ def SEARCH():
                
 
 def LIST(mname,murl):
-        main.GA("SominalTv","List")
+        #main.GA("SominalTv","List")
         if mname=='Hindi':
                 main.addDir('Hindi English Subtitled','http://www.playindiafilms.com/hindi-movies-english-subtitles',620,art+'/subtitled.png')
                 main.addDir('Hindi BluRay','http://www.playindiafilms.com/hindi-blurays',620,art+'/bluray.png')
@@ -199,7 +199,7 @@ def LINK2(mname,murl,thumb,desc):
         fanart =infoLabels['backdrop_url']
         imdb_id=infoLabels['imdb_id']
         infolabels = { 'supports_meta' : 'true', 'video_type':video_type, 'name':str(infoLabels['title']), 'imdb_id':str(infoLabels['imdb_id']), 'season':str(season), 'episode':str(episode), 'year':str(infoLabels['year']) }
-        main.GA("SominalTv","Watched")
+        #main.GA("SominalTv","Watched")
         if murl:
                 if "'," in murl:
                     mname=main.removeColoredText(mname)

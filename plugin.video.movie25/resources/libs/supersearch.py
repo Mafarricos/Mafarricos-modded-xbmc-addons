@@ -87,9 +87,7 @@ def sortSearchList(searchList,query):
     return temp + searchList
 
 def SEARCH(mname,type,libID=''):
-    if libID=='':
-        main.GA("None","SuperSearch")
-    else:
+    if libID<>'':
         libName=mname
         if re.search('(?i).\s\([12][90]\d{2}\)',mname):
             mname = re.sub('(?i)^(.+?)\s\([12][90]\d{2}\).*','\\1',mname)

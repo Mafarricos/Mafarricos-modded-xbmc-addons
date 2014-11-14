@@ -19,9 +19,7 @@ if selfAddon.getSetting('visitor_ga')=='':
     selfAddon.setSetting('visitor_ga',str(randint(0, 0x7fffffff)))
 
 VERSION = str(selfAddon.getAddonInfo('version'))
-#PATH = "MashUp-DEV"  
 PATH = "MashUp-"            
-UATRACK="UA-38312513-1" 
 
 try:
     log_path = xbmc.translatePath('special://logpath')
@@ -914,7 +912,6 @@ def jDownloader(murl):
 def Message():
     help = SHOWMessage()
     help.doModal()
-    main.GA("None","Mash2k3Info")
     del help
 
 
@@ -964,101 +961,6 @@ def parseDate(dateString,datetime):
     except:
         return datetime.datetime.today() - datetime.timedelta(days = 1) #force update
 
-
-def checkGA():
-    if selfAddon.getSetting("gastatus") == "true":
-        import datetime
-        secsInHour = 60 * 60
-        threshold  = 2 * secsInHour
-
-        now   = datetime.datetime.today()
-        prev  = parseDate(selfAddon.getSetting('ga_time'),datetime)
-        delta = now - prev
-        nDays = delta.days
-        nSecs = delta.seconds
-
-        doUpdate = (nDays > 0) or (nSecs > threshold)
-        if not doUpdate:
-            return
-
-        selfAddon.setSetting('ga_time', str(now).split('.')[0])
-        threading.Thread(target=APP_LAUNCH).start()
-    else:
-        print "MashUp Google Analytics disabled"
-    
-                    
-def send_request_to_google_analytics(utm_url):
-    ua='Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'
-    import urllib2
-    try:
-        req = urllib2.Request(utm_url, None,
-                                    {'User-Agent':ua}
-                                     )
-        response = urllib2.urlopen(req).read()
-    except:
-        print ("GA fail: %s" % utm_url)         
-    return response
-       
-def GA(group,name):
-    if selfAddon.getSetting("gastatus") == "true":
-        threading.Thread(target=GAthread, args=(group,name)).start()
-
-def GAthread(group,name):
-        try:
-            try:
-                from hashlib import md5
-            except:
-                from md5 import md5
-            from random import randint
-            import time
-            from urllib import unquote, quote
-            from os import environ
-            from hashlib import sha1
-            VISITOR = selfAddon.getSetting('visitor_ga')
-            utm_gif_location = "http://www.google-analytics.com/__utm.gif"
-            if not group=="None":
-                    utm_track = utm_gif_location + "?" + \
-                            "utmwv=" + VERSION + \
-                            "&utmn=" + str(randint(0, 0x7fffffff)) + \
-                            "&utmt=" + "event" + \
-                            "&utme="+ quote("5("+PATH+"*"+group+"*"+name+")")+\
-                            "&utmp=" + quote(PATH) + \
-                            "&utmac=" + UATRACK + \
-                            "&utmcc=__utma=%s" % ".".join(["1", VISITOR, VISITOR, VISITOR,VISITOR,"2"])
-                    try:
-                        print "============================ POSTING TRACK EVENT ============================"
-                        send_request_to_google_analytics(utm_track)
-                    except:
-                        print "============================  CANNOT POST TRACK EVENT ============================" 
-            if name=="None":
-                    utm_url = utm_gif_location + "?" + \
-                            "utmwv=" + VERSION + \
-                            "&utmn=" + str(randint(0, 0x7fffffff)) + \
-                            "&utmp=" + quote(PATH) + \
-                            "&utmac=" + UATRACK + \
-                            "&utmcc=__utma=%s" % ".".join(["1", VISITOR, VISITOR, VISITOR, VISITOR,"2"])
-            else:
-                if group=="None":
-                       utm_url = utm_gif_location + "?" + \
-                                "utmwv=" + VERSION + \
-                                "&utmn=" + str(randint(0, 0x7fffffff)) + \
-                                "&utmp=" + quote(PATH+"/"+name) + \
-                                "&utmac=" + UATRACK + \
-                                "&utmcc=__utma=%s" % ".".join(["1", VISITOR, VISITOR, VISITOR, VISITOR,"2"])
-                else:
-                       utm_url = utm_gif_location + "?" + \
-                                "utmwv=" + VERSION + \
-                                "&utmn=" + str(randint(0, 0x7fffffff)) + \
-                                "&utmp=" + quote(PATH+"/"+group+"/"+name) + \
-                                "&utmac=" + UATRACK + \
-                                "&utmcc=__utma=%s" % ".".join(["1", VISITOR, VISITOR, VISITOR, VISITOR,"2"])
-                                
-            print "============================ POSTING ANALYTICS ============================"
-            send_request_to_google_analytics(utm_url)
-            
-        except:
-            print "================  CANNOT POST TO ANALYTICS  ================"
-
 def APP_LAUNCH():
         versionNumber = int(xbmc.getInfoLabel("System.BuildVersion" )[0:2])
         if versionNumber < 12:
@@ -1086,15 +988,6 @@ def APP_LAUNCH():
         match=re.compile('Starting XBMC \((.+?) Git:.+?Platform: (.+?)\. Built.+?').findall(logfile)
         print '==========================   '+PATH+' '+VERSION+'   =========================='
         try:
-            repo = os.path.join(repopath, 'addon.xml')
-            repofile = open(repo, 'r').read()
-            repov=re.compile('version="([^"]+?)" provider-name').findall(repofile)
-            if repov:
-                RepoVer = repov[0]
-                
-        except:
-            RepoVer='Repo Not Intalled'
-        try:
             from hashlib import md5
         except:
             from md5 import md5
@@ -1115,36 +1008,6 @@ def APP_LAUNCH():
             print build
             print PLATFORM
             print "Repo Ver. "+RepoVer
-            utm_gif_location = "http://www.google-analytics.com/__utm.gif"
-            utm_track = utm_gif_location + "?" + \
-                    "utmwv=" + VERSION + \
-                    "&utmn=" + str(randint(0, 0x7fffffff)) + \
-                    "&utmt=" + "event" + \
-                    "&utme="+ quote("5(APP LAUNCH*"+"Mash Up v"+VERSION+"/ Repo v"+RepoVer+"*"+build+"*"+PLATFORM+")")+\
-                    "&utmp=" + quote(PATH) + \
-                    "&utmac=" + UATRACK + \
-                    "&utmcc=__utma=%s" % ".".join(["1", VISITOR, VISITOR, VISITOR,VISITOR,"2"])
-            try:
-                print "============================ POSTING APP LAUNCH TRACK EVENT ============================"
-                send_request_to_google_analytics(utm_track)
-            except:
-                print "============================  CANNOT POST APP LAUNCH TRACK EVENT ============================"
-            utm_track = utm_gif_location + "?" + \
-                    "utmwv=" + VERSION + \
-                    "&utmn=" + str(randint(0, 0x7fffffff)) + \
-                    "&utmt=" + "event" + \
-                    "&utme="+ quote("5(APP LAUNCH*"+"Mash Up v"+VERSION+"/ Repo v"+RepoVer+"*"+PLATFORM+")")+\
-                    "&utmp=" + quote(PATH) + \
-                    "&utmac=" + UATRACK + \
-                    "&utmcc=__utma=%s" % ".".join(["1", VISITOR, VISITOR, VISITOR,VISITOR,"2"])
-            try:
-                print "============================ POSTING APP LAUNCH TRACK EVENT ============================"
-                send_request_to_google_analytics(utm_track)
-            except:
-                print "============================  CANNOT POST APP LAUNCH TRACK EVENT ============================"
-
- 
-checkGA()
 
 ################################################################################ Types of Directories ##########################################################################################################
 

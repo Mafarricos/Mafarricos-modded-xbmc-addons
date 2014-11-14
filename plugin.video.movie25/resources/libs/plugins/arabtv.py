@@ -19,7 +19,7 @@ def MAIN3arabtv():
     main.addDir('Series','series',352,art+'/3arabtv.png')
     main.addDir('Shows','shows',352,art+'/3arabtv.png')
     main.addDir('Clips','clips',352,art+'/3arabtv.png')
-    main.GA("Plugin","3Arabtv")
+    #main.GA("Plugin","3Arabtv")
     
 def CAT3arabtv(murl):
     if 'movies'in murl:
@@ -100,7 +100,7 @@ def LIST3arabtv(murl):
     paginate = re.compile('''<a class="page" href="([^<]+)">Next''').findall(link)
     if len(paginate)>0:
         main.addDir('Next',MAINURL+paginate[0],353,art+'/next2.png')                
-    main.GA("3Arabtv","List")
+    #main.GA("3Arabtv","List")
 
 
 
@@ -131,7 +131,7 @@ def resolveVID(murl):
     return vlink
 
 def LINKS3arabtv(mname,murl,thumb):
-    main.GA("3Arabtv","Watched")
+    #main.GA("3Arabtv","Watched")
     xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,5000)")
     link=main.OPENURL(murl)
     ok=True

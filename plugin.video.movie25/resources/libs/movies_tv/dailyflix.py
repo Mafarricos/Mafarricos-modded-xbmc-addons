@@ -32,12 +32,12 @@ def LISTSP3(murl):
                         return False   
         dialogWait.close()
         del dialogWait
-        main.GA("HD-TV","Dailyfix")
+        #main.GA("HD-TV","Dailyfix")
         main.VIEWS()
 
 
 def LINKSP3(mname,url):
-        main.GA("Dailyfix","Watched")
+        #main.GA("Dailyfix","Watched")
         sources = []
         ok=True
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Collecting Hosts,8000)")

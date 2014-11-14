@@ -15,7 +15,7 @@ art = main.art
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def MAINdz():
-        main.GA("Plugin","dubzonline")
+        #main.GA("Plugin","dubzonline")
         main.addDir('A-Z','http://www.dubzonline.co/dubbed-anime/',614,art+'/AZ.png')
         main.addLink('[COLOR red]Recently Added Episodes[/COLOR]','year','')
         link=main.OPENURL('http://www.dubzonline.co/')
@@ -42,7 +42,7 @@ def AtoZdz():
         main.addDir('0-9','http://www.dubzonline.co/dubbed-anime/',615,art+'/09.png')
         for i in string.ascii_uppercase:
             main.addDir(i,'http://www.dubzonline.co/dubbed-anime/',615,art+'/'+i.lower()+'.png')
-        main.GA("Tvshows","A-ZTV")
+        #main.GA("Tvshows","A-ZTV")
         main.VIEWSB()
 
 def AZLIST(mname,murl):
@@ -71,7 +71,7 @@ def EPILIST(murl):
                     main.addPlayc(name,url,617,thumb,desc,'','','','')
 
 def LINK(mname,murl):
-        main.GA("dubzonline-"+mname,"Watched")
+        #main.GA("dubzonline-"+mname,"Watched")
         sources = []
         ok=True
 

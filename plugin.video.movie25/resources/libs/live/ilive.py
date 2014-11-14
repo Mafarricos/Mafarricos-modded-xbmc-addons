@@ -26,7 +26,7 @@ def iLive():
         main.addDir('News','news',120,art+'/ilive.png')
         main.addDir('Music','music',120,art+'/ilive.png')
         main.addDir('Animation','animation',120,art+'/ilive.png')
-        main.GA("Live","iLive")
+        #main.GA("Live","iLive")
         
 def iLiveList(murl):
         if murl=='general':
@@ -101,7 +101,7 @@ def iLiveList(murl):
                         return False   
         dialogWait.close()
         del dialogWait
-        main.GA("iLive","List") 
+        #main.GA("iLive","List") 
 
 def getToken(url):
         from t0mm0.common.net import Net
@@ -122,7 +122,7 @@ def getToken(url):
         return token
 
 def iLiveLink(mname,murl,thumb):
-        main.GA("iLive","Watched")
+        #main.GA("iLive","Watched")
         stream_url=False
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Stream,3000)")
         link=main.OPENURL(murl)

@@ -22,7 +22,7 @@ def MAINVD():
         match=re.compile('<a href="([^<]+)" >(.+?)</a>.+?<img.+?src="(.+?)"',re.DOTALL).findall(link)
         for url,name,thumb in match: 
             main.addDir(name,url,332,thumb)
-        main.GA("Documentary","Video Documentaire")
+        #main.GA("Documentary","Video Documentaire")
 
 def SEARCHVD():
         keyb = xbmc.Keyboard('', 'Search Video Documentaire')
@@ -46,12 +46,12 @@ def LISTVD(murl):
         paginate = re.compile('href="([^<]+)" >Next</a>',re.DOTALL).findall(link)
         if len(paginate)>0:
                 main.addDir('Next',paginate[0],332,art+'/next2.png')               
-        main.GA("Video Documentaire","List")
+        #main.GA("Video Documentaire","List")
 
 
 def LINKVD(name,murl,thumb):
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,3000)")
-        main.GA("Video Documentaire","Watched")
+        #main.GA("Video Documentaire","Watched")
         stream_url = False
         ok=True
         link=main.OPENURL(murl)

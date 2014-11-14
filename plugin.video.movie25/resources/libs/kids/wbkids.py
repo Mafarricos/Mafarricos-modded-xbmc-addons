@@ -25,7 +25,7 @@ def WB():
         main.addDir('Thundercats','ThunderCats',78,'http://staticswf.kidswb.com/franchise/content/images/touts/video_channel_thumbs/Thundercats.jpg')
         main.addDir('Tom and Jerry Tales','Tom And Jerry Tales',78,'http://staticswf.kidswb.com/franchise/content/images/touts/video_channel_thumbs/TomJerryTales_video.jpg')
         main.addDir('Xiaolin Showdown','Xiaolin Showdown',78,'http://staticswf.kidswb.com/franchise/content/images/touts/video_channel_thumbs/XiaolinShowdown_video.jpg')
-        main.GA("KidZone","WBK")
+        #main.GA("KidZone","WBK")
 
 
 def LISTWB(murl):
@@ -35,11 +35,11 @@ def LISTWB(murl):
     match = re.compile('<item><media:title>([^<]+)</media:title><media:description>([^<]+)</media:description><guid isPermaLink="false">([^<]+)</guid><av:show season="1">'+murl+'</av:show><media:thumbnail url="([^<]+)"/></item>').findall(link)
     for name,desc,url,thumb in match:
         main.addPlayMs(name,url,79,thumb,desc,'','','','')
-    main.GA("WB","List")
+    #main.GA("WB","List")
 
 
 def LINKWB(mname,murl):
-        main.GA("WB","Watched")
+        #main.GA("WB","Watched")
         ok=True
         url='http://metaframe.digitalsmiths.tv/v2/WBtv/assets/'+murl+'/partner/11?format=json'
         link=main.OPENURL(url)

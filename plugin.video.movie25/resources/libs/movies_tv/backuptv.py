@@ -32,10 +32,10 @@ def CHANNELCList(murl):
                 return False   
         dialogWait.close()
         del dialogWait
-        main.GA("TV","CC/Tv4")
+        #main.GA("TV","CC/Tv4")
 
 def CHANNELCLink(mname,murl):
-        main.GA("CC/Tv4","Watched")
+        #main.GA("CC/Tv4","Watched")
         sources = []
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Collecting hosts,3000)")
         link=main.OPENURL(murl)

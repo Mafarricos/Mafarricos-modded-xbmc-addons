@@ -42,7 +42,7 @@ def LISTFX():
                             return False   
         dialogWait.close()
         del dialogWait
-        main.GA("INT","FXCine")
+        #main.GA("INT","FXCine")
 
 def LANGFX(mname,murl,thumb):
     dialog = xbmcgui.Dialog()
@@ -85,7 +85,7 @@ def getlink(murl):
 
 def LINKFX(name,murl):
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,3000)")
-        main.GA("FXCine","Watched")
+        #main.GA("FXCine","Watched")
         stream_url = False
         ok=True
         infoLabels =main.GETMETAT(name,'','','')

@@ -35,9 +35,7 @@ def LISTMOVIES(murl,index=False):
         if dialogWait.iscanceled(): return False   
     dialogWait.close()
     del dialogWait
-    
-    main.GA("None","Movie25-list")
-    
+ 
     paginate=re.compile('</a><a href=\'([^<]+)\'>Next</a>').findall(link)
     if paginate:
 #                 main.addDir('[COLOR red]Home[/COLOR]','',2000,art+'/home.png')
@@ -77,7 +75,6 @@ def UFCMOVIE25():
     dialogWait.close()
     del dialogWait
     main.addDir('[COLOR blue]Page 2[/COLOR]','http://www.movie25.so/search.php?page=2&key=ufc',9,art+'/next2.png')
-    main.GA("UFC","UFC_Movie25-List")
 
 def Searchhistory(index=False):
     seapath=os.path.join(main.datapath,'Search')
@@ -144,8 +141,6 @@ def SEARCH(murl = '',index=False):
         else:
             main.addDir('[COLOR blue]Page 1[/COLOR]','http://www.movie25.so/search.php?page=2&key='+encode,9,art+'/next2.png',index=index)
     xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
-    main.GA("None","Movie25-Search")
-
 
 def ENTYEAR(index=False):
     dialog = xbmcgui.Dialog()
@@ -324,7 +319,6 @@ def resolveM25URL(url):
     return
 
 def PLAY(name,murl):
-    main.GA("Movie25-Movie","Watched")
     ok=True
     hname=name
     name  = name.split('[COLOR blue]')[0]
@@ -361,7 +355,6 @@ def PLAY(name,murl):
         return ok
 
 def PLAYB(name,murl):
-    main.GA("Movie25-Movie","Watched")
     ok=True
     hname=name
     name  = name.split('[COLOR blue]')[0]

@@ -13,12 +13,12 @@ art = main.art
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def DISJR():
-        main.GA("KidZone","DisneyJR")
+        #main.GA("KidZone","DisneyJR")
         main.addDir('All Videos','http://disneyjunior.com/_grill/json/video?r=1-1&l=31&o=0',109,art+'/disjr.png')
         main.addDir('By Character','charac',108,art+'/disjr.png')
 
 def DISJRList(murl):
-        main.GA("DisneyJR","Category")
+        #main.GA("DisneyJR","Category")
         if murl=='music':
             url ='http://disney.go.com/disneyjunior/data/tilePack?id=1815108&maxAmount=240'
             link=main.OPENURL(url)
@@ -67,7 +67,7 @@ def DISJRList(murl):
                 main.addDir(name,url,109,thumb)
         
 def DISJRList2(murl):
-            main.GA("DisneyJR","DisJR-list")
+            #main.GA("DisneyJR","DisJR-list")
             link=main.OPENURL(murl)
             match = re.compile('{"duration":".+?","duration_sec".+?"duration_iso":".+?"id":".+?","slug":".+?","href":"(.+?)","title":"(.+?)","thumb":"(.+?)","description":"(.+?)","vType":"(.+?)",.+?}').findall(link)
             for url, name,thumb,desc,vtype in match:
@@ -81,7 +81,7 @@ def DISJRList2(murl):
                         main.addDir('[COLOR blue]Next[/COLOR]',purl,109,art+'/next2.png')
 
 def DISJRLink(mname,murl,thumb):
-        main.GA("DisJR-list","Watched")
+        #main.GA("DisJR-list","Watched")
         ok=True
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()

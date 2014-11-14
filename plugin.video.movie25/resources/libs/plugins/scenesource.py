@@ -10,7 +10,7 @@ art = main.art
 prettyName = 'SceneSource'
 
 def MAINSCENE():
-        main.GA("Plugin",prettyName)
+        #main.GA("Plugin",prettyName)
         main.addDir('Search Movies & TV Shows','s',392,art+'/search.png')
         main.addDir('Movies','movies',388,art+'/scenesource.png')
         main.addDir('Tv Shows','tvshows',388,art+'/scenesource.png')
@@ -18,7 +18,7 @@ def MAINSCENE():
 
 def SECSCENE(murl):
         if murl=='movies':
-            main.GA(prettyName,"Movies")
+            #main.GA(prettyName,"Movies")
             main.addDir('All Movies','http://www.scenesource.me/category/films/',389,art+'/scenesource.png')
             main.addDir('BDRip','http://www.scenesource.me/category/films/bdrip/',389,art+'/scenesource.png')
             main.addDir('BluRay','http://www.scenesource.me/category/films/bluray/',389,art+'/scenesource.png')
@@ -27,7 +27,7 @@ def SECSCENE(murl):
             main.addDir('CAM','http://www.scenesource.me/category/films/cam/',389,art+'/scenesource.png')
             main.addDir('R5','http://www.scenesource.me/category/films/r5/',389,art+'/scenesource.png')
         elif murl=='tvshows':
-            main.GA(prettyName,"Tv")
+            #main.GA(prettyName,"Tv")
             main.addDir('All TV Shows','http://www.scenesource.me/category/tv/',391,art+'/scenesource.png')
             main.addDir('DVD','http://www.scenesource.me/category/tv/dvd/',389,art+'/scenesource.png')
             main.addDir('Sports','http://www.scenesource.me/category/tv/sports-tv/',391,art+'/scenesource.png')
@@ -67,7 +67,7 @@ def superSearch(encode,type):
     except: return []
     
 def SEARCHSCENE(encode):
-        main.GA(prettyName,"Search")
+        #main.GA(prettyName,"Search")
         if encode=='sec':
                 encode = main.updateSearchFile('','Movies',searchMsg='Search For Movies or TV Shows')
                 if not encode: return False
@@ -85,7 +85,7 @@ def SEARCHSCENE(encode):
         xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
 
 def LISTMOVIES(murl):
-    main.GA(prettyName,"List")   
+    #main.GA(prettyName,"List")   
     link=main.OPENURL(murl)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('\\','')
     match=re.compile('''<a href="([^<]+)" rel="bookmark" title=".+?">(.+?)</a></h2><div.+?<img.+?src="(.+?)".*?http://www.imdb.com/title/([t\d]+?)[/"']''',re.DOTALL).findall(link)
@@ -141,7 +141,7 @@ def LISTTV(murl):
             main.addDir('Next',paginate[0],391,art+'/next2.png')
 
 def VIDEOLINKSSCENE(mname,murl,thumb):
-        main.GA(prettyName,"Watched")
+        #main.GA(prettyName,"Watched")
         msg = xbmcgui.DialogProgress()
         msg.create('Please Wait!','')
         msg.update(0,'Collecting hosts')

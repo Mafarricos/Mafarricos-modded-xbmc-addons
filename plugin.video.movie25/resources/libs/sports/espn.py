@@ -29,7 +29,7 @@ def ESPN():
         main.addDir('NASCAR','2492290',45,art+'/espn.png')
         main.addDir('RACING','2755879',45,art+'/espn.png')
         main.addDir('OUTDOORS','2872804',45,art+'/espn.png')
-        main.GA("Sports","ESPN")
+        #main.GA("Sports","ESPN")
 
 def ESPNList(murl):
         
@@ -63,10 +63,10 @@ def ESPNList(murl):
         if p1 != p2:
                 purl=xurl+ "&pageNum=" + str(int(p1)) + "&sortBy=&assetURL=http://assets.espn.go.com&module=LibraryPlaylist&pagename=vhub_index"
                 main.addDir('[COLOR blue]Next[/COLOR]   Page '+p1+' of '+p2,purl,45,art+'/next2.png')
-        main.GA("ESPN","ESPN-List")
+        #main.GA("ESPN","ESPN-List")
 
 def ESPNLink(mname,murl,thumb,desc):
-        main.GA("ESPN-List","Watched")
+        #main.GA("ESPN-List","Watched")
         ok=True
         link=main.OPENURL(murl)
         match=re.compile('"thumbnailURL": "http://a.espncdn.com/combiner/i.?img=/media/motion(.+?).jpg',re.DOTALL).findall(link)[0]

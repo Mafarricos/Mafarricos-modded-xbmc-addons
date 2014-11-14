@@ -42,10 +42,10 @@ def CastalbaList(murl):
                         return False   
         dialogWait.close()
         del dialogWait
-        main.GA("Castalba","List")
+        #main.GA("Castalba","List")
 
 def CastalbaLink(mname,murl,thumb):
-        main.GA("Castalba","Watched")
+        #main.GA("Castalba","Watched")
         link=main.OPENURL(murl)
         ok=True
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')

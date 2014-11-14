@@ -15,11 +15,11 @@ def AZAT(sec):
     main.addDir('0-9','http://www.animetoon.tv/'+sec+'/others',376,art+'/09.png')
     for i in string.ascii_uppercase:
             main.addDir(i,'http://www.animetoon.tv/'+sec+'/'+i.lower(),376,art+'/'+i.lower()+'.png')
-    main.GA("Watchseries","A-Z")
+    #main.GA("Watchseries","A-Z")
     main.VIEWSB()
 
 def MAIN():
-    main.GA("Plugin","Animania")
+    #main.GA("Plugin","Animania")
     main.addDir('Search','anime',385,art+'/search.png')
     main.addDir('Daily Releases','dramania',384,art+'/animetoon.png')
     main.addDir('Popular Dubbed Anime & Cartoon List','http://www.animetoon.tv/popular-list',376,art+'/animetoon.png')
@@ -103,7 +103,7 @@ def LIST(murl):
     paginate = re.compile('''<a href="([^<]+)">Next</a>''').findall(link)
     if len(paginate)>0:
         main.addDir('Next',paginate[0],376,art+'/next2.png')   
-    main.GA("Animania","List")
+    #main.GA("Animania","List")
 
 def GETMOVIE(mname,murl,thumb):
     link=main.OPENURL(murl, mobile=True)
@@ -283,7 +283,7 @@ def getLink(links):
 
 def PLAY(mname,murl,thumb):
 
-        main.GA("Animania","Watched") 
+        #main.GA("Animania","Watched") 
         ok=True
         
         r = re.findall('(.+?)\ss(\d+)e(\d+)\s',mname,re.I)

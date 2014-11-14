@@ -54,11 +54,11 @@ def LISTSP3(murl):
         main.addDir('Page ' + str(page/subpages) + ' [COLOR blue]Next Page >>>[/COLOR]',str(page+1)+','+str(max),407,art+'/next2.png')
     dialogWait.close()
     del dialogWait
-    main.GA("HD-TV","Rls1Click")
+    #main.GA("HD-TV","Rls1Click")
     main.VIEWS()
         
 def LINKSP3(mname,murl):
-    main.GA("Rls1Click","Watched")
+    #main.GA("Rls1Click","Watched")
     msg = xbmcgui.DialogProgress()
     msg.create('Please Wait!','')
     msg.update(0,'Collecting hosts')

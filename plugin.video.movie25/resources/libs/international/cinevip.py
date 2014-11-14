@@ -80,7 +80,7 @@ def LISTINT3(xurl):
                         return False   
         dialogWait.close()
         del dialogWait
-        main.GA("INT","Peliculaspepito")
+        #main.GA("INT","Peliculaspepito")
 
 def Searchhistory(murl):
         seapath=os.path.join(main.datapath,'Search')
@@ -106,7 +106,7 @@ def SEARCH(mname,murl):
         encode = mname.replace(' ','%20')
     
     LISTINT3(encode)
-    main.GA("Peliculaspepito","Search")
+    #main.GA("Peliculaspepito","Search")
 
 def getlink(murl):
     link=main.OPENURL(murl)
@@ -139,7 +139,7 @@ def LINKLIST(mname,url):
 
 def LINKINT3(name,murl,thumb):
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,3000)")
-        main.GA("Peliculaspepito","Watched")
+        #main.GA("Peliculaspepito","Watched")
         stream_url = False
         ok=True
         infoLabels =main.GETMETAT(name,'','',thumb)

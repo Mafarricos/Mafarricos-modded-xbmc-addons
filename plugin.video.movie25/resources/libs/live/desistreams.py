@@ -8,7 +8,7 @@ addon_id = 'plugin.video.movie25'
 selfAddon = xbmcaddon.Addon(id=addon_id)
 art = main.art
 def DESISTREAMS():
-        main.GA("Live","Desistreams")
+        #main.GA("Live","Desistreams")
         main.addDir('Sports','sports',130,art+'/desistream.png')
         main.addDir('English Channels','english',130,art+'/desistream.png')
         main.addDir('Indian Channels','indian',130,art+'/desistream.png')
@@ -19,35 +19,35 @@ def DESISTREAMSList(murl):
         link=main.OPENURL('http://www.desistreams.tv/')
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         if murl=='sports':
-                main.GA("Desi-Sport","Watched")
+                #main.GA("Desi-Sport","Watched")
                 link=main.OPENURL('https://nkjtvt.googlecode.com/svn/trunk/Desi/desiSports.xml')
                 link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
                 match=re.compile('<item><titl[^>]+>([^<]+)</title><link>(.+?)</link><thumbnail>(.+?)</thumbnail></item>').findall(link)
                 for name,url,thumb in sorted(match):
                     main.addLink(name,url,thumb)
         elif murl=='english':
-                main.GA("Desi-English","Watched")
+                #main.GA("Desi-English","Watched")
                 link=main.OPENURL('https://nkjtvt.googlecode.com/svn/trunk/Desi/desiEnglish.xml')
                 link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
                 match=re.compile('<item><titl[^>]+>([^<]+)</title><link>(.+?)</link><thumbnail>(.+?)</thumbnail></item>').findall(link)
                 for name,url,thumb in sorted(match):
                     main.addLink(name,url,thumb)
         elif murl=='indian':
-                main.GA("Desi-Indian","Watched")
+                #main.GA("Desi-Indian","Watched")
                 link=main.OPENURL('https://nkjtvt.googlecode.com/svn/trunk/Desi/desihind.xml')
                 link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
                 match=re.compile('<item><titl[^>]+>([^<]+)</title><link>(.+?)</link><thumbnail>(.+?)</thumbnail></item>').findall(link)
                 for name,url,thumb in sorted(match):
                     main.addLink(name,url,thumb)
         elif murl=='pakistani':
-                main.GA("Desi-Pakistani","Watched")
+                #main.GA("Desi-Pakistani","Watched")
                 link=main.OPENURL('https://nkjtvt.googlecode.com/svn/trunk/Desi/desipak.xml')
                 link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
                 match=re.compile('<item><titl[^>]+>([^<]+)</title><link>(.+?)</link><thumbnail>(.+?)</thumbnail></item>').findall(link)
                 for name,url,thumb in sorted(match):
                     main.addLink(name,url,thumb)
         elif murl=='bangladeshi':
-                main.GA("Desi-Bangla","Watched")
+                #main.GA("Desi-Bangla","Watched")
                 link=main.OPENURL('https://nkjtvt.googlecode.com/svn/trunk/Desi/desibang.xml')
                 link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
                 match=re.compile('<item><titl[^>]+>([^<]+)</title><link>(.+?)</link><thumbnail>(.+?)</thumbnail></item>').findall(link)
@@ -56,7 +56,7 @@ def DESISTREAMSList(murl):
 
 def DESISTREAMSLink(mname,murl):
         link=main.OPENURL(murl)
-        main.GA("Desi-Indian","Watched")
+        #main.GA("Desi-Indian","Watched")
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()
         ok=True

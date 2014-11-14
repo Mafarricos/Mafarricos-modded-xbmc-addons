@@ -35,11 +35,9 @@ def YOUList(mname,durl):
                 i=int(page)+50
                 purl='https://gdata.youtube.com/feeds/api/playlists/'+id+'?start-index='+str(i)+'&max-results=50'
                 main.addDir('[COLOR blue]Next[/COLOR]',purl,205,art+'/next2.png')
-        main.GA(mname,"Youtube-List")
 
 def YOULink(mname,url,thumb):
         ok=True
-        main.GA(mname,"Watched")
         url = "plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid="+url+"&hd=1"
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()

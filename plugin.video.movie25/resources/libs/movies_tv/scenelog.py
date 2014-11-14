@@ -52,7 +52,7 @@ def ListSceneLogItems(murl,quality='all'):
         ShowSceneLogItems(html,murl,quality)
         if not page is None:
             main.addDir('Page ' + str(page/subpages+1) + ', Next Page >>>',murl + "-" + str(page/subpages+1) + "," + max,657,art+'/next2.png')
-    main.GA("Movies-TV","SceneLog")
+    #main.GA("Movies-TV","SceneLog")
     main.VIEWS()
     
 def ShowSceneLogItems(html,category,quality):
@@ -182,7 +182,7 @@ def SearchSceneLog(searchQuery,searchCategory):
     else:
         xbmcplugin.endOfDirectory(int(sys.argv[1]), False, False)
         xbmc.executebuiltin("XBMC.Notification(Sorry,Could not connect to SceneLog,3000)") 
-    main.GA("SceneLog","Search")
+    #main.GA("SceneLog","Search")
                     
 def ListSceneLogLinks(mname,url):
     html = main.OPENURL(url)
@@ -216,7 +216,7 @@ def ListSceneLogLinks(mname,url):
 #         PlaySceneLogLink(mname+' [COLOR blue]'+host+'[/COLOR]',murl)
 
 def PlaySceneLogLink(mname,murl):
-    main.GA("SceneLog","Watched") 
+    #main.GA("SceneLog","Watched") 
     ok=True
     r = re.findall('s(\d+)e(\d\d+)',mname,re.I)
     if r:

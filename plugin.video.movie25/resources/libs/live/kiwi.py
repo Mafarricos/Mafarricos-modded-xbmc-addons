@@ -142,7 +142,7 @@ def GetStream(url):
         return stream_url
   
 def Link(mname,murl,thumb):
-        main.GA("Kiwi","Watched")
+        #main.GA("Kiwi","Watched")
         stream_url=False
         stream_url=GetStream(murl)
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Stream,3000)") 

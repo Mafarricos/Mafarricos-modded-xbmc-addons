@@ -73,7 +73,7 @@ def MAINHQ():
             name='VIP Streams'
         main.addDir(name,links,473,art+'/hqzone.png')
     
-    main.GA("Live",prettyName)
+    #main.GA("Live",prettyName)
 
 def Calendar(murl):
     setCookie(murl)
@@ -137,7 +137,7 @@ def get_link(murl):
     
 def PLAYLINK(mname,murl,thumb):
         ok=True
-        main.GA(prettyName,"Watched")
+        #main.GA(prettyName,"Watched")
         stream_url = get_link(murl)     
         playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
         playlist.clear()

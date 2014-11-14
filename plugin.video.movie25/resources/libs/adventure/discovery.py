@@ -22,7 +22,7 @@ def DISC(murl):
             thumb=thumb.replace(' ','%20')
             print thumb
             main.addDir(name,'http://dsc.discovery.com'+url,64,thumb)
-        main.GA("Adventure","Discovery")
+        #main.GA("Adventure","Discovery")
         main.VIEWSB()
 
 def ANIP(murl):
@@ -32,7 +32,7 @@ def ANIP(murl):
         for url,thumb,name in sorted(match):
             thumb=thumb.replace(' ','%20')
             main.addDir(name,'http://animal.discovery.com'+url,64,thumb)
-        main.GA("Adventure","AnimalPlanet")
+        #main.GA("Adventure","AnimalPlanet")
         main.VIEWSB()
         
 def MILIT(murl):
@@ -43,7 +43,7 @@ def MILIT(murl):
         for url,thumb,name in sorted(match):
             thumb=thumb.replace(' ','%20')
             main.addDir(name,'http://military.discovery.com'+url,64,thumb)
-        main.GA("Adventure","Military")
+        #main.GA("Adventure","Military")
         main.VIEWSB()
 
 def SCI(murl):
@@ -53,7 +53,7 @@ def SCI(murl):
         for url,thumb,name in sorted(match):
             thumb=thumb.replace(' ','%20')
             main.addDir(name,'http://science.discovery.com'+url,64,thumb)
-        main.GA("Adventure","Science")
+        #main.GA("Adventure","Science")
         main.VIEWSB()
 
 def VELO(murl):
@@ -63,7 +63,7 @@ def VELO(murl):
         for url,thumb,name in sorted(match):
             thumb=thumb.replace(' ','%20')
             main.addDir(name,'http://velocity.discovery.com'+url,64,thumb)
-        main.GA("Adventure","Velocity")
+        #main.GA("Adventure","Velocity")
         main.VIEWSB()
 
 def LISTDISC(mname,murl):
@@ -115,7 +115,7 @@ def LISTDISC(mname,murl):
                         name=name.replace('&#39;',"'").replace('&quot;','"').replace('&amp;',"&")
                         main.addPlayMs(name+'  [COLOR blue]'+types+'[/COLOR]',turl+url,65,thumbList[i],'','','','','')
                         i=i+1
-        main.GA("Discovery",mname+"-list")
+        #main.GA("Discovery",mname+"-list")
 
 def LINKDISC(name,url):
         from resources.universal import playbackengine
@@ -126,7 +126,7 @@ def LINKDISC(name,url):
         ETitleList=[]
         thumbList=[]
         plotList=[]
-        main.GA("Discovery","Watched")
+        #main.GA("Discovery","Watched")
         MainUrl= 'http://dsc.discovery.com'
         xbmc.executebuiltin("XBMC.Notification([B]Please Wait![/B],Playing Link,10000)")
         link=main.OPENURL(url)
@@ -151,7 +151,7 @@ def LINKDISC(name,url):
         Full=re.findall('full episode',name,re.I)
         if Full:
             match2=re.compile('"m3u8": "http://discidevflash-f.akamaihd.net/i/digmed/(.+?).mp4.csmil/master.m3u8"').findall(link)
-            main.GA("Discovery-"+name,"Watching")
+            #main.GA("Discovery-"+name,"Watching")
             final='http://discidevflash-f.akamaihd.net/i/digmed/'+match2[0]+'.mp4.csmil/master.m3u8'
             # play with bookmark           
             player = playbackengine.PlayWithoutQueueSupport(final, 'plugin.video.movie25', video_type='', title=name,season='', episode='', year='', watch_percent=0.85, watchedCallbackwithParams=main.WatchedCallback, img=thumbList[0], infolabels={'Title':name,'Plot': plotList[0]})
@@ -170,7 +170,7 @@ def LINKDISC(name,url):
                 idlist3.append(id3)
                 qualitylist.append(quality)
             i=0
-            main.GA("Discovery-"+mtitle,"Watching")
+            #main.GA("Discovery-"+mtitle,"Watching")
             player=None
             for i in range(len(match)):
                     match1=re.compile('3500k').findall(qualitylist[i])

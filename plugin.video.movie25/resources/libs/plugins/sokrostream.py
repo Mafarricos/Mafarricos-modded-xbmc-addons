@@ -22,7 +22,7 @@ def MAINSS():
     main.addDir('Les plus commentés','http://sokrostream.com/les-films-les-plus-commentes',325,art+'/vote.png')
     main.addDir('Les mieux notés','http://sokrostream.com/',325,art+'/vote.png')
     main.addDir('Films Par Genre','http://sokrostream.com/films-par-genre',328,art+'/genre.png')
-    main.GA("Plugin","SokroStream")
+    #main.GA("Plugin","SokroStream")
 
 def GENRESS(murl):
     link=main.OPENURL(murl)
@@ -59,7 +59,7 @@ def LISTSS(murl):
         paginate = re.compile('''<a class="page larger" href="(.+?)">''',re.DOTALL).findall(link)
         if len(paginate)>0:
                 main.addDir('Next',paginate[0],325,art+'/next2.png')     
-        main.GA("SokroStream","List")
+        #main.GA("SokroStream","List")
 
 
 def SearchhistorySS():
@@ -133,7 +133,7 @@ def SEARCHSS(murl):
                     return False   
         dialogWait.close()
         del dialogWait
-        main.GA("SokroStream","Search")
+        #main.GA("SokroStream","Search")
 
 def LINKLISTSS(mname,url):
     link=main.OPENURL(url)
@@ -161,7 +161,7 @@ def GetLink(url):
 
 def LINKSS(name,murl):
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,5000)")
-        main.GA("SokroStream","Watched")
+        #main.GA("SokroStream","Watched")
         stream_url = False
         ok=True
         infoLabels =main.GETMETAT(name,'','','')

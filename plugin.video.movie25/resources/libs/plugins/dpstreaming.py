@@ -20,7 +20,7 @@ def MAINDP():
         main.addDir('Films','http://dpstreaming.org/category/films/',312,art+'/dpstreaming.png')
         main.addDir('Séries Tv','http://dpstreaming.org/category/series-tv/',312,art+'/dpstreaming.png')
         main.addDir('Mangas','http://dpstreaming.org/category/mangas/',312,art+'/dpstreaming.png')
-        main.GA("INT","DpStreaming")
+        #main.GA("INT","DpStreaming")
 
 def SEARCHDP():
         keyb = xbmc.Keyboard('', 'Search Movies & Shows')
@@ -59,7 +59,7 @@ def LISTDP(murl):
         if len(paginate)>0 and len(match) == 12:
                 main.addDir('Next',paginate[0],312,art+'/next2.png')
                 
-        main.GA("DpStreaming","List")
+        #main.GA("DpStreaming","List")
 
 def LISTEPISODE(mname,murl):
         link=main.OPENURL2(murl)
@@ -113,7 +113,7 @@ def LINKLIST2(mname,url):
 
 def LINKDP(name,murl):
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,3000)")
-        main.GA("DpStreaming","Watched")
+        #main.GA("DpStreaming","Watched")
         stream_url = False
         ok=True
         r = re.findall('Season(.+?)Episode([^<]+)',name)
