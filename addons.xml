@@ -212,7 +212,7 @@ Special thanks to all who contributed to this plugin! Check the commit history a
 </addon>
 
 <addon id="service.autosubsBeta"
-    name="AutoSubs (Unofficial)" version="1.0.4" provider-name="schumi2004,Mafarricos">
+    name="AutoSubs (Unofficial)" version="1.0.5" provider-name="schumi2004,Mafarricos">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
