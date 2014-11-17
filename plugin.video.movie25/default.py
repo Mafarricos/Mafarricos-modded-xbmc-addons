@@ -38,7 +38,7 @@ def AtoZ():
     main.addDir('0-9','http://www.movie25.so/movies/0-9/',1,art+'/09.png')
     for i in string.ascii_uppercase:
             main.addDir(i,'http://www.movie25.so/movies/'+i.lower()+'/',1,art+'/'+i.lower()+'.png')
-    main.GA("None","Movie25-A-Z")
+    #main.GA("None","Movie25-A-Z")
 
 def MAIN():
     xbmcgui.Window(10000).clearProperty('MASH_SSR_TYPE')
@@ -269,7 +269,7 @@ def GENRE(url,index=False):
     main.addDir('Thriller','http://www.movie25.so/movies/thriller/',1,art+'/thr.png',index=index)
     main.addDir('War','http://www.movie25.so/movies/war/',1,art+'/war.png',index=index)
     main.addDir('Western','http://www.movie25.so/movies/western/',1,art+'/west.png',index=index)
-    main.GA("None","Movie25-Genre")
+    #main.GA("None","Movie25-Genre")
     main.VIEWSB()
         
 def YEAR(index=False):
@@ -286,7 +286,7 @@ def YEAR(index=False):
     main.addDir('2004','http://www.movie25.so/search.php?year=2004/',8,art+'/2004.png',index=index)
     main.addDir('2003','http://www.movie25.so/search.php?year=2003/',8,art+'/2003.png',index=index)
     main.addDir('Enter Year','http://www.movie25.com',23,art+'/enteryear.png',index=index)
-    main.GA("None","Movie25-Year")
+    #main.GA("None","Movie25-Year")
     main.VIEWSB()
 
 def GlobalFav():
@@ -327,7 +327,7 @@ def TV():
     main.addDir('Latest 150 Episodes (ChannelCut)','http://www.channelcut.tv/last-150',546,art+'/tvb.png')
     
 #     main.addDir('Latest 100 Episodes (Tv4stream)','http://www.tv4stream.info/last-100-links/',546,art+'/tvb.png')
-    main.GA("None","TV-Latest")
+    #main.GA("None","TV-Latest")
 
 def ThreeDsec():
     main.addDir('3D Movies (Newmyvideolinks) True HD[COLOR red] DC[/COLOR]','3D',34,art+'/3d.png')
@@ -367,7 +367,7 @@ def TVAll():
     #main.addDir('Watching Now','TV',530,art+'/watchingnow.png')
     #main.addDir('FMA','TV',567,art+'/fma.png')
     #main.addDir('Global BC','gbc',165,art+'/globalbc.png')       
-    main.GA("None","Plugin")
+    #main.GA("None","Plugin")
 
 def Movie25(index=False):
     main.addDirHome('Search','http://www.movie25.so/',420,art+'/search2.png',index=index)
@@ -386,7 +386,7 @@ def ANIME():
     main.addDir('AnimeToon','TV',374,art+'/animetoon.png')
     main.addDir('dubzonline','TV',613,art+'/dubzonline.png')
     main.addDir('AnimeFreak TV','TV',625,art+'/animefreak.png')
-    main.GA("None","Anime")
+    #main.GA("None","Anime")
     
 
 def HD():
@@ -406,7 +406,7 @@ def HD():
     main.addDir('HackerMil HD Movies','https://raw.github.com/HackerMil/HackerMilsMovieStash/master/Movies/HD.xml',236,art+'/hd2.png')
     main.addDir('Staael1982 HD Movies','https://raw.github.com/Coolstreams/bobbyelvis/master/veehdCollection.xml',236,art+'/hd2.png')
     main.addDir('Demon88 HD Movies','https://raw.github.com/dm88/Demon88/master/1080pMovies%20.xml',236,art+'/hd2.png')
-    main.GA("None","HD")
+    #main.GA("None","HD")
     
 def INT():
     main.addDir('Hindi/Tamil/Telugu & more','hindi',15,art+'/folder.png')
@@ -420,7 +420,7 @@ def INT():
     main.addDir('Danish','danish',15,art+'/folder.png')
 
     
-    main.GA("None","INT")
+    #main.GA("None","INT")
 
 def INTCAT(murl):
     if 'italian'in murl:
@@ -481,7 +481,7 @@ def SPORTS():
         else:
             thumbs=art+'/'+thumb+'.png'
         main.addDir(name,url,int(mode),thumbs)
-    main.GA("None","Sports")
+    #main.GA("None","Sports")
 
 def MMA():
     main.addDir('UFC','ufc',59,art+'/ufc.png')
@@ -500,7 +500,7 @@ def UFC():
     main.addDir('UFC.com','ufc',47,art+'/ufc.png')
     main.addDir('UFC(Movie25)','ufc',60,art+'/ufc.png')
     main.addDir('UFC(Newmyvideolinks)','ufc',103,art+'/ufc.png')
-    main.GA("None","UFC")
+    #main.GA("None","UFC")
 
 def ADVENTURE():
     main.addDir('Discovery Channel','http://dsc.discovery.com/videos',631,art+'/disco.png')
@@ -509,7 +509,7 @@ def ADVENTURE():
     main.addDir('Science Channel','http://science.discovery.com/videos',81,art+'/scicha.png')
     main.addDir('Velocity Channel','http://velocity.discovery.com/videos',82,art+'/velo.png')
     main.addDir('Animal Planet','http://animal.discovery.com/videos',83,art+'/anip.png')
-    main.GA("None","Adventure")
+    #main.GA("None","Adventure")
 
 def KIDZone(murl):
     main.addDir('Disney Jr.','djk',107,art+'/disjr.png')
@@ -518,7 +518,7 @@ def KIDZone(murl):
     main.addDir('Youtube Kids','wbk',84,art+'/youkids.png')
     main.addDir('Staael1982 Animated Movies','https://github.com/Coolstreams/bobbyelvis/raw/master/kids%20%26%20animation.xml',236,art+'/kidzone2.png')
             
-    main.GA("None","KidZone")
+    #main.GA("None","KidZone")
     main.VIEWSB()
 
 def HOWTOCAT():
@@ -557,7 +557,7 @@ def LiveStreams():
     main.addDir('TubTub.com','http://tubtub.com/',185,art+'/tubtub.png')
     main.addDir('181.FM Radio Streams','nills',191,art+'/181fm.png')
     main.addDir('1.FM Radio Streams','nills',446,art+'/1fm.png')
-    main.GA("None","Live")
+    #main.GA("None","Live")
 
 def DOCS():
     main.addDir('John Locker','John Locker',318,art+'/johnlocker.png')
@@ -570,7 +570,7 @@ def DOCS():
     main.addDir('Documentary Log','doc3',86,art+'/doclog.png')
     main.addDir('HackerMil Documentaries','https://raw.github.com/HackerMil/HackerMilsMovieStash/master/Misc/7%20DOCUMENTARY.xml',236,art+'/docsec1.png')
     main.addDir('Documentaries (Movie25)','http://www.movie25.so/movies/documentary/',1,art+'/doc.png')
-    main.GA("None","Documentary")
+    #main.GA("None","Documentary")
 
 def PlaylistDir():
     link=getListFile('https://raw.github.com/mash2k3/MashUpNotifications/master/MoviePlaylist_Dir.xml',os.path.join(CachePath,'Playlist'))
@@ -582,7 +582,7 @@ def PlaylistDir():
         else:
             thumbs=art+'/'+thumb+'.png'
         main.addDir(name,url,int(mode),thumbs)
-    main.GA("None","MoviePL")
+    #main.GA("None","MoviePL")
 
 
 def MAINDEL(murl):
@@ -739,7 +739,7 @@ def FIXES():
         main.addDirFIX(name,filename,785,art+'/'+thumb+'.png',location,path)
 
 def FIXDOWN(name,filename,location,path):
-    main.GA("Fixes",name+"-Fix")
+    #main.GA("Fixes",name+"-Fix")
     url = 'https://raw.github.com/mash2k3/MashUpFixes/master/FIXES/'+filename
     print "#############  Downloading from "+ url+"  #####################"
     path = xbmc.translatePath(os.path.join(str(location),str(path)))
@@ -750,7 +750,7 @@ def FIXDOWN(name,filename,location,path):
     dialog.ok("Mash Up", "Thats It All Done", "[COLOR blue]Now "+name+" should be Fixed[/COLOR]")
 
 def ADSettings(name,filename):
-    main.GA("Fixes",name+"-Fix")
+    #main.GA("Fixes",name+"-Fix")
     url = 'https://raw.github.com/mash2k3/MashUpFixes/master/AdvancedSettings/'+filename
     print "#############  Downloading from "+ url+"  #####################"
     path = xbmc.translatePath(os.path.join('special://home/','userdata'))
@@ -774,7 +774,7 @@ def HTVList(murl):
     match=re.compile('<title>([^<]+)</title.+?link>(.+?)</link.+?thumbnail>([^<]+)</thumbnail>').findall(link)
     for name,url,thumb in match:
         main.addPlayc(name,url,259,thumb,'','','','','')
-    main.GA("None","How To Videos")        
+    #main.GA("None","How To Videos")        
         
 def showLiveAnnouncements():
     #Announcement Notifier from xml file
@@ -823,7 +823,7 @@ def setListFile(url, path, excepturl = None):
 
 def openMGuide():
    try:
-       main.GA("Live","Dixie")
+       #main.GA("Live","Dixie")
        dialog = xbmcgui.DialogProgress()
        dialog.create('Pleat Wait!', 'Opening TV Guide Dixie...')
        dialog.update(0)
@@ -1093,44 +1093,44 @@ def getFavorites(section_title = None):
     
 def ListglobalFavALL():
     getFavorites()
-    main.GA("None","Grouped Fav's")
+    #main.GA("None","Grouped Fav's")
     xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
 
 def ListglobalFavM25():
     getFavorites("Movie25 Fav's")
-    main.GA("None","Movie25-Fav")
+    #main.GA("None","Movie25-Fav")
     xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
     
 def ListglobalFavIWO():
     getFavorites("iWatchOnline Fav's")
-    main.GA("None","IWO-Fav")
+    #main.GA("None","IWO-Fav")
     xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
 
 def ListglobalFavT():
     getFavorites("TV Show Fav's")
-    main.GA("None","TV-Fav")
+    #main.GA("None","TV-Fav")
     xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
     
 def ListglobalFavTE():
     getFavorites("TV Episode Fav's")
-    main.GA("None","TVEPI-Fav")
+    #main.GA("None","TVEPI-Fav")
     xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
 
 def ListglobalFavM():
     getFavorites("Movie25 Fav's")
     getFavorites("Movie Fav's")
     getFavorites("iWatchOnline Fav's")
-    main.GA("None","Movie-Fav")
+    #main.GA("None","Movie-Fav")
     xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
 
 def ListglobalFavMs():
     getFavorites("Misc. Fav's")
-    main.GA("None","Misc-Fav")
+    #main.GA("None","Misc-Fav")
     xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
 
 def ListglobalFavL():
     getFavorites("Live Fav's")
-    main.GA("None","Live-Fav")
+    #main.GA("None","Live-Fav")
     xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
     
 ################################################################################ Histroy ##########################################################################################################
@@ -1143,7 +1143,7 @@ def WHClear(url):
 
 
 def History():
-    main.GA("None","WatchHistory")
+    #main.GA("None","WatchHistory")
     whprofile = xbmc.translatePath(selfAddon.getAddonInfo('profile'))
     whdb=os.path.join(whprofile,'Universal','watch_history.db')
     if  os.path.exists(whdb):
@@ -1182,7 +1182,7 @@ def History():
 def Message():
     help = SHOWMessage()
     help.doModal()
-    main.GA("None","Mash2k3Info")
+    #main.GA("None","Mash2k3Info")
     del help
 
 
