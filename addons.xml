@@ -2,8 +2,8 @@
 <addons>
 <addon id="plugin.video.movie25"
        name="Mash Up"
-       version="1.4.0"
-       provider-name="MashUp">
+       version="1.4.1"
+       provider-name="MashUp/Mafarricos">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
 		<import addon="script.module.urlresolver"  version="0.0.1"/>
@@ -131,32 +131,32 @@ What can this addon do?
 - Custom skin/keymap actions for toggling watched status, rating, tagging, and listing
 
 Special thanks to all who contributed to this plugin! Check the commit history and changelog to see these talented developers.</description>
-<summary lang="es">Scrobbler de Películas y Series para trakt.tv</summary>
-		<description lang="es">Haz scrobble automáticamente de todas tus Series de TV y Películas que estés viendo en trakt.tv! Mantén un historial de todo lo que has visto y se parte de una comunidad global de entusiastas por las Series y Películas. Regístrate gratis en http://trakt.tv y consigue una tonelada de características:
+<summary lang="es">Scrobbler de PelÃ­culas y Series para trakt.tv</summary>
+		<description lang="es">Haz scrobble automÃ¡ticamente de todas tus Series de TV y PelÃ­culas que estÃ©s viendo en trakt.tv! MantÃ©n un historial de todo lo que has visto y se parte de una comunidad global de entusiastas por las Series y PelÃ­culas. RegÃ­strate gratis en http://trakt.tv y consigue una tonelada de caracterÃ­sticas:
 
-- Scrobble automático de lo que estás viendo
-- Aplicaciones móviles para iPhone, iPad, Android y Windows Phone
-- Comparte lo que estás viendo (en tiempo real) y tu valoración en Facebook y Twitter
+- Scrobble automÃ¡tico de lo que estÃ¡s viendo
+- Aplicaciones mÃ³viles para iPhone, iPad, Android y Windows Phone
+- Comparte lo que estÃ¡s viendo (en tiempo real) y tu valoraciÃ³n en Facebook y Twitter
 - Calendario personalizado para que no te pierdas ninguna serie
-- Sigue tus amigos y personas de interés
+- Sigue tus amigos y personas de interÃ©s
 - Usa las watchlists para no olvidarte de lo que quieres ver
 - Controla tus colecciones multimedia e impresiona a tus amigos
-- Crea listas personalizadas sobre los temas de tu elección
-- Controla fácilmente el progreso de los episodios y temporadas de tus Series
-- Controla tu progreso en comparación con listas industriales como IMDb TOP 250
-- Descubre nuevas Series y Películas basadas en tus hábitos
+- Crea listas personalizadas sobre los temas de tu elecciÃ³n
+- Controla fÃ¡cilmente el progreso de los episodios y temporadas de tus Series
+- Controla tu progreso en comparaciÃ³n con listas industriales como IMDb TOP 250
+- Descubre nuevas Series y PelÃ­culas basadas en tus hÃ¡bitos
 - Widgets para tu firma en foros
 
-¿Qué puede hacer este add-on?
+Â¿QuÃ© puede hacer este add-on?
 
-- Scrobble automático de las Episodios y Películas que estás viendo
-- Sincronizar tus colecciones Series y Películas con trakt.tv (después de la actualización de la biblioteca)
-- Limpiar automáticamente tu colección de trakt.tv para que sea idéntica a la de XBMC
+- Scrobble automÃ¡tico de las Episodios y PelÃ­culas que estÃ¡s viendo
+- Sincronizar tus colecciones Series y PelÃ­culas con trakt.tv (despuÃ©s de la actualizaciÃ³n de la biblioteca)
+- Limpiar automÃ¡ticamente tu colecciÃ³n de trakt.tv para que sea idÃ©ntica a la de XBMC
 - Mantener el mismo estado de visionado entre XBMC y trakt.tv
-- Valorar Películas y Episodios después de verlos
+- Valorar PelÃ­culas y Episodios despuÃ©s de verlos
 - Skin/teclas personalizadas para acciones como: marcar como visto, valorar, etiquetas y listas
 
-¡Un agradecimiento especial a todos los que han contribuido en este plugin! Revisa el histórico de commits y el histórico de cambios para ver todos esos desarrolladores con talento.</description>
+Â¡Un agradecimiento especial a todos los que han contribuido en este plugin! Revisa el histÃ³rico de commits y el histÃ³rico de cambios para ver todos esos desarrolladores con talento.</description>
 		<platform>all</platform>
 		<website>http://trakt.tv</website>
 		<source>https://github.com/trakt/script.trakt</source>
@@ -223,8 +223,8 @@ Special thanks to all who contributed to this plugin! Check the commit history a
   <extension point="xbmc.addon.metadata">
     <summary lang="en">Auto Search for Subtitles on Play</summary>
     <description lang="en">Auto Search for Subtitles on Playback start if no subs are found.[CR][CR]Icon credits goes to zNET Computer Solutions http://www.znetcs.pl</description>
-    <summary lang="pt">Pesquisa Automática por legendas no Play</summary>
-    <description lang="pt">Pesquisa Automática por legendas na reprodução se não existirem legendas.[CR][CR]Créditos dos icons vão para zNET Computer Solutions http://www.znetcs.pl</description>
+    <summary lang="pt">Pesquisa AutomÃ¡tica por legendas no Play</summary>
+    <description lang="pt">Pesquisa AutomÃ¡tica por legendas na reproduÃ§Ã£o se nÃ£o existirem legendas.[CR][CR]CrÃ©ditos dos icons vÃ£o para zNET Computer Solutions http://www.znetcs.pl</description>
     <platform>all</platform>
     <language>en</language>
   </extension>
@@ -244,7 +244,7 @@ Special thanks to all who contributed to this plugin! Check the commit history a
     <description lang="en">Search and download subtitles from Legendas.TV</description>
     <description lang="pt">Procura e baixa legendas de Legendas.TV</description>
     <disclaimer lang="en">For bugs, requests or general questions visit the 'Subtitle add-on' subforum on the XBMC forum.</disclaimer>
-    <disclaimer lang="en">Para bugs, pedidos ou perguntas visite o subfórum 'Subtitle add-on' no fórum oficial do XBMC.</disclaimer>
+    <disclaimer lang="en">Para bugs, pedidos ou perguntas visite o subfÃ³rum 'Subtitle add-on' no fÃ³rum oficial do XBMC.</disclaimer>
     <language></language>
     <platform>all</platform>
     <license>GNU GENERAL PUBLIC LICENSE. Version 3.</license>
@@ -268,8 +268,8 @@ Special thanks to all who contributed to this plugin! Check the commit history a
     <summary lang="en">OpenSubtitles (Unofficial)</summary>
     <description lang="en">Search and download subtitles from opensubtitles.org. This unofficial version permits to choose preference language in results</description>
     <disclaimer lang="en"></disclaimer>
-    <summary lang="pt">OpenSubtitles (Não Oficial)</summary>
-    <description lang="pt">Pesquisa e download de legendas de opensubtitles.org. Esta versão não oficial permite nas definições escolher o idioma para apresentar legendas primeiro</description>
+    <summary lang="pt">OpenSubtitles (NÃ£o Oficial)</summary>
+    <description lang="pt">Pesquisa e download de legendas de opensubtitles.org. Esta versÃ£o nÃ£o oficial permite nas definiÃ§Ãµes escolher o idioma para apresentar legendas primeiro</description>
     <disclaimer lang="pt"></disclaimer>
     <platform>all</platform>
     <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>

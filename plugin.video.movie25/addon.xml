@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.movie25"
        name="Mash Up"
-       version="1.4.0"
-       provider-name="MashUp">
+       version="1.4.1"
+       provider-name="MashUp/Mafarricos">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
 		<import addon="script.module.urlresolver"  version="0.0.1"/>

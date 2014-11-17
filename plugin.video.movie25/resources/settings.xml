@@ -5,7 +5,6 @@
 		<setting id="meta-view" type="bool" label="[B]Metadata (Movies)[/B]" default="true"/>
 		<setting id="meta-view-tv" type="bool" label="[B]Metadata (TV Shows)[/B]" default="false"/>
 		<setting id="whistory" type="bool" label="[B]Watch History[/B]" default="true"/>
-		<setting id="gastatus" type="bool" label="[B]Google Analytics[/B]" default="true"/>
 		<setting id="skin" type="enum" label="[B]Skin[/B]" values="VECTOR TH|GREEN MONSTER" default="0"/>
 		<setting id="stracker" type="enum" label="[B]Choose Show Tracker Source[/B]" values="Sidereel|Trakt.tv|All" default="0"/>
 		<setting id="groupfavs" type="bool" label="[B]Group Favorites[/B]" default="false"/>
