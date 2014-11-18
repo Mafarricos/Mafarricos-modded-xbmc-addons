@@ -8,8 +8,8 @@
     
     <!-- Exclusions -->     
     <string id="32020">Exclusões</string>
-    <string id="32200">Excluir para videos com menos de X minutos</string>
-    <string id="32201">Ignorar palavras, separadas por virgulas</string>
+    <string id="32200">Excluir para vídeos com menos de X minutos</string>
+    <string id="32201">Ignorar palavras, separadas por vírgulas</string>
     <string id="32202">Excluir TV ao Vivo</string>
     <string id="32203">Excluir fontes HTTP</string>  
     <string id="32204">Excluir caminho</string>
