@@ -42,10 +42,8 @@ def YOUKIDS():
     main.VIEWSB()
 
 def YOUList(mname,durl):
-        if 'gdata' in durl:
-                murl=durl
-        else:
-                murl='http://gdata.youtube.com/feeds/api/users/'+durl+'/uploads?start-index=1&max-results=50'
+        if 'gdata' in durl: murl=durl
+        else: murl='http://gdata.youtube.com/feeds/api/users/'+durl+'/uploads?start-index=1&max-results=50'
         link=main.OPENURL(murl)
         match=re.compile("http\://www.youtube.com/watch\?v\=([^\&]+)\&.+?<media\:descriptio[^>]+>([^<]+)</media\:description>.+?<media\:thumbnail url='([^']+)'.+?<media:title type='plain'>(.+?)/media:title>").findall(link)
         for url,desc,thumb,name in match:
@@ -65,7 +63,6 @@ def YOULink(mname,url,thumb):
         # play with bookmark
         player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=mname,season='', episode='', year='',img=thumb,infolabels='', watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
         #WatchHistory
-        if selfAddon.getSetting("whistory") == "true":
-            wh.add_item(mname+' '+'[COLOR green]YoutubeChannel[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
+        if selfAddon.getSetting("whistory") == "true": wh.add_item(mname+' '+'[COLOR green]YoutubeChannel[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
         player.KeepAlive()
         return ok

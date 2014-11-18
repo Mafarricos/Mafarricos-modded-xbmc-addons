@@ -3,21 +3,21 @@ import xbmc,xbmcgui, xbmcaddon, xbmcplugin
 addon_id = 'plugin.video.movie25'
 selfAddon = xbmcaddon.Addon(id=addon_id)
 art = main.art
-
+MainURL = 'http://www.movie25.cm/'
 
 def SuperMovies(index=False):
     Mindex = selfAddon.getSetting('mindexer')
     if 'Movie25' in Mindex:
-        main.addDir('Search','http://www.movie25.so/',420,art+'/search2.png',index=index)
-        main.addDir('A-Z','http://www.movie25.so/',6,art+'/az2.png',index=index)
-        main.addDir('New Releases','http://www.movie25.so/movies/new-releases/',1,art+'/new2.png',index=index)
-        main.addDir('Latest Added','http://www.movie25.so/movies/latest-added/',1,art+'/latest2.png',index=index)
-        main.addDir('Featured Movies','http://www.movie25.so/movies/featured-movies/',1,art+'/feat2.png',index=index)
-        main.addDir('Most Viewed','http://www.movie25.so/movies/most-viewed/',1,art+'/view2.png',index=index)
-        main.addDir('Most Voted','http://www.movie25.so/movies/most-voted/',1,art+'/vote2.png',index=index)
-        main.addDir('HD Releases','http://www.movie25.so/movies/latest-hd-movies/',1,art+'/dvd2hd.png',index=index)
-        main.addDir('Genre','http://www.movie25.so/',2,art+'/genre2.png',index=index)
-        main.addDir('By Year','http://www.movie25.so/',7,art+'/year2.png',index=index)
+        main.addDir('Search',MainURL,420,art+'/search2.png',index=index)
+        main.addDir('A-Z',MainURL,6,art+'/az2.png',index=index)
+        main.addDir('New Releases',MainURL+'movies/new-releases/',1,art+'/new2.png',index=index)
+        main.addDir('Latest Added',MainURL+'movies/latest-added/',1,art+'/latest2.png',index=index)
+        main.addDir('Featured Movies',MainURL+'movies/featured-movies/',1,art+'/feat2.png',index=index)
+        main.addDir('Most Viewed',MainURL+'movies/most-viewed/',1,art+'/view2.png',index=index)
+        main.addDir('Most Voted',MainURL+'movies/most-voted/',1,art+'/vote2.png',index=index)
+        main.addDir('HD Releases',MainURL+'movies/latest-hd-movies/',1,art+'/dvd2hd.png',index=index)
+        main.addDir('Genre',MainURL,2,art+'/genre2.png',index=index)
+        main.addDir('By Year',MainURL,7,art+'/year2.png',index=index)
         main.addSpecial('Current Index: [COLOR orange]'+Mindex+'[/COLOR]','movies',1053,art+'/movie25.png')
     elif 'IceFilms' in Mindex:
         main.addDir('Search for Movies','Movies',286,art+'/search.png',index=index)
@@ -81,18 +81,12 @@ def SuperTV(index=False):
         main.addSpecial('Current Index: [COLOR orange]'+Tindex+'[/COLOR]','tv',1053,art+'/pftv.png')
     main.VIEWSB2()
 
-        
 def ChangeIndex(type):
-    if type == 'movies':
-        namelist=['Movie25','IceFilms','iWatchOnline']
-    else:
-        namelist=['WatchSeries','PFTV','IceFilms','iWatchOnline']
+    if type == 'movies': namelist=['Movie25','IceFilms','iWatchOnline']
+    else: namelist=['WatchSeries','PFTV','IceFilms','iWatchOnline']
     dialog = xbmcgui.Dialog()
     answer =dialog.select("Pick A Source",namelist)
     if answer != -1:
-        if type == 'movies':
-            selfAddon.setSetting('mindexer', namelist[int(answer)])
-        else:
-            selfAddon.setSetting('tindexer', namelist[int(answer)])
+        if type == 'movies': selfAddon.setSetting('mindexer', namelist[int(answer)])
+        else: selfAddon.setSetting('tindexer', namelist[int(answer)])
         xbmc.executebuiltin("XBMC.Container.Refresh")
-    

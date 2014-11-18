@@ -11,18 +11,14 @@ cachedir = xbmc.translatePath('special://temp/')
 
 def SEARCHistory():
     dialog = xbmcgui.Dialog()
-    if xbmcgui.Window(10000).getProperty('MASH_SSR_TYPE'):
-        ret = int(xbmcgui.Window(10000).getProperty('MASH_SSR_TYPE'))-1
-    else:
-        ret = dialog.select('[B]Choose A Search Type[/B]',['[B]TV Shows[/B]','[B]Movies[/B]','[B]By Artist[/B]'])
-    if ret == -1:
-        xbmcplugin.endOfDirectory(int(sys.argv[1]), False, False)
+    if xbmcgui.Window(10000).getProperty('MASH_SSR_TYPE'): ret = int(xbmcgui.Window(10000).getProperty('MASH_SSR_TYPE'))-1
+    else: ret = dialog.select('[B]Choose A Search Type[/B]',['[B]TV Shows[/B]','[B]Movies[/B]','[B]By Artist[/B]'])
+    if ret == -1: xbmcplugin.endOfDirectory(int(sys.argv[1]), False, False)
     if ret == 0:
         searchType = 'TV'
         seapath=os.path.join(main.datapath,'Search')
         SeaFile=os.path.join(seapath,'SearchHistoryTv')
-        if not os.path.exists(SeaFile):
-            SEARCH('',searchType)
+        if not os.path.exists(SeaFile): SEARCH('',searchType)
         else:
             main.addDir('Search',searchType,20,art+'/search.png')
             main.addDir('Clear History',SeaFile,128,art+'/cleahis.png')
@@ -35,8 +31,7 @@ def SEARCHistory():
         searchType = 'Movies'
         seapath=os.path.join(main.datapath,'Search')
         SeaFile=os.path.join(seapath,'SearchHistory25')
-        if not os.path.exists(SeaFile):
-            SEARCH('',searchType)
+        if not os.path.exists(SeaFile): SEARCH('',searchType)
         else:
             main.addDir('Search',searchType,20,art+'/search.png')
             main.addDir('Clear History',SeaFile,128,art+'/cleahis.png')
@@ -50,8 +45,7 @@ def SEARCHistory():
         searchType = 'Artist'
         seapath=os.path.join(main.datapath,'Search')
         SeaFile=os.path.join(seapath,'SearchHistoryArtist')
-        if not os.path.exists(SeaFile):
-            artist.SearchArtist('','')
+        if not os.path.exists(SeaFile): artist.SearchArtist('','')
         else:
             main.addDir('Search','atrtist',487,art+'/search.png')
             main.addDir('Clear History',SeaFile,128,art+'/cleahis.png')
@@ -64,10 +58,8 @@ def SEARCHistory():
 def sortSearchList(searchList,query):
     import locale
     loc = locale.getlocale()
-    try:
-        locale.setlocale(locale.LC_ALL, "")
-    except:
-        locale.setlocale(locale.LC_ALL, "C")
+    try: locale.setlocale(locale.LC_ALL, "")
+    except: locale.setlocale(locale.LC_ALL, "C")
     searchList.sort(key=lambda tup: tup[0].decode('utf-8').encode('utf-8'),cmp=locale.strcoll)
     try:locale.setlocale(locale.LC_ALL, loc)
     except:pass
@@ -89,10 +81,8 @@ def sortSearchList(searchList,query):
 def SEARCH(mname,type,libID=''):
     if libID<>'':
         libName=mname
-        if re.search('(?i).\s\([12][90]\d{2}\)',mname):
-            mname = re.sub('(?i)^(.+?)\s\([12][90]\d{2}\).*','\\1',mname)
-        elif re.search('(?i).\s[12][90]\d{2}',mname):
-            mname = re.sub('(?i)^(.+?)\s[12][90]\d{2}.*','\\1',mname)
+        if re.search('(?i).\s\([12][90]\d{2}\)',mname): mname = re.sub('(?i)^(.+?)\s\([12][90]\d{2}\).*','\\1',mname)
+        elif re.search('(?i).\s[12][90]\d{2}',mname): mname = re.sub('(?i)^(.+?)\s[12][90]\d{2}.*','\\1',mname)
         mname = re.sub('(?i)\s\s+',' ',mname).strip()
     try: import Queue as queue
     except ImportError: import queue
@@ -259,7 +249,6 @@ def SEARCH(mname,type,libID=''):
                 q = queue.Queue()
                 threading.Thread(target=scenesource,args=(encodetv,type,q)).start()
                 results.append(q)
-
             encodewithoutepi = urllib.unquote(encodewithoutepi)
         encode = urllib.unquote(encode)
         if libID=='':
@@ -289,16 +278,13 @@ def SEARCH(mname,type,libID=''):
             remaining_display = 'Videos loaded :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
             dialogWait.update(0, '[B]Will load instantly from now on[/B]',remaining_display,' ')
             searchList = sortSearchList(searchList,mname)
-
         if not libID=='':
-            for n in range(len(results)):
-                searchList.extend(results[n].get())
+            for n in range(len(results)): searchList.extend(results[n].get())
             searchList = sortSearchList(searchList,mname)
             import library
             t=threading.Thread(target=library.buildHostDB,args=(searchList,libID,libName))
             t.start()
             t.join()
-            
         else:
             encode = encodeorg
             if type == 'TV':
@@ -313,26 +299,19 @@ def SEARCH(mname,type,libID=''):
                 if year and not re.search('(?i)^.+?\s\(?([12][90]\d{2})\)?.*',cname): cname += ' ' + str(year)
                 elif (cyear + 1) == year or (cyear - 1) == year: cname = cname.replace(str(cyear),str(year))
                 name = name +' [COLOR=FF67cc33]'+section+'[/COLOR]'
-                if type == 'TV' and (section == 'MBox' or section == 'WatchSeries' or section == 'iWatchOnline' or section == 'IceFilms' or section == 'TubePlus'):
-                    words = wordsalt
+                if type == 'TV' and (section == 'MBox' or section == 'WatchSeries' or section == 'iWatchOnline' or section == 'IceFilms' or section == 'TubePlus'): words = wordsalt
                 else: words = wordsorg
                 if words.issubset(cname.lower().split()):
                     if dir:
-                        if type=='Movies':
-                            main.addDirM(name,url,int(mode),thumb,'','','','','')
+                        if type=='Movies': main.addDirM(name,url,int(mode),thumb,'','','','','')
                         else:
-                            if re.search('(?i)\ss(\d+)e(\d+)',name) or re.search('(?i)Season(.+?)Episode',name) or re.search('(?i)(\d+)x(\d+)',name):
-                                main.addDirTE(name,url,int(mode),thumb,'','','','','')
-                            else:
-                                main.addDirT(name,url,int(mode),thumb,'','','','','')
+                            if re.search('(?i)\ss(\d+)e(\d+)',name) or re.search('(?i)Season(.+?)Episode',name) or re.search('(?i)(\d+)x(\d+)',name): main.addDirTE(name,url,int(mode),thumb,'','','','','')
+                            else: main.addDirT(name,url,int(mode),thumb,'','','','','')
                     else:
-                        if type=='Movies':
-                            main.addPlayM(name,url,int(mode),thumb,'','','','','')
+                        if type=='Movies': main.addPlayM(name,url,int(mode),thumb,'','','','','')
                         else:
-                            if re.search('(?i)\ss(\d+)e(\d+)',name) or re.search('(?i)Season(.+?)Episode',name) or re.search('(?i)(\d+)x(\d+)',name):
-                                main.addPlayTE(name,url,int(mode),thumb,'','','','','')
-                            else:
-                                main.addPlayT(name,url,int(mode),thumb,'','','','','')
+                            if re.search('(?i)\ss(\d+)e(\d+)',name) or re.search('(?i)Season(.+?)Episode',name) or re.search('(?i)(\d+)x(\d+)',name): main.addPlayTE(name,url,int(mode),thumb,'','','','','')
+                            else: main.addPlayT(name,url,int(mode),thumb,'','','','','')
                     loadedLinks = loadedLinks + 1
                     percent = (loadedLinks * 100)/totalLinks
                     remaining_display = 'Videos loaded :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
@@ -340,10 +319,8 @@ def SEARCH(mname,type,libID=''):
                     if dialogWait.iscanceled(): return False    
             dialogWait.close()
             del dialogWait
-            if type=='Movies':
-                xbmcgui.Window(10000).setProperty('MASH_SSR_TYPE', '2')
-            elif type == 'TV':
-                xbmcgui.Window(10000).setProperty('MASH_SSR_TYPE', '1')
+            if type=='Movies': xbmcgui.Window(10000).setProperty('MASH_SSR_TYPE', '2')
+            elif type == 'TV': xbmcgui.Window(10000).setProperty('MASH_SSR_TYPE', '1')
             try:
                 filelist = [ f for f in os.listdir(cachedir) if f.endswith(".fi") ]
                 for f in filelist: os.remove(os.path.join(cachedir,f))
@@ -467,7 +444,6 @@ def filestube(encode,type,q):
 #     if q: q.put(returnList)
 #     return returnList
 
-
 def vip(encode,type,q):
     from resources.libs.movies_tv import filestube
     returnList = vipSuperSearch(encode,type)
@@ -492,10 +468,7 @@ def vipSuperSearch(encode,type):
             match2 = re.compile('<title>([^<]+)</title.+?link>(.+?)</link.+?thumbnail>([^<]+)</thumbnail>').findall(posterXML)
             for title,url,thumb in match2:
                 if re.search('(?i)'+encode,title):
-                    if 'sublink' in url:
-                        returnList.append((title.strip(),poster,url,thumb,249,True))
-                    else:
-                        returnList.append((title.strip(),poster,url,thumb,237,False))
-                    
+                    if 'sublink' in url: returnList.append((title.strip(),poster,url,thumb,249,True))
+                    else: returnList.append((title.strip(),poster,url,thumb,237,False))
         return returnList
     except: return []

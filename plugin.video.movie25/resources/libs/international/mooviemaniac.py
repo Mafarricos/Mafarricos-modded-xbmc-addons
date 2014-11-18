@@ -27,14 +27,11 @@ def LISTMOO():
                 percent = (loadedLinks * 100)/totalLinks
                 remaining_display = 'Movies loaded :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
                 dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
-                if (dialogWait.iscanceled()):
-                        return False   
+                if (dialogWait.iscanceled()): return False   
         dialogWait.close()
         del dialogWait
-        #main.GA("INT","Mooviemaniac")
 
 def LINKMOO(mname,murl,thumb):
-        #main.GA("Mooviemaniac","Watched")
         ok=True
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Link,5000)")
         infoLabels =main.GETMETAT(mname,'','','')
@@ -47,8 +44,7 @@ def LINKMOO(mname,murl,thumb):
         infolabels = { 'supports_meta' : 'true', 'video_type':video_type, 'name':str(infoLabels['title']), 'imdb_id':str(infoLabels['imdb_id']), 'season':str(season), 'episode':str(episode), 'year':str(infoLabels['year']) }
         try:
             stream_url = main.resolve_url(murl)
-            if stream_url == False:
-                  return                                                            
+            if stream_url == False: return                                                            
             infoL={'Title': infoLabels['title'], 'Plot': infoLabels['plot'], 'Genre': infoLabels['genre'], 'originaltitle': infoLabels['metaName']}
             # play with bookmark
             stream_url=stream_url.replace(' ','%20')
@@ -62,6 +58,5 @@ def LINKMOO(mname,murl,thumb):
             player.KeepAlive()
             return ok
         except Exception, e:
-                if stream_url != False:
-                        main.ErrorReport(e)
+                if stream_url != False: main.ErrorReport(e)
                 return ok

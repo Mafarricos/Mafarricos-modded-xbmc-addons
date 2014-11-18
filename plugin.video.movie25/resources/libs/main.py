@@ -32,10 +32,8 @@ try:
             build = match.group(1)
             PLATFORM = match.group(2)
             print 'XBMC '+build+' Platform '+PLATFORM
-        else:
-            PLATFORM=''
-except:
-    PLATFORM=''
+        else: PLATFORM=''
+except: PLATFORM=''
 
 sys.path.append( os.path.join( selfAddon.getAddonInfo('path'), 'resources', 'libs' ))
 ################################################################################ Common Calls ##########################################################################################################
@@ -53,8 +51,7 @@ def OPENURL(url, mobile = False, q = False, verbose = True, timeout = 10, cookie
     UserAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36'
     if ua: UserAgent = ua
     try:
-        if log:
-            print "MU-Openurl = " + url
+        if log: print "MU-Openurl = " + url
         if cookie and not cookiejar:
             import cookielib
             cookie_file = os.path.join(os.path.join(datapath,'Cookies'), cookie+'.cookies')
@@ -68,14 +65,10 @@ def OPENURL(url, mobile = False, q = False, verbose = True, timeout = 10, cookie
             import cookielib
             cj = cookielib.LWPCookieJar()
             opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
-        else:
-            opener = urllib2.build_opener()
-        if mobile:
-            opener.addheaders = [('User-Agent', 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7')]
-        else:
-            opener.addheaders = [('User-Agent', UserAgent)]
-        for header in headers:
-            opener.addheaders.append(header)
+        else: opener = urllib2.build_opener()
+        if mobile: opener.addheaders = [('User-Agent', 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7')]
+        else: opener.addheaders = [('User-Agent', UserAgent)]
+        for header in headers: opener.addheaders.append(header)
         if data:
             if type == 'json': 
                 import json
@@ -83,10 +76,8 @@ def OPENURL(url, mobile = False, q = False, verbose = True, timeout = 10, cookie
                 opener.addheaders.append(('Content-Type', 'application/json'))
             else: data = urllib.urlencode(data)
             response = opener.open(url, data, timeout)
-        else:
-            response = opener.open(url, timeout=timeout)
-        if cookie and not cookiejar:
-            cj.save(cookie_file,True)
+        else: response = opener.open(url, timeout=timeout)
+        if cookie and not cookiejar: cj.save(cookie_file,True)
         link=response.read()
         response.close()
         opener.close()
@@ -96,8 +87,7 @@ def OPENURL(url, mobile = False, q = False, verbose = True, timeout = 10, cookie
         if q: q.put(link)
         return link
     except Exception as e:
-        if verbose:
-            xbmc.executebuiltin("XBMC.Notification(Sorry!,Source Website is Down,3000,"+elogo+")")
+        if verbose: xbmc.executebuiltin("XBMC.Notification(Sorry!,Source Website is Down,3000,"+elogo+")")
         xbmc.log('***********Website Error: '+str(e)+'**************', xbmc.LOGERROR)
         import traceback
         traceback.print_exc()
@@ -106,10 +96,8 @@ def OPENURL(url, mobile = False, q = False, verbose = True, timeout = 10, cookie
         return link
     
 def batchOPENURL(urls, mobile = False, merge = True):
-    try:
-        import Queue as queue
-    except ImportError:
-        import queue
+    try: import Queue as queue
+    except ImportError: import queue
     max = len(urls)
     results = []
     for url in urls: 
@@ -144,8 +132,7 @@ def REDIRECT(url):
         return link
 
 def Clearhistory(path):
-    if os.path.exists(path):
-        os.remove(path)
+    if os.path.exists(path): os.remove(path)
     
 def setGrab():
     global grab
@@ -173,8 +160,7 @@ def getHostList():
     global hostlist
     if not hostlist:
         hostlist = hosts
-        try: 
-            if xbmcaddon.Addon(id='script.module.urlresolver').getSetting("RealDebridResolver_enabled") == 'true': hostlist += getRDHosts()
+        try: if xbmcaddon.Addon(id='script.module.urlresolver').getSetting("RealDebridResolver_enabled") == 'true': hostlist += getRDHosts()
         except: pass
     return hostlist
 
@@ -197,10 +183,8 @@ def removeColoredText(text):
     return re.sub('\[COLOR.*?\[/COLOR\]','',text,re.I|re.DOTALL).strip()
 
 def SwitchUp():
-    if selfAddon.getSetting("switchup") == "false":
-        selfAddon.setSetting(id="switchup", value="true")
-    else:
-        selfAddon.setSetting(id="switchup", value="false")
+    if selfAddon.getSetting("switchup") == "false": selfAddon.setSetting(id="switchup", value="true")
+    else: selfAddon.setSetting(id="switchup", value="false")
     xbmc.executebuiltin("XBMC.Container.Refresh")
 
 def ErrorReport(e):
@@ -232,18 +216,15 @@ def CleanTitle(mname):
         if not re.search('p$',quality): quality += 'p'
     else:
         tag = re.search('(?i)(dvdrip|pdtv|xvid|bluray|hdtv|\scam(?![a-z])|r6|r5|\sts|webrip|bdrip|brrip)',mname)
-        if tag:
-            quality = tag.group(1).strip()
+        if tag: quality = tag.group(1).strip()
         else: quality = ''
     epi = re.search('(?i)s(\d+)e(\d+?)',mname)
     if epi:
         title = re.findall('(?i)(.+?s\d+e\d+)',mname)[0].strip()
-        if quality:
-            title = title + ' [COLOR red]' + quality + '[/COLOR]'
+        if quality: title = title + ' [COLOR red]' + quality + '[/COLOR]'
     else:
         movie = re.search('(?i)(.+?\s\d{4})',mname.replace('(','').replace(')',''))
-        if movie:
-            title = movie.group(1).strip() + ' [COLOR red]' + quality + '[/COLOR]'
+        if movie: title = movie.group(1).strip() + ' [COLOR red]' + quality + '[/COLOR]'
     return title
 
 def removeFile(file):
@@ -263,8 +244,7 @@ def getFile(path):
     return content
    
 def setFile(path,content,force=False):
-    if os.path.exists(path) and not force:
-        return False
+    if os.path.exists(path) and not force: return False
     else:
         try:
             open(path,'w+').write(content)
@@ -286,14 +266,12 @@ def downloadFile(url,dest,silent = False,cookie = None):
                 except: cj.save(cookie_file,True)
             else: cj.save(cookie_file,True)
             opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
-        else:
-            opener = urllib2.build_opener()
+        else: opener = urllib2.build_opener()
         opener.addheaders = [('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')]
         u = opener.open(url)
         f = open(dest, 'wb')
         meta = u.info()
-        if meta.getheaders("Content-Length"):
-            file_size = int(meta.getheaders("Content-Length")[0])
+        if meta.getheaders("Content-Length"): file_size = int(meta.getheaders("Content-Length")[0])
         else: file_size = 'Unknown'
         file_size_dl = 0
         block_sz = 8192
@@ -333,22 +311,18 @@ def updateSearchFile(searchQuery,searchType,defaultValue = '###',searchMsg = '')
         except: pass
         keyb = xbmc.Keyboard('', searchMsg )
         keyb.doModal()
-        if (keyb.isConfirmed()):
-            searchQuery = keyb.getText()
+        if (keyb.isConfirmed()): searchQuery = keyb.getText()
         else:
             xbmcplugin.endOfDirectory(int(sys.argv[1]),False,False)
             return False
-    else:
-        addToSearchHistory = False
+    else: addToSearchHistory = False
     searchQuery=urllib.quote(searchQuery)
     if os.path.exists(SearchFile):
         searchitems=re.compile('search="([^"]+?)",').findall(open(SearchFile,'r').read())
         if searchitems.count(searchQuery) > 0: addToSearchHistory = True
     if addToSearchHistory:
-        if not os.path.exists(SearchFile) and searchQuery != '':
-            open(SearchFile,'w').write('search="%s",'%searchQuery)
-        elif searchQuery != '':
-            open(SearchFile,'a').write('search="%s",'%searchQuery)
+        if not os.path.exists(SearchFile) and searchQuery != '': open(SearchFile,'w').write('search="%s",'%searchQuery)
+        elif searchQuery != '': open(SearchFile,'a').write('search="%s",'%searchQuery)
         else: return False
         searchitems=re.compile('search="([^"]+?)",').findall(open(SearchFile,'r').read())
         rewriteSearchFile = False
@@ -371,26 +345,9 @@ def supportedHost(host):
 ################################################################################ Notifications #########################################################################################################
 
 def CheckVersion():
-    try:
-        link=OPENURL('http://repo.mashupxbmc.com/plugin.video.movie25/resources/libs/main.py',verbose=False)
-    except:
-        link='nill'
+	print 'CloudFlare Link Down'
+	return False
 
-    link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
-    match=re.compile('VERSION = "(.+?)"').findall(link)
-    if len(match)>0:
-        if VERSION != str(match[0]):
-                dialog = xbmcgui.Dialog()
-                ok=dialog.ok('[B]New Update Available![/B]', "Your version of Mash Up is outdated." ,'The current available version is '+str(match[0]),'To update goto addons under system settings')
-                print 'Mash Up v'+VERSION+' is Outdated'
-                return False
-        else:
-            print 'Mash Up v'+VERSION+' is Up to Date'
-            return True
-    
-    else:
-        print 'CloudFlare Link Down'
-        return False
 ######################################################################## Live Stream do Regex ############################################################
 def doRegex(murl):
     #rname=rname.replace('><','').replace('>','').replace('<','')
@@ -401,8 +358,7 @@ def doRegex(murl):
         if k in murl:
             regex=re.compile('<name>'+k+'</name><expres>(.+?)</expres><page>(.+?)</page><referer>(.+?)</referer></regex>',re.DOTALL).search(murl)
             referer=regex.group(3)
-            if referer=='':
-                referer=regex.group(2)
+            if referer=='': referer=regex.group(2)
             req = urllib2.Request(regex.group(2))
             req.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:10.0a1) Gecko/20111029 Firefox/10.0a1')
             req.add_header('Referer',referer)
@@ -412,7 +368,6 @@ def doRegex(murl):
             link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('\/','/')
             r=re.compile(regex.group(1),re.DOTALL).findall(link)[0]
             url = url.replace("$doregex[" + k + "]", r)
-   
     return url
     
 ################################################################################ AutoView ##########################################################################################################
@@ -420,63 +375,42 @@ def doRegex(murl):
 def VIEWS():
     if selfAddon.getSetting("auto-view") == "true":
         if selfAddon.getSetting("choose-skin") == "true":
-            if selfAddon.getSetting("con-view") == "0":
-                    xbmc.executebuiltin("Container.SetViewMode(50)")
-            elif selfAddon.getSetting("con-view") == "1":
-                    xbmc.executebuiltin("Container.SetViewMode(51)")
-            elif selfAddon.getSetting("con-view") == "2":
-                    xbmc.executebuiltin("Container.SetViewMode(500)")
-            elif selfAddon.getSetting("con-view") == "3":
-                    xbmc.executebuiltin("Container.SetViewMode(501)")
-            elif selfAddon.getSetting("con-view") == "4":
-                    xbmc.executebuiltin("Container.SetViewMode(508)")
-            elif selfAddon.getSetting("con-view") == "5":
-                    xbmc.executebuiltin("Container.SetViewMode(504)")
-            elif selfAddon.getSetting("con-view") == "6":
-                    xbmc.executebuiltin("Container.SetViewMode(503)")
-            elif selfAddon.getSetting("con-view") == "7":
-                    xbmc.executebuiltin("Container.SetViewMode(515)")
+            if selfAddon.getSetting("con-view") == "0": xbmc.executebuiltin("Container.SetViewMode(50)")
+            elif selfAddon.getSetting("con-view") == "1": xbmc.executebuiltin("Container.SetViewMode(51)")
+            elif selfAddon.getSetting("con-view") == "2": xbmc.executebuiltin("Container.SetViewMode(500)")
+            elif selfAddon.getSetting("con-view") == "3": xbmc.executebuiltin("Container.SetViewMode(501)")
+            elif selfAddon.getSetting("con-view") == "4": xbmc.executebuiltin("Container.SetViewMode(508)")
+            elif selfAddon.getSetting("con-view") == "5": xbmc.executebuiltin("Container.SetViewMode(504)")
+            elif selfAddon.getSetting("con-view") == "6": xbmc.executebuiltin("Container.SetViewMode(503)")
+            elif selfAddon.getSetting("con-view") == "7": xbmc.executebuiltin("Container.SetViewMode(515)")
             return
         elif selfAddon.getSetting("choose-skin") == "false":
-            if selfAddon.getSetting("xpr-view") == "0":
-                    xbmc.executebuiltin("Container.SetViewMode(50)")
-            elif selfAddon.getSetting("xpr-view") == "1":
-                    xbmc.executebuiltin("Container.SetViewMode(52)")
-            elif selfAddon.getSetting("xpr-view") == "2":
-                    xbmc.executebuiltin("Container.SetViewMode(501)")
-            elif selfAddon.getSetting("xpr-view") == "3":
-                    xbmc.executebuiltin("Container.SetViewMode(55)")
-            elif selfAddon.getSetting("xpr-view") == "4":
-                    xbmc.executebuiltin("Container.SetViewMode(54)")
-            elif selfAddon.getSetting("xpr-view") == "5":
-                    xbmc.executebuiltin("Container.SetViewMode(60)")
-            elif selfAddon.getSetting("xpr-view") == "6":
-                    xbmc.executebuiltin("Container.SetViewMode(53)")
+            if selfAddon.getSetting("xpr-view") == "0": xbmc.executebuiltin("Container.SetViewMode(50)")
+            elif selfAddon.getSetting("xpr-view") == "1": xbmc.executebuiltin("Container.SetViewMode(52)")
+            elif selfAddon.getSetting("xpr-view") == "2": xbmc.executebuiltin("Container.SetViewMode(501)")
+            elif selfAddon.getSetting("xpr-view") == "3": xbmc.executebuiltin("Container.SetViewMode(55)")
+            elif selfAddon.getSetting("xpr-view") == "4": xbmc.executebuiltin("Container.SetViewMode(54)")
+            elif selfAddon.getSetting("xpr-view") == "5": xbmc.executebuiltin("Container.SetViewMode(60)")
+            elif selfAddon.getSetting("xpr-view") == "6": xbmc.executebuiltin("Container.SetViewMode(53)")
             return
-    else:
-        return
+    else: return
 
 def VIEWSB():
     if selfAddon.getSetting("auto-view") == "true":
-        if selfAddon.getSetting("home-view") == "0":
-                xbmc.executebuiltin("Container.SetViewMode(50)")
-        elif selfAddon.getSetting("home-view") == "1":
-                xbmc.executebuiltin("Container.SetViewMode(500)")
+        if selfAddon.getSetting("home-view") == "0": xbmc.executebuiltin("Container.SetViewMode(50)")
+        elif selfAddon.getSetting("home-view") == "1": xbmc.executebuiltin("Container.SetViewMode(500)")
         return
 
 def VIEWSB2():
     if selfAddon.getSetting("auto-view") == "true":
-        if selfAddon.getSetting("sub-view") == "0":
-            xbmc.executebuiltin("Container.SetViewMode(50)")
-        elif selfAddon.getSetting("sub-view") == "1":
-            xbmc.executebuiltin("Container.SetViewMode(500)")
+        if selfAddon.getSetting("sub-view") == "0": xbmc.executebuiltin("Container.SetViewMode(50)")
+        elif selfAddon.getSetting("sub-view") == "1": xbmc.executebuiltin("Container.SetViewMode(500)")
         return
 ################################################################################ Movies Metahandler ##########################################################################################################
 
 def formatCast(cast):
     roles = "\n\n"
-    for role in cast:
-        roles =  roles + "[COLOR blue]" + role[0] + "[/COLOR] as " + role[1] + " | "
+    for role in cast: roles =  roles + "[COLOR blue]" + role[0] + "[/COLOR] as " + role[1] + " | "
     return roles
 
 def GETMETAT(mname,genre,fan,thumb,plot='',imdb='',tmdb=''):
@@ -551,10 +485,8 @@ def GETMETAEpiT(mname,thumb,desc):
                     for name,sea,epi in r:
                         year=''
                         name=name.replace(' US','').replace(' (US)','').replace(' (us)','').replace(' (uk Series)','').replace(' (UK)','').replace(' UK',' (UK)').replace(' AU','').replace(' AND',' &').replace(' And',' &').replace(' and',' &').replace(' 2013','').replace(' 2011','').replace(' 2012','').replace(' 2010','')
-                        if re.findall('twisted',name,re.I):
-                            year='2013'
-                        if re.findall('the newsroom',name,re.I):
-                            year='2012'
+                        if re.findall('twisted',name,re.I): year='2013'
+                        if re.findall('the newsroom',name,re.I): year='2012'
                         metaq = grab.get_meta('tvshow',name,None,None,year)
                         imdb=metaq['imdb_id']
                         tit=metaq['title']
@@ -574,12 +506,10 @@ def GETMETAEpiT(mname,thumb,desc):
                 infoLabels = {'rating': meta['rating'],'duration': meta['duration'],'genre': meta['genre'],'mpaa':"rated %s"%meta['mpaa'],'premiered':meta['premiered'],
                       'plot': meta['plot'],'title': meta['title'],'cover_url': meta['cover_url'],'overlay':meta['overlay'],'episode': meta['episode'],
                               'season': meta['season'],'backdrop_url': meta['backdrop_url']}
-
                 if infoLabels['cover_url']=='':
                         if metaq!='':
                             thumb=metaq['cover_url']
                             infoLabels['cover_url']=thumb
-                           
                 if infoLabels['backdrop_url']=='':
                         fan=fanartimage
                         infoLabels['backdrop_url']=fan
@@ -594,16 +524,13 @@ def GETMETAEpiT(mname,thumb,desc):
                    infoLabels['playcount'] = 1
                 else:
                    infoLabels['playcount'] = 0
-                
                 infoLabels['showtitle']=tit
                 infoLabels['year']=year
                 infoLabels['metaName']=infoLabels['title']
                 infoLabels['title']=originalName
-                   
         else:
                 fan=fanartimage
                 infoLabels = {'title': originalName,'metaName': mname,'cover_url': thumb,'backdrop_url': fan,'season': '','episode': '','year': '','plot': desc,'genre': '','imdb_id': ''}       
-        
         return infoLabels
 ############################################################################### Playback resume/ mark as watched #################################################################################
 
@@ -626,7 +553,6 @@ def ChangeWatched(imdb_id, videoType, name, season, episode, year='', watched=''
         xbmc.executebuiltin("XBMC.Container.Refresh")
 
 def refresh_movie(vidtitle,imdb, year=''):
-
     #global metaget
     #if not metaget:
     #    metaget=metahandlers.MetaData()
@@ -638,26 +564,18 @@ def refresh_movie(vidtitle,imdb, year=''):
     vidtitle=vidtitle.replace('  ','')
     setGrab()
     search_meta = grab.search_movies(vidtitle)
-    
     if search_meta:
         movie_list = []
-        for movie in search_meta:
-            movie_list.append(movie['title'] + ' (' + str(movie['year']) + ')')
+        for movie in search_meta: movie_list.append(movie['title'] + ' (' + str(movie['year']) + ')')
         dialog = xbmcgui.Dialog()
         index = dialog.select('Choose', movie_list)
-        
         if index > -1:
             new_imdb_id = search_meta[index]['imdb_id']
             new_tmdb_id = search_meta[index]['tmdb_id']
             year=search_meta[index]['year']
-
             meta=grab.update_meta('movie', vidtitle, imdb, '',new_imdb_id,new_tmdb_id,year)
-            
-
-
             xbmc.executebuiltin("Container.Refresh")
-    else:
-        xbmcgui.Dialog().ok('Refresh Results','No matches found')
+    else: xbmcgui.Dialog().ok('Refresh Results','No matches found')
 
 def episode_refresh(vidname, imdb, season_num, episode_num):
     setGrab()
@@ -665,8 +583,7 @@ def episode_refresh(vidname, imdb, season_num, episode_num):
     xbmc.executebuiltin("XBMC.Container.Refresh")
 ################################################################################Trailers#######################################################################
 def trailer(tmdbid):
-    if tmdbid == '':
-        xbmc.executebuiltin("XBMC.Notification(Sorry!,No Trailer Available For This Movie,3000)")
+    if tmdbid == '': xbmc.executebuiltin("XBMC.Notification(Sorry!,No Trailer Available For This Movie,3000)")
     else:
         import urllib2
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Loading Trailer,1500)")
@@ -690,8 +607,7 @@ def trailer(tmdbid):
             youtube='http://www.youtube.com/watch?v=' + quality
             stream_url= "plugin://plugin.video.youtube/?path=/root/video&action=play_video&videoid="+quality+"&hd=1"
             xbmc.Player().play(stream_url)
-        else:
-            xbmc.executebuiltin("XBMC.Notification(Sorry!,No Trailer Available For This Movie,3000)")
+        else: xbmc.executebuiltin("XBMC.Notification(Sorry!,No Trailer Available For This Movie,3000)")
 
 def TRAILERSEARCH(url, name, imdb):
     xbmc.executebuiltin("XBMC.Notification(Please Wait!,Getting Trailers Result,2000)")
@@ -703,7 +619,6 @@ def TRAILERSEARCH(url, name, imdb):
     res_name    = []
     res_url     = []
     res_name.append('[COLOR red][B]Cancel[/B][/COLOR]')
-    
     site = ' site:http://www.youtube.com '
     results = SearchGoogle(search+' official trailer', site)
     for res in results:
@@ -711,17 +626,13 @@ def TRAILERSEARCH(url, name, imdb):
             res_name.append(res.title.encode('utf8'))
             res_url.append(res.url.encode('utf8'))
     results = SearchGoogle(search[:(len(search)-7)]+' official trailer', site)
-    
     for res in results:
         if res.url.encode('utf8').startswith('http://www.youtube.com/watch') and res.url.encode('utf8') not in res_url:
             res_name.append(res.title.encode('utf8'))
             res_url.append(res.url.encode('utf8'))
-            
     dialog = xbmcgui.Dialog()
     ret = dialog.select(search + ' trailer search',res_name)
-
-    if ret == 0:
-        return
+    if ret == 0: return
     elif ret >= 1:
         trailer_url = res_url[ret - 0]
         try:
@@ -731,17 +642,14 @@ def TRAILERSEARCH(url, name, imdb):
             if re.findall('Darwin iOS',PLATFORM):
                 grab.update_trailer('movie', imdb, trailer_url)
                 xbmc.executebuiltin("XBMC.Container.Refresh")
-
-        except:
-            return    
+        except: return    
 
 def SearchGoogle(search, site):
     from xgoogle.search import GoogleSearch
     gs = GoogleSearch(''+search+' '+site)
     gs.results_per_page = 25
     gs.page = 0
-    try:
-        results = gs.get_results()
+    try: results = gs.get_results()
     except Exception, e:
         print '***** Error: %s' % e
         return None
@@ -753,17 +661,13 @@ def resolve_url(url,filename = False):
 ############################################################################### Download Code ###########################################################################################
 downloadPath = selfAddon.getSetting('download-folder')
 DownloadLog=os.path.join(datapath,'Downloads')
-try:
-    os.makedirs(DownloadLog)
-except:
-    pass
+try: os.makedirs(DownloadLog)
+except: pass
 DownloadFile=os.path.join(DownloadLog,'DownloadLog') 
 
 class StopDownloading(Exception): 
-        def __init__(self, value): 
-            self.value = value 
-        def __str__(self): 
-            return repr(self.value)
+        def __init__(self, value): self.value = value 
+        def __str__(self):  return repr(self.value)
 def GetUrliW(url):
         link=OPENURL(url)
         link=unescapes(link)
@@ -778,14 +682,12 @@ def geturl(murl):
         if len(match)==0:
                 match=re.compile('<a class="myButton" href="(.+?)">Click Here to Play Part1</a><a class="myButton" href="(.+?)">Click Here to Play Part2</a>').findall(link)
                 return match[0]
-        else:
-                return match[0]
+        else: return match[0]
 
 def resolveDownloadLinks(url):
     if re.search('watchseries.lt',url):
         match=re.compile('(.+?)xocx(.+?)xocx').findall(url)
-        for hurl, durl in match:
-            url=geturl('http://watchseries.lt'+hurl)
+        for hurl, durl in match: url=geturl('http://watchseries.lt'+hurl)
     elif re.search('iwatchonline',url):
         name=name.split('[COLOR red]')[0]
         name=name.replace('/','').replace('.','')
@@ -814,7 +716,6 @@ def Download_Source(name,url):
     name=name.split('[')[0]
     name=name.split(' /')[0]
     name=name.split('/')[0]
-
     stream_url = resolve_url(url)    
     if stream_url:
         print stream_url
@@ -827,15 +728,12 @@ def Download_Source(name,url):
             elif re.search("divx",stream_url): name += '.divx'
             else: name += '.mp4'
             mypath=os.path.join(downloadPath,name)
-            if os.path.isfile(mypath):
-                xbmc.executebuiltin("XBMC.Notification(Download Alert!,The video you are trying to download already exists!,8000)")
+            if os.path.isfile(mypath): xbmc.executebuiltin("XBMC.Notification(Download Alert!,The video you are trying to download already exists!,8000)")
             else:
                 name=name.replace(' ','')
                 DownloadInBack=selfAddon.getSetting('download-in-background')
-                if DownloadInBack == 'true':
-                    QuietDownload(stream_url,mypath,originalName,name)
-                else:
-                    Download(stream_url,mypath,originalName,name)
+                if DownloadInBack == 'true': QuietDownload(stream_url,mypath,originalName,name)
+                else: Download(stream_url,mypath,originalName,name)
         else:
             xbmc.executebuiltin("XBMC.Notification(Download Alert!,You have not set the download folder,8000)")
             return False
@@ -844,8 +742,7 @@ def Download_Source(name,url):
         stream_url = False
 
 def Download(url, dest,originalName, displayname=False):
-    if displayname == False:
-        displayname=url
+    if displayname == False: displayname=url
     delete_incomplete = selfAddon.getSetting('delete-incomplete-downloads')
     dp = xbmcgui.DialogProgress()
     dp.create('Downloading:    '+displayname)
@@ -871,7 +768,6 @@ def Download(url, dest,originalName, displayname=False):
 def QuietDownload(url, dest,originalName, videoname):
     import download
     download.download(url, dest,title=originalName)
-
  
 def _pbhook(numblocks, blocksize, filesize, dp, start_time):
         try: 
@@ -908,16 +804,13 @@ def jDownloader(murl):
             os.system(command)
 
 ################################################################################ Message ##########################################################################################################
-
 def Message():
     help = SHOWMessage()
     help.doModal()
     del help
 
-
 class SHOWMessage(xbmcgui.Window):
-    def __init__(self):
-        self.addControl(xbmcgui.ControlImage(0,0,1280,720,art+'/infoposter.png'))
+    def __init__(self): self.addControl(xbmcgui.ControlImage(0,0,1280,720,art+'/infoposter.png'))
     def onAction(self, action):
         if action == 92 or action == 10:
             xbmc.Player().stop()
@@ -947,8 +840,7 @@ def TextBoxes(heading,anounce):
                 try:
                         f = open(anounce)
                         text = f.read()
-                except:
-                        text=anounce
+                except: text=anounce
                 self.win.getControl( self.CONTROL_TEXTBOX ).setText(text)
                 return
         TextBox()
@@ -956,41 +848,29 @@ def TextBoxes(heading,anounce):
 ################################################################################ Google Analytics ##########################################################################################################
 
 def parseDate(dateString,datetime):
-    try:
-        return datetime.datetime.fromtimestamp(time.mktime(time.strptime(dateString.encode('utf-8', 'replace'), "%Y-%m-%d %H:%M:%S")))
-    except:
-        return datetime.datetime.today() - datetime.timedelta(days = 1) #force update
+    try: return datetime.datetime.fromtimestamp(time.mktime(time.strptime(dateString.encode('utf-8', 'replace'), "%Y-%m-%d %H:%M:%S")))
+    except: return datetime.datetime.today() - datetime.timedelta(days = 1) #force update
 
 def APP_LAUNCH():
         versionNumber = int(xbmc.getInfoLabel("System.BuildVersion" )[0:2])
         if versionNumber < 12:
             if xbmc.getCondVisibility('system.platform.osx'):
-                if xbmc.getCondVisibility('system.platform.atv2'):
-                    log_path = '/var/mobile/Library/Preferences'
-                else:
-                    log_path = os.path.join(os.path.expanduser('~'), 'Library/Logs')
-            elif xbmc.getCondVisibility('system.platform.ios'):
-                log_path = '/var/mobile/Library/Preferences'
-            elif xbmc.getCondVisibility('system.platform.windows'):
-                log_path = xbmc.translatePath('special://home')
-            elif xbmc.getCondVisibility('system.platform.linux'):
-                log_path = xbmc.translatePath('special://home/temp')
-            else:
-                log_path = xbmc.translatePath('special://logpath')
+                if xbmc.getCondVisibility('system.platform.atv2'): log_path = '/var/mobile/Library/Preferences'
+                else: log_path = os.path.join(os.path.expanduser('~'), 'Library/Logs')
+            elif xbmc.getCondVisibility('system.platform.ios'): log_path = '/var/mobile/Library/Preferences'
+            elif xbmc.getCondVisibility('system.platform.windows'): log_path = xbmc.translatePath('special://home')
+            elif xbmc.getCondVisibility('system.platform.linux'): log_path = xbmc.translatePath('special://home/temp')
+            else: log_path = xbmc.translatePath('special://logpath')
         else:
             print '======================= more than ===================='
             log_path = xbmc.translatePath('special://logpath')
         log = os.path.join(log_path, 'xbmc.log')
-        try:
-            logfile = open(log, 'r').read()
-        except:
-            logfile='Starting XBMC ('+str(versionNumber)+'.0 Git:.+?Platform: Unknown. Built.+?'
+        try: logfile = open(log, 'r').read()
+        except: logfile='Starting XBMC ('+str(versionNumber)+'.0 Git:.+?Platform: Unknown. Built.+?'
         match=re.compile('Starting XBMC \((.+?) Git:.+?Platform: (.+?)\. Built.+?').findall(logfile)
         print '==========================   '+PATH+' '+VERSION+'   =========================='
-        try:
-            from hashlib import md5
-        except:
-            from md5 import md5
+        try: from hashlib import md5
+        except: from md5 import md5
         from random import randint
         import time
         from urllib import unquote, quote
@@ -999,12 +879,9 @@ def APP_LAUNCH():
         import platform
         VISITOR = selfAddon.getSetting('visitor_ga')
         for build, PLATFORM in match:
-            if re.search('12.0',build,re.IGNORECASE): 
-                build="Frodo" 
-            if re.search('11.0',build,re.IGNORECASE): 
-                build="Eden" 
-            if re.search('13.0',build,re.IGNORECASE): 
-                build="Gotham" 
+            if re.search('12.0',build,re.IGNORECASE): build="Frodo" 
+            if re.search('11.0',build,re.IGNORECASE): build="Eden" 
+            if re.search('13.0',build,re.IGNORECASE): build="Gotham" 
             print build
             print PLATFORM
             print "Repo Ver. "+RepoVer
@@ -1015,16 +892,12 @@ def addDirX(name,url,mode,iconimage,plot='',fanart='',dur=0,genre='',year='',imd
             id=None,fav_t='',fav_addon_t='',fav_sub_t='',metaType='Movies',menuItemPos=None,menuItems=None,down=False,replaceItems=True,index=False):
     u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&iconimage="+urllib.quote_plus(iconimage)+"&plot="+urllib.quote_plus(plot)+"&fanart="+urllib.quote_plus(fanart)+"&genre="+urllib.quote_plus(genre)+"&index="+str(index)
     if searchMeta:
-        if metaType == 'TV':
-            infoLabels = GETMETAEpiT(name,iconimage,plot)
-        else:
-            infoLabels = GETMETAT(name,genre,fanart,iconimage,plot,imdb,tmdb)
+        if metaType == 'TV': infoLabels = GETMETAEpiT(name,iconimage,plot)
+        else: infoLabels = GETMETAT(name,genre,fanart,iconimage,plot,imdb,tmdb)
         iconimage = infoLabels['cover_url']
-        if iconimage.startswith('w342') or iconimage.startswith('w92') or iconimage.startswith('w500') or iconimage.startswith('original') or iconimage.startswith('w154') or iconimage.startswith('w185'):
-            iconimage = 'http://image.tmdb.org/t/p/' + iconimage
+        if iconimage.startswith('w342') or iconimage.startswith('w92') or iconimage.startswith('w500') or iconimage.startswith('original') or iconimage.startswith('w154') or iconimage.startswith('w185'): iconimage = 'http://image.tmdb.org/t/p/' + iconimage
         fanart = infoLabels['backdrop_url']
-        if fanart.startswith('original') or fanart.startswith('w1280') or fanart.startswith('w780') or fanart.startswith('w300'):
-            fanart = 'http://image.tmdb.org/t/p/' + fanart
+        if fanart.startswith('original') or fanart.startswith('w1280') or fanart.startswith('w780') or fanart.startswith('w300'): fanart = 'http://image.tmdb.org/t/p/' + fanart
         plot = infoLabels['plot']
     if not fanart: fanart=fanartimage
     if not iconimage: iconimage=art+'/vidicon.png'
@@ -1034,20 +907,15 @@ def addDirX(name,url,mode,iconimage,plot='',fanart='',dur=0,genre='',year='',imd
     if selfAddon.getSetting("ctx_fav") != "false" and addToFavs: 
         fav = getFav()
         fname = name.replace(",",'')
-        if isFolder:
-            Commands.append(("[B][COLOR blue]Add[/COLOR][/B] to My Fav's",fav.add_directory(fname, u, section_title=fav_t, section_addon_title=fav_addon_t+" Fav's", sub_section_title=fav_sub_t, img=iconimage, fanart=fanart, infolabels={'item_mode':mode, 'item_url':url, 'plot':plot,'duration':dur,'genre':genre,'year':year})))
-        else:
-            Commands.append(("[B][COLOR blue]Add[/COLOR][/B] to My Fav's",fav.add_video_item(fname, u, section_title=fav_t, section_addon_title=fav_addon_t+" Fav's", sub_section_title=fav_sub_t, img=iconimage, fanart=fanart, infolabels={'item_mode':mode, 'item_url':url, 'plot':plot,'duration':dur,'genre':genre,'year':year})))
+        if isFolder: Commands.append(("[B][COLOR blue]Add[/COLOR][/B] to My Fav's",fav.add_directory(fname, u, section_title=fav_t, section_addon_title=fav_addon_t+" Fav's", sub_section_title=fav_sub_t, img=iconimage, fanart=fanart, infolabels={'item_mode':mode, 'item_url':url, 'plot':plot,'duration':dur,'genre':genre,'year':year})))
+        else: Commands.append(("[B][COLOR blue]Add[/COLOR][/B] to My Fav's",fav.add_video_item(fname, u, section_title=fav_t, section_addon_title=fav_addon_t+" Fav's", sub_section_title=fav_sub_t, img=iconimage, fanart=fanart, infolabels={'item_mode':mode, 'item_url':url, 'plot':plot,'duration':dur,'genre':genre,'year':year})))
         Commands.append(("[B][COLOR red]Remove[/COLOR][/B] from My Fav's",fav.delete_item(fname, section_title=fav_t, section_addon_title=fav_addon_t+" Fav's", sub_section_title=fav_sub_t)))
     if down:
         sysurl = urllib.quote_plus(url)
         sysname= urllib.quote_plus(name)
         Commands.append(('Direct Download', 'XBMC.RunPlugin(%s?mode=190&name=%s&url=%s)' % (sys.argv[0], sysname, sysurl)))
-        if selfAddon.getSetting("jdcb") == "true":
-            Commands.append(('Download with jDownloader', 'XBMC.RunPlugin(%s?mode=776&name=%s&url=%s)' % (sys.argv[0], sysname, sysurl)))
-        else:
-            Commands.append(('Copy to Clipboard', 'XBMC.RunPlugin(%s?mode=776&name=%s&url=%s)' % (sys.argv[0], sysname, sysurl)))
-  
+        if selfAddon.getSetting("jdcb") == "true": Commands.append(('Download with jDownloader', 'XBMC.RunPlugin(%s?mode=776&name=%s&url=%s)' % (sys.argv[0], sysname, sysurl)))
+        else: Commands.append(('Copy to Clipboard', 'XBMC.RunPlugin(%s?mode=776&name=%s&url=%s)' % (sys.argv[0], sysname, sysurl)))
     if searchMeta:
         Commands.append(('[B]Super Search [COLOR=FF67cc33]Me[/COLOR][/B]','XBMC.Container.Update(%s?mode=21&name=%s&url=%s)'% (sys.argv[0], urllib.quote_plus(name),'###')))
         if metaType == 'TV' and selfAddon.getSetting("meta-view-tv") == "true":
@@ -1079,20 +947,16 @@ def addDirX(name,url,mode,iconimage,plot='',fanart='',dur=0,genre='',year='',imd
             Commands.append((watched_mark, 'XBMC.RunPlugin(%s?mode=777&name=%s&url=%s&iconimage=%s)' % (sys.argv[0], cname, 'movie',imdb_id)))
             Commands.append(('Play Trailer','XBMC.RunPlugin(%s?mode=782&name=%s&url=%s&iconimage=%s)'% (sys.argv[0],cname,'_',imdb_id)))
             Commands.append(('Refresh Metadata', 'XBMC.RunPlugin(%s?mode=778&name=%s&url=%s&iconimage=%s)' % (sys.argv[0], cname, 'movie',imdb_id)))
-    else:
-        infoLabels={ "Title": name, "Plot": plot, "Duration": dur, "Year": year ,"Genre": genre,"OriginalTitle" : removeColoredText(name) }
+    else: infoLabels={ "Title": name, "Plot": plot, "Duration": dur, "Year": year ,"Genre": genre,"OriginalTitle" : removeColoredText(name) }
     if id != None: infoLabels["count"] = id
     Commands.append(('Watch History','XBMC.Container.Update(%s?name=None&mode=222&url=None&iconimage=None)'% (sys.argv[0])))
     Commands.append(("My Fav's",'XBMC.Container.Update(%s?name=None&mode=639&url=None&iconimage=None)'% (sys.argv[0])))
     Commands.append(('[B][COLOR=FF67cc33]MashUp[/COLOR] Settings[/B]','XBMC.RunScript('+xbmc.translatePath(mashpath + '/resources/libs/settings.py')+')'))
     if menuItemPos != None:
-        for mi in reversed(menuItems):
-            Commands.insert(menuItemPos,mi)
-    
+        for mi in reversed(menuItems): Commands.insert(menuItemPos,mi)
     liz=xbmcgui.ListItem(name, iconImage=art+'/vidicon.png', thumbnailImage=iconimage)
     liz.addContextMenuItems( Commands, replaceItems=False)
-    if searchMeta:
-        liz.setInfo( type="Video", infoLabels=infoLabels )
+    if searchMeta: liz.setInfo( type="Video", infoLabels=infoLabels )
     liz.setProperty('fanart_image', fanart)
     return xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=isFolder)
 
@@ -1144,22 +1008,17 @@ def addDirXml(name,url,mode,iconimage,plot,fanart,dur,genre,year):
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&iconimage="+urllib.quote_plus(iconimage)+"&plot="+urllib.quote_plus(plot)+"&fanart="+urllib.quote_plus(fanart)
         liz=xbmcgui.ListItem(name, iconImage=art+'/xmlplaylist.png', thumbnailImage=iconimage)
         liz.setInfo( type="Video", infoLabels={ "Title": name, "Plot": plot } )
-        if fanart == '':
-            fanart=fanartimage
+        if fanart == '': fanart=fanartimage
         liz.setProperty('fanart_image', fanart)
-        if selfAddon.getSetting("addmethod") == "true":
-            contextMenuItems.append(('[B][COLOR blue]Add[/COLOR][/B] Playlist','XBMC.RunPlugin(%s?name=None&mode=250&url=%s&iconimage=None)'% (sys.argv[0],urllib.quote_plus(plot))))
+        if selfAddon.getSetting("addmethod") == "true": contextMenuItems.append(('[B][COLOR blue]Add[/COLOR][/B] Playlist','XBMC.RunPlugin(%s?name=None&mode=250&url=%s&iconimage=None)'% (sys.argv[0],urllib.quote_plus(plot))))
         contextMenuItems.append(("[B][COLOR red]Remove[/COLOR][/B] Playlist",'XBMC.RunPlugin(%s?name=%s&mode=251&url=%s&iconimage=%s)'% (sys.argv[0],name,urllib.quote_plus(url),plot)))
         contextMenuItems.append(("[B][COLOR aqua]Edit[/COLOR][/B] Playlist",'XBMC.RunPlugin(%s?name=%s&mode=255&url=%s&iconimage=%s)'% (sys.argv[0],name,urllib.quote_plus(url),plot)))
-        if selfAddon.getSetting("addmethod") == "true":
-            contextMenuItems.append(('[B][COLOR blue]Add[/COLOR][/B] Folder','XBMC.RunPlugin(%s?name=%s&mode=252&url=%s&iconimage=None)'% (sys.argv[0],name,plot)))
+        if selfAddon.getSetting("addmethod") == "true": contextMenuItems.append(('[B][COLOR blue]Add[/COLOR][/B] Folder','XBMC.RunPlugin(%s?name=%s&mode=252&url=%s&iconimage=None)'% (sys.argv[0],name,plot)))
         contextMenuItems.append(('Watch History','XBMC.Container.Update(%s?name=None&mode=222&url=None&iconimage=None)'% (sys.argv[0])))
         contextMenuItems.append(("My Fav's",'XBMC.Container.Update(%s?name=None&mode=639&url=None&iconimage=None)'% (sys.argv[0])))
         liz.addContextMenuItems(contextMenuItems, replaceItems=False)
-        if dur=='Livestreams':
-            ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
-        else:
-            ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
+        if dur=='Livestreams': ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
+        else: ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
         return ok
 
 def addXmlFolder(name,url,mode,iconimage,plot,fanart,dur,genre,year):
@@ -1167,13 +1026,11 @@ def addXmlFolder(name,url,mode,iconimage,plot,fanart,dur,genre,year):
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&iconimage="+urllib.quote_plus(iconimage)+"&plot="+urllib.quote_plus(plot)+"&fanart="+urllib.quote_plus(fanart)
         liz=xbmcgui.ListItem(name, iconImage=art+'/folder.png', thumbnailImage=iconimage)
         liz.setInfo( type="Video", infoLabels={ "Title": name, "Plot": plot } )
-        if fanart == '':
-            fanart=fanartimage
+        if fanart == '': fanart=fanartimage
         liz.setProperty('fanart_image', fanart)
         if selfAddon.getSetting("addmethod") == "true":
             contextMenuItems.append(('[B][COLOR blue]Add[/COLOR][/B] Playlist','XBMC.RunPlugin(%s?name=None&mode=250&url=%s&iconimage=None)'% (sys.argv[0],urllib.quote_plus(plot))))
-            if plot=='home':
-                contextMenuItems.append(('[B][COLOR blue]Add[/COLOR][/B] Folder','XBMC.RunPlugin(%s?name=%s&mode=252&url=%s&iconimage=None)'% (sys.argv[0],name,urllib.quote_plus(plot))))
+            if plot=='home': contextMenuItems.append(('[B][COLOR blue]Add[/COLOR][/B] Folder','XBMC.RunPlugin(%s?name=%s&mode=252&url=%s&iconimage=None)'% (sys.argv[0],name,urllib.quote_plus(plot))))
         contextMenuItems.append(("[B][COLOR red]Remove[/COLOR][/B] Folder",'XBMC.RunPlugin(%s?name=%s&mode=254&url=%s&iconimage=None)'% (sys.argv[0],name,url)))
         contextMenuItems.append(("[B][COLOR aqua]Edit[/COLOR][/B] Folder",'XBMC.RunPlugin(%s?name=%s&mode=256&url=%s&iconimage=None)'% (sys.argv[0],name,url)))
         contextMenuItems.append(('Watch History','XBMC.Container.Update(%s?name=None&mode=222&url=None&iconimage=None)'% (sys.argv[0])))
@@ -1214,12 +1071,8 @@ def addDown3(name,url,mode,iconimage,fanart,id=None):
 
 def addDown4(name,url,mode,iconimage,plot,fanart,dur,genre,year):
     f = '</sublink>' in url
-    if re.search('(?i)\ss(\d+)e(\d+)',name) or re.search('(?i)Season(.+?)Episode',name):
-        return addDirX(name,url,mode,iconimage,plot,fanart,dur,genre,year,isFolder=f,searchMeta=1,metaType='TV',
-                       fav_t='TV',fav_addon_t='TV Episode',fav_sub_t='Episodes',down=not f)
-    else:
-        return addDirX(name,url,mode,iconimage,plot,fanart,dur,genre,year,isFolder=f,searchMeta=1,
-                       fav_t='Movies',fav_addon_t='Movie',down=not f)
+    if re.search('(?i)\ss(\d+)e(\d+)',name) or re.search('(?i)Season(.+?)Episode',name): return addDirX(name,url,mode,iconimage,plot,fanart,dur,genre,year,isFolder=f,searchMeta=1,metaType='TV',fav_t='TV',fav_addon_t='TV Episode',fav_sub_t='Episodes',down=not f)
+    else: return addDirX(name,url,mode,iconimage,plot,fanart,dur,genre,year,isFolder=f,searchMeta=1,fav_t='Movies',fav_addon_t='Movie',down=not f)
 
 def addInfo(name,url,mode,iconimage,genre,year):
     mi = [('Search Movie25','XBMC.Container.Update(%s?mode=4&url=%s)'% (sys.argv[0],'###'))]
@@ -1230,8 +1083,7 @@ def addDirIWO(name,url,mode,iconimage,plot,fanart,dur,genre,year):
     
 def addDLog(name,url,mode,iconimage,plot,fanart,dur,genre,year):
     mi=[("[B][COLOR red]Remove[/COLOR][/B]",'XBMC.RunPlugin(%s?mode=243&name=%s&url=%s)'% (sys.argv[0],name,url))]
-    if re.search('(?i)\ss(\d+)e(\d+)',name) or re.search('(?i)Season(.+?)Episode',name):
-        return addDirX(name,url,mode,iconimage,plot,fanart,dur,genre,year,isFolder=0,searchMeta=1,metaType='TV',addToFavs=0,menuItemPos=0,menuItems=mi)
+    if re.search('(?i)\ss(\d+)e(\d+)',name) or re.search('(?i)Season(.+?)Episode',name): return addDirX(name,url,mode,iconimage,plot,fanart,dur,genre,year,isFolder=0,searchMeta=1,metaType='TV',addToFavs=0,menuItemPos=0,menuItems=mi)
     else: return addDirX(name,url,mode,iconimage,plot,fanart,dur,genre,year,isFolder=0,searchMeta=1,addToFavs=0,menuItemPos=0,menuItems=mi)
 
 def addSpecial(name,url,mode,iconimage):

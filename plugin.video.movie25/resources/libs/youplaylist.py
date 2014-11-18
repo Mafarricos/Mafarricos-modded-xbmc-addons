@@ -12,19 +12,15 @@ addon = Addon('plugin.video.movie25', sys.argv)
 art = main.art    
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
-
 def YOUList(mname,durl):
-        if 'gdata' in durl:
-                murl=durl
-        else:
-                murl='https://gdata.youtube.com/feeds/api/playlists/'+durl+'?start-index=1&max-results=50'
+        if 'gdata' in durl: murl=durl
+        else: murl='https://gdata.youtube.com/feeds/api/playlists/'+durl+'?start-index=1&max-results=50'
         link=main.OPENURL(murl)
         match=re.compile("href='https://m.youtube.com/details.?v=(.+?)'/.+?<media\:descriptio[^>]+>([^<]+)</media\:description>.+?<media\:thumbnail url='([^']+)'.+?<media:title type='plain'>(.+?)/media:title>",re.DOTALL).findall(link)
         for url,desc,thumb,name in reversed(match):
                 name=name.replace('<','')
                 main.addPlayMs(name,url,206,thumb,desc,'','','','')
         match2=re.compile("<title type=\'text\'>.+?</title><link rel=\'alternate\' type=\'text/html\' href=\'https://www.youtube.com/watch.?v=(.+?)&feature=youtube_gdata\'/>.+?<media:title type=\'plain\'>(.+?)</media:title>").findall(link)
-        
         for url,name in reversed(match2):
                 name=name.replace('<','')
                 main.addPlayMs(name,url,206,'','','','','','')
@@ -45,7 +41,6 @@ def YOULink(mname,url,thumb):
         # play with bookmark
         player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=mname,season='', episode='', year='',img=thumb,infolabels='', watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
         #WatchHistory
-        if selfAddon.getSetting("whistory") == "true":
-            wh.add_item(mname+' '+'[COLOR green]YoutubePlaylist[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
+        if selfAddon.getSetting("whistory") == "true": wh.add_item(mname+' '+'[COLOR green]YoutubePlaylist[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
         player.KeepAlive()
         return ok

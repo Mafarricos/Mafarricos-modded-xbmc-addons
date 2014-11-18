@@ -9,8 +9,7 @@ selfAddon = xbmcaddon.Addon(id=addon_id)
 art = main.art
 
 def LISTSP3(murl):
-        if murl == 'HD':
-                url='http://board.dailyflix.net/index.php?/forum/196-hd-movies-2012-2013/page__sort_key__last_post__sort_by__Z-A'
+        if murl == 'HD': url='http://board.dailyflix.net/index.php?/forum/196-hd-movies-2012-2013/page__sort_key__last_post__sort_by__Z-A'
         link=main.OPENURL(url)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('&#38;','&')
         match=re.compile('<a itemprop=".+?" id=".+?" href="([^<]+)" title=.+? class=.+?><span itemprop="name">(.+?)</span>').findall(link)
@@ -28,16 +27,13 @@ def LISTSP3(murl):
                 percent = (loadedLinks * 100)/totalLinks
                 remaining_display = 'Movies loaded :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
                 dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
-                if (dialogWait.iscanceled()):
-                        return False   
+                if (dialogWait.iscanceled()): return False   
         dialogWait.close()
         del dialogWait
-        #main.GA("HD-TV","Dailyfix")
         main.VIEWS()
 
 
 def LINKSP3(mname,url):
-        #main.GA("Dailyfix","Watched")
         sources = []
         ok=True
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Collecting Hosts,8000)")
@@ -59,10 +55,8 @@ def LINKSP3(mname,url):
                         hname=hname.replace('www.','').title()
                         hosted_media = urlresolver.HostedMediaFile(url=murl, title="[COLOR blue]" + hname + "[/COLOR]")
                         sources.append(hosted_media)
-        if (len(sources)==0):
-                xbmc.executebuiltin("XBMC.Notification(Sorry!,Movie doesn't have playable links,5000)")
-        else:
-                source = urlresolver.choose_source(sources)
+        if (len(sources)==0): xbmc.executebuiltin("XBMC.Notification(Sorry!,Movie doesn't have playable links,5000)")
+        else: source = urlresolver.choose_source(sources)
         try:
                 if source:
                         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Actual HD Movie Requires Buffer Time,7000)")
@@ -82,7 +76,6 @@ def LINKSP3(mname,url):
                 player.KeepAlive()
                 return ok
         except Exception, e:
-                if stream_url != False:
-                        main.ErrorReport(e)
+                if stream_url != False: main.ErrorReport(e)
                 return ok
         

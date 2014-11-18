@@ -10,7 +10,6 @@ addon_id = 'plugin.video.movie25'
 selfAddon = xbmcaddon.Addon(id=addon_id)
 addon = Addon('plugin.video.movie25', sys.argv)
 art = main.art
-    
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 
@@ -29,18 +28,14 @@ def PLAYAA(mname,murl,thumb):
         main. GA("AirAces-list","Watched")
         ok=True
         match=re.compile('([^<]+)xoxoc([^<]+)').findall(murl)
-        for fid, filename in match:
-            continue
+        for fid, filename in match: continue
         stream_url = 'rtmp://cp68811.edgefcs.net/ondemand/?auth=dbEc2aOaoa2dNd4c3dYabcPc7c4bQdObCcn-brnsbZ-4q-d9i-5'+fid+'=1234&slist=Canwest_Broadcast_Entertainment/'+filename+'.mp4'
-        #playpath = 'mp4:Canwest_Broadcast_Entertainment/'+filename+'.mp4'       
-
+        #playpath = 'mp4:Canwest_Broadcast_Entertainment/'+filename+'.mp4'
         infoL={'Title': mname, 'Genre': 'AirAces'}
         #listitem.setProperty('PlayPath', playpath)
-
         # play with bookmark
         player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=mname,season='', episode='', year='',img=thumb,infolabels=infoL, watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
         #WatchHistory
-        if selfAddon.getSetting("whistory") == "true":
-            wh.add_item(mname+' '+'[COLOR green]Discovery[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
+        if selfAddon.getSetting("whistory") == "true": wh.add_item(mname+' '+'[COLOR green]Discovery[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
         player.KeepAlive()
         return ok

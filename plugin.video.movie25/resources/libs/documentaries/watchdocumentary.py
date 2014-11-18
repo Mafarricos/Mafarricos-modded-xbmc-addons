@@ -14,7 +14,6 @@ art = main.art
 wh = watchhistory.WatchHistory('plugin.video.movie25')
 
 def WATCHDOC():
-        #main.GA("Documantary","WatchDocumentary")
         main.addDir('Search','watchdoc',164,art+'/search.png')
         main.addDir('Categories','watchdoc',162,art+'/watchdoc.png')
         main.addDir('New Documentaries','new',160,art+'/watchdoc.png')
@@ -22,7 +21,6 @@ def WATCHDOC():
         main.addDir('Top Documentaries of All times','top2',160,art+'/watchdoc.png')
         
 def CATEGORIES():
-        #main.GA("WatchDocumentary","Categories")
         main.addDir('9/11 & London Bombing','http://watchdocumentary.org/browse-911-and-london-bombing-documentaries-1-date.html',163,art+'/folder.png')
         main.addDir('Adventure','http://watchdocumentary.org/browse-adventure-documentaries-1-date.html',163,art+'/folder.png')
         main.addDir('Arts & Artists','http://watchdocumentary.org/browse-arts-documentaries-1-date.html',163,art+'/folder.png')
@@ -66,48 +64,39 @@ def WATCHDOCSearch():
                 link=main.OPENURL(surl)
                 link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
                 match=re.compile('<a href="([^<]+)" title="([^<]+)"><img src="([^<]+)"  alt=').findall(link)
-                for url,name,thumb in match:
-                    main.addPlayMs(name,url,161,thumb,'','','','','')
+                for url,name,thumb in match: main.addPlayMs(name,url,161,thumb,'','','','','')
         paginate=re.compile('<a href="([^<]+)">next &raquo;</a>').findall(link)
         if (len(paginate)>0):
-            for purl in paginate:
-                main.addDir('[COLOR blue]Next[/COLOR]','http://watchdocumentary.org/'+purl,163,art+'/next2.png')
+            for purl in paginate: main.addDir('[COLOR blue]Next[/COLOR]','http://watchdocumentary.org/'+purl,163,art+'/next2.png')
 
 def WATCHDOCList(murl):
-        #main.GA("WatchDocumentary","List")
         if murl =='top':
             link=main.OPENURL('http://watchdocumentary.org/top_documentaries/')
             link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
             match=re.compile('<td align=.+?><a href=".+?"><img src="([^<]+)" alt=".+?" class=".+?" width=".+?" height=".+?" align=".+?" border=".+?" /></a></td><td class=".+?"><a href="(.+?)">(.+?)</a></td><td class=".+?">.+?</td><td class=".+?">(.+?)</td>').findall(link)
-            for thumb,url,name,views in match:
-                main.addPlayMs(name+'   [COLOR red]Views: '+views+'[/COLOR]',url,161,thumb,'','','','','')
+            for thumb,url,name,views in match: main.addPlayMs(name+'   [COLOR red]Views: '+views+'[/COLOR]',url,161,thumb,'','','','','')
         elif murl =='new':
             link=main.OPENURL('http://watchdocumentary.org/new_documentaries/')
             link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
             match=re.compile('<td align=.+?><a href=".+?"><img src="([^<]+)" alt=".+?" class=".+?" width=".+?" height=".+?" align=".+?" border=".+?" /></a></td><td class=".+?"><a href="(.+?)">(.+?)</a></td><td class=".+?">.+?</td><td class=".+?">.+?</td>').findall(link)
-            for thumb,url,name in match:
-                main.addPlayMs(name,url,161,thumb,'','','','','')
+            for thumb,url,name in match: main.addPlayMs(name,url,161,thumb,'','','','','')
         if murl =='top2':
             link=main.OPENURL('http://watchdocumentary.org/top_documentaries/alltime')
             link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
             match=re.compile('<td align=.+?><a href=".+?"><img src="([^<]+)" alt=".+?" class=".+?" width=".+?" height=".+?" align=".+?" border=".+?" /></a></td><td class=".+?"><a href="(.+?)">(.+?)</a></td><td class=".+?">.+?</td><td class=".+?">(.+?)</td>').findall(link)
-            for thumb,url,name,views in match:
-                main.addPlayMs(name+'   [COLOR red]Views: '+views+'[/COLOR]',url,161,thumb,'','','','','')
+            for thumb,url,name,views in match: main.addPlayMs(name+'   [COLOR red]Views: '+views+'[/COLOR]',url,161,thumb,'','','','','')
                 
 def WATCHDOCList2(murl):
         #main.GA("WatchDocumentary","List")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         match=re.compile('<a href="([^<]+)" title="([^<]+)"><img src="([^<]+)"  alt=').findall(link)
-        for url,name,thumb in match:
-            main.addPlayMs(name,url,161,thumb,'','','','','')
+        for url,name,thumb in match: main.addPlayMs(name,url,161,thumb,'','','','','')
         paginate=re.compile('<a href="([^<]+)">next &raquo;</a>').findall(link)
         if (len(paginate)>0):
-            for purl in paginate:
-                main.addDir('[COLOR blue]Next[/COLOR]','http://watchdocumentary.org/'+purl,163,art+'/next2.png')
+            for purl in paginate: main.addDir('[COLOR blue]Next[/COLOR]','http://watchdocumentary.org/'+purl,163,art+'/next2.png')
 
 def WATCHDOCLink(mname,murl,thumb):
-        #main.GA("WatchDocumentary","Watched")
         ok=True
         infoL={'Title': mname, 'Genre': 'Watch Documentary'}
         xbmc.executebuiltin("XBMC.Notification(Please Wait!,Opening Link,3000)")
@@ -127,8 +116,7 @@ def WATCHDOCLink(mname,murl,thumb):
                     # play with bookmark
                     player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=mname,season='', episode='', year='',img=thumb,infolabels=infoL, watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
                     #WatchHistory
-                    if selfAddon.getSetting("whistory") == "true":
-                            wh.add_item(mname+' '+'[COLOR green]Watch-Doc[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
+                    if selfAddon.getSetting("whistory") == "true": wh.add_item(mname+' '+'[COLOR green]Watch-Doc[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
                     player.KeepAlive()
                     return ok
                 Type2=re.compile('watchdocumentary.org').findall(url)
@@ -137,8 +125,7 @@ def WATCHDOCLink(mname,murl,thumb):
                     # play with bookmark
                     player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=mname,season='', episode='', year='',img=thumb,infolabels=infoL, watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
                     #WatchHistory
-                    if selfAddon.getSetting("whistory") == "true":
-                            wh.add_item(mname+' '+'[COLOR green]Watch-Doc[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
+                    if selfAddon.getSetting("whistory") == "true": wh.add_item(mname+' '+'[COLOR green]Watch-Doc[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
                     player.KeepAlive()
                     return ok
         match2=re.compile('<iframe frameborder=".+?" width=".+?" height=".+?" src="(.+?)"></iframe>').findall(link)
@@ -152,12 +139,10 @@ def WATCHDOCLink(mname,murl,thumb):
                 if(stream_url == False):
                     xbmc.executebuiltin("XBMC.Notification(Sorry!,Link Cannot Be Resolved,5000)")
                     return
-                                                        
                 # play with bookmark
                 player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=mname,season='', episode='', year='',img=thumb,infolabels=infoL, watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
                 #WatchHistory
-                if selfAddon.getSetting("whistory") == "true":
-                        wh.add_item(mname+' '+'[COLOR green]Watch-Doc[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
+                if selfAddon.getSetting("whistory") == "true": wh.add_item(mname+' '+'[COLOR green]Watch-Doc[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
                 player.KeepAlive()
                 return ok
         match3=re.compile('src="http://clips.team-andro.com/nuevo3/embedplayer/green/nvplayer.swf.?config=(.+?)"').findall(link)
@@ -172,14 +157,12 @@ def WATCHDOCLink(mname,murl,thumb):
                 # play with bookmark
                 player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=mname,season='', episode='', year='',img=thumb,infolabels=infoL, watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
                 #WatchHistory
-                if selfAddon.getSetting("whistory") == "true":
-                        wh.add_item(mname+' '+'[COLOR green]Watch-Doc[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
+                if selfAddon.getSetting("whistory") == "true": wh.add_item(mname+' '+'[COLOR green]Watch-Doc[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
                 player.KeepAlive()
                 return ok
         match4=re.compile('<iframe src=.+?"(.+?).?title=').findall(link)
         if len(match4)>0:
-                for url in match4:
-                    url=url.replace('http://player.vimeo.com/video','http://vimeo.com')
+                for url in match4: url=url.replace('http://player.vimeo.com/video','http://vimeo.com')
                 xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,3000)")
                 stream_url = main.resolve_url(str(url))
                 if(stream_url == False):
@@ -188,8 +171,7 @@ def WATCHDOCLink(mname,murl,thumb):
                 # play with bookmark
                 player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=mname,season='', episode='', year='',img=thumb,infolabels=infoL, watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
                 #WatchHistory
-                if selfAddon.getSetting("whistory") == "true":
-                        wh.add_item(mname+' '+'[COLOR green]Watch-Doc[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
+                if selfAddon.getSetting("whistory") == "true": wh.add_item(mname+' '+'[COLOR green]Watch-Doc[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
                 player.KeepAlive()
                 return ok
         match5=re.compile('{skin: \'.+?.zip\',playlistfile: \'(.+?)\',').findall(link)
@@ -208,9 +190,7 @@ def WATCHDOCLink(mname,murl,thumb):
             # play with bookmark
             player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=mname,season='', episode='', year='',img=thumb,infolabels=infoL, watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
             #WatchHistory
-            if selfAddon.getSetting("whistory") == "true":
-                wh.add_item(mname+' '+'[COLOR green]Watch-Doc[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
+            if selfAddon.getSetting("whistory") == "true": wh.add_item(mname+' '+'[COLOR green]Watch-Doc[/COLOR]', sys.argv[0]+sys.argv[2], infolabels='', img=thumb, fanart='', is_folder=False)
             player.KeepAlive()
             return ok
-        else:
-            xbmc.executebuiltin("XBMC.Notification(Sorry!,Link deleted Or unplayable,5000)")
+        else: xbmc.executebuiltin("XBMC.Notification(Sorry!,Link deleted Or unplayable,5000)")

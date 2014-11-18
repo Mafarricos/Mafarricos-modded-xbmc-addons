@@ -10,7 +10,6 @@ selfAddon = xbmcaddon.Addon(id=addon_id)
 art = main.art
 prettyName = 'Catiii.tv'
 
-
 def MAIN():
     main.addDir('Search','extra',438,art+'/search.png')
     main.addDir('South Korean','http://www.catiii.tv/category/watch-south-korean-movies-dramas-online/page/1/',435,art+'/catiii.png')
@@ -20,9 +19,6 @@ def MAIN():
     main.addDir('Thai','http://www.catiii.tv/category/other-countries/watch-thai-movies-dramas-online/page/1/',435,art+'/catiii.png')
     main.addDir('Taiwanese','http://www.catiii.tv/category/other-countries/watch-taiwanese-movies-dramas-online/page/1/',435,art+'/catiii.png')
     main.addDir('Filipino','http://www.catiii.tv/category/other-countries/watch-filipino-movies-dramas-online/page/1/',435,art+'/catiii.png')
-    
-    #main.GA("INT",prettyName)
-
 
 def LIST(murl):
     link=main.OPENURL(murl)
@@ -52,12 +48,9 @@ def LIST(murl):
         nextpage=int(page)+1
         finalpage=re.sub('page/\d+?/', 'page/'+str(nextpage) + '/',murl)
         main.addDir('Page ' + str(page) + ' [COLOR blue]Next Page >>>[/COLOR]',finalpage,435,art+'/next2.png')     
-    #main.GA(prettyName,"List")
     main.VIEWS()
 
-
 def SEARCH(encode):
-    #main.GA(prettyName,"Search")
     encode = main.updateSearchFile('','Movies',searchMsg='Search For Movies')
     if not encode: return False
     surl='http://www.catiii.tv/?s='+encode
@@ -82,26 +75,21 @@ def GotoPage(url):
         xbmcplugin.endOfDirectory(int(sys.argv[1]), False, False)
         return False
 
-
 def getlink(murl):
     if 'http' in murl:
         link=main.OPENURL(murl)
         key=re.findall('(?sim)vkey=(.+?)&',link)
-        if key:
-            murl=key[0]
+        if key: murl=key[0]
     videurl='http://www.pinit.tv/player/vConfig_embed_new.php?vkey='+murl
     link=main.OPENURL(videurl)
     flv=re.findall('(?sim)<location>([^<]+?)</location>',link)
     srt=re.findall('(?sim)<jwplayer:captions.file>([^<]+?)</jwplayer:captions.file>',link)
-    if srt:
-        srt=srt[0]
-    else:
-        srt=''
+    if srt: srt=srt[0]
+    else: srt=''
     return flv[0],srt
 
 def LINK(name,murl,thumb):
     xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,5000)")
-    #main.GA(prettyName,"Watched")
     stream_url = False
     ok=True
     infoLabels =main.GETMETAT(name,'','',thumb)
@@ -113,9 +101,7 @@ def LINK(name,murl,thumb):
     imdb_id=infoLabels['imdb_id']
     infolabels = { 'supports_meta' : 'true', 'video_type':video_type, 'name':str(infoLabels['title']), 'imdb_id':str(infoLabels['imdb_id']), 'season':str(season), 'episode':str(episode), 'year':str(infoLabels['year']) }
     link=main.OPENURL(murl)
-    
     keys=re.findall('(?sim)vkey=(.+?)&',link)
-    
     if keys:
         vurl='http://www.pinit.tv/embedplayer.php?width=620&height=465&vkey='+keys[0]+'&autoplay=true&subtitles='
         link=main.OPENURL(vurl)
@@ -131,11 +117,9 @@ def LINK(name,murl,thumb):
             epiList.append(epi)
         dialog = xbmcgui.Dialog()
         ret = dialog.select('[COLOR=FF67cc33][B]Select Episode[/COLOR][/B]',epiList)
-        if ret == -1:
-            return
+        if ret == -1: return
         link2=main.OPENURL(urllist[ret])
         key=re.findall('href="(rtmp[^"]+?)">Play',link2)
-        
         stream_url = key[0]
         id=re.findall('rtmp://.+?/pinit/(\d+)_.+?.mp4',key[0])[0]
         name=epiList[ret]
@@ -154,6 +138,5 @@ def LINK(name,murl,thumb):
         player.KeepAlive()
         return ok
     except Exception, e:
-        if stream_url != False:
-            main.ErrorReport(e)
+        if stream_url != False: main.ErrorReport(e)
         return ok

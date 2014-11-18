@@ -17,8 +17,7 @@ DownloadFile=os.path.join(DownloadLog,'DownloadLog')
 def LIST():
         if os.path.exists(DownloadFile):
                 DownloadLog=re.compile('{name="(.+?)",destination="(.+?)"}').findall(open(DownloadFile,'r').read())
-                for name,video in reversed(DownloadLog):
-                    main.addDLog(name,video,242,'','','','','','')
+                for name,video in reversed(DownloadLog): main.addDLog(name,video,242,'','','','','','')
 
 def LINK(mname,murl):
         ok=True
@@ -46,16 +45,13 @@ def LINK(mname,murl):
         # play with bookmark
         player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type=video_type, title=str(infoLabels['title']),season=str(season), episode=str(episode), year=str(infoLabels['year']),img=img,infolabels=infoL, watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id=imdb_id)
         #WatchHistory
-        if selfAddon.getSetting("whistory") == "true":
-            wh.add_item(mname+' '+'[COLOR green]DownloadedContent[/COLOR]', sys.argv[0]+sys.argv[2], infolabels=infolabels, img=img, fanart=fanart, is_folder=False)
+        if selfAddon.getSetting("whistory") == "true": wh.add_item(mname+' '+'[COLOR green]DownloadedContent[/COLOR]', sys.argv[0]+sys.argv[2], infolabels=infolabels, img=img, fanart=fanart, is_folder=False)
         player.KeepAlive()
         return ok
 
 def REMOVE(mname,murl):
-    try:
-        os.remove(murl)
-    except:
-        pass
+    try: os.remove(murl)
+    except: pass
     if os.path.exists(DownloadFile):
         DownloadLog=re.compile('{name="(.+?)",destination="(.+?)"}').findall(open(DownloadFile,'r').read())
         if len(DownloadLog)<=1 and str(DownloadLog).find(mname):

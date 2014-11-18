@@ -13,10 +13,8 @@ addon_path = selfAddon.getAddonInfo('path')
 addon_id = 'plugin.video.movie25'
 addon = Addon(addon_id)
 class StopDownloading(Exception): 
-    def __init__(self, value): 
-        self.value = value 
-    def __str__(self): 
-        return repr(self.value)
+    def __init__(self, value): self.value = value 
+    def __str__(self): return repr(self.value)
   
 uq_url  = urllib.unquote_plus(sys.argv[1])
 uq_dest = urllib.unquote_plus(sys.argv[2])
@@ -37,10 +35,8 @@ NotifyPercents = range(0, 100 + NotifyPercent, NotifyPercent)
 start_time = time.time()
 datapath = addon.get_profile()
 DownloadLog=os.path.join(datapath,'Downloads')
-try:
-    os.makedirs(DownloadLog)
-except:
-    pass
+try: os.makedirs(DownloadLog)
+except: pass
 DownloadFile=os.path.join(DownloadLog,'DownloadLog')
 
 def xbmcpath(path,filename):
@@ -55,15 +51,12 @@ def Notification(currentPercent):
         except: 
             print 'Could not clean Notified percents .....'
             pass
-        
         icon_file =art+'/smallicon.png'
         print '        Download progress...' + str(currentPercent)+'% for file ' + uq_file
         xbmc.executebuiltin( "XBMC.Notification(%s,%s,%i,%s)" % ( 'Download Progress - ' + str(currentPercent)+'%', uq_file, 5000,icon_file ) )
 
 def progress(numblocks, blocksize, filesize, start_time):
-    
     try:
-        
         percent = min(numblocks * blocksize * 100 / filesize, 100) 
         ''' # keep this, we might need it, if we want to show more information in the notification
         currently_downloaded = float(numblocks) * blocksize / (1024 * 1024) 
@@ -80,13 +73,8 @@ def progress(numblocks, blocksize, filesize, start_time):
         
         line2 = mbs + ' | ' + e
         '''
-        
         Notification(percent)
-        
-    except:
-        print_exc()
-
-
+    except: print_exc()
 try: 
     urllib.urlretrieve(uq_url, uq_dest, lambda nb, bs, fs: progress(nb, bs, fs, start_time)) 
     open(DownloadFile,'a').write('{name="%s",destination="%s"}'%(uq_Oname,uq_dest))
@@ -97,13 +85,10 @@ except:
             try: 
                 os.remove(uq_dest) 
                 break 
-            except: 
-                pass
-    
+            except: pass
     # display error dialog
     dialog = xbmcgui.Dialog()
     dialog.ok('Error in download', 'There was an error downloading file ' + uq_file)
-    
     #only handle StopDownloading (from cancel), ContentTooShort (from urlretrieve), and OS (from the race condition); let other exceptions bubble 
     if sys.exc_info()[0] in (urllib.ContentTooShortError, StopDownloading, OSError): 
         print 'Error downloading'
@@ -111,7 +96,6 @@ except:
     else: 
         print 'Error downloading. Something else happened'
         raise 
-
 # Display Download Complete dialog
 dialog = xbmcgui.Dialog()
 dialog.ok('Download Complete', 'Completed download of file ' + uq_file)
