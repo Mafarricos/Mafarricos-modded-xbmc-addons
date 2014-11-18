@@ -46,7 +46,7 @@ msgstr "Agora"
 
 msgctxt "#30007"
 msgid "[B]Tip![/B] You can also use the scroll wheel"
-msgstr "[B]Tip![/B] Pode também usar a roda de deslocamento"
+msgstr "[B]Dica![/B] Pode também usar a roda de deslocamento"
 
 msgctxt "#30008"
 msgid "Cancel"
@@ -142,7 +142,7 @@ msgstr "Método alternativo de transmissão não é compatível com o menu no vi
 
 msgctxt "#30150"
 msgid "Oops, sorry about that!"
-msgstr "Ops, pedimos desculpa!"
+msgstr "Ups, pedimos desculpa!"
 
 msgctxt "#30151"
 msgid "It was not possible to load program data,"
@@ -282,7 +282,7 @@ msgstr "Prima Navegar... em baixo e navegue para o seu ficheiro de transmissão.
 
 msgctxt "#30620"
 msgid "Choose a favourite below. Only [I]PlayMedia[/I] favourites are supported."
-msgstr "Escolha um favorito em baixo.. Apenas favoritos [I]PlayMedia[/I] são suportados."
+msgstr "Escolha um favorito em baixo. Apenas favoritos [I]PlayMedia[/I] são suportados."
 
 msgctxt "#30700"
 msgid "Multiple addons provide this channels.[CR]Choose one to watch the stream."
