@@ -10,14 +10,12 @@ art = main.art
 prettyName = 'Sceper'
 
 def MAINSCEPER():
-        #main.GA("Plugin","Sceper")
         main.addDir('Search Movies & TV Shows','s',543,art+'/search.png')
         main.addDir('Movies','movies',540,art+'/sceperm.png')
         main.addDir('Tv Shows','tvshows',540,art+'/scepert.png')
         main.VIEWSB2()
 def MORTSCEPER(murl):
         if murl=='movies':
-            #main.GA("Sceper","Movies")
             main.addDir('All Movies','http://sceper.ws/home/category/movies',541,art+'/sceperm.png')
             main.addDir('Cartoons','http://sceper.ws/home/category/movies/cartoons',541,art+'/sceperm.png')
             main.addDir('Foreign Movies','http://sceper.ws/home/category/movies/movies-foreign',541,art+'/sceperm.png')
@@ -28,7 +26,6 @@ def MORTSCEPER(murl):
             main.addDir('DVD Screener Movies','http://sceper.ws/home/category/movies/movies-screener/movies-screener-dvd',531,art+'/sceperm.png')
             main.addDir('R5 Movies','http://sceper.ws/home/category/movies/movies-r5',541,art+'/sceperm.png')
         elif murl=='tvshows':
-            #main.GA("Sceper","Tv")
             main.addDir('All TV Shows','http://sceper.ws/home/category/tv-shows',545,art+'/scepert.png')
             main.addDir('Anime/Cartoon TV Shows','http://sceper.ws/home/category/tv-shows/animes',545,art+'/scepert.png')
             main.addDir('HDTV 720p TV Shows','http://sceper.ws/home/category/tv-shows/tv-shows-x264',545,art+'/scepert.png')
@@ -44,26 +41,20 @@ def processTitle(title,quality):
         if len(s)==1: s = "0" + s
         episode = "S" + s + "E" + e
         title = re.sub('(\d+)[xX](\d\d+)',episode,title)
-    else:
-        title = re.sub('(\d{4}) (\d{2}) (\d{2})','\\1.\\2.\\3',title)
-        
+    else: title = re.sub('(\d{4}) (\d{2}) (\d{2})','\\1.\\2.\\3',title)
     isHD = re.compile('(?i)720p?|1080p?').findall(quality)
-    if isHD:
-        quality = quality.split(isHD[0])[0].strip("- ")
-    else:
-        quality = re.sub('(?i)(HDTV|PDTV|WEB DL|DVDRIP|WS DSR|DSR|HDRIP|BDRip|DVDR|WEBRiP|DVDscr|DVDSCR|BRRIP|R5|R6|480p|x264|lol ?-).*','',quality).strip("- ")
+    if isHD: quality = quality.split(isHD[0])[0].strip("- ")
+    else: quality = re.sub('(?i)(HDTV|PDTV|WEB DL|DVDRIP|WS DSR|DSR|HDRIP|BDRip|DVDR|WEBRiP|DVDscr|DVDSCR|BRRIP|R5|R6|480p|x264|lol ?-).*','',quality).strip("- ")
     if 'webdl' in quality and isHD: isHD[0] += " WEB-DL"
     if 'dvdrip' in quality and not isHD: isHD = [("DVDRip")]
     title = re.sub('(\d{4}\.\d{2}\.\d{2})(.*)','\\1[COLOR blue]\\2[/COLOR]',title)
     title = re.sub('([sS]\d+[eE]\d+).?([eE]\d+)','\\1.\\2',title)
     title = re.sub('([sS]\d+[eE]\d+.*?) (.*)','\\1 [COLOR blue]\\2[/COLOR]',title)
     if not isHD: isHD = [("SD")]
-    if isHD:
-        quality += " [COLOR red]"+isHD[0].strip()+"[/COLOR]"
+    if isHD: quality += " [COLOR red]"+isHD[0].strip()+"[/COLOR]"
     return quality.strip()
             
 def LISTSCEPER(name,murl):
-    #main.GA("Sceper","List")
     link=main.OPENURL(murl, timeout = 10,cookie="sceper")
     if "setCookie(" in link:
         import time
@@ -80,27 +71,22 @@ def LISTSCEPER(name,murl):
     link=link.replace('\xc2\xa0','').replace('\n','')
     audio=re.compile('>Audio:</.+?>([^<]+?)<').findall(link)
     if len(audio)>0:
-        for aud in audio:
-            audiolist.append(aud)
-    else:
-        audiolist.append('Audio Unknown')
+        for aud in audio: audiolist.append(aud)
+    else: audiolist.append('Audio Unknown')
     descr=re.compile('>Release Description</div><p>([^<]+?)</p>').findall(link)
     if len(descr)>0:
         for desc in descr:
             desc=desc.replace('</span><span style="font-family: arial"> ','').replace('<span style="color: #ff0000;">','').replace('</span>','')
             desclist.append(desc)
-    else:
-        desclist.append('Description Unavailable')
+    else: desclist.append('Description Unavailable')
     genre=re.compile('>Genre:</span>([^<]+?)<br').findall(link)
     if len(genre)>0:
         for gen in genre:
             gen=gen.replace('</span><span style="font-family: arial"> ','').replace('<span style="color: #ff0000;">','').replace('</span>','')
             genrelist.append(gen)
-    else:
-        genrelist.append('Genre Unknown')
+    else: genrelist.append('Genre Unknown')
     match=re.compile('<a href="([^<]+)">([^<]+)</a></h2>\t\t<div class="[^"]+?">\t\t\t\t<div class="[^"]+?">Release Info</div><p><a href="([^"]+?)"').findall(link)
-    if match:
-        main.addDir('Search','s',543,art+'/search.png')
+    if match: main.addDir('Search','s',543,art+'/search.png')
     dialogWait = xbmcgui.DialogProgress()
     ret = dialogWait.create('Please wait until Movie list is cached.')
     totalLinks = len(match)
@@ -108,13 +94,9 @@ def LISTSCEPER(name,murl):
     remaining_display = 'Movies loaded :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
     dialogWait.update(0,'[B]Will load instantly from now on[/B]',remaining_display)
     for url,name,thumb in match:
-        
-        if len(audiolist)<8:
-            audiolist.append('Audio Unknown')
-        if len(desclist)<8:
-            desclist.append('Description Unavailable')
-        if len(genrelist)<8:
-            genrelist.append('Genre Unknown')
+        if len(audiolist)<8: audiolist.append('Audio Unknown')
+        if len(desclist)<8: desclist.append('Description Unavailable')
+        if len(genrelist)<8: genrelist.append('Genre Unknown')
         sname=name
         data=re.findall('([^<]+)\s\(?(\d{4})\)?\s([^<]+)',sname)
         for title,date,quality in data:
@@ -130,8 +112,7 @@ def LISTSCEPER(name,murl):
     dialogWait.close()
     del dialogWait
     paginate = re.compile('<a class="nextpostslink" rel="next" href="([^"]+)">').findall(link)
-    if paginate and loadedLinks >= totalLinks:
-        main.addDir('Next',paginate[0],541,art+'/next2.png')
+    if paginate and loadedLinks >= totalLinks: main.addDir('Next',paginate[0],541,art+'/next2.png')
     main.VIEWS()
 
 def LISTSCEPER2(name,murl):
@@ -151,19 +132,16 @@ def LISTSCEPER2(name,murl):
             percent = (loadedLinks * 100)/totalLinks
             remaining_display = 'Episodes loaded :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
             dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
-            if (dialogWait.iscanceled()):
-                    return False
+            if (dialogWait.iscanceled()): return False
         dialogWait.close()
         del dialogWait
         paginate = re.compile('<a class="nextpostslink" rel="next" href="([^"]+)">').findall(link)
-        if len(paginate)>0:
-            main.addDir('Next',paginate[0],545,art+'/next2.png')
+        if len(paginate)>0: main.addDir('Next',paginate[0],545,art+'/next2.png')
 
 def SearchhistorySCEPER():
         seapath=os.path.join(main.datapath,'Search')
         SeaFile=os.path.join(seapath,'SearchHistory25')
-        if not os.path.exists(SeaFile):
-            SEARCHSCEPER()
+        if not os.path.exists(SeaFile): SEARCHSCEPER()
         else:
             main.addDir('Search','###',542,art+'/search.png')
             main.addDir('Clear History',SeaFile,128,art+'/cleahis.png')
@@ -184,13 +162,11 @@ def superSearch(encode,type):
         match=re.compile('<a href="([^<]+)">([^<]+)</a></h2>').findall(link)
         for url,name in match:
             name=main.CleanTitle(name)
-            if type=='Movies' and not re.findall('(.+?)\ss(\d+)e(\d+)',name,re.I) or type=='TV' and re.findall('(.+?)\ss(\d+)e(\d+)',name,re.I):
-                returnList.append((name,prettyName,url,'',544,False))
+            if type=='Movies' and not re.findall('(.+?)\ss(\d+)e(\d+)',name,re.I) or type=='TV' and re.findall('(.+?)\ss(\d+)e(\d+)',name,re.I): returnList.append((name,prettyName,url,'',544,False))
         return returnList
     except: return []            
         
 def SEARCHSCEPER(murl = ''):
-        #main.GA("Sceper","Search")
         encode = main.updateSearchFile(murl,'Movies',searchMsg='Search For Movies or TV Shows')
         if not encode: return False   
         surl='http://sceper.ws/search/'+encode+'/'
@@ -200,15 +176,12 @@ def SEARCHSCEPER(murl = ''):
         match=re.compile('<a href="([^<]+)">([^<]+)</a></h2>').findall(link)
         for url,name in match:
             name=main.CleanTitle(name)
-            if re.findall('(.+?)\ss(\d+)e(\d+)\s',name,re.I):
-                main.addPlayTE(name,url,544,'','','','','','')
-            else:
-                main.addPlayM(name,url,544,'','','','','','')
+            if re.findall('(.+?)\ss(\d+)e(\d+)\s',name,re.I): main.addPlayTE(name,url,544,'','','','','','')
+            else: main.addPlayM(name,url,544,'','','','','','')
         xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
         
 
 def VIDEOLINKSSCEPER(mname,murl,thumb):
-        #main.GA("Sceper","Watched")
         msg = xbmcgui.DialogProgress()
         msg.create('Please Wait!','')
         msg.update(0,'Collecting hosts')
@@ -223,8 +196,7 @@ def VIDEOLINKSSCEPER(mname,murl,thumb):
         match2 = []
         if match0:
             match2=re.compile('(?sim)<p.*?</p>').findall(match0[0])
-            for paragraph in reversed(match2):
-                match1 +=re.compile('<a href="([^"]+?)"').findall(paragraph)
+            for paragraph in reversed(match2): match1 +=re.compile('<a href="([^"]+?)"').findall(paragraph)
         match = []
         paragraphs = re.compile('(?sim)<p.*?</p>').findall(link)
         for paragraph in paragraphs:
@@ -279,12 +251,9 @@ def VIDEOLINKSSCEPER(mname,murl,thumb):
                 match3=re.compile('(?i)(720p?|1080p?)').findall(quality)
                 if match3 and not 'p' in match3[0]: match3[0] += 'p'
                 match4=re.compile('mp4').findall(url)
-                if len(match3)>0:
-                    host =host+' [COLOR red]'+match3[0]+'[/COLOR]'
-                elif len(match4)>0:
-                    host =host+' [COLOR green]SD MP4[/COLOR]'
-                else:
-                    host =host+' [COLOR blue]SD[/COLOR]'
+                if len(match3)>0: host =host+' [COLOR red]'+match3[0]+'[/COLOR]'
+                elif len(match4)>0: host =host+' [COLOR green]SD MP4[/COLOR]'
+                else: host =host+' [COLOR blue]SD[/COLOR]'
                 if main.supportedHost(hostname):
                     titles.append(host + filename)
                     sources.append(url)
@@ -295,8 +264,7 @@ def VIDEOLINKSSCEPER(mname,murl,thumb):
         else:
                 dialog = xbmcgui.Dialog()
                 index = dialog.select('Choose your stream', titles)
-                if index != -1: 
-                    source = sources[index]
+                if index != -1:  source = sources[index]
                 else: source = None
         try:
                 if not source:
@@ -306,7 +274,6 @@ def VIDEOLINKSSCEPER(mname,murl,thumb):
                 stream_url = main.resolve_url(source)
                 if(stream_url == False):
                     return
-                
                 if re.findall('(.+?)\ss(\d+)e(\d+)\s',mname,re.I):
                     mname=mname.split('&')[0]
                     infoLabels =main.GETMETAEpiT(mname,thumb,'')
@@ -322,7 +289,6 @@ def VIDEOLINKSSCEPER(mname,murl,thumb):
                 fanart =infoLabels['backdrop_url']
                 imdb_id=infoLabels['imdb_id']
                 infolabels = { 'supports_meta' : 'true', 'video_type':video_type, 'name':str(infoLabels['title']), 'imdb_id':str(infoLabels['imdb_id']), 'season':str(season), 'episode':str(episode), 'year':str(infoLabels['year']) }
-                
                 infoL={'Title': infoLabels['title'], 'Plot': infoLabels['plot'], 'Genre': infoLabels['genre']}
                 if not video_type is 'episode': infoL['originalTitle']=main.removeColoredText(infoLabels['metaName'])
                 # play with bookmark
@@ -336,6 +302,5 @@ def VIDEOLINKSSCEPER(mname,murl,thumb):
                 player.KeepAlive()
                 return ok
         except Exception, e:
-                if stream_url != False:
-                        main.ErrorReport(e)
+                if stream_url != False: main.ErrorReport(e)
                 return ok

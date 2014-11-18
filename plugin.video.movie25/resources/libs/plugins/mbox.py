@@ -23,15 +23,13 @@ def MAIN():
     if not lock_file:
         try: 
             lib=os.path.join(datapath, 'MBox.zip')
-            if main.downloadFile(dataurl,lib,False):
-                xbmc.executebuiltin("XBMC.Extract(%s,%s)"%(lib,profile))
+            if main.downloadFile(dataurl,lib,False): xbmc.executebuiltin("XBMC.Extract(%s,%s)"%(lib,profile))
         except: pass
         main.setFile(lock_file_path,'lock')
     main.addDir('First 25 Movies','25movies',278,art+'/mbox.png')
     main.addDir('Movies','movies',278,art+'/mbox.png')
     main.addDir('TV','tv',278,art+'/mbox.png')
     main.addDir('Music','music',278,art+'/mbox.png')
-    #main.GA("Plugin","MBox")
 
 def DownloadAndList(type):
     try: 
@@ -55,10 +53,8 @@ def LIST(type):
     field=json.loads(f.read())
     dialogWait = xbmcgui.DialogProgress()
     ret = dialogWait.create('Please wait until Content list is cached.')
-    if '25movies'in type:
-        totalLinks = 25
-    else:
-        totalLinks = len(field)
+    if '25movies'in type: totalLinks = 25
+    else: totalLinks = len(field)
     loadedLinks = 0
     remaining_display = 'Content Cached :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
     dialogWait.update(0,'[B]Will load instantly from now on[/B]',remaining_display)
@@ -71,24 +67,19 @@ def LIST(type):
         updates = open(path).read()
         field = sorted(field,key=lambda word: negtopos(updates.find('"id":'+word['id']+',')))
     except: pass
-    if '25movies'in type:
-        field=field[0:25]
+    if '25movies'in type: field=field[0:25]
     for data in field:
         #genre=str(data["genres"]).replace("u'",'').replace("'",'').replace("[",'').replace("]",'')
         if data['active'] == '1':
             thumb=str(data["poster"]).replace("\/'",'/')
-            if 'movies'in type or '25movies'in type:
-                main.addDown4(main.unescapes(str(data["title"].encode('utf-8')))+' ('+str(data["year"])+')',apibase+'/api/serials/get_movie_data?id='+str(data["id"]),279,thumb,'','','','','')
-            elif 'music' in type:
-                main.addDirMs(main.unescapes(str(data["title"].encode('utf-8'))),apibase+'/api/serials/get_artist_data/?id='+str(data["id"])+'&type=1',302,thumb,'','','','','')
-            else:
-                main.addDirT(main.unescapes(str(data["title"].encode('utf-8'))),data["id"]+'xoxe'+data["seasons"],280,thumb,'','','','','')
+            if 'movies'in type or '25movies'in type: main.addDown4(main.unescapes(str(data["title"].encode('utf-8')))+' ('+str(data["year"])+')',apibase+'/api/serials/get_movie_data?id='+str(data["id"]),279,thumb,'','','','','')
+            elif 'music' in type: main.addDirMs(main.unescapes(str(data["title"].encode('utf-8'))),apibase+'/api/serials/get_artist_data/?id='+str(data["id"])+'&type=1',302,thumb,'','','','','')
+            else: main.addDirT(main.unescapes(str(data["title"].encode('utf-8'))),data["id"]+'xoxe'+data["seasons"],280,thumb,'','','','','')
         loadedLinks = loadedLinks + 1
         percent = (loadedLinks * 100)/totalLinks
         remaining_display = 'Content Cached :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
         dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
         if dialogWait.iscanceled(): break
-    #main.GA("Mbox","List")
     main.VIEWS()
 
 def MUSICLIST(mname,murl):
@@ -109,13 +100,11 @@ def MUSICLIST(mname,murl):
         remaining_display = 'Songs Cached :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
         dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
         if dialogWait.iscanceled(): break
-    #main.GA("Mbox","Music")
 
 def SEASONS(mname,murl):
     id = murl.split('xoxe')[0]
     season = murl.split('xoxe')[1]
-    for s in reversed(range(int(season))):
-        main.addDir(mname.strip()+' Season '+str(s+1),id,281,'')
+    for s in reversed(range(int(season))): main.addDir(mname.strip()+' Season '+str(s+1),id,281,'')
 
 def EPISODES(mname,murl):
     sea=re.findall('\sSeason\s(\d+)',mname,re.DOTALL)[0]
@@ -135,8 +124,7 @@ def EPISODES(mname,murl):
         percent = (loadedLinks * 100)/totalLinks
         remaining_display = 'Episodes Cached :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
         dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
-        if dialogWait.iscanceled():
-            return False
+        if dialogWait.iscanceled(): return False
  
 def superSearch(encode,type):
     try:
@@ -164,18 +152,15 @@ def superSearch(encode,type):
                 thumb=str(data["poster"]).replace("\/'",'/')
                 if type == 'Movies':
                     name = str(data["title"].encode('utf-8'))+' ('+str(data["year"])+')'
-                    if re.search('(?i)'+encode,name):
-                        returnList.append((name,prettyName,apibase+'/api/serials/get_movie_data?id='+str(data["id"]),thumb,279,False))
+                    if re.search('(?i)'+encode,name): returnList.append((name,prettyName,apibase+'/api/serials/get_movie_data?id='+str(data["id"]),thumb,279,False))
                 else:
                     name = str(data["title"].encode('utf-8'))
                     if re.search('(?i)'+encode,name):
                         if epi:
                             url = apibase+'/api/serials/e?h='+str(data["id"])+'&u='+str(s)+'&y='+str(e)
                             link = main.OPENURL(url,ua=useragent,verbose=False)
-                            if link != '[]':
-                                returnList.append((name+' '+epistring,prettyName,url,thumb,279,False))
-                        else:
-                            returnList.append((name,prettyName,data["id"]+'xoxe'+data["seasons"],thumb,280,True))
+                            if link != '[]': returnList.append((name+' '+epistring,prettyName,url,thumb,279,False))
+                        else: returnList.append((name,prettyName,data["id"]+'xoxe'+data["seasons"],thumb,280,True))
         return returnList
     except: return []
 
@@ -188,14 +173,12 @@ def resolveMBLink(url):
         link=main.OPENURL(url,verbose=False,ua=useragent)
         q = re.findall('"lang":"en","apple":([-\d]+?),"google":([-\d]+?),"microsoft":"([^"]+?)"',link,re.I)
         vklink = "https://vk.com/video_ext.php?oid="+str(r + int(q[0][0]))+"&id="+str(r + int(q[0][1]))+"&hash="+q[0][2]
-    except:
-        vklink=url
+    except: vklink=url
     vklink=vklink.replace("\/",'/')
     stream_url = main.resolve_url(vklink)
     return stream_url
 
 def PLAY(mname,murl,thumb):
-    #main.GA("MBox","Watched") 
     stream_url = resolveMBLink(murl)
     r = re.findall('(.+?)\sSeason\s(\d+)\sEpisode\s(\d+)',mname,re.I)
     if r:

@@ -12,7 +12,6 @@ smalllogo=art+'/smallicon.png'
 
 
 def MAIN():
-    #main.GA("Plugin","Dramania")
     main.addDir('Search','http://www.dubzonline.net/anime-list/',274,art+'/search.png')
     main.addDir('Movies','dramania',269,art+'/dramania.png')
     main.addDir('Dramas','dramania',273,art+'/dramania.png')
@@ -49,13 +48,9 @@ def SEARCH():
             for data in field:
                 genre=str(data["genres"]).replace("u'",'').replace("'",'').replace("[",'').replace("]",'')
                 if encode.lower()in(str(data["name"].encode('utf-8'))).lower():
-                    if ret==0:
-                        main.addDirT(str(data["name"].encode('utf-8'))+' [COLOR red]'+str(data["rating"])+'/10[/COLOR] [COLOR blue]'+str(data["released"])+'[/COLOR]','http://api.dramago.com/GetDetails/'+str(data["id"]),275,'http://www.dramago.com/images/series/big/'+str(data["id"])+'.jpg',str(data["description"].encode('utf-8')),'','',genre,'')
-                    else:
-                        main.addDirM(str(data["name"].encode('utf-8'))+' [COLOR red]'+str(data["rating"])+'/10[/COLOR] [COLOR blue]'+str(data["released"])+'[/COLOR]','http://api.dramago.com/GetDetails/'+str(data["id"]),271,'http://www.dramago.com/images/series/big/'+str(data["id"])+'.jpg',str(data["description"].encode('utf-8')),'','',genre,'')
-    else:
-        return
-    #main.GA("Dramania","Search")
+                    if ret==0: main.addDirT(str(data["name"].encode('utf-8'))+' [COLOR red]'+str(data["rating"])+'/10[/COLOR] [COLOR blue]'+str(data["released"])+'[/COLOR]','http://api.dramago.com/GetDetails/'+str(data["id"]),275,'http://www.dramago.com/images/series/big/'+str(data["id"])+'.jpg',str(data["description"].encode('utf-8')),'','',genre,'')
+                    else: main.addDirM(str(data["name"].encode('utf-8'))+' [COLOR red]'+str(data["rating"])+'/10[/COLOR] [COLOR blue]'+str(data["released"])+'[/COLOR]','http://api.dramago.com/GetDetails/'+str(data["id"]),271,'http://www.dramago.com/images/series/big/'+str(data["id"])+'.jpg',str(data["description"].encode('utf-8')),'','',genre,'')
+    else: return
                         
 def LIST(murl):
     link=main.OPENURL(murl)
@@ -73,16 +68,12 @@ def LIST(murl):
             try: desc=str(data["description"].encode('utf-8'))
             except: desc =' '
             main.addDirM(str(data["name"].encode('utf-8'))+' [COLOR red]'+str(round(data["rating"],2)).rstrip('0').rstrip('.')+'/10[/COLOR] [COLOR blue]'+str(data["released"])+'[/COLOR]','http://api.dramago.com/GetDetails/'+str(data["id"]),271,'http://www.dramago.com/images/series/big/'+str(data["id"])+'.jpg',desc,'','',genre,'')
-        else:
-            main.addDirT(str(data["name"].encode('utf-8'))+' [COLOR red]'+str(round(data["rating"],2)).rstrip('0').rstrip('.')+'/10[/COLOR] [COLOR blue]'+str(data["released"])+'[/COLOR]','http://api.dramago.com/GetDetails/'+str(data["id"]),275,'http://www.dramago.com/images/series/big/'+str(data["id"])+'.jpg',str(data["description"].encode('utf-8')),'','',genre,'')
+        else: main.addDirT(str(data["name"].encode('utf-8'))+' [COLOR red]'+str(round(data["rating"],2)).rstrip('0').rstrip('.')+'/10[/COLOR] [COLOR blue]'+str(data["released"])+'[/COLOR]','http://api.dramago.com/GetDetails/'+str(data["id"]),275,'http://www.dramago.com/images/series/big/'+str(data["id"])+'.jpg',str(data["description"].encode('utf-8')),'','',genre,'')
         loadedLinks = loadedLinks + 1
         percent = (loadedLinks * 100)/totalLinks
         remaining_display = 'Movies/Episodes Cached :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
         dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
-        if (dialogWait.iscanceled()):
-            return False
-    #main.GA("Dramania","List")
-
+        if (dialogWait.iscanceled()): return False
 
 def LISTEPISODES(name,murl,thumb):
     link=main.OPENURL(murl)
@@ -99,8 +90,7 @@ def LISTEPISODES(name,murl,thumb):
         percent = (loadedLinks * 100)/totalLinks
         remaining_display = 'Movies/Episodes Cached :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
         dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
-        if (dialogWait.iscanceled()):
-            return False
+        if (dialogWait.iscanceled()): return False
     
 def LISTHOSTS(name,murl,thumb):
     name=main.removeColoredText(name)
@@ -123,8 +113,7 @@ def LISTHOSTS(name,murl,thumb):
     if 'GetDetails' in murl:
         link=main.OPENURL(murl)
         idnum=re.findall('"id":"(.+?)"',link,re.DOTALL)[0]
-    else:
-        idnum=murl
+    else: idnum=murl
     link=main.OPENURL('http://api.dramago.com/GetVideos/'+idnum).replace('\/','/')
     collect=re.findall('"(.+?)"',link,re.DOTALL)
     for links in collect:
@@ -132,58 +121,49 @@ def LISTHOSTS(name,murl,thumb):
             main.addDown2(name+' [COLOR blue]VideoBug Part '+str(i)+'[/COLOR]',links,272,thumb,'')
             videobug.append(('Part '+str(i),links))
             i=i+1
-    if videobug:
-        main.addDown2(name+' [COLOR blue]VideoBug Play All[/COLOR]',str(videobug),272,thumb,'')  
+    if videobug: main.addDown2(name+' [COLOR blue]VideoBug Play All[/COLOR]',str(videobug),272,thumb,'')  
     for links in collect:
         if 'yourupload' in links:
             main.addDown2(name+' [COLOR yellow]YourUpload Part '+str(j)+'[/COLOR]',links,272,thumb,'')
             yourupload.append(('Part '+str(j),links))
             j=j+1          
-    if yourupload :
-        main.addDown2(name+' [COLOR yellow]YourUpload Play All[/COLOR]',str(yourupload),272,thumb,'')
+    if yourupload : main.addDown2(name+' [COLOR yellow]YourUpload Play All[/COLOR]',str(yourupload),272,thumb,'')
     for links in collect:
         if 'video44' in links or 'video66' in links:
             main.addDown2(name+' [COLOR red]Video44 Part '+str(v)+'[/COLOR]',links,272,thumb,'')
             video44.append(('Part '+str(v),links))
             v=v+1
-    if video44:
-        main.addDown2(name+' [COLOR red]Video44 Play All[/COLOR]',str(video44),272,thumb,'')
+    if video44: main.addDown2(name+' [COLOR red]Video44 Play All[/COLOR]',str(video44),272,thumb,'')
     for links in collect:
         if 'play44' in links or 'play66' in links or 'playbb' in links:
             main.addDown2(name+' [COLOR green]Play44 Part '+str(p)+'[/COLOR]',links,272,thumb,'')
             play44.append(('Part '+str(p),links))
             p=p+1
-    if play44:
-        main.addDown2(name+' [COLOR green]Play44 Play All[/COLOR]',str(play44),272,thumb,'')
+    if play44: main.addDown2(name+' [COLOR green]Play44 Play All[/COLOR]',str(play44),272,thumb,'')
     for links in collect:
         if 'videoweed' in links:
             main.addDown2(name+' [COLOR aqua]Videoweed Part '+str(vw)+'[/COLOR]',links,272,thumb,'')
             videoweed.append(('Part '+str(vw),links))
             vw=vw+1
-    if videoweed:
-        main.addDown2(name+' [COLOR aqua]Videoweed Play All[/COLOR]',str(videoweed),272,thumb,'')
+    if videoweed: main.addDown2(name+' [COLOR aqua]Videoweed Play All[/COLOR]',str(videoweed),272,thumb,'')
     for links in collect:
         if 'cheesestream' in links:
             main.addDown2(name+' [COLOR purple]Cheesestream Part '+str(c)+'[/COLOR]',links,272,thumb,'')
             cheesestream.append(('Part '+str(c),links))
             c=c+1
-    if cheesestream:
-        main.addDown2(name+' [COLOR purple]Cheesestream Play All[/COLOR]',str(cheesestream),272,thumb,'')
+    if cheesestream: main.addDown2(name+' [COLOR purple]Cheesestream Play All[/COLOR]',str(cheesestream),272,thumb,'')
     for links in collect:
         if 'videofun' in links:
             main.addDown2(name+' [COLOR maroon]Videofun Part '+str(vf)+'[/COLOR]',links,272,thumb,'')
             videofun.append(('Part '+str(vf),links))
             vf=vf+1
-    if videofun:
-        main.addDown2(name+' [COLOR maroon]Videofun Play All[/COLOR]',str(videofun),272,thumb,'')
+    if videofun: main.addDown2(name+' [COLOR maroon]Videofun Play All[/COLOR]',str(videofun),272,thumb,'')
     for links in collect:
         if 'yucache' in links:
             main.addDown2(name+' [COLOR maroon]Yucache Part '+str(y)+'[/COLOR]',links,272,thumb,'')
             yucache.append(('Part '+str(y),links))
             y=y+1
-    if yucache:
-        main.addDown2(name+' [COLOR maroon]Yucache Play All[/COLOR]',str(yucache),272,thumb,'')
-
+    if yucache: main.addDown2(name+' [COLOR maroon]Yucache Play All[/COLOR]',str(yucache),272,thumb,'')
 
 def getLink(links):
         if 'videobug' in links or 'easyvideo' in links:
@@ -195,8 +175,7 @@ def getLink(links):
             link=main.OPENURL(links)
             try:
                 match=re.compile('<meta property="og.+?video" content="(.+?)"/>',re.DOTALL).findall(link)
-                if len(match)!=0:
-                    match=urllib.unquote_plus(match[0])
+                if len(match)!=0: match=urllib.unquote_plus(match[0])
             except:pass
         if 'video44' in links or 'video66' in links:
             link=main.OPENURL(links)
@@ -231,10 +210,7 @@ def getLink(links):
     
 
 def PLAY(mname,murl,thumb):
-
-        #main.GA("Dramania","Watched") 
         ok=True
-        
         r = re.findall('(.+?)\ss(\d+)e(\d+)\s',mname,re.I)
         if r:
             infoLabels =main.GETMETAEpiT(mname,'','')
@@ -255,7 +231,6 @@ def PLAY(mname,murl,thumb):
                 infoL={'Title': infoLabels['title'], 'Plot': infoLabels['plot'], 'Genre': infoLabels['genre']}
                 if not video_type is 'episode': infoL['originalTitle']=main.removeColoredText(infoLabels['metaName'])
                 from resources.universal import playbackengine
-                
                 if "'," in murl:
                     mname=main.removeColoredText(mname)
                     pl=xbmc.PlayList(1);pl.clear()
@@ -263,8 +238,7 @@ def PLAY(mname,murl,thumb):
                     for xname,link in playlist:
                         pl.add(getLink(link),xbmcgui.ListItem(mname+' '+xname,thumbnailImage=img))
                     xbmc.Player().play(pl)
-                    while xbmc.Player().isPlaying():
-                        xbmc.sleep(2500)
+                    while xbmc.Player().isPlaying(): xbmc.sleep(2500)
                 else:
                     stream_url = getLink(murl)
                     # play with bookmark
@@ -277,6 +251,5 @@ def PLAY(mname,murl,thumb):
                     player.KeepAlive()
                     return ok
         except Exception, e:
-                if stream_url != False:
-                        main.ErrorReport(e)
+                if stream_url != False: main.ErrorReport(e)
                 return ok

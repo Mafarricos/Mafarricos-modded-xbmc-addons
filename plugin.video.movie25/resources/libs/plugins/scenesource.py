@@ -10,7 +10,6 @@ art = main.art
 prettyName = 'SceneSource'
 
 def MAINSCENE():
-        #main.GA("Plugin",prettyName)
         main.addDir('Search Movies & TV Shows','s',392,art+'/search.png')
         main.addDir('Movies','movies',388,art+'/scenesource.png')
         main.addDir('Tv Shows','tvshows',388,art+'/scenesource.png')
@@ -18,7 +17,6 @@ def MAINSCENE():
 
 def SECSCENE(murl):
         if murl=='movies':
-            #main.GA(prettyName,"Movies")
             main.addDir('All Movies','http://www.scenesource.me/category/films/',389,art+'/scenesource.png')
             main.addDir('BDRip','http://www.scenesource.me/category/films/bdrip/',389,art+'/scenesource.png')
             main.addDir('BluRay','http://www.scenesource.me/category/films/bluray/',389,art+'/scenesource.png')
@@ -27,7 +25,6 @@ def SECSCENE(murl):
             main.addDir('CAM','http://www.scenesource.me/category/films/cam/',389,art+'/scenesource.png')
             main.addDir('R5','http://www.scenesource.me/category/films/r5/',389,art+'/scenesource.png')
         elif murl=='tvshows':
-            #main.GA(prettyName,"Tv")
             main.addDir('All TV Shows','http://www.scenesource.me/category/tv/',391,art+'/scenesource.png')
             main.addDir('DVD','http://www.scenesource.me/category/tv/dvd/',389,art+'/scenesource.png')
             main.addDir('Sports','http://www.scenesource.me/category/tv/sports-tv/',391,art+'/scenesource.png')
@@ -60,14 +57,11 @@ def superSearch(encode,type):
         match=re.compile('<a href="([^<]+)" rel="bookmark" title=".+?>([^<]+)</a></h2>').findall(link)
         for url,name in match:
             name=main.CleanTitle(name)
-            if type=='Movies' and not re.findall('\ss(\d+)e(\d+)',name,re.I) or type=='TV' and re.findall('\ss(\d+)e(\d+)',name,re.I):
-                returnList.append((name,prettyName,url,'',390,False))
-    
+            if type=='Movies' and not re.findall('\ss(\d+)e(\d+)',name,re.I) or type=='TV' and re.findall('\ss(\d+)e(\d+)',name,re.I): returnList.append((name,prettyName,url,'',390,False))
         return returnList            
     except: return []
     
 def SEARCHSCENE(encode):
-        #main.GA(prettyName,"Search")
         if encode=='sec':
                 encode = main.updateSearchFile('','Movies',searchMsg='Search For Movies or TV Shows')
                 if not encode: return False
@@ -78,14 +72,11 @@ def SEARCHSCENE(encode):
         match=re.compile('<a href="([^<]+)" rel="bookmark" title=".+?>([^<]+)</a></h2>').findall(link)
         for url,name in match:
             name=main.CleanTitle(name)    
-            if re.findall('(.+?)\ss(\d+)e(\d+)\s',name,re.I):
-                main.addPlayTE(name,url,390,'','','','','','')
-            else:
-                main.addPlayM(name,url,390,'','','','','','')
+            if re.findall('(.+?)\ss(\d+)e(\d+)\s',name,re.I): main.addPlayTE(name,url,390,'','','','','','')
+            else: main.addPlayM(name,url,390,'','','','','','')
         xbmcplugin.setContent(int(sys.argv[1]), 'Movies')
 
 def LISTMOVIES(murl):
-    #main.GA(prettyName,"List")   
     link=main.OPENURL(murl)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('\\','')
     match=re.compile('''<a href="([^<]+)" rel="bookmark" title=".+?">(.+?)</a></h2><div.+?<img.+?src="(.+?)".*?http://www.imdb.com/title/([t\d]+?)[/"']''',re.DOTALL).findall(link)
@@ -98,10 +89,8 @@ def LISTMOVIES(murl):
     xbmc.executebuiltin("XBMC.Dialog.Close(busydialog,true)")
     for url,name,thumb,imdb in match:
         name=main.CleanTitle(name)
-        if re.findall('\ss(\d+)\s',name,re.I):
-            main.addPlayT(name,url,390,thumb,'','','','','')
-        else:
-            main.addPlayM(name,url,390,thumb,'','','','','')
+        if re.findall('\ss(\d+)\s',name,re.I): main.addPlayT(name,url,390,thumb,'','','','','')
+        else: main.addPlayM(name,url,390,thumb,'','','','','')
         loadedLinks = loadedLinks + 1
         percent = (loadedLinks * 100)/totalLinks
         remaining_display = 'Movies loaded :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
@@ -110,8 +99,7 @@ def LISTMOVIES(murl):
     dialogWait.close()
     del dialogWait
     paginate = re.compile('<a class="nextpostslink"[^>]+?href="([^"]+)"').findall(link)
-    if paginate and loadedLinks >= totalLinks:
-        main.addDir('Next',paginate[0],389,art+'/next2.png')
+    if paginate and loadedLinks >= totalLinks: main.addDir('Next',paginate[0],389,art+'/next2.png')
     main.VIEWS()
 
 def LISTTV(murl):
@@ -132,16 +120,13 @@ def LISTTV(murl):
             percent = (loadedLinks * 100)/totalLinks
             remaining_display = 'Episodes loaded :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
             dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
-            if (dialogWait.iscanceled()):
-                    return False
+            if (dialogWait.iscanceled()): return False
         dialogWait.close()
         del dialogWait
         paginate = re.compile('<a class="nextpostslink" [^>]*?href="([^"]+)"').findall(link)
-        if len(paginate)>0:
-            main.addDir('Next',paginate[0],391,art+'/next2.png')
+        if len(paginate)>0: main.addDir('Next',paginate[0],391,art+'/next2.png')
 
 def VIDEOLINKSSCENE(mname,murl,thumb):
-        #main.GA(prettyName,"Watched")
         msg = xbmcgui.DialogProgress()
         msg.create('Please Wait!','')
         msg.update(0,'Collecting hosts')
@@ -199,12 +184,9 @@ def VIDEOLINKSSCENE(mname,murl,thumb):
                 match3=re.compile('(?i)(720p?|1080p?)').findall(quality)
                 if match3 and not 'p' in match3[0]: match3[0] += 'p'
                 match4=re.compile('mp4').findall(url)
-                if len(match3)>0:
-                    host =host+' [COLOR red]'+match3[0]+'[/COLOR]'
-                elif len(match4)>0:
-                    host =host+' [COLOR green]SD MP4[/COLOR]'
-                else:
-                    host =host+' [COLOR blue]SD[/COLOR]'
+                if len(match3)>0: host =host+' [COLOR red]'+match3[0]+'[/COLOR]'
+                elif len(match4)>0: host =host+' [COLOR green]SD MP4[/COLOR]'
+                else: host =host+' [COLOR blue]SD[/COLOR]'
                 if main.supportedHost(hostname):
                     titles.append( host + filename )
                     sources.append(url)
@@ -215,8 +197,7 @@ def VIDEOLINKSSCENE(mname,murl,thumb):
         else:
                 dialog = xbmcgui.Dialog()
                 index = dialog.select('Choose your stream', titles)
-                if index != -1: 
-                    source = sources[index]
+                if index != -1:  source = sources[index]
                 else: source = None
         try:
                 if not source:
@@ -226,7 +207,6 @@ def VIDEOLINKSSCENE(mname,murl,thumb):
                 stream_url = main.resolve_url(source)
                 if(stream_url == False):
                     return
-                
                 if re.findall('(.+?)\ss(\d+)e(\d+)\s',mname,re.I):
                     mname=mname.split('&')[0]
                     infoLabels =main.GETMETAEpiT(mname,thumb,'')
@@ -242,7 +222,6 @@ def VIDEOLINKSSCENE(mname,murl,thumb):
                 fanart =infoLabels['backdrop_url']
                 imdb_id=infoLabels['imdb_id']
                 infolabels = { 'supports_meta' : 'true', 'video_type':video_type, 'name':str(infoLabels['title']), 'imdb_id':str(infoLabels['imdb_id']), 'season':str(season), 'episode':str(episode), 'year':str(infoLabels['year']) }
-                
                 infoL={'Title': infoLabels['title'], 'Plot': infoLabels['plot'], 'Genre': infoLabels['genre']}
                 if not video_type is 'episode': infoL['originalTitle']=main.removeColoredText(infoLabels['metaName'])
                 # play with bookmark
@@ -256,6 +235,5 @@ def VIDEOLINKSSCENE(mname,murl,thumb):
                 player.KeepAlive()
                 return ok
         except Exception, e:
-                if stream_url != False:
-                        main.ErrorReport(e)
+                if stream_url != False: main.ErrorReport(e)
                 return ok

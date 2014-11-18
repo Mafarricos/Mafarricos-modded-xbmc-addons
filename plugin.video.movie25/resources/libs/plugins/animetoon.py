@@ -13,13 +13,10 @@ smalllogo=art+'/smallicon.png'
 def AZAT(sec):
     import string
     main.addDir('0-9','http://www.animetoon.tv/'+sec+'/others',376,art+'/09.png')
-    for i in string.ascii_uppercase:
-            main.addDir(i,'http://www.animetoon.tv/'+sec+'/'+i.lower(),376,art+'/'+i.lower()+'.png')
-    #main.GA("Watchseries","A-Z")
+    for i in string.ascii_uppercase: main.addDir(i,'http://www.animetoon.tv/'+sec+'/'+i.lower(),376,art+'/'+i.lower()+'.png')
     main.VIEWSB()
 
 def MAIN():
-    #main.GA("Plugin","Animania")
     main.addDir('Search','anime',385,art+'/search.png')
     main.addDir('Daily Releases','dramania',384,art+'/animetoon.png')
     main.addDir('Popular Dubbed Anime & Cartoon List','http://www.animetoon.tv/popular-list',376,art+'/animetoon.png')
@@ -65,18 +62,15 @@ def GENREAT(sec):
     link=main.OPENURL('http://www.animetoon.tv/'+sec, mobile=True)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('  ','').replace('>Follow @GoGoAnime</a>','')
     match=re.compile('<tr><td><a href="(.+?)">(.+?)</a></td><td>(.+?)</td> </tr>',re.DOTALL).findall(link)
-    for url,name,count in match:
-        main.addDir(name+' [COLOR red]('+count+')[/COLOR]',url,376,art+'/genre.png')
+    for url,name,count in match: main.addDir(name+' [COLOR red]('+count+')[/COLOR]',url,376,art+'/genre.png')
 
 def LISTPOP():
     link=main.OPENURL('http://www.animetoon.tv/updates', mobile=True)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('  ','').replace('>Follow @GoGoAnime</a>','')
     match=re.compile('<tr><td><div><a href="(.+?)">(.+?)</a></div><ul>.+?</ul></td><td><img src="(.+?)" alt="(.+?)" /></td><td>(.+?)</td></tr>',re.DOTALL).findall(link)
     for url,name,thumb,type,date in match:
-        if 'Movie' in type:
-            main.addDirMs(name+' [COLOR red]('+date+')[/COLOR] [COLOR blue]'+type+'[/COLOR]',url,381,thumb,'','','','','')
-        else:
-            main.addDirMs(name+' [COLOR red]('+date+')[/COLOR] [COLOR blue]'+type+'[/COLOR]',url,377,thumb,'NA','','',thumb,'')
+        if 'Movie' in type: main.addDirMs(name+' [COLOR red]('+date+')[/COLOR] [COLOR blue]'+type+'[/COLOR]',url,381,thumb,'','','','','')
+        else: main.addDirMs(name+' [COLOR red]('+date+')[/COLOR] [COLOR blue]'+type+'[/COLOR]',url,377,thumb,'NA','','',thumb,'')
 
 def LIST(murl):
     link=main.OPENURL(murl)
@@ -90,20 +84,15 @@ def LIST(murl):
     dialogWait.update(0,'[B]Will load instantly from now on[/B]',remaining_display)
     xbmc.executebuiltin("XBMC.Dialog.Close(busydialog,true)")
     for url,thumb,name,type,desc,year,rate in match:
-        if 'Movie' in type:
-            main.addDirMs(name+' [COLOR red]('+year+') [/COLOR][COLOR blue]'+rate+'[/COLOR] [COLOR tan]'+type+'[/COLOR]',url,381,thumb,desc,'','','','')
-        else:
-            main.addDirMs(name+' [COLOR red]('+year+') [/COLOR][COLOR blue]'+rate+'[/COLOR] [COLOR tan]'+type+'[/COLOR]',url,377,thumb,desc,'','',thumb,'')
+        if 'Movie' in type: main.addDirMs(name+' [COLOR red]('+year+') [/COLOR][COLOR blue]'+rate+'[/COLOR] [COLOR tan]'+type+'[/COLOR]',url,381,thumb,desc,'','','','')
+        else: main.addDirMs(name+' [COLOR red]('+year+') [/COLOR][COLOR blue]'+rate+'[/COLOR] [COLOR tan]'+type+'[/COLOR]',url,377,thumb,desc,'','',thumb,'')
         loadedLinks = loadedLinks + 1
         percent = (loadedLinks * 100)/totalLinks
         remaining_display = 'Movies/Episodes Cached :: [B]'+str(loadedLinks)+' / '+str(totalLinks)+'[/B].'
         dialogWait.update(percent,'[B]Will load instantly from now on[/B]',remaining_display)
-        if (dialogWait.iscanceled()):
-            return False
+        if (dialogWait.iscanceled()): return False
     paginate = re.compile('''<a href="([^<]+)">Next</a>''').findall(link)
-    if len(paginate)>0:
-        main.addDir('Next',paginate[0],376,art+'/next2.png')   
-    #main.GA("Animania","List")
+    if len(paginate)>0: main.addDir('Next',paginate[0],376,art+'/next2.png')   
 
 def GETMOVIE(mname,murl,thumb):
     link=main.OPENURL(murl, mobile=True)
@@ -115,11 +104,9 @@ def LISTEPI(mname,murl,pic,desc,thumb):
     link=main.OPENURL(murl, mobile=True)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('  ','').replace('>Follow @GoGoAnime</a>','')
     match=re.compile('<li><a href="([^<]+)">(.+?)</a>.+?<span class="right_text">(.+?)</span>',re.DOTALL).findall(link)
-    for url,name,date in match:
-        main.addDirMs(name+' [COLOR red]('+date+')[/COLOR]',url,378,thumb,desc,'','','','')
+    for url,name,date in match: main.addDirMs(name+' [COLOR red]('+date+')[/COLOR]',url,378,thumb,desc,'','','','')
     paginate = re.compile('''<a href="([^<]+)">Next</a>''').findall(link)
-    if len(paginate)>0:
-        main.addDirc('Next',paginate[0],377,art+'/next2.png',desc,'','',thumb,'')
+    if len(paginate)>0: main.addDirc('Next',paginate[0],377,art+'/next2.png',desc,'','',thumb,'')
 
 def LISTHOSTS(name,murl,thumb):
     name=main.removeColoredText(name)
@@ -160,77 +147,63 @@ def LISTHOSTS(name,murl,thumb):
                 for item,num in parts:
                     furl=url.replace('part_1','part_'+str(item))
                     collect.append(furl)
-            else:
-                collect.append(url)
+            else: collect.append(url)
             count=count+1
-    
     except: pass
     for links in collect:
         if 'byzoo' in links:
             main.addDown2(name+' [COLOR tan]Byzoo Part '+str(b)+'[/COLOR]',links,379,thumb,'')
             byzoo.append(('Part '+str(b),links))
             b=b+1
-    if byzoo and len(byzoo)>1:
-        main.addDown2(name+' [COLOR tan]Byzoo Play All[/COLOR]',str(byzoo),379,thumb,'')  
+    if byzoo and len(byzoo)>1: main.addDown2(name+' [COLOR tan]Byzoo Play All[/COLOR]',str(byzoo),379,thumb,'')  
     for links in collect:
         if 'videobug' in links or 'easyvideo' in links:
             main.addDown2(name+' [COLOR blue]VideoBug Part '+str(i)+'[/COLOR]',links,379,thumb,'')
             videobug.append(('Part '+str(i),links))
             i=i+1
-    if videobug and len(videobug)>1:
-        main.addDown2(name+' [COLOR blue]VideoBug Play All[/COLOR]',str(videobug),379,thumb,'')  
+    if videobug and len(videobug)>1: main.addDown2(name+' [COLOR blue]VideoBug Play All[/COLOR]',str(videobug),379,thumb,'')  
     for links in collect:
         if 'yourupload' in links:
             main.addDown2(name+' [COLOR yellow]YourUpload Part '+str(j)+'[/COLOR]',links,379,thumb,'')
             yourupload.append(('Part '+str(j),links))
             j=j+1          
-    if yourupload and len(yourupload)>1:
-        main.addDown2(name+' [COLOR yellow]YourUpload Play All[/COLOR]',str(yourupload),379,thumb,'')
+    if yourupload and len(yourupload)>1: main.addDown2(name+' [COLOR yellow]YourUpload Play All[/COLOR]',str(yourupload),379,thumb,'')
     for links in collect:
         if 'video44' in links or 'video66' in links:
             main.addDown2(name+' [COLOR red]Video44 Part '+str(v)+'[/COLOR]',links,379,thumb,'')
             video44.append(('Part '+str(v),links))
             v=v+1
-    if video44 and len(video44)>1:
-        main.addDown2(name+' [COLOR red]Video44 Play All[/COLOR]',str(video44),379,thumb,'')
+    if video44 and len(video44)>1: main.addDown2(name+' [COLOR red]Video44 Play All[/COLOR]',str(video44),379,thumb,'')
     for links in collect:
         if 'play44' in links or 'play66' in links or 'playbb' in links:
             main.addDown2(name+' [COLOR green]Play44 Part '+str(p)+'[/COLOR]',links,379,thumb,'')
             play44.append(('Part '+str(p),links))
             p=p+1
-    if play44 and len(play44)>1:
-        main.addDown2(name+' [COLOR green]Play44 Play All[/COLOR]',str(play44),379,thumb,'')
+    if play44 and len(play44)>1: main.addDown2(name+' [COLOR green]Play44 Play All[/COLOR]',str(play44),379,thumb,'')
     for links in collect:
         if 'videoweed' in links:
             main.addDown2(name+' [COLOR aqua]Videoweed Part '+str(vw)+'[/COLOR]',links,379,thumb,'')
             videoweed.append(('Part '+str(vw),links))
             vw=vw+1
-    if videoweed and len(videoweed)>1:
-        main.addDown2(name+' [COLOR aqua]Videoweed Play All[/COLOR]',str(videoweed),379,thumb,'')
+    if videoweed and len(videoweed)>1: main.addDown2(name+' [COLOR aqua]Videoweed Play All[/COLOR]',str(videoweed),379,thumb,'')
     for links in collect:
         if 'cheesestream' in links:
             main.addDown2(name+' [COLOR purple]Cheesestream Part '+str(c)+'[/COLOR]',links,379,thumb,'')
             cheesestream.append(('Part '+str(c),links))
             c=c+1
-    if cheesestream and len(cheesestream)>1:
-        main.addDown2(name+' [COLOR purple]Cheesestream Play All[/COLOR]',str(cheesestream),379,thumb,'')
+    if cheesestream and len(cheesestream)>1: main.addDown2(name+' [COLOR purple]Cheesestream Play All[/COLOR]',str(cheesestream),379,thumb,'')
     for links in collect:
         if 'videofun' in links:
             main.addDown2(name+' [COLOR maroon]Videofun Part '+str(vf)+'[/COLOR]',links,379,thumb,'')
             videofun.append(('Part '+str(vf),links))
             vf=vf+1
-    if videofun and len(videofun)>1:
-        main.addDown2(name+' [COLOR maroon]Videofun Play All[/COLOR]',str(videofun),379,thumb,'')
+    if videofun and len(videofun)>1: main.addDown2(name+' [COLOR maroon]Videofun Play All[/COLOR]',str(videofun),379,thumb,'')
     for links in collect:
         if 'yucache' in links:
             main.addDown2(name+' [COLOR maroon]Yucache Part '+str(y)+'[/COLOR]',links,379,thumb,'')
             yucache.append(('Part '+str(y),links))
             y=y+1
-    if yucache:
-        main.addDown2(name+' [COLOR maroon]Yucache Play All[/COLOR]',str(yucache),379,thumb,'')
-
-
-
+    if yucache: main.addDown2(name+' [COLOR maroon]Yucache Play All[/COLOR]',str(yucache),379,thumb,'')
 
 def getLink(links):
         if 'byzoo' in links:
@@ -247,8 +220,7 @@ def getLink(links):
             link=main.OPENURL(links)
             try:
                 match=re.compile('<meta property="og.+?video" content="(.+?)"/>',re.DOTALL).findall(link)
-                if len(match)!=0:
-                    match=urllib.unquote_plus(match[0])
+                if len(match)!=0: match=urllib.unquote_plus(match[0])
             except:pass
         if 'video44' in links or 'video66' in links:
             link=main.OPENURL(links)
@@ -282,10 +254,7 @@ def getLink(links):
         return match
 
 def PLAY(mname,murl,thumb):
-
-        #main.GA("Animania","Watched") 
         ok=True
-        
         r = re.findall('(.+?)\ss(\d+)e(\d+)\s',mname,re.I)
         if r:
             infoLabels =main.GETMETAEpiT(mname,'','')
@@ -306,16 +275,13 @@ def PLAY(mname,murl,thumb):
                 infoL={'Title': infoLabels['title'], 'Plot': infoLabels['plot'], 'Genre': infoLabels['genre']}
                 if not video_type is 'episode': infoL['originalTitle']=main.removeColoredText(infoLabels['metaName'])
                 from resources.universal import playbackengine
-                
                 if "'," in murl:
                     mname=main.removeColoredText(mname)
                     pl=xbmc.PlayList(1);pl.clear()
                     playlist = sorted(list(set(eval(murl))), key=lambda playlist: playlist[0])
-                    for xname,link in playlist:
-                        pl.add(getLink(link),xbmcgui.ListItem(mname+' '+xname,thumbnailImage=img))
+                    for xname,link in playlist: pl.add(getLink(link),xbmcgui.ListItem(mname+' '+xname,thumbnailImage=img))
                     xbmc.Player().play(pl)
-                    while xbmc.Player().isPlaying():
-                        xbmc.sleep(2500)
+                    while xbmc.Player().isPlaying(): xbmc.sleep(2500)
                 else:
                     stream_url = getLink(murl)
                     # play with bookmark
@@ -328,6 +294,5 @@ def PLAY(mname,murl,thumb):
                     player.KeepAlive()
                     return ok
         except Exception, e:
-                if stream_url != False:
-                        main.ErrorReport(e)
+                if stream_url != False: main.ErrorReport(e)
                 return ok

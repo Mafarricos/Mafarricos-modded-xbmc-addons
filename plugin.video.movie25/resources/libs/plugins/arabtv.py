@@ -11,15 +11,12 @@ art = main.art
 prettyName = '3Arabtv'
 MAINURL='http://3arabtv.com'
 
-
-
 def MAIN3arabtv():
     main.addDir('Search (بحث)','aflam',354,art+'/search.png')
     main.addDir('Movies','movies',352,art+'/3arabtv.png')
     main.addDir('Series','series',352,art+'/3arabtv.png')
     main.addDir('Shows','shows',352,art+'/3arabtv.png')
     main.addDir('Clips','clips',352,art+'/3arabtv.png')
-    #main.GA("Plugin","3Arabtv")
     
 def CAT3arabtv(murl):
     if 'movies'in murl:
@@ -76,40 +73,28 @@ def LIST3arabtv(murl):
     match=re.compile("""><img src="([^<]+)".+?<a href="([^<]+)">([^<]+)</a></span>""",re.DOTALL).findall(link)
     for thumb,url,name in match:
         thumb=thumb.split('"')[0]
-        if 'http' not in thumb:
-            thumb=MAINURL+thumb
+        if 'http' not in thumb: thumb=MAINURL+thumb
         thumb=thumb.replace(' ','')
         if 'Episodes' in name or 'Shows' in name:
             name2=re.compile('href="'+url+'">'+name+'</a></span>.+?><a href=".+?">([^<]+)</a>',re.DOTALL).findall(link)
-            if name2:
-                name2=name2[0]
-            else:
-                name2=''
+            if name2: name2=name2[0]
+            else: name2=''
             main.addDir('[COLOR red]'+name+'[/COLOR] '+name2,MAINURL+url,356,thumb)
         else:
             if 'Clips' in name or 'Movies' in name:
                 name2=re.compile('href="'+url+'">'+name+'</a></span>.+?><a href=".+?">([^<]+)</a>',re.DOTALL).findall(link)
-                if name2:
-                    name2=name2[0]
-                else:
-                    name2=''
+                if name2: name2=name2[0]
+                else: name2=''
                 main.addPlayc('[COLOR red]'+name+'[/COLOR] '+name2,MAINURL+url,355,thumb,'','','','','')
-            else:
-                main.addPlayc(name,MAINURL+url,355,thumb,'','','','','')
-
+            else: main.addPlayc(name,MAINURL+url,355,thumb,'','','','','')
     paginate = re.compile('''<a class="page" href="([^<]+)">Next''').findall(link)
-    if len(paginate)>0:
-        main.addDir('Next',MAINURL+paginate[0],353,art+'/next2.png')                
-    #main.GA("3Arabtv","List")
-
-
+    if len(paginate)>0: main.addDir('Next',MAINURL+paginate[0],353,art+'/next2.png')                
 
 def LIST3arabtvEPI(murl,thumb):
     link=main.OPENURL(murl)
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('&raquo;','').replace('&rarr;','')
     match=re.compile("""<h5><a href="([^<]+)">([^<]+)</a></h5>""",re.DOTALL).findall(link)
-    for url,name in match:
-        main.addPlayc(name,MAINURL+url,355,thumb,'','','','','')
+    for url,name in match: main.addPlayc(name,MAINURL+url,355,thumb,'','','','','')
 
 
 def resolveVID(murl):
@@ -117,29 +102,23 @@ def resolveVID(murl):
     murl=main.unescapes(murl)
     link=main.OPENURL(murl)
     match=re.compile('"http://www.youtube.com/v/([^<]+)"',re.DOTALL).findall(link)
-    if match:
-        vlink=main.resolve_url('http://www.youtube.com/v/'+match[0])
+    if match: vlink=main.resolve_url('http://www.youtube.com/v/'+match[0])
     match2=re.compile('mediaId=([^<]+)&&defaultQuality',re.DOTALL).findall(link)
     if match2:
         link2=main.OPENURL('http://hadynz-shahid.appspot.com/scrape?m='+match2[0])
         vlinks=re.compile('{"Quality":"(.+?)","URL":"(.+?)"}',re.DOTALL).findall(link2)
         for qua,links in vlinks:
-            if '720' in qua:
-                vlink=links   
-            else:
-                vlink=links
+            if '720' in qua: vlink=links   
+            else: vlink=links
     return vlink
 
 def LINKS3arabtv(mname,murl,thumb):
-    #main.GA("3Arabtv","Watched")
     xbmc.executebuiltin("XBMC.Notification(Please Wait!,Resolving Link,5000)")
     link=main.OPENURL(murl)
     ok=True
     match=re.compile('<iframe id="playerframe" src="([^<]+)"',re.DOTALL).findall(link)
-    if match:
-        stream_url=resolveVID(MAINURL+match[0].replace('/inter.php?u=',''))
-    else:
-         return
+    if match: stream_url=resolveVID(MAINURL+match[0].replace('/inter.php?u=',''))
+    else: return
     try:
         if stream_url == False: return                                                            
         infoL={'Title': mname, 'Plot': '', 'Genre': '', 'originaltitle': mname}
