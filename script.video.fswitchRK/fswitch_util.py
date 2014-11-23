@@ -21,7 +21,7 @@ def getSourceFPS():
     videoFPSValue = None
     
     # get location of log file
-    if 'SAMSUNG rk3188' in fsconfig.osPlatform:
+    if 'rk3' in fsconfig.osPlatform:
         logFileName = xbmc.translatePath('special://temp/XBMC.log')
     
     elif fsconfig.osPlatform == 'Windows 7':
@@ -142,7 +142,7 @@ def getDisplayMode():
     modeFileAndroid = "/sys/class/display/display0.HDMI/mode"
     modeFileWindows = "d:\\x8mode.txt"
  
-    if 'SAMSUNG rk3188' in fsconfig.osPlatform:
+    if 'rk3' in fsconfig.osPlatform:
         modeFile = modeFileAndroid
     elif fsconfig.osPlatform == 'Windows 7':
         modeFile = modeFileWindows 
@@ -194,7 +194,7 @@ def getDisplayModeFileStatus():
     modeFileAndroid = "/sys/class/display/display0.HDMI/mode"
     modeFileWindows = "d:\\x8mode.txt"
  
-    if 'SAMSUNG rk3188' in fsconfig.osPlatform:
+    if 'rk3' in fsconfig.osPlatform:
         modeFile = modeFileAndroid
     elif fsconfig.osPlatform == 'Windows 7':
         modeFile = modeFileWindows 
