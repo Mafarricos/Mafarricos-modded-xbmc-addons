@@ -1097,7 +1097,7 @@ class MainWindow(AddonDialogWindow):
             fsconfig.osPlatform = 'unknown'
             self.disableAll()
             
-        elif 'SAMSUNG rk3188' in osVariant:
+        elif 'rk3' in osVariant:
             self.labelInfoTitle.setLabel(osVariant)
             fsconfig.osPlatform = osVariant
 
