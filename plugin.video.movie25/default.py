@@ -205,7 +205,7 @@ def ThreeDsec():
 
 def TVAll():
     main.ClearDir(TempPath)
-    main.addDir('Watchseries.lt[COLOR red] DC[/COLOR]','TV',572,art+'/watchseries.png')
+    main.addDir('Watchseries[COLOR red] DC[/COLOR]','TV',572,art+'/watchseries.png')
     main.addDir('tubePLUS[COLOR red] DC[/COLOR]','tp+',1020,art+'/tubeplus.png')
     main.addDir('Icefilms[COLOR red] DC[/COLOR]','ice',294,art+'/icefilms.png')
     main.addDir('PFTV[COLOR red] DC[/COLOR]','TV',459,art+'/pftv.png')
@@ -1049,32 +1049,44 @@ if mode==None or url==None or len(url)<1:
     threading.Thread(target=cacheTrakt).start()
     threading.Thread(target=Notify).start()
     MAIN()
-    main.VIEWSB()elif mode==1:
+    main.VIEWSB()
+elif mode==1:
     from resources.libs import movie25
-    movie25.LISTMOVIES(url,index=index)elif mode==2:
+    movie25.LISTMOVIES(url,index=index)
+elif mode==2:
     print ""+url
-    GENRE(url,index=index)elif mode==4:
-    from resources.libs import movie25
-    print ""+url
-    movie25.SEARCH(url,index=index)elif mode==420:
-    from resources.libs import movie25
-    print ""+url
-    movie25.Searchhistory(index=index)elif mode==3:
+    GENRE(url,index=index)
+elif mode==4:
     from resources.libs import movie25
     print ""+url
-    movie25.VIDEOLINKS(name,url)elif mode==5:
+    movie25.SEARCH(url,index=index)
+elif mode==420:
     from resources.libs import movie25
     print ""+url
-    movie25.PLAY(name,url)elif mode==171:
+    movie25.Searchhistory(index=index)
+elif mode==3:
     from resources.libs import movie25
     print ""+url
-    movie25.PLAYB(name,url)elif mode==6:
-    AtoZ(index=index)elif mode==7:
-    YEAR(index=index)elif mode==19:
+    movie25.VIDEOLINKS(name,url)
+elif mode==5:
+    from resources.libs import movie25
+    print ""+url
+    movie25.PLAY(name,url)
+elif mode==171:
+    from resources.libs import movie25
+    print ""+url
+    movie25.PLAYB(name,url)
+elif mode==6:
+    AtoZ(index=index)
+elif mode==7:
+    YEAR(index=index)
+elif mode==19:
     from resources.libs import supersearch
-    supersearch.SEARCHistory()elif mode==20:
+    supersearch.SEARCHistory()
+elif mode==20:
     from resources.libs import supersearch
-    supersearch.SEARCH(name,url)elif mode==21:
+    supersearch.SEARCH(name,url)
+elif mode==21:
     from resources.libs import supersearch
     name = re.sub('(?i)\[B\].*?\[/B\]','',name)
     name = main.removeColoredText(name)
@@ -1100,444 +1112,616 @@ if mode==None or url==None or len(url)<1:
         if re.search('(?i).\s\([12][90]\d{2}\)',name): name = re.sub('(?i)^(.+?)\s\(([12][90]\d{2})\).*','\\1 \\2',name)
         elif re.search('(?i).\s[12][90]\d{2}',name): name = re.sub('(?i)^(.+?)\s([12][90]\d{2}).*','\\1 \\2',name)
         name = re.sub('(?i)\s\s+',' ',name).strip()
-        supersearch.SEARCH(name,'Movies')elif mode==23:
+        supersearch.SEARCH(name,'Movies')
+elif mode==23:
     from resources.libs import movie25
-    movie25.ENTYEAR(index=index)elif mode==8:
-    from resources.libs import movie25
-    print ""+url
-    movie25.YEARB(url,index=index)elif mode==9:
-    from resources.libs import movie25
-    print ""+url
-    movie25.NEXTPAGE(url,index=index)elif mode==10:
-    from resources.libs import movie25
-    ListglobalFavM25()elif mode==11:
+    movie25.ENTYEAR(index=index)
+elif mode==8:
     from resources.libs import movie25
     print ""+url
-    movie25.GroupedHosts(name,url,iconimage)elif mode==15:
+    movie25.YEARB(url,index=index)
+elif mode==9:
+    from resources.libs import movie25
     print ""+url
-    INTCAT(url)elif mode==16:
+    movie25.NEXTPAGE(url,index=index)
+elif mode==10:
+    from resources.libs import movie25
+    ListglobalFavM25()
+elif mode==11:
+    from resources.libs import movie25
     print ""+url
-    HOWTOCAT()elif mode==25:
+    movie25.GroupedHosts(name,url,iconimage)
+elif mode==15:
+    print ""+url
+    INTCAT(url)
+elif mode==16:
+    print ""+url
+    HOWTOCAT()
+elif mode==25:
     from resources.libs.movies_tv import oneclickwatch
     print ""+url
-    oneclickwatch.LISTSP(url)elif mode==26:
+    oneclickwatch.LISTSP(url)
+elif mode==26:
     from resources.libs.movies_tv import oneclickwatch
     print ""+url
-    oneclickwatch.LINKSP(name,url)elif mode==27:
+    oneclickwatch.LINKSP(name,url)
+elif mode==27:
     print ""+url
-    TV()elif mode==28:
+    TV()
+elif mode==28:
     from resources.libs.plugins import iwatchonline
     print ""+url
-    iwatchonline.LISTTV(url)elif mode==29:
+    iwatchonline.LISTTV(url)
+elif mode==29:
     from resources.libs.plugins import iwatchonline
     print ""+url
-    iwatchonline.VIDEOLINKST(name,url)elif mode==30:
+    iwatchonline.VIDEOLINKST(name,url)
+elif mode==30:
     from resources.libs.movies_tv import movie1k
     print ""+url
-    movie1k.LISTTV2(url)elif mode==31:
+    movie1k.LISTTV2(url)
+elif mode==31:
     from resources.libs.movies_tv import movie1k
     print ""+url
-    movie1k.VIDEOLINKST2(name,url,iconimage)elif mode==32:
+    movie1k.VIDEOLINKST2(name,url,iconimage)
+elif mode==32:
     from resources.libs.movies_tv import oneclickwatch
     print ""+url
-    oneclickwatch.LISTTV3(url)elif mode==33:
+    oneclickwatch.LISTTV3(url)
+elif mode==33:
     print ""+url
-    HD()elif mode==34:
+    HD()
+elif mode==34:
     from resources.libs.movies_tv import newmyvideolinks
     print ""+url
-    newmyvideolinks.LISTSP2(url)elif mode==35:
+    newmyvideolinks.LISTSP2(url)
+elif mode==35:
     from resources.libs.movies_tv import newmyvideolinks
     print ""+url
-    newmyvideolinks.LINKSP2(name,url)elif mode==36:
+    newmyvideolinks.LINKSP2(name,url)
+elif mode==36:
     print ""+url
-    INT()elif mode==37:
+    INT()
+elif mode==37:
     from resources.libs.international import  einthusan
     print ""+url
-    einthusan.MAINFULLS()elif mode==38:
+    einthusan.MAINFULLS()
+elif mode==38:
     from resources.libs.international import  einthusan
     print ""+url
-    einthusan.LINKINT(name,url)elif mode==39:
+    einthusan.LINKINT(name,url)
+elif mode==39:
     from resources.libs.international import einthusan
     print ""+url
-    einthusan.DIRINT(url)elif mode==40:
+    einthusan.DIRINT(url)
+elif mode==40:
     from resources.libs.international import einthusan
     print ""+url
-    einthusan.AZMOVIES(url)elif mode==41:
+    einthusan.AZMOVIES(url)
+elif mode==41:
     from resources.libs.international import einthusan
     print ""+url
-    einthusan.AZBLURAY(url)elif mode==42:
+    einthusan.AZBLURAY(url)
+elif mode==42:
     from resources.libs.international import einthusan
     print ""+url
-    einthusan.LISTINT(url)elif mode==43:
+    einthusan.LISTINT(url)
+elif mode==43:
     print ""+url
-    SPORTS()elif mode==44:
+    SPORTS()
+elif mode==44:
     from resources.libs.sports import espn
     print ""+url
-    espn.ESPN()elif mode==45:
+    espn.ESPN()
+elif mode==45:
     from resources.libs.sports import espn
     print ""+url
-    espn.ESPNList(url)elif mode==46:
+    espn.ESPNList(url)
+elif mode==46:
     from resources.libs.sports import espn
     print ""+url
-    espn.ESPNLink(name,url,iconimage,plot)elif mode==47:
+    espn.ESPNLink(name,url,iconimage,plot)
+elif mode==47:
     from resources.libs import youtube
     print ""+url
-    youtube.YOUList(name,url)elif mode==48:
+    youtube.YOUList(name,url)
+elif mode==48:
     from resources.libs import youtube
     print ""+url
-    youtube.YOULink(name,url,iconimage)elif mode==50:
+    youtube.YOULink(name,url,iconimage)
+elif mode==50:
     from resources.libs.sports import outdoorch
     print ""+url
-    outdoorch.OC()elif mode==51:
+    outdoorch.OC()
+elif mode==51:
     from resources.libs.sports import outdoorch
     print ""+url
-    outdoorch.OCList(url)elif mode==52:
+    outdoorch.OCList(url)
+elif mode==52:
     from resources.libs.sports import outdoorch
     print ""+url
-    outdoorch.OCLink(name,url,iconimage,plot)elif mode==53:
+    outdoorch.OCLink(name,url,iconimage,plot)
+elif mode==53:
     from resources.libs.movies_tv import dailyflix
     print ""+url
-    dailyflix.LISTSP3(url)elif mode==54:
+    dailyflix.LISTSP3(url)
+elif mode==54:
     from resources.libs.movies_tv import dailyflix
     print ""+url
-    dailyflix.LINKSP3(name,url)elif mode==55:
+    dailyflix.LINKSP3(name,url)
+elif mode==55:
     from resources.libs.movies_tv import oneclickmoviez
     print ""+url
-    oneclickmoviez.LISTSP4(url)elif mode==56:
+    oneclickmoviez.LISTSP4(url)
+elif mode==56:
     from resources.libs.movies_tv import oneclickmoviez
     print ""+url
-    oneclickmoviez.LINKSP4(name,url)elif mode==57:
+    oneclickmoviez.LINKSP4(name,url)
+elif mode==57:
     from resources.libs.movies_tv import starplay
     print ""+url
-    starplay.LISTSP5(url)elif mode==58:
+    starplay.LISTSP5(url)
+elif mode==58:
     from resources.libs.movies_tv import starplay
     print ""+url
-    starplay.LINKSP5(name,url)elif mode==59:
+    starplay.LINKSP5(name,url)
+elif mode==59:
     print ""+url
-    UFC()elif mode==60:
+    UFC()
+elif mode==60:
     from resources.libs import movie25
     print ""+url
-    movie25.UFCMOVIE25()elif mode==61:
+    movie25.UFCMOVIE25()
+elif mode==61:
     from resources.libs.movies_tv import rlsmix
     print ""+url
-    rlsmix.ListDirectDownloadTVItems(url)elif mode==62:
+    rlsmix.ListDirectDownloadTVItems(url)
+elif mode==62:
     from resources.libs.movies_tv import rlsmix
     print ""+url
-    rlsmix.ListDirectDownloadTVLinks(name,url)elif mode==63:
+    rlsmix.ListDirectDownloadTVLinks(name,url)
+elif mode==63:
     print ""+url
-    ADVENTURE()elif mode==631:
+    ADVENTURE()
+elif mode==631:
     from resources.libs.adventure import discovery
     print ""+url
-    discovery.DISC(url)elif mode==64:
+    discovery.DISC(url)
+elif mode==64:
     from resources.libs.adventure import discovery
     print ""+url
-    discovery.LISTDISC(name,url)elif mode==65:
+    discovery.LISTDISC(name,url)
+elif mode==65:
     from resources.libs.adventure import discovery
     print ""+url
-    discovery.LINKDISC(name,url)elif mode==66:
+    discovery.LINKDISC(name,url)
+elif mode==66:
     from resources.libs.international import cinevip
     print ""+url
-    cinevip.LISTINT3(url)elif mode==67:
+    cinevip.LISTINT3(url)
+elif mode==67:
     from resources.libs.international import cinevip
     print ""+url
-    cinevip.LINKINT3(name,url,iconimage)elif mode==68:
+    cinevip.LINKINT3(name,url,iconimage)
+elif mode==68:
     print ""+url
-    useme(url)elif mode==69:
+    useme(url)
+elif mode==69:
     print ""+url
-    useMe(name,url)elif mode==70:
+    useMe(name,url)
+elif mode==70:
     from resources.libs.adventure import nationalgeo
     print ""+url
-    nationalgeo.NG()elif mode==71:
+    nationalgeo.NG()
+elif mode==71:
     from resources.libs.adventure import nationalgeo
     print ""+url
-    nationalgeo.NGDir(url)elif mode==72:
+    nationalgeo.NGDir(url)
+elif mode==72:
     from resources.libs.adventure import nationalgeo
     print ""+url
-    nationalgeo.LISTNG(url)elif mode==73:
+    nationalgeo.LISTNG(url)
+elif mode==73:
     from resources.libs.adventure import nationalgeo
     print ""+url
     nationalgeo.LISTNG2(url)
-elif mode==74:
+
+elif mode==74:
     from resources.libs.adventure import nationalgeo
     print ""+url
-    nationalgeo.LINKNG(name,url)elif mode==75:
+    nationalgeo.LINKNG(name,url)
+elif mode==75:
     from resources.libs.adventure import nationalgeo
     print ""+url
-    nationalgeo.LINKNG2(name,url)elif mode==76:
+    nationalgeo.LINKNG2(name,url)
+elif mode==76:
     print ""+url
-    KIDZone(url)elif mode==77:
+    KIDZone(url)
+elif mode==77:
     from resources.libs.kids import wbkids
     print ""+url
-    wbkids.WB()elif mode==78:
+    wbkids.WB()
+elif mode==78:
     from resources.libs.kids import wbkids
     print ""+url
-    wbkids.LISTWB(url)elif mode==79:
+    wbkids.LISTWB(url)
+elif mode==79:
     from resources.libs.kids import wbkids
     print ""+url
-    wbkids.LINKWB(name,url)elif mode==80:
+    wbkids.LINKWB(name,url)
+elif mode==80:
     from resources.libs.adventure import discovery
     print ""+url
-    discovery.MILIT(url)elif mode==81:
+    discovery.MILIT(url)
+elif mode==81:
     from resources.libs.adventure import discovery
     print ""+url
-    discovery.SCI(url)elif mode==82:
+    discovery.SCI(url)
+elif mode==82:
     from resources.libs.adventure import discovery
     print ""+url
-    discovery.VELO(url)elif mode==83:
+    discovery.VELO(url)
+elif mode==83:
     from resources.libs.adventure import discovery
     print ""+url
-    discovery.ANIP(url)elif mode==84:
+    discovery.ANIP(url)
+elif mode==84:
     from resources.libs import youtube
     print ""+url
-    youtube.YOUKIDS()elif mode==85:
+    youtube.YOUKIDS()
+elif mode==85:
     print ""+url
-    DOCS()elif mode==86:
+    DOCS()
+elif mode==86:
     from resources.libs.documentaries import documentary
     print ""+url
-    documentary.LISTDOC(url)elif mode==87:
+    documentary.LISTDOC(url)
+elif mode==87:
     from resources.libs.documentaries import documentary
     print ""+url
-    documentary.LISTDOC2(url)elif mode==88:
+    documentary.LISTDOC2(url)
+elif mode==88:
     from resources.libs.documentaries import documentary
     print ""+url
-    documentary.LINKDOC(name,url,iconimage)elif mode==89:
+    documentary.LINKDOC(name,url,iconimage)
+elif mode==89:
     from resources.libs.documentaries import documentary
     print ""+url
-    documentary.LISTDOCPOP(url)elif mode==90:
+    documentary.LISTDOCPOP(url)
+elif mode==90:
     from resources.libs.adventure import airaces
     print ""+url
-    airaces.LISTAA()elif mode==91:
+    airaces.LISTAA()
+elif mode==91:
     from resources.libs.adventure import airaces
     print ""+url
-    airaces.PLAYAA(name,url,iconimage)elif mode==92:
+    airaces.PLAYAA(name,url,iconimage)
+elif mode==92:
     from resources.libs.sports import wildtv
     print ""+url
-    wildtv.WILDTV(url)elif mode==93:
+    wildtv.WILDTV(url)
+elif mode==93:
     from resources.libs.sports import wildtv
     print ""+url
-    wildtv.LISTWT(url)elif mode==94:
+    wildtv.LISTWT(url)
+elif mode==94:
     from resources.libs.sports import wildtv
     print ""+url
-    wildtv.LINKWT(name,url)elif mode==95:
+    wildtv.LINKWT(name,url)
+elif mode==95:
     from resources.libs.sports import tsn
     print ""+url
-    tsn.TSNDIR()elif mode==96:
+    tsn.TSNDIR()
+elif mode==96:
     from resources.libs.sports import tsn
     print ""+url
-    tsn.TSNDIRLIST(url)elif mode==97:
+    tsn.TSNDIRLIST(url)
+elif mode==97:
     from resources.libs.sports import tsn
     print ""+url
-    tsn.TSNLIST(url)elif mode==98:
+    tsn.TSNLIST(url)
+elif mode==98:
     from resources.libs.sports import tsn
     print ""+url
-    tsn.TSNLINK(name,url,iconimage)elif mode==100: pop()elif mode==101:
+    tsn.TSNLINK(name,url,iconimage)
+elif mode==100: pop()
+elif mode==101:
     from resources.libs.movies_tv import newmyvideolinks
-    newmyvideolinks.SEARCHNEW(name,url)elif mode==102:
+    newmyvideolinks.SEARCHNEW(name,url)
+elif mode==102:
     from resources.libs.movies_tv import newmyvideolinks
-    newmyvideolinks.SearchhistoryNEW(url)elif mode==103:
+    newmyvideolinks.SearchhistoryNEW(url)
+elif mode==103:
     from resources.libs.movies_tv import newmyvideolinks
-    newmyvideolinks.UFCNEW()elif mode==104:
+    newmyvideolinks.UFCNEW()
+elif mode==104:
     from resources.libs.documentaries import vice
-    vice.Vice(url)elif mode==105:
+    vice.Vice(url)
+elif mode==105:
     from resources.libs.documentaries import vice
-    vice.ViceList(url)elif mode==106:
+    vice.ViceList(url)
+elif mode==106:
     from resources.libs.documentaries import vice
-    vice.ViceLink(name,url,iconimage)elif mode==107:
+    vice.ViceLink(name,url,iconimage)
+elif mode==107:
     from resources.libs.kids import disneyjr
-    disneyjr.DISJR()elif mode==108:
+    disneyjr.DISJR()
+elif mode==108:
     from resources.libs.kids import disneyjr
-    disneyjr.DISJRList(url)elif mode==109:
+    disneyjr.DISJRList(url)
+elif mode==109:
     from resources.libs.kids import disneyjr
-    disneyjr.DISJRList2(url)elif mode==110:
+    disneyjr.DISJRList2(url)
+elif mode==110:
     from resources.libs.kids import disneyjr
-    disneyjr.DISJRLink(name,url,iconimage)elif mode==111: StrikeFList(url)elif mode==112: StrikeFLink(name,url)elif mode==113:
+    disneyjr.DISJRLink(name,url,iconimage)
+elif mode==111: StrikeFList(url)
+elif mode==112: StrikeFLink(name,url)
+elif mode==113:
     from resources.libs.sports import mmafighting
-    mmafighting.MMAFList(url)elif mode==114:
+    mmafighting.MMAFList(url)
+elif mode==114:
     from resources.libs.sports import mmafighting
-    mmafighting.MMAFLink(name,url,iconimage)  elif mode==115: LiveStreams()elif mode==116:
+    mmafighting.MMAFLink(name,url,iconimage)  
+elif mode==115: LiveStreams()
+elif mode==116:
     from resources.libs.live import livestation
-    livestation.LivestationList(url)elif mode==117:
+    livestation.LivestationList(url)
+elif mode==117:
     from resources.libs.live import livestation
-    livestation.LivestationLink(name,url,iconimage)elif mode==118:
+    livestation.LivestationLink(name,url,iconimage)
+elif mode==118:
     from resources.libs.live import livestation
-    livestation.LivestationLink2(name,url,iconimage)elif mode==119:
+    livestation.LivestationLink2(name,url,iconimage)
+elif mode==119:
     from resources.libs.live import ilive
-    ilive.iLive()elif mode==120:
+    ilive.iLive()
+elif mode==120:
     from resources.libs.live import ilive
-    ilive.iLiveList(url)elif mode==121:
+    ilive.iLiveList(url)
+elif mode==121:
     from resources.libs.live import ilive
-    ilive.iLiveLink(name,url,iconimage)elif mode==122:
+    ilive.iLiveLink(name,url,iconimage)
+elif mode==122:
     from resources.libs.live import castalba
-    castalba.CastalbaList(url)elif mode==123:
+    castalba.CastalbaList(url)
+elif mode==123:
     from resources.libs.live import castalba
-    castalba.CastalbaLink(name,url,iconimage)elif mode==124:
+    castalba.CastalbaLink(name,url,iconimage)
+elif mode==124:
     from resources.libs.sports import foxsoccer
-    foxsoccer.FOXSOC()elif mode==125:
+    foxsoccer.FOXSOC()
+elif mode==125:
     from resources.libs.sports import foxsoccer
-    foxsoccer.FOXSOCList(url)elif mode==126:
+    foxsoccer.FOXSOCList(url)
+elif mode==126:
     from resources.libs.sports import foxsoccer
-    foxsoccer.FOXSOCLink(name,url)elif mode==127:
+    foxsoccer.FOXSOCLink(name,url)
+elif mode==127:
     from resources.libs.live import musicstreams
-    musicstreams.MUSICSTREAMS()elif mode==128: main.Clearhistory(url)elif mode==129:
+    musicstreams.MUSICSTREAMS()
+elif mode==128: main.Clearhistory(url)
+elif mode==129:
     from resources.libs.live import desistreams
-    desistreams.DESISTREAMS()elif mode==130:
+    desistreams.DESISTREAMS()
+elif mode==130:
     from resources.libs.live import desistreams
-    desistreams.DESISTREAMSList(url)elif mode==131:
+    desistreams.DESISTREAMSList(url)
+elif mode==131:
     from resources.libs.live import desistreams
-    desistreams.DESISTREAMSLink(name,url)elif mode==132:
+    desistreams.DESISTREAMSLink(name,url)
+elif mode==132:
     from resources.libs.movies_tv import movie1k
-    movie1k.SearchhistoryMovie1k()elif mode==133:
+    movie1k.SearchhistoryMovie1k()
+elif mode==133:
     from resources.libs.movies_tv import movie1k
-    movie1k.SEARCHMovie1k(url)elif mode==134:
+    movie1k.SEARCHMovie1k(url)
+elif mode==134:
     from resources.libs.movies_tv import oneclickwatch
-    oneclickwatch.PLAYOCW(name,url)elif mode==135:
+    oneclickwatch.PLAYOCW(name,url)
+elif mode==135:
     from resources.libs.movies_tv import oneclickwatch
-    oneclickwatch.VIDEOLINKST3(name,url)elif mode==136:
+    oneclickwatch.VIDEOLINKST3(name,url)
+elif mode==136:
     from resources.libs.movies_tv import rlsmix
-    rlsmix.StartDirectDownloadTVSearch()elif mode==137:
+    rlsmix.StartDirectDownloadTVSearch()
+elif mode==137:
     from resources.libs.movies_tv import rlsmix
-    rlsmix.SearchDirectDownloadTV(url)elif mode==138:
+    rlsmix.SearchDirectDownloadTV(url)
+elif mode==138:
     from resources.libs.live import naviplaylists
-    naviplaylists.playlists()elif mode==139:
+    naviplaylists.playlists()
+elif mode==139:
     from resources.libs.live import naviplaylists
-    naviplaylists.playlistList(name,url)elif mode==140:
+    naviplaylists.playlistList(name,url)
+elif mode==140:
     from resources.libs.live import naviplaylists
-    naviplaylists.playlistList2(name,url)elif mode==141:
+    naviplaylists.playlistList2(name,url)
+elif mode==141:
     from resources.libs.live import naviplaylists
-    naviplaylists.playlistList3(name,url)elif mode==142:
+    naviplaylists.playlistList3(name,url)
+elif mode==142:
     from resources.libs.live import naviplaylists
-    naviplaylists.playlistList4(name,url)elif mode==149:
+    naviplaylists.playlistList4(name,url)
+elif mode==149:
     from resources.libs.live import naviplaylists
-    naviplaylists.playlistList5(name,url)elif mode==158:
+    naviplaylists.playlistList5(name,url)
+elif mode==158:
     from resources.libs.live import naviplaylists
-    naviplaylists.playlistList6(name,url)elif mode==168:
+    naviplaylists.playlistList6(name,url)
+elif mode==168:
     from resources.libs.live import naviplaylists
-    naviplaylists.playlistList7(name,url)elif mode==143:
+    naviplaylists.playlistList7(name,url)
+elif mode==143:
     from resources.libs.live import countries
-    countries.COUNTRIES()elif mode==144:
+    countries.COUNTRIES()
+elif mode==144:
     from resources.libs.live import countries
-    countries.COUNTRIESList(name,url)elif mode==204:
+    countries.COUNTRIESList(name,url)
+elif mode==204:
     from resources.libs.live import countries
-    countries.COUNTRIESLink(name,url,iconimage)elif mode==145:
+    countries.COUNTRIESLink(name,url,iconimage)
+elif mode==145:
     from resources.libs import movie25
     print ""+url
-    movie25.MOVSHLINKS(name,url)elif mode==146:
+    movie25.MOVSHLINKS(name,url)
+elif mode==146:
     from resources.libs import movie25
     print ""+url
-    movie25.DIVXSLINKS(name,url)elif mode==147:
+    movie25.DIVXSLINKS(name,url)
+elif mode==147:
     from resources.libs import movie25
     print ""+url
-    movie25.SSIXLINKS(name,url)elif mode==148:
+    movie25.SSIXLINKS(name,url)
+elif mode==148:
     from resources.libs import movie25
     print ""+url
-    movie25.GORLINKS(name,url)elif mode==150:
+    movie25.GORLINKS(name,url)
+elif mode==150:
     from resources.libs import movie25
     print ""+url
-    movie25.MOVPLINKS(name,url)elif mode==151:
+    movie25.MOVPLINKS(name,url)
+elif mode==151:
     from resources.libs import movie25
     print ""+url
-    movie25.DACLINKS(name,url)elif mode==152:
+    movie25.DACLINKS(name,url)
+elif mode==152:
     from resources.libs import movie25
     print ""+url
-    movie25.VWEEDLINKS(name,url)elif mode==153:
+    movie25.VWEEDLINKS(name,url)
+elif mode==153:
     from resources.libs import movie25
     print ""+url
-    movie25.MOVDLINKS(name,url)elif mode==154:
+    movie25.MOVDLINKS(name,url)
+elif mode==154:
     from resources.libs import movie25
     print ""+url
-    movie25.MOVRLINKS(name,url)elif mode==155:
+    movie25.MOVRLINKS(name,url)
+elif mode==155:
     from resources.libs import movie25
     print ""+url
-    movie25.BUPLOADSLINKS(name,url)elif mode==156:
+    movie25.BUPLOADSLINKS(name,url)
+elif mode==156:
     print ""+url
-    UploadLog()elif mode==157:
+    UploadLog()
+elif mode==157:
     from resources.libs import movie25
     print ""+url
-    movie25.PLAYEDLINKS(name,url)elif mode==159:
+    movie25.PLAYEDLINKS(name,url)
+elif mode==159:
     from resources.libs.documentaries import watchdocumentary
     print ""+url
-    watchdocumentary.WATCHDOC()elif mode==160:
+    watchdocumentary.WATCHDOC()
+elif mode==160:
     from resources.libs.documentaries import watchdocumentary
     print ""+url
-    watchdocumentary.WATCHDOCList(url)elif mode==161:
+    watchdocumentary.WATCHDOCList(url)
+elif mode==161:
     from resources.libs.documentaries import watchdocumentary
     print ""+url
-    watchdocumentary.WATCHDOCLink(name,url,iconimage)elif mode==162:
+    watchdocumentary.WATCHDOCLink(name,url,iconimage)
+elif mode==162:
     from resources.libs.documentaries import watchdocumentary
     print ""+url
-    watchdocumentary.CATEGORIES()elif mode==163:
+    watchdocumentary.CATEGORIES()
+elif mode==163:
     from resources.libs.documentaries import watchdocumentary
     print ""+url
-    watchdocumentary.WATCHDOCList2(url)elif mode==164:
+    watchdocumentary.WATCHDOCList2(url)
+elif mode==164:
     from resources.libs.documentaries import watchdocumentary
     print ""+url
-    watchdocumentary.WATCHDOCSearch()elif mode==165:
+    watchdocumentary.WATCHDOCSearch()
+elif mode==165:
     from resources.libs.plugins import globalbc
     print ""+url
-    globalbc.GLOBALBC()elif mode==166:
+    globalbc.GLOBALBC()
+elif mode==166:
     from resources.libs.plugins import globalbc
     print ""+url
-    globalbc.GLOBALBCList(url)elif mode==167:
+    globalbc.GLOBALBCList(url)
+elif mode==167:
     from resources.libs.plugins import globalbc
     print ""+url
-    globalbc.GLOBALBCLink(name,url)elif mode==169:
+    globalbc.GLOBALBCLink(name,url)
+elif mode==169:
     from resources.libs.plugins import globalbc
     print ""+url
-    globalbc.GLOBALBCList2(url)elif mode==170:
+    globalbc.GLOBALBCList2(url)
+elif mode==170:
     from resources.libs.plugins import globalbc
     print ""+url
     globalbc.GLOBALBCSearch()
-#171 takenelif mode==172:
+#171 taken
+elif mode==172:
     from resources.libs.sports import skysports
     print ""+url
-    skysports.SKYSPORTS()elif mode==173:
+    skysports.SKYSPORTS()
+elif mode==173:
     from resources.libs.sports import skysports
     print ""+url
-    skysports.SKYSPORTSList(url)elif mode==174:
+    skysports.SKYSPORTSList(url)
+elif mode==174:
     from resources.libs.sports import skysports
     print ""+url
-    skysports.SKYSPORTSLink(name,url)elif mode==175:
+    skysports.SKYSPORTSLink(name,url)
+elif mode==175:
     from resources.libs.sports import skysports
     print ""+url
-    skysports.SKYSPORTSTV(url)elif mode==176:
+    skysports.SKYSPORTSTV(url)
+elif mode==176:
     from resources.libs.sports import skysports
     print ""+url
-    skysports.SKYSPORTSList2(url)elif mode==177:
+    skysports.SKYSPORTSList2(url)
+elif mode==177:
     dialog = xbmcgui.Dialog()
-    dialog.ok("Mash Up", "Sorry this video requires a SkySports Suscription.","Will add this feature in later Version.","Enjoy the rest of the videos ;).")elif mode==178:
+    dialog.ok("Mash Up", "Sorry this video requires a SkySports Suscription.","Will add this feature in later Version.","Enjoy the rest of the videos ;).")
+elif mode==178:
     from resources.libs.sports import skysports
     print ""+url
-    skysports.SKYSPORTSCAT()elif mode==179:
+    skysports.SKYSPORTSCAT()
+elif mode==179:
     from resources.libs.sports import skysports
     print ""+url
-    skysports.SKYSPORTSCAT2(url)elif mode==180:
+    skysports.SKYSPORTSCAT2(url)
+elif mode==180:
     from resources.libs.sports import skysports
     print ""+url
-    skysports.SKYSPORTSTEAMS(url)elif mode==181:
+    skysports.SKYSPORTSTEAMS(url)
+elif mode==181:
     from resources.libs.live import vipplaylist
     print ""+url
-    vipplaylist.VIPplaylists(url)elif mode==182:
+    vipplaylist.VIPplaylists(url)
+elif mode==182:
     from resources.libs.live import vipplaylist
     print ""+url
-    vipplaylist.VIPList(name,url)elif mode==183:
+    vipplaylist.VIPList(name,url)
+elif mode==183:
     from resources.libs.live import vipplaylist
     print ""+url
-    vipplaylist.VIPLink(name,url,iconimage)elif mode==184:
+    vipplaylist.VIPLink(name,url,iconimage)
+elif mode==184:
     from resources.libs.live import musicstreams
     print ""+url
-    musicstreams.MUSICSTREAMSLink(name,url,iconimage)elif mode==185:
+    musicstreams.MUSICSTREAMSLink(name,url,iconimage)
+elif mode==185:
     from resources.libs.live import tubtub
     print ""+url
-    tubtub.TubTubMAIN(url)elif mode==186:
+    tubtub.TubTubMAIN(url)
+elif mode==186:
     from resources.libs.live import tubtub
     print ""+url
-    tubtub.TubTubLink(name,url)elif mode==187:
+    tubtub.TubTubLink(name,url)
+elif mode==187:
     print ""+url
-    arabic.ArabicMAIN(url)elif mode==188:
+    arabic.ArabicMAIN(url)
+elif mode==188:
     print ""+url
-    arabic.ArabicLink(name,url)elif mode==189:
+    arabic.ArabicLink(name,url)
+elif mode==189:
     print ""+url
-    arabic.ArabicList(url)elif mode==190:
+    arabic.ArabicList(url)
+elif mode==190:
     print ""+url
     main.Download_Source(name,url)
 elif mode==191:
@@ -1570,7 +1754,8 @@ elif mode==197:
 elif mode==198:
     from resources.libs.sports import fitnessblender
     print ""+url
-    fitnessblender.MAINFB()elif mode==199:
+    fitnessblender.MAINFB()
+elif mode==199:
     from resources.libs.sports import fitnessblender
     print ""+url
     fitnessblender.BODYFB()
@@ -1780,281 +1965,374 @@ elif mode==262:
 elif mode==263:
     from resources.libs.movies_tv import viplus
     viplus.MLink(name,url,iconimage)
-elif mode==264: HTVList(url)elif mode==265: ANIME()elif mode==266:
+elif mode==264: HTVList(url)
+elif mode==265: ANIME()
+elif mode==266:
     from resources.libs.live import customchannel
     print ""+url
-    customchannel.subLink(name,url)elif mode==267:
+    customchannel.subLink(name,url)
+elif mode==267:
     Movie25(index=index)
-    main.VIEWSB()elif mode==268:
+    main.VIEWSB()
+elif mode==268:
     from resources.libs.plugins import dramania
     print ""+url
-    dramania.MAIN()elif mode==269:
+    dramania.MAIN()
+elif mode==269:
     from resources.libs.plugins import dramania
     print ""+url
-    dramania.MOVIES()elif mode==270:
+    dramania.MOVIES()
+elif mode==270:
     from resources.libs.plugins import dramania
     print ""+url
-    dramania.LIST(url)elif mode==271:
+    dramania.LIST(url)
+elif mode==271:
     from resources.libs.plugins import dramania
     print ""+url
-    dramania.LISTHOSTS(name,url,iconimage)elif mode==272:
+    dramania.LISTHOSTS(name,url,iconimage)
+elif mode==272:
     from resources.libs.plugins import dramania
     print ""+url
-    dramania.PLAY(name,url,iconimage)elif mode==273:
+    dramania.PLAY(name,url,iconimage)
+elif mode==273:
     from resources.libs.plugins import dramania
     print ""+url
-    dramania.DRAMAS()elif mode==274:
+    dramania.DRAMAS()
+elif mode==274:
     from resources.libs.plugins import dramania
     print ""+url
-    dramania.SEARCH()elif mode==275:
+    dramania.SEARCH()
+elif mode==275:
     from resources.libs.plugins import dramania
     print ""+url
-    dramania.LISTEPISODES(name,url,iconimage)elif mode==276:
+    dramania.LISTEPISODES(name,url,iconimage)
+elif mode==276:
     from resources.libs.plugins import mbox
     print ""+url
-    mbox.MAIN()elif mode==277:
+    mbox.MAIN()
+elif mode==277:
     from resources.libs.plugins import mbox
     print ""+url
-    mbox.MOVIES()elif mode==278:
+    mbox.MOVIES()
+elif mode==278:
     from resources.libs.plugins import mbox
     print ""+url
-    mbox.LIST(url)elif mode==279:
+    mbox.LIST(url)
+elif mode==279:
     from resources.libs.plugins import mbox
     print ""+url
-    mbox.PLAY(name,url,iconimage)elif mode==280:
+    mbox.PLAY(name,url,iconimage)
+elif mode==280:
     from resources.libs.plugins import mbox
     print ""+url
-    mbox.SEASONS(name,url)elif mode==281:
+    mbox.SEASONS(name,url)
+elif mode==281:
     from resources.libs.plugins import mbox
     print ""+url
-    mbox.EPISODES(name,url)elif mode==282:
+    mbox.EPISODES(name,url)
+elif mode==282:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.LISTICE(url,index=index)elif mode==283:
+    icefilms.LISTICE(url,index=index)
+elif mode==283:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.LISTLINKS(name,url)elif mode==284:
+    icefilms.LISTLINKS(name,url)
+elif mode==284:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.PLAYLINK(name,url)elif mode==285:
+    icefilms.PLAYLINK(name,url)
+elif mode==285:
     from resources.libs.plugins import mbox
     print ""+url
-    mbox.DownloadAndList(url)elif mode==286:
+    mbox.DownloadAndList(url)
+elif mode==286:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.StartIceFilmsSearch(url,index=index)elif mode==287:
+    icefilms.StartIceFilmsSearch(url,index=index)
+elif mode==287:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.SearchIceFilms(url,plot,index=index)elif mode==288:
+    icefilms.SearchIceFilms(url,plot,index=index)
+elif mode==288:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.ICETVMAIN(index=index)elif mode==289:
+    icefilms.ICETVMAIN(index=index)
+elif mode==289:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.ICESEASONS(name,url,index=index)elif mode==290:
+    icefilms.ICESEASONS(name,url,index=index)
+elif mode==290:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.ICEEPISODES(name,url,index=index)elif mode==291:
+    icefilms.ICEEPISODES(name,url,index=index)
+elif mode==291:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.ICETODAY(url,index=index)elif mode==292:
+    icefilms.ICETODAY(url,index=index)
+elif mode==292:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.AtoZICE(url,index=index)elif mode==293:
+    icefilms.AtoZICE(url,index=index)
+elif mode==293:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.ICEGENRE(url,index=index)elif mode==294:
+    icefilms.ICEGENRE(url,index=index)
+elif mode==294:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.ICEMAIN()elif mode==295:
+    icefilms.ICEMAIN()
+elif mode==295:
     from resources.libs.movies_tv import icefilms
     print ""+url
-    icefilms.ICEMOVIEMAIN(index=index)elif mode==296:
+    icefilms.ICEMOVIEMAIN(index=index)
+elif mode==296:
     from resources.libs.movies_tv import starplay
     print ""+url
-    starplay.NBMAIN()elif mode==297:
+    starplay.NBMAIN()
+elif mode==297:
     from resources.libs.movies_tv import starplay
     print ""+url
-    starplay.NBGENRE()elif mode==298:
+    starplay.NBGENRE()
+elif mode==298:
     from resources.libs.movies_tv import starplay
     print ""+url
-    starplay.NBSearchhistory()elif mode==299:
+    starplay.NBSearchhistory()
+elif mode==299:
     from resources.libs.movies_tv import starplay
     print ""+url
-    starplay.NBSearch(name,url)elif mode==300:
+    starplay.NBSearch(name,url)
+elif mode==300:
     from resources.libs.movies_tv import starplay
     print ""+url
-    starplay.AtoZNB()elif mode==301:
+    starplay.AtoZNB()
+elif mode==301:
     from resources.libs.movies_tv import starplay
     print ""+url
-    starplay.AZLISTNB(url)elif mode==302:
+    starplay.AZLISTNB(url)
+elif mode==302:
     from resources.libs.plugins import mbox
     print ""+url
-    mbox.MUSICLIST(name,url)elif mode==303:
+    mbox.MUSICLIST(name,url)
+elif mode==303:
     from resources.libs.international import cinevip
     print ""+url
-    cinevip.Searchhistory(url)elif mode==304:
+    cinevip.Searchhistory(url)
+elif mode==304:
     from resources.libs.international import cinevip
     print ""+url
-    cinevip.SEARCH(name,url)elif mode==305:
+    cinevip.SEARCH(name,url)
+elif mode==305:
     from resources.libs.international import mooviemaniac
     print ""+url
-    mooviemaniac.LISTMOO()elif mode==306:
+    mooviemaniac.LISTMOO()
+elif mode==306:
     from resources.libs.international import mooviemaniac
     print ""+url
-    mooviemaniac.LINKMOO(name,url,iconimage)elif mode==307:
+    mooviemaniac.LINKMOO(name,url,iconimage)
+elif mode==307:
     from resources.libs.international import cinevip
     print ""+url
-    cinevip.LINKLIST(name,url)elif mode==308:
+    cinevip.LINKLIST(name,url)
+elif mode==308:
     from resources.libs.international import fxcine
     print ""+url
-    fxcine.LISTFX()elif mode==309:
+    fxcine.LISTFX()
+elif mode==309:
     from resources.libs.international import fxcine
     print ""+url
-    fxcine.LANGFX(name,url,iconimage)elif mode==309:
+    fxcine.LANGFX(name,url,iconimage)
+elif mode==309:
     from resources.libs.international import fxcine
     print ""+url
-    fxcine.LINKLIST(mname,url)elif mode==310:
+    fxcine.LINKLIST(mname,url)
+elif mode==310:
     from resources.libs.international import fxcine
     print ""+url
-    fxcine.LINKFX(name,url)elif mode==311:
+    fxcine.LINKFX(name,url)
+elif mode==311:
     from resources.libs.plugins import dpstreaming
     print ""+url
-    dpstreaming.MAINDP()elif mode==312:
+    dpstreaming.MAINDP()
+elif mode==312:
     from resources.libs.plugins import dpstreaming
     print ""+url
     dpstreaming.LISTDP(url)
-elif mode==313:
+
+elif mode==313:
     from resources.libs.plugins import dpstreaming
     print ""+url
-    dpstreaming.LINKLIST(name,url)elif mode==314:
+    dpstreaming.LINKLIST(name,url)
+elif mode==314:
     from resources.libs.plugins import dpstreaming
     print ""+url
-    dpstreaming.LINKDP(name,url)elif mode==315:
+    dpstreaming.LINKDP(name,url)
+elif mode==315:
     from resources.libs.plugins import dpstreaming
     print ""+url
-    dpstreaming.LISTEPISODE(name,url)elif mode==316:
+    dpstreaming.LISTEPISODE(name,url)
+elif mode==316:
     from resources.libs.plugins import dpstreaming
     print ""+url
-    dpstreaming.LINKLIST2(name,url)elif mode==317:
+    dpstreaming.LINKLIST2(name,url)
+elif mode==317:
     from resources.libs.plugins import dpstreaming
     print ""+url
-    dpstreaming.SEARCHDP()elif mode==318:
+    dpstreaming.SEARCHDP()
+elif mode==318:
     from resources.libs.documentaries import johnlocker
     print ""+url
-    johnlocker.MAINJL()elif mode==319:
+    johnlocker.MAINJL()
+elif mode==319:
     from resources.libs.documentaries import johnlocker
     print ""+url
-    johnlocker.LISTJL(name,url)elif mode==320:
+    johnlocker.LISTJL(name,url)
+elif mode==320:
     from resources.libs.documentaries import johnlocker
     print ""+url
-    johnlocker.LINKJL(name,url,iconimage,plot)elif mode==321:
+    johnlocker.LINKJL(name,url,iconimage,plot)
+elif mode==321:
     from resources.libs.documentaries import johnlocker
     print ""+url
-    johnlocker.LISTJL2(name,url)elif mode==322:
+    johnlocker.LISTJL2(name,url)
+elif mode==322:
     from resources.libs.documentaries import johnlocker
     print ""+url
-    johnlocker.CATJL()elif mode==323:
+    johnlocker.CATJL()
+elif mode==323:
     from resources.libs.documentaries import johnlocker
     print ""+url
     johnlocker.SEARCHJL()
-elif mode==324:
+
+elif mode==324:
     from resources.libs.plugins import sokrostream
     print ""+url
-    sokrostream.MAINSS()elif mode==325:
+    sokrostream.MAINSS()
+elif mode==325:
     from resources.libs.plugins import sokrostream
     print ""+url
-    sokrostream.LISTSS(url)elif mode==326:
+    sokrostream.LISTSS(url)
+elif mode==326:
     from resources.libs.plugins import sokrostream
     print ""+url
-    sokrostream.LINKLISTSS(name,url)elif mode==327:
+    sokrostream.LINKLISTSS(name,url)
+elif mode==327:
     from resources.libs.plugins import sokrostream
     print ""+url
-    sokrostream.LINKSS(name,url)elif mode==328:
+    sokrostream.LINKSS(name,url)
+elif mode==328:
     from resources.libs.plugins import sokrostream
     print ""+url
-    sokrostream.GENRESS(url)elif mode==329:
+    sokrostream.GENRESS(url)
+elif mode==329:
     from resources.libs.plugins import sokrostream
     print ""+url
-    sokrostream.SearchhistorySS()elif mode==330:
+    sokrostream.SearchhistorySS()
+elif mode==330:
     from resources.libs.plugins import sokrostream
     print ""+url
-    sokrostream.SEARCHSS(url)elif mode==331:
+    sokrostream.SEARCHSS(url)
+elif mode==331:
     from resources.libs.documentaries import videodocumentaire
     print ""+url
-    videodocumentaire.MAINVD()elif mode==332:
+    videodocumentaire.MAINVD()
+elif mode==332:
     from resources.libs.documentaries import videodocumentaire
     print ""+url
-    videodocumentaire.LISTVD(url)elif mode==333:
+    videodocumentaire.LISTVD(url)
+elif mode==333:
     from resources.libs.documentaries import videodocumentaire
     print ""+url
-    videodocumentaire.LINKVD(name,url,iconimage)elif mode==334:
+    videodocumentaire.LINKVD(name,url,iconimage)
+elif mode==334:
     from resources.libs.documentaries import videodocumentaire
     print ""+url
-    videodocumentaire.SEARCHVD()elif mode==335:
+    videodocumentaire.SEARCHVD()
+elif mode==335:
     from resources.libs.plugins import aflam
     print ""+url
-    aflam.MAINAFLAM()elif mode==336:
+    aflam.MAINAFLAM()
+elif mode==336:
     from resources.libs.plugins import aflam
     print ""+url
-    aflam.LISTProg(url)elif mode==337:
+    aflam.LISTProg(url)
+elif mode==337:
     from resources.libs.plugins import aflam
     print ""+url
-    aflam.LISTEPI(name,url,iconimage)elif mode==338:
+    aflam.LISTEPI(name,url,iconimage)
+elif mode==338:
     from resources.libs.plugins import aflam
     print ""+url
-    aflam.LINKSAFLAM(name,url,iconimage)elif mode==339:
+    aflam.LINKSAFLAM(name,url,iconimage)
+elif mode==339:
     from resources.libs.plugins import aflam
     print ""+url
-    aflam.SERIESAFLAM(url)elif mode==340:
+    aflam.SERIESAFLAM(url)
+elif mode==340:
     from resources.libs.plugins import aflam
     print ""+url
-    aflam.MOVIESAFLAM(url)elif mode==341:
+    aflam.MOVIESAFLAM(url)
+elif mode==341:
     from resources.libs.plugins import aflam
     print ""+url
-    aflam.LISTMov(url)elif mode==342:
+    aflam.LISTMov(url)
+elif mode==342:
     from resources.libs.plugins import aflam
     print ""+url
-    aflam.SEARCHAFLAM()elif mode==343:
+    aflam.SEARCHAFLAM()
+elif mode==343:
     from resources.libs.plugins import animania
     print ""+url
-    animania.MAIN()elif mode==344:
+    animania.MAIN()
+elif mode==344:
     from resources.libs.plugins import animania
     print ""+url
-    animania.MOVIES()elif mode==345:
+    animania.MOVIES()
+elif mode==345:
     from resources.libs.plugins import animania
     print ""+url
-    animania.LIST(url)elif mode==346:
+    animania.LIST(url)
+elif mode==346:
     from resources.libs.plugins import animania
     print ""+url
-    animania.LISTHOSTS(name,url,iconimage)elif mode==347:
+    animania.LISTHOSTS(name,url,iconimage)
+elif mode==347:
     from resources.libs.plugins import animania
     print ""+url
-    animania.PLAY(name,url,iconimage)elif mode==348:
+    animania.PLAY(name,url,iconimage)
+elif mode==348:
     from resources.libs.plugins import animania
     print ""+url
-    animania.DRAMAS()elif mode==349:
+    animania.DRAMAS()
+elif mode==349:
     from resources.libs.plugins import animania
     print ""+url
-    animania.SEARCH()elif mode==350:
+    animania.SEARCH()
+elif mode==350:
     from resources.libs.plugins import animania
     print ""+url
-    animania.LISTEPISODES(name,url,iconimage)elif mode==351:
+    animania.LISTEPISODES(name,url,iconimage)
+elif mode==351:
     from resources.libs.plugins import arabtv
     print ""+url
-    arabtv.MAIN3arabtv()elif mode==352:
+    arabtv.MAIN3arabtv()
+elif mode==352:
     from resources.libs.plugins import arabtv
     print ""+url
-    arabtv.CAT3arabtv(url)elif mode==353:
+    arabtv.CAT3arabtv(url)
+elif mode==353:
     from resources.libs.plugins import arabtv
     print ""+url
-    arabtv.LIST3arabtv(url)elif mode==354:
+    arabtv.LIST3arabtv(url)
+elif mode==354:
     from resources.libs.plugins import arabtv
     print ""+url
-    arabtv.SEARCHarabtv()elif mode==355:
+    arabtv.SEARCHarabtv()
+elif mode==355:
     from resources.libs.plugins import arabtv
     print ""+url
-    arabtv.LINKS3arabtv(name,url,iconimage)elif mode==356:
+    arabtv.LINKS3arabtv(name,url,iconimage)
+elif mode==356:
     from resources.libs.plugins import arabtv
     print ""+url
     arabtv.LIST3arabtvEPI(url,iconimage)
@@ -2273,8 +2551,12 @@ elif mode==412:
 elif mode==413:
     from resources.libs.live import skyaccess
     skyaccess.PLAYLINK(name,url,iconimage)
-elif mode==414: WHClear(url)elif mode==415: MAINTENANCE(name)
-elif mode==416: MAINDEL(url)elif mode==417: ADSettings(name,url)elif mode==418: delAS()elif mode==419:
+elif mode==414: WHClear(url)
+elif mode==415: MAINTENANCE(name)
+elif mode==416: MAINDEL(url)
+elif mode==417: ADSettings(name,url)
+elif mode==418: delAS()
+elif mode==419:
     from resources.libs.international import  einthusan
     einthusan.SEARCHEIN(url)
 elif mode==421:
@@ -2573,7 +2855,8 @@ elif mode==549:
 elif mode==550:
     from resources.libs.movies_tv import newmyvideolinks
     newmyvideolinks.SearchhistoryEtowns(url)
-if mode==3000: print""elif mode==567:
+if mode==3000: print""
+elif mode==567:
     from resources.libs.plugins import fma
     print ""+url
     fma.MAINFMA()
@@ -2877,32 +3160,42 @@ elif mode==648:
 elif mode==649:
     from resources.libs.plugins import iwatchonline
     print ""+url
-    iwatchonline.iWatchLINKB(name,url)elif mode==650:
+    iwatchonline.iWatchLINKB(name,url)
+elif mode==650:
     print ""+url
-    ListglobalFavMs()elif mode==651:
+    ListglobalFavMs()
+elif mode==651:
     print ""+url
-    ListglobalFavTE()elif mode==652:
+    ListglobalFavTE()
+elif mode==652:
     from resources.libs.plugins import iwatchonline
-    iwatchonline.iWatchYearM(index=index)elif mode==653:
+    iwatchonline.iWatchYearM(index=index)
+elif mode==653:
     from resources.libs.plugins import iwatchonline
-    iwatchonline.ENTYEAR(index=index)elif mode==654:
+    iwatchonline.ENTYEAR(index=index)
+elif mode==654:
     from resources.libs.plugins import iwatchonline
     iwatchonline.GotoPage(url,index=index)
 elif mode==655:
     print ""+url
-    ListglobalFavIWO()elif mode==656:
+    ListglobalFavIWO()
+elif mode==656:
     print ""+url
     from resources.libs.movies_tv import scenelog
-    scenelog.ListSceneLogLinks(name,url)elif mode==657:
+    scenelog.ListSceneLogLinks(name,url)
+elif mode==657:
     print ""+url
     from resources.libs.movies_tv import scenelog
-    scenelog.ListSceneLogItems(url,'HD')elif mode==658:
+    scenelog.ListSceneLogItems(url,'HD')
+elif mode==658:
     print ""+url
     from resources.libs.movies_tv import scenelog
-    scenelog.PlaySceneLogLink(name,url)elif mode==659:
+    scenelog.PlaySceneLogLink(name,url)
+elif mode==659:
     print ""+url
     from resources.libs.movies_tv import scenelog
-    scenelog.StartSceneLogSearch(url)elif mode==660:
+    scenelog.StartSceneLogSearch(url)
+elif mode==660:
     print ""+url
     from resources.libs.movies_tv import scenelog
     scenelog.SearchSceneLog(name,url)
@@ -2915,52 +3208,68 @@ elif mode == 781: main.trailer(url)
 elif mode == 782: main.TRAILERSEARCH(url, name, iconimage)
 elif mode == 783: main.SwitchUp()
 elif mode == 784: FIXES()
-elif mode == 785: FIXDOWN(name,url,location,path)elif mode==786:
+elif mode == 785: FIXDOWN(name,url,location,path)
+elif mode==786:
     from resources.libs.plugins import fullstream
     print ""+url
-    fullstream.MAINFULLS()elif mode==787:
+    fullstream.MAINFULLS()
+elif mode==787:
     from resources.libs.plugins import fullstream
     print ""+url
-    fullstream.LISTFULLS(url)elif mode==788:
+    fullstream.LISTFULLS(url)
+elif mode==788:
     from resources.libs.plugins import fullstream
     print ""+url
-    fullstream.LINKLIST(name,url)elif mode==789:
+    fullstream.LINKLIST(name,url)
+elif mode==789:
     from resources.libs.plugins import fullstream
     print ""+url
-    fullstream.LINKFULLS(name,url)elif mode==790:
+    fullstream.LINKFULLS(name,url)
+elif mode==790:
     from resources.libs.plugins import fullstream
     print ""+url
-    fullstream.LISTEPISODE(name,url)elif mode==791:
+    fullstream.LISTEPISODE(name,url)
+elif mode==791:
     from resources.libs.plugins import fullstream
     print ""+url
-    fullstream.LINKLIST2(name,url)elif mode==792:
+    fullstream.LINKLIST2(name,url)
+elif mode==792:
     from resources.libs.plugins import fullstream
     print ""+url
-    fullstream.SEARCHFULLS()elif mode==793:
+    fullstream.SEARCHFULLS()
+elif mode==793:
     from resources.libs.plugins import fullstream
     print ""+url
-    fullstream.GENRESFULLS()elif mode==794:
+    fullstream.GENRESFULLS()
+elif mode==794:
     from resources.libs.plugins import fullstream2
     print ""+url
-    fullstream2.MAINFULLS()elif mode==795:
+    fullstream2.MAINFULLS()
+elif mode==795:
     from resources.libs.plugins import fullstream2
     print ""+url
-    fullstream2.LISTFULLS(url)elif mode==796:
+    fullstream2.LISTFULLS(url)
+elif mode==796:
     from resources.libs.plugins import fullstream2
     print ""+url
-    fullstream2.LINKLIST(name,url)elif mode==797:
+    fullstream2.LINKLIST(name,url)
+elif mode==797:
     from resources.libs.plugins import fullstream2
     print ""+url
-    fullstream2.LINKFULLS(name,url)elif mode==798:
+    fullstream2.LINKFULLS(name,url)
+elif mode==798:
     from resources.libs.plugins import fullstream2
     print ""+url
-    fullstream2.LISTEPISODE(name,url)elif mode==799:
+    fullstream2.LISTEPISODE(name,url)
+elif mode==799:
     from resources.libs.plugins import fullstream2
     print ""+url
-    fullstream2.SEARCHFULLS()elif mode==800:
+    fullstream2.SEARCHFULLS()
+elif mode==800:
     from resources.libs.plugins import fullstream2
     print ""+url
-    fullstream2.GENRESFULLS()elif mode==801:
+    fullstream2.GENRESFULLS()
+elif mode==801:
     from resources.libs.plugins import fullstream2
     print ""+url
     fullstream2.QLTFULLS()
