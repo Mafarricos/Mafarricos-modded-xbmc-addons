@@ -341,8 +341,8 @@ def MMA():
             
 def WorkoutMenu():
     main.addDir('Fitness Blender[COLOR red](Full Workouts)[/COLOR]','fb',198,art+'/fitnessblender.png')
-    main.addDir('Insanity','http://watchseries.lt/serie/INSANITY_-_The_Asylum',578,art+'/insanity.png')
-    main.addDir('P90X','http://watchseries.lt/serie/p90x',578,art+'/p90x.png')
+    main.addDir('Insanity','http://watchseries.ag/serie/INSANITY_-_The_Asylum',578,art+'/insanity.png')
+    main.addDir('P90X','http://watchseries.ag/serie/p90x',578,art+'/p90x.png')
     main.addDir('Body Building[COLOR red](Instructional Only)[/COLOR]','bb',195,art+'/bodybuilding.png')
     main.addDir('HackerMil Workouts','https://raw.github.com/HackerMil/HackerMilsMovieStash/master/Workouts/Workouts.xml',236,art+'/workout.png')
             
