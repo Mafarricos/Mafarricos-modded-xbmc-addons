@@ -205,7 +205,7 @@ def superSearch(encode,type):
                     if re.search('(?sim)season '+str(s)+' episode '+str(e),t):
                         t = re.sub('(?i)^[a-z] - (.*?)','\\1',t)
                         t = re.sub('(.*\)).*','\\1',t)
-                        t= t.strip(" -").replace("-","").replace(" WatchSeries.lt","").replace(" Watch Series","").replace("Watch Online ","").replace("Watch Online","").replace("  "," ")
+                        t= t.strip(" -").replace("-","").replace(" WatchSeries.ag","").replace(" Watch Series","").replace("Watch Online ","").replace("Watch Online","").replace("  "," ")
                         name=re.sub('\((\d+)x(\d+)\)','',t,re.I)
                         episode = re.search('Seas(on)?\.? (\d+).*?Ep(isode)?\.? (\d+)',name, re.I)
                         if(episode):
