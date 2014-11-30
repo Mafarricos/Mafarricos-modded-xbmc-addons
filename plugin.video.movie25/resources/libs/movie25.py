@@ -198,7 +198,7 @@ def YEARB(murl,index=False):
     for url,thumb,name,genre,views,votes,rating in match:
         name=name.replace('-','').replace('&','').replace('acute;','')
         #furl='http://movie25.com/'+url
-		furl = MainUrl+'/'+url
+        furl = MainUrl+'/'+url
         if index == 'True': main.addInfo(name+'[COLOR blue] Views: '+views+'[/COLOR] [COLOR red]Votes: '+votes+'[/COLOR] [COLOR green]Rating: '+rating+'/100[/COLOR]',furl,21,thumb,genre,'')
         else: main.addInfo(name+'[COLOR blue] Views: '+views+'[/COLOR] [COLOR red]Votes: '+votes+'[/COLOR] [COLOR green]Rating: '+rating+'/100[/COLOR]',furl,3,thumb,genre,'')
         loadedLinks = loadedLinks + 1
