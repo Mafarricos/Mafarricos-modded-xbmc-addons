@@ -160,8 +160,8 @@ def getHostList():
     global hostlist
     if not hostlist:
         hostlist = hosts
-        try: if xbmcaddon.Addon(id='script.module.urlresolver').getSetting("RealDebridResolver_enabled") == 'true': hostlist += getRDHosts()
-        except: pass
+        #try: if xbmcaddon.Addon(id='script.module.urlresolver').getSetting("RealDebridResolver_enabled") == 'true': hostlist += getRDHosts()
+        #except: pass
     return hostlist
 
 def unescapes(text):
