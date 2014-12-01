@@ -75,7 +75,7 @@ def MAIN():
         elif index==34: main.addDirHome('Demon88 Movies','https://raw.github.com/dm88/demon88/master/Demon88_Directory.xml',235,art+'/demon88.png')
         elif index==37: main.addDirHome('ONE242415','https://raw.github.com/One242415/One242415/master/One242415_Directory.xml',235,art+'/one252515.png')
         elif index==30: main.addDirHome('My XML Channels','nills',238,art+'/xml.png')
-        elif index==31: main.addDirHome("K1M05's Streams",'https://raw.github.com/crusader88/K1M05/master/k1m05_mashupDirectory.xml',181,art+'/k1m05.png')
+        elif index==31: main.addDirHome("K1M05's Streams",'https://raw.github.com/xbmctalk/MashUpK1m05/master/k1m05_mashupDirectory.xml',181,art+'/k1m05.png')
         elif index==32: main.addDirHome('Buzzy Sports','https://raw.githubusercontent.com/woodypecker/Woody/master/Woody.xml',181,art+'/mashsports.png')
         elif index==33: main.addDirHome('iLive Streams','ilive',119,art+'/ilive.png')
         elif index==35: main.addDirHome('Super Search','ss',19,art+'/supersearch.png')
@@ -195,7 +195,7 @@ def TV():
 
 def ThreeDsec():
     main.addDir('3D Movies (Newmyvideolinks) True HD[COLOR red] DC[/COLOR]','3D',34,art+'/3d.png')
-    link=getListFile('https://raw.github.com/mash2k3/MashUpNotifications/master/Directories/3D_Directory.xml', os.path.join(CachePath,'ThreeD'))
+    link=getListFile('https://raw.github.com/Leinad4Mind/Leinad4Mind-xbmc-addons/master/Mash_modded/3D_Dir.xml', os.path.join(CachePath,'ThreeD'))
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
     match=re.compile('<name>(.+?)</name><link>(.+?)</link><thumbnail>(.+?)</thumbnail><mode>(.+?)</mode>').findall(link)
     for name,url,thumb,mode in match:
@@ -326,7 +326,7 @@ def SPORTS():
     main.addDir('Workouts','https://www.wildtv.ca/shows',194,art+'/workout.png')
     main.addDir('The Golf Channel','golf',217,art+'/golfchannel.png')
     main.addDir('HQZone','na',470,art+'/hqzone.png')
-    link=getListFile('https://raw.github.com/mash2k3/MashUpNotifications/master/Sport_Directory.xml', os.path.join(CachePath,'Sports'))
+    link=getListFile('https://raw.github.com/Leinad4Mind/Leinad4Mind-xbmc-addons/master/Mash_modded/Sports_Dir.xml', os.path.join(CachePath,'Sports'))
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
     match=re.compile('<name>(.+?)</name><link>(.+?)</link><thumbnail>(.+?)</thumbnail><mode>(.+?)</mode>').findall(link)
     for name,url,thumb,mode in match:
@@ -387,7 +387,7 @@ def LiveStreams():
     main.addDir('Arabic Streams','navi',231,art+'/arabicstream.png')
     main.addDir('NHL [COLOR red]GOTHAM ONLY[/COLOR]','navi',394,art+'/nhl.png')
     #main.addDir('Kiwi','kiwi',439,art+'/kiwi.png')
-    link=getListFile('https://raw.github.com/mash2k3/MashUpNotifications/master/LiveDirectory(mash2k3Only).xml',os.path.join(CachePath,'LiveStreams'))
+    link=getListFile('https://raw.github.com/Leinad4Mind/Leinad4Mind-xbmc-addons/master/Mash_modded/Live_Dir.xml',os.path.join(CachePath,'LiveStreams'))
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','').replace('type=playlistname=Sorted by user-assigned order','').replace('name=Sorted [COLOR=FF00FF00]by user-assigned order[/COLOR]','').replace('name=Live Tv Channels Twothumb','')
     match=re.compile('<name>(.+?)</name><link>(.+?)</link><thumbnail>(.+?)</thumbnail><mode>(.+?)</mode>').findall(link)
     for name,url,thumb,mode in match:
@@ -415,7 +415,7 @@ def DOCS():
     main.addDir('Documentaries (Movie25)',movie25url+'documentary/',1,art+'/doc.png')
 
 def PlaylistDir():
-    link=getListFile('https://raw.github.com/mash2k3/MashUpNotifications/master/MoviePlaylist_Dir.xml',os.path.join(CachePath,'Playlist'))
+    link=getListFile('https://raw.github.com/Leinad4Mind/Leinad4Mind-xbmc-addons/master/Mash_modded/MoviesList_Dir.xml',os.path.join(CachePath,'Playlist'))
     link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
     match=re.compile('<name>(.+?)</name><link>(.+?)</link><thumbnail>(.+?)</thumbnail><mode>(.+?)</mode>').findall(link)
     for name,url,thumb,mode in match:
