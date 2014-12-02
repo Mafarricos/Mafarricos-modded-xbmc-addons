@@ -1,8 +1,6 @@
-Version 1.4.1d
-- xml repo updates (ty Leinad4Mind)
-
 Version 1.4.1c
 - Minor fixes
+
 Version 1.4.1b
 - Temporary Fix urlresolver
 Version 1.4.1a
