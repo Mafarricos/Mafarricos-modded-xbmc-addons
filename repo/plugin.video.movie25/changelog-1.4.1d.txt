@@ -1,10 +1,17 @@
+Version 1.4.1d
+- xml repo updates (ty Leinad4Mind)
+
+Version 1.4.1c
+- Minor fixes
+Version 1.4.1b
+- Temporary Fix urlresolver
+Version 1.4.1a
+- Some git fixes (ty Leinad4Mind)
 Version 1.4.1
-Removed auto-update
-Google Analytics removal fix (ty Leinad4Mind)
-some git fixes (ty Leinad4Mind)
-
+- Removed auto-update
+- Google Analytics removal fix (ty Leinad4Mind)
+- some git fixes (ty Leinad4Mind)
 [B]Version 1.4.0[/B]
-
 - Added Super Search function to search all sources across MashUp
 - Optimized MashUp for speed and performance on (slow/mobile) devices, even faster on fast systems
 - Improved the speed of collecting hosts (much faster)
