@@ -23,7 +23,6 @@ def getSourceFPS():
     # get location of log file
     if 'rk3' in fsconfig.osPlatform:
         logFileName = xbmc.translatePath('special://temp/XBMC.log')
-        if not os.path.exists(logFileName): logFileName = xbmc.translatePath('special://temp/kodi.log')
     
     elif fsconfig.osPlatform == 'Windows 7':
         logFileName = xbmc.translatePath('special://home\XBMC.log')
