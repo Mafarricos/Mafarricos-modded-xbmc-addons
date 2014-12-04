@@ -22,10 +22,16 @@ def getSourceFPS():
     
     # get location of log file
     if 'rk3' in fsconfig.osPlatform:
-        logFileName = xbmc.translatePath('special://temp/XBMC.log')
+        if '14.' in xbmc.getInfoLabel( "System.BuildVersion" ):
+            logFileName = xbmc.translatePath('special://temp/kodi.log')        
+        else:  
+            logFileName = xbmc.translatePath('special://temp/XBMC.log')
     
     elif fsconfig.osPlatform == 'Windows 7':
-        logFileName = xbmc.translatePath('special://home\XBMC.log')
+        if '14.' in xbmc.getInfoLabel( "System.BuildVersion" ):
+            logFileName = xbmc.translatePath('special://home\kodi.log')        
+        else:
+            logFileName = xbmc.translatePath('special://home\XBMC.log')
     
     else:
         return videoFileName, videoFPSValue
@@ -163,9 +169,7 @@ def getDisplayMode():
                 elif amlogicMode == '1920x1080p-50':
                     outputMode = '1080p-50hz'
                 elif amlogicMode == '1920x1080p-24':
-                    if '1080p' in fsconfig.osPlatform: outputMode = '1080p-24hz'
-                    elif '720p' in fsconfig.osPlatform: outputMode = '720p-24hz'
-                    else: outputMode = '1080p-24hz'
+                    outputMode = '1080p-24hz'
                 elif amlogicMode == '1280x720p-60':
                     outputMode = '720p-60hz'					
                 elif amlogicMode == '1280x720p-50':
@@ -275,41 +279,41 @@ def setDisplayMode(newOutputMode):
         else:
             
             # new resolution is different to current resolution
-            if newRes != currentRes:
-                setModeStatus = 'Resolution changed, please reconfigure'
-                statusType = 'warn'
+            #if newRes != currentRes:
+            #    setModeStatus = 'Resolution changed, please reconfigure'
+            #    statusType = 'warn'
              
             # new resolution is the same as the current resolution
-            else: 
+            #else: 
              
-                fsconfigutil.loadLastFreqChangeSetting()
+            fsconfigutil.loadLastFreqChangeSetting()
              
-                # check that at least 4 seconds has elapsed since the last frequency change
-                secToNextFreqChange = 4 - (int(time.time()) - fsconfig.lastFreqChange)
-                if secToNextFreqChange > 1:
-                    setModeStatus = 'Stand-down ' + str(secToNextFreqChange) + ' seconds'               
-                    statusType = 'warn'
-                elif secToNextFreqChange == 1:
-                    setModeStatus = 'Stand-down ' + str(secToNextFreqChange) + ' second' 
-                    statusType = 'warn'
+            # check that at least 4 seconds has elapsed since the last frequency change
+            secToNextFreqChange = 4 - (int(time.time()) - fsconfig.lastFreqChange)
+            if secToNextFreqChange > 1:
+                setModeStatus = 'Stand-down ' + str(secToNextFreqChange) + ' seconds'               
+                statusType = 'warn'
+            elif secToNextFreqChange == 1:
+                setModeStatus = 'Stand-down ' + str(secToNextFreqChange) + ' second' 
+                statusType = 'warn'
 
-                # more than 4 seconds has elapsed since the last frequency change 
-                else:
-                    # set new display mode
+            # more than 4 seconds has elapsed since the last frequency change 
+            else:
+                # set new display mode
+                try:
+                    with open(modeFile, 'w') as modeFileHandle: modeFileHandle.write(newAmlogicMode)					
+                except:
                     try:
-						with open(modeFile, 'w') as modeFileHandle: modeFileHandle.write(newAmlogicMode)					
-                    except:
-						try:
-							os.system('su -c "chmod 777 '+modeFile+'"')
-							os.system('su -c "echo '+newAmlogicMode+' > '+modeFile+'"')
-						except: pass
+                        os.system('su -c "chmod 777 '+modeFile+'"')
+                        os.system('su -c "echo '+newAmlogicMode+' > '+modeFile+'"')
+                    except: pass
 
-                    # save time display mode was changed
-                    fsconfig.lastFreqChange = int(time.time())
-                    fsconfigutil.saveLastFreqChangeSetting()
+                # save time display mode was changed
+                fsconfig.lastFreqChange = int(time.time())
+                fsconfigutil.saveLastFreqChangeSetting()
                     
-                    setModeStatus = 'Frequency changed to ' + newFreq
-                    statusType = 'info'
+                setModeStatus = 'Frequency changed to ' + newFreq
+                statusType = 'info'
      
     return setModeStatus, statusType
 
