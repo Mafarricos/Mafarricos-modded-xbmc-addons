@@ -21,7 +21,7 @@ def LISTSP3(murl):
             max = int(pages[1])
         except:
             page = 1
-#         http://www.filestube.to/query.html?q=1080p+bluray+-esubs+-msubs+-subs&hosting=85&select=mkv&sizefrom=6000&sizeto=20000&sort=dd&page=1
+#         http://www.filestube.com/query.html?q=1080p+bluray+-esubs+-msubs+-subs&hosting=85&select=mkv&sizefrom=6000&sizeto=20000&sort=dd&page=1
     hosts = ""
     possiblehosts = (
                      ["lumfile.com","85"],
@@ -32,7 +32,7 @@ def LISTSP3(murl):
     for h,n in possiblehosts:
         if main.supportedHost(h): hosts += n+"%2C"
     hosts = hosts.rstrip("%2C")  
-    url='http://www.filestube.to/query.html?q=1080p+bluray+-esubs&hosting='+hosts+'&select=mkv&sizefrom=5000&sizeto=20000&sort=dd'
+    url='http://www.filestube.com/query.html?q=1080p+bluray+-esubs&hosting='+hosts+'&select=mkv&sizefrom=5000&sizeto=20000&sort=dd'
     urls = []
     for n in range(subpages):
         urls.append(url+"&page="+str(page+n))
@@ -58,7 +58,7 @@ def LISTSP3(murl):
     dialogWait.update(0,'[B]Will load instantly from now on[/B]',remaining_display)
     for url, name, hostsite in match:
         url = url.decode('utf-8').encode('ascii', 'ignore')
-        url = 'http://www.filestube.to' + url
+        url = 'http://www.filestube.com' + url
         main.addPlayM(main.CleanTitle(name.strip()) + " [COLOR red]" + hostsite + "[/COLOR]",url,406,'','','','','','')
         loadedLinks = loadedLinks + 1
         percent = (loadedLinks * 100)/totalLinks
@@ -90,7 +90,7 @@ def StartSearch():
 def superSearch(encode,type):
     try:
         returnList=[]
-        surl='http://www.filestube.to/query.html?q=1080p+'+encode+'+bluray+-esubs&select=mkv&sizefrom=5000&sizeto=20000&sort=dd'
+        surl='http://www.filestube.com/query.html?q=1080p+'+encode+'+bluray+-esubs&select=mkv&sizefrom=5000&sizeto=20000&sort=dd'
         link=main.OPENURL(surl, verbose=False)
         link=main.unescapes(link)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
@@ -100,7 +100,7 @@ def superSearch(encode,type):
             name = name.replace('<b>','').replace('</b>','')
             name=main.unescapes(name)
             url = url.decode('utf-8').encode('ascii', 'ignore')
-            url = 'http://www.filestube.to' + url
+            url = 'http://www.filestube.com' + url
             if not re.search('(?i)(\\bsubs\\b|\\msubs\\b|fetish)',name) and (re.search('(?i)(20\d\d|19\d\d)',name) or re.search('(?i)(blow|sparks)',name) ):
                 returnList.append((name.strip()+ " [COLOR red]" + hostsite + "[/COLOR]",prettyName,url,'',406,False))
         return returnList
@@ -109,7 +109,7 @@ def superSearch(encode,type):
 def Search(mname,murl):
     encode = main.updateSearchFile(mname,'Movies','Search')
     if not encode: return False
-    surl='http://www.filestube.to/query.html?q=1080p+bluray+-esubs&hosting=25%2C40%2C85&select=mkv&sizefrom=5000&sizeto=20000&sort=dd'
+    surl='http://www.filestube.com/query.html?q=1080p+bluray+-esubs&hosting=25%2C40%2C85&select=mkv&sizefrom=5000&sizeto=20000&sort=dd'
     link=main.OPENURL(surl)
     link=main.unescapes(link)
     match=re.compile(pattern).findall(link)
