@@ -71,12 +71,12 @@ def MAIN():
         elif index==24: main.addDirHome("Mash Up How To's",'how',16,art+'/howto.png')
         elif index==25: main.addDirHome('Fixes',movie25url,784,art+'/fixes.png')
         elif index==26: main.addDirHome('HackerMils Stash','https://raw.github.com/HackerMil/HackerMilsMovieStash/master/Directory/HackerMil_Directory.xml',235,art+'/hackermil.png')
-        elif index==29: main.addDirHome('Staael 1982','https://raw.github.com/xbmctalk/Staael1982/master/Staael_Directory.xml',235,art+'/staael2014.png')
-        elif index==34: main.addDirHome('Demon88 Movies','https://raw.github.com/dm88/demon88/master/Demon88_Directory.xml',235,art+'/demon88.png')
-        elif index==37: main.addDirHome('ONE242415','https://raw.github.com/One242415/One242415/master/One242415_Directory.xml',235,art+'/one252515.png')
+        elif index==29: main.addDirHome('Staael 1982','http://tuzla.watchkodi.com/maindir/main.xml',235,art+'/staael2014.png')
+        elif index==34: main.addDirHome('Demon88 Movies','http://cairo.watchkodi.com/maindir/main.xml',235,art+'/demon88.png')
+        elif index==37: main.addDirHome('ONE242415','http://gibraltar.watchkodi.com/maindir/main.xml',235,art+'/one252515.png')
         elif index==30: main.addDirHome('My XML Channels','nills',238,art+'/xml.png')
         elif index==31: main.addDirHome("K1M05's Streams",'https://raw.github.com/xbmctalk/MashUpK1m05/master/k1m05_mashupDirectory.xml',181,art+'/k1m05.png')
-        elif index==32: main.addDirHome('Buzzy Sports','https://raw.githubusercontent.com/woodypecker/Woody/master/Woody.xml',181,art+'/mashsports.png')
+        elif index==32: main.addDirHome('Buzzy Sports','http://banjaluka.watchkodi.com/maindir/main.xml',181,art+'/mashsports.png')
         elif index==33: main.addDirHome('iLive Streams','ilive',119,art+'/ilive.png')
         elif index==35: main.addDirHome('Super Search','ss',19,art+'/supersearch.png')
         elif index==36:
@@ -262,8 +262,13 @@ def HD():
     main.addDir('Latest True 1080p Movies (Rls1Click)[COLOR red](Debrid Only)[/COLOR]','HD',407,art+'/hd2.png')
     main.addDir('Latest Movies (Oneclickwatch)','http://oneclickwatch.org/category/movies/',25,art+'/hd2.png')
     main.addDir('HackerMil HD Movies','https://raw.github.com/HackerMil/HackerMilsMovieStash/master/Movies/HD.xml',236,art+'/hd2.png')
-    main.addDir('Staael1982 HD Movies','https://raw.github.com/xbmctalk/Staael1982/master/veehdCollection.xml',236,art+'/hd2.png')
-    main.addDir('Demon88 HD Movies','https://raw.github.com/dm88/Demon88/master/1080pMovies%20.xml',236,art+'/hd2.png')
+    main.addDir('Staael1982 HD Movies','http://tuzla.watchkodi.com/veehdCollection.xml',236,art+'/hd2.png')
+    main.addDir('Demon88 HD Movies','http://cairo.watchkodi.com/720p.xml',236,art+'/hd2.png')
+    main.addDir('TNPB HD Movies','http://zenica.watchkodi.com/Movies/720p%20Movies.xml',236,art+'/hd2.png')
+    main.addDir('HackerMil 1080p Movies','https://raw.githubusercontent.com/HackerMil/HackerMilsMovieStash/master/Movies/1080P.xml',236,art+'/hd2.png')
+    main.addDir('Staael1982 1080p Movies','http://tuzla.watchkodi.com/1080p%20movies.xml',236,art+'/hd2.png')
+    main.addDir('Demon88 1080p Movies','http://cairo.watchkodi.com/1080p.xml',236,art+'/hd2.png')
+    main.addDir('TNPB 1080p Movies','http://zenica.watchkodi.com/Movies/1080p%20Movies.xml',236,art+'/hd2.png')
     
 def INT():
     main.addDir('Hindi/Tamil/Telugu & more','hindi',15,art+'/folder.png')
@@ -277,11 +282,10 @@ def INT():
     main.addDir('Danish','danish',15,art+'/folder.png')
 
 def INTCAT(murl):
-    # Arranjar no futuro solução para substituir o repositorio One242415.
-    #if 'italian'in murl:
-    #    main.addDir('Cinema Italiano','https://raw.github.com/One242415/One242415/master/CinemaItaliano/cinemaitaliano_directory.xml',236,art+'/intl.png')
-    #    main.addDir('Italian Series','https://raw.github.com/One242415/One242415/master/Foriegn/italianseries.xml',236,art+'/intl.png')
-    #    main.addDir('Live Italian TV','https://raw.github.com/One242415/One242415/master/Foriegn/italianLiveTV.xml',236,art+'/intl.png')
+    if 'italian'in murl:
+        main.addDir('Cinema Italiano','http://gibraltar.watchkodi.com/CinemaItaliano/cinemaitaliano_directory.xml',236,art+'/intl.png')
+        main.addDir('Italian Series','http://gibraltar.watchkodi.com/Foriegn/italianseries.xml',236,art+'/intl.png')
+        main.addDir('Live Italian TV','http://gibraltar.watchkodi.com/Foriegn/italianLiveTV.xml',236,art+'/intl.png')
     if 'russian' in murl:
         main.addDir('Latest Russian Movies (Cinemaxx)','russia',362,art+'/intl.png')
         main.addDir('Russian Videos(MailRu)','http://my.mail.ru/video/top',357,art+'/intl.png')
@@ -296,7 +300,7 @@ def INTCAT(murl):
         main.addDir('Latest Arabic Movies/Series/Shows (3Arabtv)','arabic',351,art+'/intl.png')
     if 'uk' in murl:
         main.addDir('Latest UK and US (Mooviemaniac)','movindub',305,art+'/intl.png')
-        main.addDir('Best of British (TNPB)','https://raw.github.com/xbmctalk/MashUpTNPB/master/Best%20of%20British.xml',236,art+'/intl.png')
+        main.addDir('Best of British (TNPB)','http://zenica.watchkodi.com/Directories/BoB%20Directory.xml',236,art+'/intl.png')
     if 'spanish' in murl:
         main.addDir('Latest Spanish Dubbed & Subtitled(ESP) Movies (peliculaspepito)','http://www.peliculaspepito.com',66,art+'/intl.png')
         main.addDir('Latest Spanish Dubbed & Subtitled(ESP) Movies (FXCine)','http://www.fxcine.com',308,art+'/intl.png')
@@ -311,7 +315,7 @@ def INTCAT(murl):
         main.addDir('Latest Korean/Jappenese/Chinese Movies&Dramas (Dramania)','http://www.cinevip.org/',268,art+'/intl.png')
         main.addDir('Latest Korean/Jappenese/Chinese Movies&Dramas (Viki)','http://www.cinevip.org/',478,art+'/intl.png')
         #main.addDir('Latest Korean/Jappenese/Chinese Movies&Dramas (Catiii.tv)','http://www.cinevip.org/',434,art+'/intl.png')
-    if 'danish' in murl: main.addDir('Staael1982 Danish Movies','https://raw.github.com/xbmctalk/Staael1982/master/danish%20movies.xml',236,art+'/intl.png')
+    if 'danish' in murl: main.addDir('Staael1982 Danish Movies','http://tuzla.watchkodi.com/Danish%20movies/Danish%20movies%20directory.xml',236,art+'/intl.png')
 
 def SPORTS():
     main.addDir('ESPN','http:/espn.com',44,art+'/espn.png')
@@ -365,9 +369,12 @@ def KIDZone(murl):
     main.addDir('National Geographic Kids','ngk',71,art+'/ngk.png')
     main.addDir('WB Kids','wbk',77,art+'/wb.png')
     main.addDir('Youtube Kids','wbk',84,art+'/youkids.png')
-    main.addDir('TNPB KidsZone','https://raw.github.com/xbmctalk/MashUpTNPB/master/kidszone.xml',236,art+'/kidzone2.png') 
-    main.addDir('Staael1982 Animated Movies','https://raw.github.com/xbmctalk/Staael1982/master/animated_movies.xml',236,art+'/kidzone2.png')
-    #main.addDir('Staael1982 Animated Movies 2','https://github.com/Coolstreams/bobbyelvis/raw/master/test list.xml',236,art+'/kidzone2.png')
+    main.addDir('TNPB Kids Movies','http://zenica.watchkodi.com/Genre/kidszone.xml',236,art+'/kidzone2.png')
+    main.addDir('TNPB Kids Collectionz','http://zenica.watchkodi.com/Directories/Kidz%20Collectionz.xml',236,art+'/kidzone2.png')
+    main.addDir('TNPB Kids TV Shows','http://zenica.watchkodi.com/Directories/Kids%20TV%20Directory.xml',236,art+'/kidzone2.png')
+    main.addDir('TNPB Kids Cartoons','http://zenica.watchkodi.com/Directories/Cartoonland%20Directory.xml',236,art+'/kidzone2.png')
+    main.addDir('Staael1982 Animated Movies','http://tuzla.watchkodi.com/kids_animation.xml',236,art+'/kidzone2.png')
+    main.addDir('Staael1982 Animated Movies 2','http://tuzla.watchkodi.com/test%20list.xml',236,art+'/kidzone2.png')
     main.VIEWSB()
 
 def HOWTOCAT():
