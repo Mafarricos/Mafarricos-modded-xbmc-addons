@@ -65,11 +65,11 @@
     </extension>
 </addon>
 
-<addon id="repository.mafarricos.xbmc" name="Mafarricos repositorio" version="1.0.4" provider-name="Mafarricos">
+<addon id="repository.mafarricos.xbmc" name="Mafarricos repositorio" version="1.0.5" provider-name="Mafarricos">
 	<extension point="xbmc.addon.repository" name="Mafarricos Add-on Repository">
 		<info compressed="false">http://raw.github.com/Mafarricos/Mafarricos-xbmc-addons/master/addons.xml</info>
 		<checksum>http://raw.github.com/Mafarricos/Mafarricos-xbmc-addons/master/addons.xml.md5</checksum>
-		<datadir zip="true">http://raw.github.com/Mafarricos/Mafarricos-xbmc-addons/master/repo</datadir>
+		<datadir zip="true">http://raw.github.com/Mafarricos/Mafarricos-xbmc-addons/master/repo/</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Repositorio Mafarricos</summary>
@@ -79,11 +79,11 @@
 	</extension>
 </addon>
 
-<addon id="repository.mafarricosModded.xbmc" name="Mafarricos Modded repositorio" version="1.0.0" provider-name="Mafarricos">
+<addon id="repository.mafarricosModded.xbmc" name="Mafarricos Modded repositorio" version="1.0.1" provider-name="Mafarricos">
 	<extension point="xbmc.addon.repository" name="Mafarricos Modded Add-on Repository">
 		<info compressed="false">http://raw.github.com/Mafarricos/Mafarricos-modded-xbmc-addons/master/addons.xml</info>
 		<checksum>http://raw.github.com/Mafarricos/Mafarricos-modded-xbmc-addons/master/addons.xml.md5</checksum>
-		<datadir zip="true">http://raw.github.com/Mafarricos/Mafarricos-modded-xbmc-addons/master/repo</datadir>
+		<datadir zip="true">http://raw.github.com/Mafarricos/Mafarricos-modded-xbmc-addons/master/repo/</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Repositorio de Addons Modificados por Mafarricos</summary>
