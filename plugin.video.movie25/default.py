@@ -296,7 +296,7 @@ def INTCAT(murl):
         main.addDir('Latest Arabic Movies/Series/Shows (3Arabtv)','arabic',351,art+'/intl.png')
     if 'uk' in murl:
         main.addDir('Latest UK and US (Mooviemaniac)','movindub',305,art+'/intl.png')
-        main.addDir('Best of British (TNPB)','http://zenica.watchkodi.com/Directories/BoB%20Directory.xml',236,art+'/intl.png')
+        main.addDir('Best of British (TNPB)',links.link().tnpb+'/Directories/BoB%20Directory.xml',236,art+'/intl.png')
     if 'spanish' in murl:
         main.addDir('Latest Spanish Dubbed & Subtitled(ESP) Movies (peliculaspepito)','http://www.peliculaspepito.com',66,art+'/intl.png')
         main.addDir('Latest Spanish Dubbed & Subtitled(ESP) Movies (FXCine)','http://www.fxcine.com',308,art+'/intl.png')
