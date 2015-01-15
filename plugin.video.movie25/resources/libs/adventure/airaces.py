@@ -1,20 +1,14 @@
-import urllib,urllib2,re,cookielib,os,sys
-import xbmc, xbmcgui, xbmcaddon, xbmcplugin
+import urllib,urllib2,re,cookielib,os,sys,xbmc, xbmcgui, xbmcaddon, xbmcplugin
 from resources.libs import main
-
-#Mash Up - by Mash2k3 2012.
-
 from t0mm0.common.addon import Addon
 from resources.universal import playbackengine, watchhistory
 addon_id = 'plugin.video.movie25'
 selfAddon = xbmcaddon.Addon(id=addon_id)
-addon = Addon('plugin.video.movie25', sys.argv)
+addon = Addon(addon_id, sys.argv)
 art = main.art
-wh = watchhistory.WatchHistory('plugin.video.movie25')
-
+wh = watchhistory.WatchHistory(addon_id)
 
 def LISTAA():
-        main. GA("Military","AirAces-list")
         main.addPlayMs('George Beurling S01E01','5nlDEnOqFF3O6&aifpxoxocHIST_AirAces_E1001',91,'http://a123.g.akamai.net/f/123/68811/1d/broadcastent.download.akamai.com/68961/Canwest_Broadcast_Entertainment/HIST_AirAces_E1001_230x160_2323832069.jpg','','','','','')
         main.addPlayMs('Douglas Bader S01E02','1ptFFnRnDE6P5&aifpxoxocHIST_AirAces_E1002',91,'http://a123.g.akamai.net/f/123/68811/1d/broadcastent.download.akamai.com/68961/Canwest_Broadcast_Entertainment/HIST_AirAces_E1002_230x160_2324816281.jpg','','','','','')
         main.addPlayMs('Red Tails S01E03','7prEIqMqzCYM7&aifpxoxocHIST_AirAces_E1003',91,'http://a123.g.akamai.net/f/123/68811/1d/broadcastent.download.akamai.com/68961/Canwest_Broadcast_Entertainment/HIST_AirAces_E1004_230x160_2327588677.jpg','','','','','')
@@ -25,7 +19,6 @@ def LISTAA():
         main.addPlayMs('Air Aces Interview - Part 2','9nuFFoLozFYOa&aifp=xoxocAirAcesPt2',91,'http://a123.g.akamai.net/f/123/68811/1d/broadcastent.download.akamai.com/68961/Canwest_Broadcast_Entertainment/AirAcesPt2_230x160_2327083934.jpg','','','','','')
 
 def PLAYAA(mname,murl,thumb):
-        main. GA("AirAces-list","Watched")
         ok=True
         match=re.compile('([^<]+)xoxoc([^<]+)').findall(murl)
         for fid, filename in match: continue
