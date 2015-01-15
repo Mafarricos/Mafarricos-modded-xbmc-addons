@@ -1,17 +1,13 @@
-import urllib,urllib2,re,cookielib,urlresolver,os,sys
-import xbmc, xbmcgui, xbmcaddon, xbmcplugin
+import urllib,urllib2,re,cookielib,urlresolver,os,sys,xbmc,xbmcgui,xbmcaddon,xbmcplugin
 from resources.libs import main
-
-#Mash Up - by Mash2k3 2012.
-
 from t0mm0.common.addon import Addon
 from resources.universal import playbackengine, watchhistory
 addon_id = 'plugin.video.movie25'
 selfAddon = xbmcaddon.Addon(id=addon_id)
-addon = Addon('plugin.video.movie25', sys.argv)
+addon = Addon(addon_id, sys.argv)
 art = main.art
 
-wh = watchhistory.WatchHistory('plugin.video.movie25')
+wh = watchhistory.WatchHistory(addon_id)
 
 def WATCHDOC():
         main.addDir('Search','watchdoc',164,art+'/search.png')
@@ -87,7 +83,6 @@ def WATCHDOCList(murl):
             for thumb,url,name,views in match: main.addPlayMs(name+'   [COLOR red]Views: '+views+'[/COLOR]',url,161,thumb,'','','','','')
                 
 def WATCHDOCList2(murl):
-        #main.GA("WatchDocumentary","List")
         link=main.OPENURL(murl)
         link=link.replace('\r','').replace('\n','').replace('\t','').replace('&nbsp;','')
         match=re.compile('<a href="([^<]+)" title="([^<]+)"><img src="([^<]+)"  alt=').findall(link)

@@ -1,40 +1,36 @@
 #-*- coding: utf-8 -*-
-import urllib,urllib2,re,cookielib,string, urlparse,sys,os
-import xbmc, xbmcgui, xbmcaddon, xbmcplugin,urlresolver
+import urllib,urllib2,re,cookielib,string, urlparse,sys,os,xbmc, xbmcgui, xbmcaddon, xbmcplugin,urlresolver
 from resources.libs import main
-
-#Mash Up - by Mash2k3 2012.
-
 from t0mm0.common.addon import Addon
 from resources.universal import playbackengine, watchhistory
 addon_id = 'plugin.video.movie25'
 selfAddon = xbmcaddon.Addon(id=addon_id)
-addon = Addon('plugin.video.movie25', sys.argv)
+addon = Addon(addon_id, sys.argv)
 art = main.art
-wh = watchhistory.WatchHistory('plugin.video.movie25')
-MAINURL='http://johnlocker.com'
+wh = watchhistory.WatchHistory(addon_id)
+MAINURL=MAINURL+''
 
 def MAINJL():
         main.addDir('Search','extra',323,art+'/search.png')
-        main.addDir('LATEST VIDEOS','http://johnlocker.com/home/main',319,art+'/johnlocker.png')
-        main.addDir('MOST VIEWED','http://johnlocker.com/home/main',319,art+'/johnlocker.png')
-        main.addDir('HIGHEST RATED','http://johnlocker.com/home/main',319,art+'/johnlocker.png')
-        main.addDir('FEATURED','http://johnlocker.com/home/main',319,art+'/johnlocker.png')
+        main.addDir('LATEST VIDEOS',MAINURL+'/home/main',319,art+'/johnlocker.png')
+        main.addDir('MOST VIEWED',MAINURL+'/home/main',319,art+'/johnlocker.png')
+        main.addDir('HIGHEST RATED',MAINURL+'/home/main',319,art+'/johnlocker.png')
+        main.addDir('FEATURED',MAINURL+'/home/main',319,art+'/johnlocker.png')
         main.addDir('CATEGORIES','johnlocker',322,art+'/johnlocker.png')
 
 def CATJL():
-    main.addDir('Conspiracy','http://johnlocker.com/component/seyret/category/videos/1',321,art+'/johnlocker.png')
-    main.addDir('World History','http://johnlocker.com/component/seyret/category/videos/4',321,art+'/johnlocker.png')
-    main.addDir('US History','http://johnlocker.com/component/seyret/category/videos/3',321,art+'/johnlocker.png')
-    main.addDir('Music','http://johnlocker.com/component/seyret/category/videos/5',321,art+'/johnlocker.png')
-    main.addDir('Nature','http://johnlocker.com/component/seyret/category/videos/6',321,art+'/johnlocker.png')
-    main.addDir('Political','http://johnlocker.com/component/seyret/category/videos/7',321,art+'/johnlocker.png')
-    main.addDir('Religon','http://johnlocker.com/component/seyret/category/videos/8',321,art+'/johnlocker.png')
-    main.addDir('Science','http://johnlocker.com/component/seyret/category/videos/9',321,art+'/johnlocker.png')
-    main.addDir('Society','http://johnlocker.com/component/seyret/category/videos/10',321,art+'/johnlocker.png')
-    main.addDir('Sports','http://johnlocker.com/component/seyret/category/videos/14',321,art+'/johnlocker.png')
-    main.addDir('War','http://johnlocker.com/component/seyret/category/videos/12',321,art+'/johnlocker.png')
-    main.addDir('Weird','http://johnlocker.com/component/seyret/category/videos/13',321,art+'/johnlocker.png')
+    main.addDir('Conspiracy',MAINURL+'/component/seyret/category/videos/1',321,art+'/johnlocker.png')
+    main.addDir('World History',MAINURL+'/component/seyret/category/videos/4',321,art+'/johnlocker.png')
+    main.addDir('US History',MAINURL+'/component/seyret/category/videos/3',321,art+'/johnlocker.png')
+    main.addDir('Music',MAINURL+'/component/seyret/category/videos/5',321,art+'/johnlocker.png')
+    main.addDir('Nature',MAINURL+'/component/seyret/category/videos/6',321,art+'/johnlocker.png')
+    main.addDir('Political',MAINURL+'/component/seyret/category/videos/7',321,art+'/johnlocker.png')
+    main.addDir('Religon',MAINURL+'/component/seyret/category/videos/8',321,art+'/johnlocker.png')
+    main.addDir('Science',MAINURL+'/component/seyret/category/videos/9',321,art+'/johnlocker.png')
+    main.addDir('Society',MAINURL+'/component/seyret/category/videos/10',321,art+'/johnlocker.png')
+    main.addDir('Sports',MAINURL+'/component/seyret/category/videos/14',321,art+'/johnlocker.png')
+    main.addDir('War',MAINURL+'/component/seyret/category/videos/12',321,art+'/johnlocker.png')
+    main.addDir('Weird',MAINURL+'/component/seyret/category/videos/13',321,art+'/johnlocker.png')
 
 def SEARCHJL():
         keyb = xbmc.Keyboard('', 'Search John Locker')
@@ -42,7 +38,7 @@ def SEARCHJL():
         if (keyb.isConfirmed()):
             search = keyb.getText()
             encode=urllib.quote(search)
-            surl='http://johnlocker.com/home/search/qs?qssearchkey='+encode+'&option=com_seyret&view=search&task=qs'
+            surl=MAINURL+'/home/search/qs?qssearchkey='+encode+'&option=com_seyret&view=search&task=qs'
             LISTJL2('SEARCH',surl)
 
 def LISTJL(mname,murl):
@@ -81,15 +77,15 @@ def LINKJL(name,murl,thumb,desc):
             stream_url = main.resolve_url(match)
         except:xbmc.executebuiltin("XBMC.Notification(Sorry!,Link Removed or Dead,3000)")
         try:
-                    listitem = xbmcgui.ListItem(thumbnailImage=thumb)
-                    listitem.setInfo('video', {'Title': name, 'Year': ''} )         
-                    infoL={'Title': name, 'Plot': desc, 'Genre': ''}
-                    # play with bookmark
-                    player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=name,season='', episode='', year='',img=thumb,infolabels=infoL, watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
-                    #WatchHistory
-                    if selfAddon.getSetting("whistory") == "true": wh.add_item(name+' '+'[COLOR green]John Locker[/COLOR]', sys.argv[0]+sys.argv[2], infolabels=infoL, img=thumb, fanart='', is_folder=False)
-                    player.KeepAlive()
-                    return ok
+			listitem = xbmcgui.ListItem(thumbnailImage=thumb)
+			listitem.setInfo('video', {'Title': name, 'Year': ''} )         
+			infoL={'Title': name, 'Plot': desc, 'Genre': ''}
+			# play with bookmark
+			player = playbackengine.PlayWithoutQueueSupport(resolved_url=stream_url, addon_id=addon_id, video_type='', title=name,season='', episode='', year='',img=thumb,infolabels=infoL, watchedCallbackwithParams=main.WatchedCallbackwithParams,imdb_id='')
+			#WatchHistory
+			if selfAddon.getSetting("whistory") == "true": wh.add_item(name+' '+'[COLOR green]John Locker[/COLOR]', sys.argv[0]+sys.argv[2], infolabels=infoL, img=thumb, fanart='', is_folder=False)
+			player.KeepAlive()
+			return ok
         except Exception, e:
                     if stream_url != False: main.ErrorReport(e)
                     return ok

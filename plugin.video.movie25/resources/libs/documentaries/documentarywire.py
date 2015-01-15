@@ -1,16 +1,12 @@
-import urllib,urllib2,re,cookielib,urlresolver,os,sys
-import xbmc, xbmcgui, xbmcaddon, xbmcplugin
+import urllib,urllib2,re,cookielib,urlresolver,os,sys,xbmc, xbmcgui, xbmcaddon, xbmcplugin
 from resources.libs import main
-
-#Mash Up - by Mash2k3 2012.
-
 from t0mm0.common.addon import Addon
 from resources.universal import playbackengine, watchhistory
 addon_id = 'plugin.video.movie25'
 selfAddon = xbmcaddon.Addon(id=addon_id)
-addon = Addon('plugin.video.movie25', sys.argv)
+addon = Addon(addon_id, sys.argv)
 art = main.art
-wh = watchhistory.WatchHistory('plugin.video.movie25')
+wh = watchhistory.WatchHistory(addon_id)
 
 def MAIN():
         main.addDir('Search','s12dnm',229,art+'/search.png')

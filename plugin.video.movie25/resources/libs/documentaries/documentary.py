@@ -1,16 +1,12 @@
-import urllib,urllib2,re,cookielib,urlresolver,sys,os
-import xbmc, xbmcgui, xbmcaddon, xbmcplugin
+import urllib,urllib2,re,cookielib,urlresolver,sys,os,xbmc,xbmcgui,xbmcaddon,xbmcplugin
 from resources.libs import main
-
-#Mash Up - by Mash2k3 2012.
-
 from t0mm0.common.addon import Addon
 from resources.universal import playbackengine, watchhistory
 addon_id = 'plugin.video.movie25'
 selfAddon = xbmcaddon.Addon(id=addon_id)
-addon = Addon('plugin.video.movie25', sys.argv)
+addon = Addon(addon_id, sys.argv)
 art = main.art
-wh = watchhistory.WatchHistory('plugin.video.movie25')
+wh = watchhistory.WatchHistory(addon_id)
 
 def LISTDOC(murl):
     if murl=='doc1':
@@ -20,8 +16,7 @@ def LISTDOC(murl):
         url='http://documentaryheaven.com/'
         link=main.OPENURL(url)
         match=re.compile('<li class=".+?"><a href="(.+?)" title=".+?">(.+?)</a> </li>').findall(link)
-        for url, name in match:
-            main.addDir(name,'http://documentaryheaven.com'+url,87,'')
+        for url, name in match: main.addDir(name,'http://documentaryheaven.com'+url,87,'')
     elif murl=='doc2':
         main.addDir('[COLOR red]Recent[/COLOR]','http://topdocumentaryfilms.com/all/',87,'')
         main.addDir('[COLOR red]Recommended[/COLOR]','rec',89,'')
@@ -176,8 +171,7 @@ def LINKDOC(mname,murl,thumb):
                 if (len(match)>0): url='http://www.youtube.com/watch?feature=player_embedded&v=n_'+match[0]
                 else:
                     match=re.compile('http://www.youtube.com/embed/(.+?).?rel=0&amp;iv_load_policy=3').findall(url)
-                    if (len(match)>0):
-                        url='http://www.youtube.com/watch?feature=player_embedded&v='+match[0]
+                    if (len(match)>0): url='http://www.youtube.com/watch?feature=player_embedded&v='+match[0]
                     match2=re.compile('videoseries').findall(url)
                     if (len(match2)>0):
                         link2=main.OPENURL(url)
