@@ -1,28 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="plugin.video.movie25"
-       name="Mash Up"
-       version="1.4.2"
-       provider-name="MashUp/Mafarricos/Leinad4Mind">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-		<import addon="script.module.urlresolver"  version="0.0.1"/>
-		<import addon="script.module.t0mm0.common" version="1.1.0"/>
-		<import addon="script.module.metahandler"  version="1.0.2"/>
-		<import addon="script.module.beautifulsoup"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource"
-               library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-    <summary lang="en">Browse Movie25 and many more sources</summary>
-    <description lang="en">Browse and play a wide selection of movies from the sites like Movie25.com, watchfreeseres, seriesgate, rlsmx, newmyvidelinks etc.
-	[COLOR green]Mash Up is Now Officially Ad Free[/COLOR]</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.streamajoker" name="Stream a Joker" version="0.6.4" provider-name="Mafarricos">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
@@ -256,7 +233,7 @@ Special thanks to all who contributed to this plugin! Check the commit history a
 
 <addon id="service.subtitles.opensubtitlesBeta"
        name="OpenSubtitles.org (Unofficial)"
-       version="5.0.10"
+       version="5.0.11"
        provider-name="amet,Mafarricos">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
